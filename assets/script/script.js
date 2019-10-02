@@ -14,7 +14,15 @@ $(function () {
     var enemyDefense = parseInt($('#enemyDefense').val())
 
 //combat logic
-console.log(isEnemyAttacking)
+    if (isEnemyAttacking) {
+      enemyHealth -= playerAttack
+      playerHealth -= enemyAttack
+    } else {
+      var damage = playerAttack - enemyDefense
+      if (damage > 0) {
+        enemyHealth -= damage
+      }
+    }
 
 //write combat outcome
     $('#enemyHealth').val(enemyHealth);
