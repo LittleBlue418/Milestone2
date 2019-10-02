@@ -2,9 +2,10 @@ $(function () {
 
   var isEnemyAttacking = true;
 
+  //Attack
   $('#attackButton').click(function () {
 
-//import variables
+    //import variables
     var playerHealth = parseInt($('#playerHealth').val())
     var playerAttack = parseInt($('#playerAttack').val())
     var playerDefense = parseInt($('#playerDefense').val())
@@ -13,7 +14,7 @@ $(function () {
     var enemyAttack = parseInt($('#enemyAttack').val())
     var enemyDefense = parseInt($('#enemyDefense').val())
 
-//combat logic
+    //combat logic
     if (isEnemyAttacking) {
       enemyHealth -= playerAttack
       playerHealth -= enemyAttack
@@ -24,7 +25,7 @@ $(function () {
       }
     }
 
-//write combat outcome
+    //write combat outcome
     $('#enemyHealth').val(enemyHealth);
 
     $('#playerHealth').val(playerHealth);
@@ -32,9 +33,31 @@ $(function () {
     isEnemyAttacking = !isEnemyAttacking
   })
 
-
+//Defend
   $('#defendButton').click(function () {
-    console.log(`Defend`)
+
+    var playerHealth = parseInt($('#playerHealth').val())
+    var playerAttack = parseInt($('#playerAttack').val())
+    var playerDefense = parseInt($('#playerDefense').val())
+
+    var enemyHealth = parseInt($('#enemyHealth').val())
+    var enemyAttack = parseInt($('#enemyAttack').val())
+    var enemyDefense = parseInt($('#enemyDefense').val())
+
+    //combat logic
+    if (isEnemyAttacking) {
+      var damage = enemyAttack - playerDefense
+        if (damage > 0) {
+          playerHealth -= damage
+        }
+    }
+
+    //write combat outcome
+    $('#enemyHealth').val(enemyHealth);
+
+    $('#playerHealth').val(playerHealth);
+
+    isEnemyAttacking = !isEnemyAttacking
   })
 
 
