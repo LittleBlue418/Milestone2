@@ -21,57 +21,68 @@ $(function () {
   var roundCounter = 0;
   var goldCount = 0;
 
+  var player = {
+    health: 100,
+    attack: 10,
+    defense: 10
+  }
+  var currentEnemy = {
+    health: 100,
+    attack: 9,
+    defense: 8,
+  }
+
   //combat logic
   function resolveCombat(isPlayerAttacking) {
-    var playerHealth = parseInt($('#playerHealth').val());
-    var playerAttack = parseInt($('#playerAttack').val());
-    var playerDefense = parseInt($('#playerDefense').val());
+    player.health = parseInt($('#playerHealth').val());
+    player.attack = parseInt($('#playerAttack').val());
+    player.defense = parseInt($('#playerDefense').val());
 
-    var enemyHealth = parseInt($('#enemyHealth').val());
-    var enemyAttack = parseInt($('#enemyAttack').val());
-    var enemyDefense = parseInt($('#enemyDefense').val());
+    currentEnemy.health = parseInt($('#enemyHealth').val());
+    currentEnemy.attack = parseInt($('#enemyAttack').val());
+    currentEnemy.defense = parseInt($('#enemyDefense').val());
 
     var isEnemyAttacking = enemyPattern[roundCounter % enemyPattern.length];
     roundCounter++;
 
     if (isPlayerAttacking) {
       if (isEnemyAttacking) {
-        enemyHealth -= playerAttack
-        playerHealth -= enemyAttack
+        currentEnemy.health -= player.attack
+        player.health -= currentEnemy.attack
       } else {
-        var damage = playerAttack - enemyDefense
+        var damage = player.attack - currentEnemy.defense
         if (damage > 0) {
-          enemyHealth -= damage
+          currentEnemy.health -= damage
         }
       }
 
     } else {
       if (isEnemyAttacking) {
-        var damage = enemyAttack - playerDefense
+        var damage = currentEnemy.attack - player.defense
         if (damage > 0) {
-          playerHealth -= damage
+          player.health -= damage
         }
       }
     }
 
 
 
-    if (playerHealth < 1) {
+    if (player.health < 1) {
       console.log("You died!")
-      playerHealth = 0;
+      player.health = 0;
     }
 
-    if (enemyHealth < 1) {
+    if (currentEnemy.health < 1) {
       console.log("Your enemy died!")
-      enemyHealth = 0;
+      currentEnemy.health = 0;
       //gold drop
       //potion drop
     }
 
     //write combat outcome
-    $('#enemyHealth').val(enemyHealth);
+    $('#enemyHealth').val(currentEnemy.health);
 
-    $('#playerHealth').val(playerHealth);
+    $('#playerHealth').val(player.health);
 
   }
 
