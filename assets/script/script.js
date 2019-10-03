@@ -18,7 +18,8 @@ $(function () {
 
   var enemyPattern = [true, false, true]
 
-  var roundCounter = 0
+  var roundCounter = 0;
+  var goldCount = 0;
 
   //combat logic
   function resolveCombat(isPlayerAttacking) {
@@ -30,7 +31,7 @@ $(function () {
     var enemyAttack = parseInt($('#enemyAttack').val());
     var enemyDefense = parseInt($('#enemyDefense').val());
 
-    var isEnemyAttacking = enemyPattern[ roundCounter % enemyPattern.length ];
+    var isEnemyAttacking = enemyPattern[roundCounter % enemyPattern.length];
     roundCounter++;
 
     if (isPlayerAttacking) {
@@ -51,6 +52,20 @@ $(function () {
           playerHealth -= damage
         }
       }
+    }
+
+
+
+    if (playerHealth < 1) {
+      console.log("You died!")
+      playerHealth = 0;
+    }
+
+    if (enemyHealth < 1) {
+      console.log("Your enemy died!")
+      enemyHealth = 0;
+      //gold drop
+      //potion drop
     }
 
     //write combat outcome
