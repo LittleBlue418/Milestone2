@@ -1,17 +1,38 @@
 $(function () {
 
-  var isEnemyAttacking = true;
+  //Attack
+  $('#attackButton').click(function () {
+    resolveCombat(true)
+  })
 
+  //Defend
+  $('#defendButton').click(function () {
+    resolveCombat(false)
+  })
+
+  //Flee
+  $('#fleeButton').click(function () {
+    console.log(`Run awaaaaaaaaay!`)
+  })
+
+
+  var enemyPattern = [true, false, true]
+
+  var roundCounter = 0
+
+  //combat logic
   function resolveCombat(isPlayerAttacking) {
-    var playerHealth = parseInt($('#playerHealth').val())
-    var playerAttack = parseInt($('#playerAttack').val())
-    var playerDefense = parseInt($('#playerDefense').val())
+    var playerHealth = parseInt($('#playerHealth').val());
+    var playerAttack = parseInt($('#playerAttack').val());
+    var playerDefense = parseInt($('#playerDefense').val());
 
-    var enemyHealth = parseInt($('#enemyHealth').val())
-    var enemyAttack = parseInt($('#enemyAttack').val())
-    var enemyDefense = parseInt($('#enemyDefense').val())
+    var enemyHealth = parseInt($('#enemyHealth').val());
+    var enemyAttack = parseInt($('#enemyAttack').val());
+    var enemyDefense = parseInt($('#enemyDefense').val());
 
-    //combat logic
+    var isEnemyAttacking = enemyPattern[ roundCounter % enemyPattern.length ];
+    roundCounter++;
+
     if (isPlayerAttacking) {
       if (isEnemyAttacking) {
         enemyHealth -= playerAttack
@@ -37,21 +58,7 @@ $(function () {
 
     $('#playerHealth').val(playerHealth);
 
-    isEnemyAttacking = !isEnemyAttacking
   }
 
-  //Attack
-  $('#attackButton').click(function () {
-    resolveCombat(true)
-  })
 
-  //Defend
-  $('#defendButton').click(function () {
-    resolveCombat(false)
-  })
-
-
-  $('#fleeButton').click(function () {
-    console.log(`Run awaaaaaaaaay!`)
-  })
 })
