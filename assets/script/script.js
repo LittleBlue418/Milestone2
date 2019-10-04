@@ -65,15 +65,27 @@ function toCombatButton() {
   // -> begin combat round
 }
 
+function playerAttackButton() {
 
-function testFunction() {
-  var x = document.getElementById("menu-screen");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none"
-  }
 }
+
+function playerDefendButton() {
+
+}
+
+function runAwayButton() {
+  //are you sure dialogue box
+  var fight = document.getElementById("fight-screen");
+  fight.style.display = "none";
+
+  var map = document.getElementById("map-screen");
+  map.style.display = "block";
+}
+
+
+
+
+
 
 $(function () {
 
