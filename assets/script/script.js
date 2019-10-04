@@ -25,6 +25,8 @@ function toHomeButton() {
   welcome.style.display = "none";
   var shop = document.getElementById("shop-screen");
   shop.style.display = "none";
+  var map = document.getElementById("map-screen");
+  map.style.display = "none";
 }
 
 function toShopButton() {
@@ -49,7 +51,19 @@ function levelUpAttackButton() {
 function levelUpDefenseButton() {
 
 }
+function toCombatButton() {
+  //changes screen
+  var fight = document.getElementById("fight-screen");
+  fight.style.display = "block";
 
+  var map = document.getElementById("map-screen");
+  map.style.display = "none";
+
+  //log which enemy button was pressed
+  // -> set current enemy graphics
+  // -> set current enemy stats
+  // -> begin combat round
+}
 
 
 function testFunction() {
