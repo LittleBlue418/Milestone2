@@ -23,9 +23,22 @@ function startGameButton() {
 
   var welcome = document.getElementById("welcome-screen");
   welcome.style.display = "none";
-  console.log("hello")
 }
 
+function toShopButton() {
+  var shop = document.getElementById("shop-screen");
+  shop.style.display = "block";
+
+  var home = document.getElementById("home-screen");
+  home.style.display = "none";
+}
+function toMapButton() {
+  var map = document.getElementById("map-screen");
+  map.style.display = "block";
+
+  var home = document.getElementById("home-screen");
+  home.style.display = "none";
+}
 
 
 
