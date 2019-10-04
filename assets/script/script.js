@@ -17,12 +17,14 @@ function onLoadFunction() {
 }
 
 //Button functions
-function startGameButton() {
+function toHomeButton() {
   var home = document.getElementById("home-screen");
   home.style.display = "block";
 
   var welcome = document.getElementById("welcome-screen");
   welcome.style.display = "none";
+  var shop = document.getElementById("shop-screen");
+  shop.style.display = "none";
 }
 
 function toShopButton() {
@@ -38,6 +40,14 @@ function toMapButton() {
 
   var home = document.getElementById("home-screen");
   home.style.display = "none";
+}
+
+function levelUpAttackButton() {
+
+}
+
+function levelUpDefenseButton() {
+
 }
 
 
