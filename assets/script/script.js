@@ -1,3 +1,35 @@
+//On load function - hide all other screens
+function onLoadFunction() {
+  var home = document.getElementById("home-screen");
+  var fight = document.getElementById("fight-screen");
+  var victory = document.getElementById("victory-screen");
+  var map = document.getElementById("map-screen");
+  var shop = document.getElementById("shop-screen");
+  var menu = document.getElementById("menu-screen");
+
+  home.style.display = "none";
+  fight.style.display = "none";
+  victory.style.display = "none";
+  map.style.display = "none";
+  shop.style.display = "none";
+  menu.style.display = "none";
+
+}
+
+
+
+
+
+
+function testFunction() {
+  var x = document.getElementById("menu-screen");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none"
+  }
+}
+
 $(function () {
 
   //Attack
