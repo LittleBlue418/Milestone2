@@ -16,7 +16,15 @@ function onLoadFunction() {
 
 }
 
+//Button functions
+function startGameButton() {
+  var home = document.getElementById("home-screen");
+  home.style.display = "block";
 
+  var welcome = document.getElementById("welcome-screen");
+  welcome.style.display = "none";
+  console.log("hello")
+}
 
 
 
