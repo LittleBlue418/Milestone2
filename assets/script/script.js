@@ -82,7 +82,14 @@ function runAwayButton() {
   map.style.display = "block";
 }
 
-
+function menuButton() {
+  var menu = document.getElementById("menu-screen")
+  if (menu.style.display === "none") {
+    menu.style.display = "block";
+  } else {
+    menu.style.display = "none";
+  }
+}
 
 
 
