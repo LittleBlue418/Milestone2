@@ -3,37 +3,122 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rescue The Rainbow</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        type="text/css">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="assets/script/script.js"></script>
 </head>
 
 <body>
-    <div id="gameScreen">
-        <div id="statBars">
-            <div id="playerStats">
-                <input type="text" id="playerHealth" value="100">Health
-                <input type="text" id="playerAttack" value="10">Attack
-                <input type="text" id="playerDefense" value="10">Defense
 
+    <div class="game-container">
 
-            </div>
-            <div id="enemyStats">
-                <input type="text" id="enemyHealth" value="100">E Health
-                <input type="text" id="enemyAttack" value="8"> E Attack
-                <input type="text" id="enemyDefense" value="11">E Defense
-
-
+        <!--WELCOME-->
+        <div id="welcome-screen" class="game-screen">
+            <div class="button-container">
+                <input class="toHomeButton" type="image" src="assets/buttons/scroll.png"></input>
             </div>
         </div>
-        <div id="combatButtons">
-            <button id="attackButton">Attack!</button>
-            <button id="defendButton">Defend!</button>
-            <button id="fleeButton">Flee!</button>
+
+        <!--HOME-->
+        <div id="home-screen" class="game-screen">
+            <div class="button-container">
+                <div class="row-button-container2">
+                    <input type="image" class="toShopButton button2" src="assets/buttons/shop-sign.png"></input>
+                    <input type="image" class="toMapButton button2" src="assets/buttons/road_sign.png"></input>
+                </div>
+            </div>
         </div>
+
+        <!--SHOP-->
+        <div id="shop-screen" class="game-screen">
+            <div class="button-container">
+                <div class="row-button-container3">
+                    <input type="image" class="levelUpAttack button3" src="assets/buttons/sword.png"></input>
+                    <input type="image" class="levelUpDefence button3" src="assets/buttons/shield.png"
+                        onclick="levelUpDefenseButton()"></input>
+                    <input type="image" class="toHomeButton button3" src="assets/buttons/door.png"></input>
+                </div>
+            </div>
+        </div>
+
+        <!--MAP-->
+        <div id="map-screen" class="game-screen">
+            <div class="button-container">
+                <div class="diagonal-button-container">
+                    <input type="image" class="toCombatButton mapButton4" src="assets/buttons/enemy.png"></input>
+                    <input type="image" class="toCombatButton mapButton3" src="assets/buttons/enemy.png"></input>
+                    <input type="image" class="toCombatButton mapButton2" src="assets/buttons/enemy.png"></input>
+                    <input type="image" class="toCombatButton mapButton1" src="assets/buttons/enemy.png"></input>
+                    <input type="image" class="toHomeButton mapButtonHome" src="assets/buttons/road_sign.png"></input>
+                </div>
+            </div>
+        </div>
+
+
+        <!--COMBAT-->
+        <div id="combat-screen" class="game-screen">
+            <div class="button-container">
+                <div class="row-button-container3">
+                    <input type="image" class="button3" src="assets/buttons/sword.png"
+                        onclick="playerAttackButton()"></input>
+                    <input type="image" class="button3" src="assets/buttons/shield.png"
+                        onclick="playerDefendButton()"></input>
+                    <input type="image" class="toMapButton button3" src="assets/buttons/run.png"></input>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--VICTORY-->
+        <div id="victory-screen" class="game-screen">
+
+        </div>
+
+
+        <!--MENU-->
+        <div id="menu-screen" class="game-screen">
+
+            <!--buttons-->
+        </div>
+
+        <!--Player stats-->
+        <div class="player-stats-container">
+            <div class="player-stats">
+                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span
+                        id="playerHealth"></span>/100</p>
+                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="playerAttack"></span>
+                </p>
+                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span
+                        id="playerDefense"></span></p>
+                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="playerGold"></span>
+                </p>
+            </div>
+        </div>
+
+        <!--FRAME-->
+        <div id="frame" class="inner-div"></div>
+
+
+
+
+        <!--MENU BUTTON
+        <input id="menu-button" type="image" src="assets/settings.png" onclick="menuButton()"></input>
+-->
+
+
+
     </div>
-    <script src="assets/script/script.js"></script>
+
+
+
 </body>
 
 </html>
