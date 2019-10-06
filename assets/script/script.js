@@ -1,48 +1,65 @@
-//On load function - hide all other screens
-$(function () {
-  var welcome = $("#welcome-screen");
-  var home = $("#home-screen");
-  var combat = $("#combat-screen");
-  var victory = $("#victory-screen");
-  var map = $("#map-screen");
-  var shop = $("#shop-screen");
-  var menu = $("#menu-screen");
-  var frame =$("#frame");
-  var playerStats =$(".player-stats-container");
+//Player Stats
+  var playerStats = {
+    health: 100,
+    attack: 10,
+    defense: 10,
+    gold: 0
+  }
 
-  welcome.show();
-  home.hide();
-  combat.hide();
-  victory.hide();
-  map.hide();
-  shop.hide();
-  menu.hide();
-  frame.show();
-  playerStats.hide();
+//On load function
+$(function () {
+
+  var gameScreen = {
+    welcome: $("#welcome-screen"),
+    home: $("#home-screen"),
+    combat: $("#combat-screen"),
+    victory: $("#victory-screen"),
+    map: $("#map-screen"),
+    shop: $("#shop-screen"),
+    menu: $("#menu-screen"),
+  }
+
+  var statContainer = {
+    player: $(".player-stats-container"),
+  }
+
+  //Screens
+  gameScreen.welcome.show();
+  gameScreen.home.hide();
+  gameScreen.combat.hide();
+  gameScreen.victory.hide();
+  gameScreen.map.hide();
+  gameScreen.shop.hide();
+  gameScreen.menu.hide();
+  statContainer.player.hide();
+
+  $("#welcome-screen .toHomeButton").click(function() {
+    $("#playerHealth").text(playerStats.health);
+    $("#playerAttack").text(playerStats.attack);
+    $("#playerDefense").text(playerStats.defense);
+    $("#playerGold").text(playerStats.gold);
+  })
 
   //Nagivation buttons
   $(".toHomeButton").click(function() {
     $(this).parents(".game-screen").hide();
-    home.show();
-    playerStats.show();
+    gameScreen.home.show();
+    statContainer.player.show();
   })
 
   $(".toShopButton").click(function() {
     $(this).parents(".game-screen").hide();
-    shop.show();
-    playerStats.show();
+    gameScreen.shop.show();
   })
 
   $(".toMapButton").click(function() {
     $(this).parents(".game-screen").hide();
-    map.show();
-    playerStats.show();
+    gameScreen.map.show();
   })
 
   $(".toCombatButton").click(function() {
     $(this).parents(".game-screen").hide();
-    combat.show();
-    playerStats.show();
+    gameScreen.combat.show();
   })
 
 })
