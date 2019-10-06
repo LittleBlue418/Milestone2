@@ -1,5 +1,5 @@
-//Player Stats
-var playerStats = {
+//Global objects and variables
+var player = {
   health: 100,
   attack: 10,
   defense: 10,
@@ -38,10 +38,10 @@ $(function () {
   statContainer.enemy.hide();
 
   $("#welcome-screen .toHomeButton").click(function () {
-    $("#playerHealth").text(playerStats.health);
-    $("#playerAttack").text(playerStats.attack);
-    $("#playerDefense").text(playerStats.defense);
-    $("#playerGold").text(playerStats.gold);
+    $("#playerHealth").text(player.health);
+    $("#playerAttack").text(player.attack);
+    $("#playerDefense").text(player.defense);
+    $("#playerGold").text(player.gold);
   })
 
   //Nagivation buttons
@@ -70,25 +70,27 @@ $(function () {
 
   //Shop Buttons
   $(".levelUpAttack").click(function () {
-    if (playerStats.gold > 9) {
-      playerStats.attack += 10;
-      playerStats.gold -= 10;
-      $("#playerAttack").text(playerStats.attack);
-      $("#playerGold").text(playerStats.gold);
+    if (player.gold > 9) {
+      player.attack += 10;
+      player.gold -= 10;
+      $("#playerAttack").text(player.attack);
+      $("#playerGold").text(player.gold);
 
     }
   })
 
   $(".levelUpDefence").click(function () {
-    if (playerStats.gold > 9) {
-      playerStats.defense += 10;
-      playerStats.gold -= 10;
-      $("#playerDefense").text(playerStats.defense);
-      $("#playerGold").text(playerStats.gold);
+    if (player.gold > 9) {
+      player.defense += 10;
+      player.gold -= 10;
+      $("#playerDefense").text(player.defense);
+      $("#playerGold").text(player.gold);
 
     }
   })
 
+
+  //Combat
   class Enemy {
     constructor(health, attack, defense, gold) {
       this.health = health;
@@ -98,6 +100,13 @@ $(function () {
     }
   };
 
+  var enemy1Attacking = [true, false, true];
+  var enemy2Attacking = [true, false, true, false];
+  var enemy3Attacking = [true, false, true, true, false];
+  var enemy4Attacking = [true, false, true, true, true, false];
+
+  var roundCounter = 0;
+
 
   $(".mapButton1").click(function () {
     var currentEnemy1 = new Enemy(
@@ -106,24 +115,84 @@ $(function () {
       Math.floor((Math.random() * 12) + 9),
       Math.floor((Math.random() * 3) + 1));
 
-    var currentEnemy1Pattern = [true, false, true];
-
     $("#enemyHealth").text(currentEnemy1.health);
     $("#enemyAttack").text(currentEnemy1.attack);
     $("#enemyDefense").text(currentEnemy1.defense);
     $("#enemyGold").text(currentEnemy1.gold);
 
-    console.log(currentEnemy1.health);
-    console.log(currentEnemy1.attack);
-    console.log(currentEnemy1.defense);
-
-    console.log(currentEnemy1.gold);
-    console.log(currentEnemy1Pattern);
-
-    $(".fleeButton").click(function() {
+    $(".fleeButton").click(function () {
       alert("Are you sure?")
       statContainer.enemy.hide();
     })
+
+    $(".attackButton").click(function () {
+      resolveCombat(true)
+    })
+
+    $('#defendButton').click(function () {
+      resolveCombat(false)
+    })
+
+    function resolveCombat(isPlayerAttacking) {
+
+
+      var isEnemyAttacking = enemy1Attacking[roundCounter % enemy1Attacking.length];
+      roundCounter++;
+
+      console.log(isEnemyAttacking);
+      console.log(roundCounter);
+
+      if (isPlayerAttacking) {
+        if (isEnemyAttacking) {
+
+          currentEnemy1.health -= player.attack
+          $("#enemyHealth").text(currentEnemy1.health);
+
+          player.health -= currentEnemy1.attack
+          $("#playerHealth").text(player.health);
+
+        } else {
+          var damage = player.attack - currentEnemy1.defense
+          if (damage > 0) {
+            currentEnemy1.health -= damage
+            $("#enemyHealth").text(currentEnemy1.health);
+          }
+        }
+
+      } else {
+        if (isEnemyAttacking) {
+          var damage = currentEnemy1.attack - player.defense
+          if (damage > 0) {
+            player.health -= damage
+            $("#playerHealth").text(player.health);
+          }
+        }
+      }
+
+
+
+      if (player.health < 1) {
+        console.log("You died!")
+        player.health = 0;
+        gameScreen.welcome.show();
+        gameScreen.combat.hide();
+      }
+
+      if (currentEnemy1.health < 1) {
+        console.log("Your enemy died!")
+        currentEnemy1.health = 0;
+        player.gold += currentEnemy1.gold;
+        $("#playerGold").text(player.gold);
+
+        //potion drop
+      }
+
+      //write combat outcome
+      $('#enemyHealth').val(currentEnemy1.health);
+
+      $('#playerHealth').val(player.health);
+
+    }
   })
 
 
@@ -136,22 +205,7 @@ $(function () {
 
 
 
-function levelUpAttackButton() {
 
-}
-
-function levelUpDefenseButton() {
-
-}
-
-
-function playerAttackButton() {
-
-}
-
-function playerDefendButton() {
-
-}
 
 /*
 function menuButton() {
@@ -169,14 +223,10 @@ function menuButton() {
 $(function () {
 
   //Attack
-  $('#attackButton').click(function () {
-    resolveCombat(true)
-  })
+
 
   //Defend
-  $('#defendButton').click(function () {
-    resolveCombat(false)
-  })
+
 
   //Flee
   $('#fleeButton').click(function () {
@@ -189,11 +239,7 @@ $(function () {
   var roundCounter = 0;
   var goldCount = 0;
 
-  var player = {
-    health: 100,
-    attack: 10,
-    defense: 10
-  }
+
   var currentEnemy = {
     health: 100,
     attack: 9,
@@ -201,58 +247,7 @@ $(function () {
   }
 
   //combat logic
-  function resolveCombat(isPlayerAttacking) {
-    player.health = parseInt($('#playerHealth').val());
-    player.attack = parseInt($('#playerAttack').val());
-    player.defense = parseInt($('#playerDefense').val());
 
-    currentEnemy.health = parseInt($('#enemyHealth').val());
-    currentEnemy.attack = parseInt($('#enemyAttack').val());
-    currentEnemy.defense = parseInt($('#enemyDefense').val());
-
-    var isEnemyAttacking = enemyPattern[roundCounter % enemyPattern.length];
-    roundCounter++;
-
-    if (isPlayerAttacking) {
-      if (isEnemyAttacking) {
-        currentEnemy.health -= player.attack
-        player.health -= currentEnemy.attack
-      } else {
-        var damage = player.attack - currentEnemy.defense
-        if (damage > 0) {
-          currentEnemy.health -= damage
-        }
-      }
-
-    } else {
-      if (isEnemyAttacking) {
-        var damage = currentEnemy.attack - player.defense
-        if (damage > 0) {
-          player.health -= damage
-        }
-      }
-    }
-
-
-
-    if (player.health < 1) {
-      console.log("You died!")
-      player.health = 0;
-    }
-
-    if (currentEnemy.health < 1) {
-      console.log("Your enemy died!")
-      currentEnemy.health = 0;
-      //gold drop
-      //potion drop
-    }
-
-    //write combat outcome
-    $('#enemyHealth').val(currentEnemy.health);
-
-    $('#playerHealth').val(player.health);
-
-  }
 
 
 })
