@@ -1,47 +1,50 @@
 //On load function - hide all other screens
-function onLoadFunction() {
-  var home = document.getElementById("home-screen");
-  var fight = document.getElementById("fight-screen");
-  var victory = document.getElementById("victory-screen");
-  var map = document.getElementById("map-screen");
-  var shop = document.getElementById("shop-screen");
-  var menu = document.getElementById("menu-screen");
+$(function () {
+  var welcome = $("#welcome-screen");
+  var home = $("#home-screen");
+  var fight = $("#fight-screen");
+  var victory = $("#victory-screen");
+  var map = $("#map-screen");
+  var shop = $("#shop-screen");
+  var menu = $("#menu-screen");
 
-  home.style.display = "none";
-  fight.style.display = "none";
-  victory.style.display = "none";
-  map.style.display = "none";
-  shop.style.display = "none";
-  menu.style.display = "none";
+  welcome.show();
+  home.hide();
+  fight.hide();
+  victory.hide();
+  map.hide();
+  shop.hide();
+  menu.hide();
 
-}
+})
 
 //Button functions
 function toHomeButton() {
-  var home = document.getElementById("home-screen");
-  home.style.display = "block";
+  var home = $("#home-screen");
+  home.show();
 
-  var welcome = document.getElementById("welcome-screen");
-  welcome.style.display = "none";
-  var shop = document.getElementById("shop-screen");
-  shop.style.display = "none";
-  var map = document.getElementById("map-screen");
-  map.style.display = "none";
+  var welcome = $("#welcome-screen");
+  welcome.hide();
+  var shop = $("#shop-screen");
+  shop.hide();
+  var map = $("#map-screen");
+  map.hide();
 }
 
 function toShopButton() {
-  var shop = document.getElementById("shop-screen");
-  shop.style.display = "block";
+  var shop = $("#shop-screen");
+  shop.show();
 
-  var home = document.getElementById("home-screen");
-  home.style.display = "none";
+  var home = $("#home-screen");
+  home.hide();
 }
-function toMapButton() {
-  var map = document.getElementById("map-screen");
-  map.style.display = "block";
 
-  var home = document.getElementById("home-screen");
-  home.style.display = "none";
+function toMapButton() {
+  var map = $("#map-screen");
+  map.show();
+
+  var home = $("#home-screen");
+  home.hide();
 }
 
 function levelUpAttackButton() {
@@ -51,13 +54,14 @@ function levelUpAttackButton() {
 function levelUpDefenseButton() {
 
 }
+
 function toCombatButton() {
   //changes screen
-  var fight = document.getElementById("fight-screen");
-  fight.style.display = "block";
+  var fight = $("#fight-screen");
+  fight.show();
 
-  var map = document.getElementById("map-screen");
-  map.style.display = "none";
+  var map = $("#map-screen");
+  map.hide();
 
   //log which enemy button was pressed
   // -> set current enemy graphics
@@ -75,21 +79,21 @@ function playerDefendButton() {
 
 function runAwayButton() {
   //are you sure dialogue box
-  var fight = document.getElementById("fight-screen");
-  fight.style.display = "none";
+  var fight = $("#fight-screen");
+  fight.hide();
 
-  var map = document.getElementById("map-screen");
-  map.style.display = "block";
+  var map = $("#map-screen");
+  map.show();
 }
-
+ /*
 function menuButton() {
-  var menu = document.getElementById("menu-screen")
-  if (menu.style.display === "none") {
-    menu.style.display = "block";
+  var menu = $("#menu-screen")
+  if (menu === "shown") {
+    menu.show();
   } else {
-    menu.style.display = "none";
+    menu.hide();
   }
-}
+}*/
 
 
 
