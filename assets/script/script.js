@@ -6,6 +6,8 @@ var playerStats = {
   gold: 100
 }
 
+
+
 //On load function
 $(function () {
 
@@ -24,11 +26,11 @@ $(function () {
   }
 
   //Screens
-  gameScreen.welcome.show();
+  gameScreen.welcome.hide();
   gameScreen.home.hide();
   gameScreen.combat.hide();
   gameScreen.victory.hide();
-  gameScreen.map.hide();
+  gameScreen.map.show();
   gameScreen.shop.hide();
   gameScreen.menu.hide();
   statContainer.player.hide();
@@ -82,6 +84,32 @@ $(function () {
 
     }
   })
+
+  class Enemy {
+    constructor(health, attack, defense) {
+      this.health = health;
+      this.attack = attack;
+      this.defense = defense;
+    }
+  };
+
+
+  $(".mapButton1").click(function () {
+    let newEnemy1 = new Enemy(
+      Math.floor((Math.random() * 3) + 1),
+      Math.floor((Math.random() * 7) + 4),
+      Math.floor((Math.random() * 12) + 9));
+
+    let newEnemy1Pattern = [true, false, true];
+
+    console.log(newEnemy1.health);
+    console.log(newEnemy1.attack);
+    console.log(newEnemy1.defense);
+    console.log(newEnemy1Pattern);
+
+
+  })
+
 
 
 
