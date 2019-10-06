@@ -59,6 +59,7 @@ body {
     background-color: black;
     background-position-x: 50%;
 }
+
 /* ----- Buttons */
 .button-container {
     outline: red 3px solid;
@@ -152,7 +153,32 @@ body {
     height: 150px;
     left:70%;
     top:calc(150px + 150px + 150px + 150px + 120px);
+}
 
+/* ----- Player stats */
+.player-stats-container {
+    position: absolute;
+    width: 768px;
+    height:1024px;
+    left:calc(50% - 364px);
+    pointer-events: none;
+}
+
+.iconSmall {
+    height: 25px;
+}
+.player-stats {
+    position: absolute;
+    left: 7%;
+    top: 5%;
+    outline: purple 3px solid;
+    background-color: aqua;
+    width: 140px;
+}
+
+.player-stats p {
+    font-size: 25px;
+    margin-bottom: 4px;
 }
 
 

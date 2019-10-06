@@ -10,8 +10,8 @@ $(function () {
   var frame =$("#frame");
 
   welcome.hide();
-  home.hide();
-  combat.show();
+  home.show();
+  combat.hide();
   victory.hide();
   map.hide();
   shop.hide();
