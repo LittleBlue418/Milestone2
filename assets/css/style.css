@@ -15,23 +15,7 @@ html body {
     left:calc(50% - 364px);
 }
 
-.button-container {
-    outline: red 3px solid;
-    width: 100%;
-    height: 100%;
-}
-
-.toHomeButton {
-    position: absolute;
-    width: 200px;
-    left:calc(50% - 100px);
-    top:calc(80% - 100px);
-}
-
-#welcome-screen {
-    background-image: url("../backgrounds/template-welcome-screen.png");
-}
-
+/* ----- Backgrounds */
 #home-screen {
     background-image: url("../backgrounds/template-home-screen.png");
 }
@@ -55,3 +39,66 @@ html body {
 #menu-screen {
     background-image: url("../backgrounds/template-menu-scroll.png");
 }
+
+#welcome-screen {
+    background-image: url("../backgrounds/template-welcome-screen.png");
+}
+
+/* ----- Buttons */
+.button-container {
+    outline: red 3px solid;
+    width: 100%;
+    height: 100%;
+}
+
+#welcome-screen .toHomeButton {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left:calc(50% - 100px);
+    top:calc(80% - 100px);
+}
+
+.row-button-container2 {
+    position: absolute;
+    outline:blue 3px solid;
+    width: 100%;
+    bottom: 60px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.button2 {
+    width: 200px;
+    height: 200px;
+}
+
+.row-button-container3 {
+    position: absolute;
+    outline:blue 3px solid;
+    width: 100%;
+    bottom: 110px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.button3 {
+    width: 150px;
+    height: 150px;
+}
+
+.diagonal-button-container {
+    position: absolute;
+    outline:blue 3px solid;
+    height: 80%;
+    top: 10%;
+}
+.button4 {
+    width: 150px;
+    height: 150px;
+}
+
+
+

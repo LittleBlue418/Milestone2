@@ -8,11 +8,11 @@ $(function () {
   var shop = $("#shop-screen");
   var menu = $("#menu-screen");
 
-  welcome.show();
+  welcome.hide();
   home.hide();
   combat.hide();
   victory.hide();
-  map.hide();
+  map.show();
   shop.hide();
   menu.hide();
 

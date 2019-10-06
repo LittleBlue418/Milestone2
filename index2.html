@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rescue The Rainbow</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="assets/script/script.js"></script>
 </head>
@@ -26,32 +28,42 @@
 
         <!--HOME-->
         <div id="home-screen" class="game-screen">
-
-            <!--buttons-->
-            <input type="image" class="toShopButton" src="assets/buttons/shop-sign.png"></input>
-            <input type="image" class="toMapButton" src="assets/buttons/road_sign.png"></input>
+            <div class="button-container">
+                <div class="row-button-container2">
+                    <input type="image" class="toShopButton button2" src="assets/buttons/shop-sign.png"></input>
+                    <input type="image" class="toMapButton button2" src="assets/buttons/road_sign.png"></input>
+                </div>
+            </div>
         </div>
 
         <!--SHOP-->
         <div id="shop-screen" class="game-screen">
-
-            <!--buttons-->
-            <input type="image" src="assets/buttons/sword.png"></input>
-            <input type="image" src="assets/buttons/shield.png" onclick="levelUpDefenseButton()"></input>
-            <input type="image" class="toHomeButton" src="assets/buttons/door.png"></input>
+            <div class="button-container">
+                <div class="row-button-container3">
+                    <input type="image" class="levelUpAttack button3" src="assets/buttons/sword.png"></input>
+                    <input type="image" class="levelUpDefence button3" src="assets/buttons/shield.png"
+                        onclick="levelUpDefenseButton()"></input>
+                    <input type="image" class="toHomeButton button3" src="assets/buttons/door.png"></input>
+                </div>
+            </div>
         </div>
 
         <!--MAP-->
         <div id="map-screen" class="game-screen">
-
-            <!--buttons-->
-            <input type="image" class="toCombatButton" src="assets/buttons/enemy.png"></input>
-            <input type="image" class="toCombatButton" src="assets/buttons/enemy.png"></input>
-            <input type="image" class="toCombatButton" src="assets/buttons/enemy.png"></input>
-            <input type="image" class="toCombatButton" src="assets/buttons/enemy.png"></input>
-            <input type="image" class="toHomeButton" src="assets/buttons/road_sign.png"></input>
+            <div class="button-container">
 
 
+                <input type="image" class="toCombatButton button4" src="assets/buttons/enemy.png"></input>
+
+                <input type="image" class="toCombatButton button4" src="assets/buttons/enemy.png"></input>
+
+                <input type="image" class="toCombatButton button4" src="assets/buttons/enemy.png"></input>
+
+                <input type="image" class="toCombatButton button4" src="assets/buttons/enemy.png"></input>
+
+                    <input type="image" class="toHomeButton button4" src="assets/buttons/road_sign.png"></input>
+
+            </div>
         </div>
 
 
