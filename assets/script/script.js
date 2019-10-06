@@ -23,17 +23,19 @@ $(function () {
 
   var statContainer = {
     player: $(".player-stats-container"),
+    enemy: $(".enemy-stats-container"),
   }
 
   //Screens
-  gameScreen.welcome.hide();
+  gameScreen.welcome.show();
   gameScreen.home.hide();
   gameScreen.combat.hide();
   gameScreen.victory.hide();
-  gameScreen.map.show();
+  gameScreen.map.hide();
   gameScreen.shop.hide();
   gameScreen.menu.hide();
   statContainer.player.hide();
+  statContainer.enemy.hide();
 
   $("#welcome-screen .toHomeButton").click(function () {
     $("#playerHealth").text(playerStats.health);
@@ -62,6 +64,8 @@ $(function () {
   $(".toCombatButton").click(function () {
     $(this).parents(".game-screen").hide();
     gameScreen.combat.show();
+    statContainer.enemy.show();
+
   })
 
   //Shop Buttons
@@ -96,22 +100,32 @@ $(function () {
 
 
   $(".mapButton1").click(function () {
-    let newEnemy1 = new Enemy(
+    var currentEnemy1 = new Enemy(
       Math.floor((Math.random() * 10) + 2),
       Math.floor((Math.random() * 7) + 4),
       Math.floor((Math.random() * 12) + 9),
       Math.floor((Math.random() * 3) + 1));
 
-    let newEnemy1Pattern = [true, false, true];
+    var currentEnemy1Pattern = [true, false, true];
 
-    console.log(newEnemy1.health);
-    console.log(newEnemy1.attack);
-    console.log(newEnemy1.defense);
+    $("#enemyHealth").text(currentEnemy1.health);
+    $("#enemyAttack").text(currentEnemy1.attack);
+    $("#enemyDefense").text(currentEnemy1.defense);
+    $("#enemyGold").text(currentEnemy1.gold);
 
-    console.log(newEnemy1.gold);
-    console.log(newEnemy1Pattern);
+    console.log(currentEnemy1.health);
+    console.log(currentEnemy1.attack);
+    console.log(currentEnemy1.defense);
 
+    console.log(currentEnemy1.gold);
+    console.log(currentEnemy1Pattern);
+
+    $(".fleeButton").click(function() {
+      alert("Are you sure?")
+      statContainer.enemy.hide();
+    })
   })
+
 
 
 
