@@ -8,35 +8,41 @@ $(function () {
   var shop = $("#shop-screen");
   var menu = $("#menu-screen");
   var frame =$("#frame");
+  var playerStats =$(".player-stats-container");
 
-  welcome.hide();
-  home.show();
+  welcome.show();
+  home.hide();
   combat.hide();
   victory.hide();
   map.hide();
   shop.hide();
   menu.hide();
   frame.show();
+  playerStats.hide();
 
   //Nagivation buttons
   $(".toHomeButton").click(function() {
     $(this).parents(".game-screen").hide();
     home.show();
+    playerStats.show();
   })
 
   $(".toShopButton").click(function() {
     $(this).parents(".game-screen").hide();
     shop.show();
+    playerStats.show();
   })
 
   $(".toMapButton").click(function() {
     $(this).parents(".game-screen").hide();
     map.show();
+    playerStats.show();
   })
 
   $(".toCombatButton").click(function() {
     $(this).parents(".game-screen").hide();
     combat.show();
+    playerStats.show();
   })
 
 })
