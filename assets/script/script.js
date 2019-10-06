@@ -2,7 +2,7 @@
 $(function () {
   var welcome = $("#welcome-screen");
   var home = $("#home-screen");
-  var fight = $("#fight-screen");
+  var combat = $("#fight-screen");
   var victory = $("#victory-screen");
   var map = $("#map-screen");
   var shop = $("#shop-screen");
@@ -10,42 +10,37 @@ $(function () {
 
   welcome.show();
   home.hide();
-  fight.hide();
+  combat.hide();
   victory.hide();
   map.hide();
   shop.hide();
   menu.hide();
 
+  //Nagivation buttons
+  $(".toHomeButton").click(function() {
+    $(this).parents(".game-screen").hide();
+    home.show();
+  })
+
+  $(".toShopButton").click(function() {
+    $(this).parents(".game-screen").hide();
+    shop.show();
+  })
+
+  $(".toMapButton").click(function() {
+    $(this).parents(".game-screen").hide();
+    map.show();
+  })
+
+  $(".toCombatButton").click(function() {
+    $(this).parents(".game-screen").hide();
+    combat.show();
+  })
+
 })
 
 //Button functions
-function toHomeButton() {
-  var home = $("#home-screen");
-  home.show();
 
-  var welcome = $("#welcome-screen");
-  welcome.hide();
-  var shop = $("#shop-screen");
-  shop.hide();
-  var map = $("#map-screen");
-  map.hide();
-}
-
-function toShopButton() {
-  var shop = $("#shop-screen");
-  shop.show();
-
-  var home = $("#home-screen");
-  home.hide();
-}
-
-function toMapButton() {
-  var map = $("#map-screen");
-  map.show();
-
-  var home = $("#home-screen");
-  home.hide();
-}
 
 function levelUpAttackButton() {
 
@@ -55,19 +50,6 @@ function levelUpDefenseButton() {
 
 }
 
-function toCombatButton() {
-  //changes screen
-  var fight = $("#fight-screen");
-  fight.show();
-
-  var map = $("#map-screen");
-  map.hide();
-
-  //log which enemy button was pressed
-  // -> set current enemy graphics
-  // -> set current enemy stats
-  // -> begin combat round
-}
 
 function playerAttackButton() {
 
@@ -77,22 +59,14 @@ function playerDefendButton() {
 
 }
 
-function runAwayButton() {
-  //are you sure dialogue box
-  var fight = $("#fight-screen");
-  fight.hide();
-
-  var map = $("#map-screen");
-  map.show();
-}
- /*
+/*
 function menuButton() {
-  var menu = $("#menu-screen")
-  if (menu === "shown") {
-    menu.show();
-  } else {
-    menu.hide();
-  }
+ var menu = $("#menu-screen")
+ if (menu === "shown") {
+   menu.show();
+ } else {
+   menu.hide();
+ }
 }*/
 
 

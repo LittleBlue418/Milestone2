@@ -17,59 +17,59 @@
     <div class="game-background">
 
         <!--WELCOME-->
-        <div id="welcome-screen" class="inner-div">
+        <div id="welcome-screen" class="game-screen">
             <img src="assets/template-welcome-screen.png">
-            <input id="start-button" type="image" src="assets/scroll.png" onclick="toHomeButton()"></input>
+            <input class="toHomeButton" type="image" src="assets/scroll.png"></input>
         </div>
 
         <!--HOME-->
-        <div id="home-screen" class="inner-div">
+        <div id="home-screen" class="game-screen">
             <!--background-->
             <img src="assets/template-home-screen.png">
             <!--buttons-->
-            <input type="image" src="assets/shop-sign.png" onclick="toShopButton()"></input>
-            <input type="image" src="assets/road_sign.png" onclick="toMapButton()"></input>
+            <input type="image" class="toShopButton" src="assets/shop-sign.png"></input>
+            <input type="image" class="toMapButton" src="assets/road_sign.png"></input>
         </div>
 
         <!--SHOP-->
-        <div id="shop-screen" class="inner-div">
+        <div id="shop-screen" class="game-screen">
             <!--background-->
             <img src="assets/template-shop-screen.png">
             <!--buttons-->
-            <input type="image" src="assets/sword.png" onclick="levelUpAttackButton()"></input>
+            <input type="image" src="assets/sword.png" ></input>
             <input type="image" src="assets/shield.png" onclick="levelUpDefenseButton()"></input>
-            <input type="image" src="assets/door.png" onclick="toHomeButton()"></input>
+            <input type="image" class="toHomeButton" src="assets/door.png"></input>
         </div>
 
         <!--MAP-->
-        <div id="map-screen" class="inner-div">
+        <div id="map-screen" class="game-screen">
             <!--background-->
             <img src="assets/template-map-screen.png">
             <!--buttons-->
-            <input type="image" src="assets/enemy.png" onclick="toCombatButton()"></input>
-            <input type="image" src="assets/enemy.png" onclick="toCombatButton()"></input>
-            <input type="image" src="assets/enemy.png" onclick="toCombatButton()"></input>
-            <input type="image" src="assets/enemy.png" onclick="toCombatButton()"></input>
-            <input type="image" src="assets/road_sign.png" onclick="toHomeButton()"></input>
+            <input type="image" class="toCombatButton" src="assets/enemy.png"></input>
+            <input type="image" class="toCombatButton" src="assets/enemy.png"></input>
+            <input type="image" class="toCombatButton" src="assets/enemy.png"></input>
+            <input type="image" class="toCombatButton" src="assets/enemy.png"></input>
+            <input type="image" class="toHomeButton" src="assets/road_sign.png" ></input>
 
 
         </div>
 
 
         <!--FIGHT-->
-        <div id="fight-screen" class="inner-div">
+        <div id="fight-screen" class="game-screen">
             <!--background-->
             <img src="assets/template-fight-scene.png">
             <!--buttons-->
             <input type="image" src="assets/sword.png" onclick="playerAttackButton()"></input>
             <input type="image" src="assets/shield.png" onclick="playerDefendButton()"></input>
-            <input type="image" src="assets/run.png" onclick="runAwayButton()"></input>
+            <input type="image" class="toMapButton" src="assets/run.png"></input>
         </div>
 
 
 
         <!--VICTORY-->
-        <div id="victory-screen" class="inner-div">
+        <div id="victory-screen" class="game-screen">
             <!--background-->
             <img src="assets/template-home-screen.png">
             <!--buttons-->
@@ -77,11 +77,14 @@
 
 
         <!--MENU-->
-        <div id="menu-screen" class="inner-div">
+        <div id="menu-screen" class="game-screen">
             <!--background-->
             <img src="assets/template-menu-scroll.png">
             <!--buttons-->
         </div>
+
+
+
 
         <!--FRAME-->
         <div id="frame" class="inner-div">
@@ -95,7 +98,6 @@
 
         <!--background-->
         <img src="assets/template-page-background.png">
-
 
     </div>
 
