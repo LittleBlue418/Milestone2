@@ -86,27 +86,30 @@ $(function () {
   })
 
   class Enemy {
-    constructor(health, attack, defense) {
+    constructor(health, attack, defense, gold) {
       this.health = health;
       this.attack = attack;
       this.defense = defense;
+      this.gold = gold;
     }
   };
 
 
   $(".mapButton1").click(function () {
     let newEnemy1 = new Enemy(
-      Math.floor((Math.random() * 3) + 1),
+      Math.floor((Math.random() * 10) + 2),
       Math.floor((Math.random() * 7) + 4),
-      Math.floor((Math.random() * 12) + 9));
+      Math.floor((Math.random() * 12) + 9),
+      Math.floor((Math.random() * 3) + 1));
 
     let newEnemy1Pattern = [true, false, true];
 
     console.log(newEnemy1.health);
     console.log(newEnemy1.attack);
     console.log(newEnemy1.defense);
-    console.log(newEnemy1Pattern);
 
+    console.log(newEnemy1.gold);
+    console.log(newEnemy1Pattern);
 
   })
 

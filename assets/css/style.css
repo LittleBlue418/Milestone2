@@ -181,5 +181,24 @@ body {
     margin-bottom: 4px;
 }
 
+.enemy-stats-container {
+    position: absolute;
+    width: 768px;
+    height:1024px;
+    left:calc(50% - 384px);
+    pointer-events: none;
+}
 
+.enemy-stats {
+    position: absolute;
+    right: 7%;
+    top: 5%;
+    outline: purple 3px solid;
+    background-color:pink;
+    width: 140px;
+}
+.enemy-stats p {
+    font-size: 25px;
+    margin-bottom: 4px;
+}
 
