@@ -44,6 +44,15 @@ html body {
     background-image: url("../backgrounds/template-welcome-screen.png");
 }
 
+#frame {
+    background-image: url("../backgrounds/template-game-frame.png");
+    position: absolute;
+    width: 768px;
+    height:1024px;
+    left:calc(50% - 364px);
+    pointer-events: none;
+}
+
 /* ----- Buttons */
 .button-container {
     outline: red 3px solid;

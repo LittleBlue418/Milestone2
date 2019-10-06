@@ -7,6 +7,7 @@ $(function () {
   var map = $("#map-screen");
   var shop = $("#shop-screen");
   var menu = $("#menu-screen");
+  var frame =$("#frame");
 
   welcome.hide();
   home.hide();
@@ -15,6 +16,7 @@ $(function () {
   map.hide();
   shop.hide();
   menu.hide();
+  frame.show();
 
   //Nagivation buttons
   $(".toHomeButton").click(function() {
