@@ -1,10 +1,10 @@
 //Player Stats
-  var playerStats = {
-    health: 100,
-    attack: 10,
-    defense: 10,
-    gold: 0
-  }
+var playerStats = {
+  health: 100,
+  attack: 10,
+  defense: 10,
+  gold: 100
+}
 
 //On load function
 $(function () {
@@ -33,7 +33,7 @@ $(function () {
   gameScreen.menu.hide();
   statContainer.player.hide();
 
-  $("#welcome-screen .toHomeButton").click(function() {
+  $("#welcome-screen .toHomeButton").click(function () {
     $("#playerHealth").text(playerStats.health);
     $("#playerAttack").text(playerStats.attack);
     $("#playerDefense").text(playerStats.defense);
@@ -41,30 +41,54 @@ $(function () {
   })
 
   //Nagivation buttons
-  $(".toHomeButton").click(function() {
+  $(".toHomeButton").click(function () {
     $(this).parents(".game-screen").hide();
     gameScreen.home.show();
     statContainer.player.show();
   })
 
-  $(".toShopButton").click(function() {
+  $(".toShopButton").click(function () {
     $(this).parents(".game-screen").hide();
     gameScreen.shop.show();
   })
 
-  $(".toMapButton").click(function() {
+  $(".toMapButton").click(function () {
     $(this).parents(".game-screen").hide();
     gameScreen.map.show();
   })
 
-  $(".toCombatButton").click(function() {
+  $(".toCombatButton").click(function () {
     $(this).parents(".game-screen").hide();
     gameScreen.combat.show();
   })
 
+  //Shop Buttons
+  $(".levelUpAttack").click(function () {
+    if (playerStats.gold > 9) {
+      playerStats.attack += 10;
+      playerStats.gold -= 10;
+      $("#playerAttack").text(playerStats.attack);
+      $("#playerGold").text(playerStats.gold);
+
+    }
+  })
+
+  $(".levelUpDefence").click(function () {
+    if (playerStats.gold > 9) {
+      playerStats.defense += 10;
+      playerStats.gold -= 10;
+      $("#playerDefense").text(playerStats.defense);
+      $("#playerGold").text(playerStats.gold);
+
+    }
+  })
+
+
+
 })
 
-//Button functions
+
+
 
 
 function levelUpAttackButton() {
