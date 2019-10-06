@@ -2,7 +2,7 @@
 $(function () {
   var welcome = $("#welcome-screen");
   var home = $("#home-screen");
-  var combat = $("#fight-screen");
+  var combat = $("#combat-screen");
   var victory = $("#victory-screen");
   var map = $("#map-screen");
   var shop = $("#shop-screen");

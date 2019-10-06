@@ -14,91 +14,86 @@
 </head>
 
 <body>
-    <div class="game-background">
+
+    <div class="game-container">
 
         <!--WELCOME-->
         <div id="welcome-screen" class="game-screen">
-            <img src="assets/template-welcome-screen.png">
-            <input class="toHomeButton" type="image" src="assets/scroll.png"></input>
+            <div class="button-container">
+                <input class="toHomeButton" type="image" src="assets/buttons/scroll.png"></input>
+            </div>
         </div>
 
         <!--HOME-->
         <div id="home-screen" class="game-screen">
-            <!--background-->
-            <img src="assets/template-home-screen.png">
+
             <!--buttons-->
-            <input type="image" class="toShopButton" src="assets/shop-sign.png"></input>
-            <input type="image" class="toMapButton" src="assets/road_sign.png"></input>
+            <input type="image" class="toShopButton" src="assets/buttons/shop-sign.png"></input>
+            <input type="image" class="toMapButton" src="assets/buttons/road_sign.png"></input>
         </div>
 
         <!--SHOP-->
         <div id="shop-screen" class="game-screen">
-            <!--background-->
-            <img src="assets/template-shop-screen.png">
+
             <!--buttons-->
-            <input type="image" src="assets/sword.png" ></input>
-            <input type="image" src="assets/shield.png" onclick="levelUpDefenseButton()"></input>
-            <input type="image" class="toHomeButton" src="assets/door.png"></input>
+            <input type="image" src="assets/buttons/sword.png"></input>
+            <input type="image" src="assets/buttons/shield.png" onclick="levelUpDefenseButton()"></input>
+            <input type="image" class="toHomeButton" src="assets/buttons/door.png"></input>
         </div>
 
         <!--MAP-->
         <div id="map-screen" class="game-screen">
-            <!--background-->
-            <img src="assets/template-map-screen.png">
+
             <!--buttons-->
-            <input type="image" class="toCombatButton" src="assets/enemy.png"></input>
-            <input type="image" class="toCombatButton" src="assets/enemy.png"></input>
-            <input type="image" class="toCombatButton" src="assets/enemy.png"></input>
-            <input type="image" class="toCombatButton" src="assets/enemy.png"></input>
-            <input type="image" class="toHomeButton" src="assets/road_sign.png" ></input>
+            <input type="image" class="toCombatButton" src="assets/buttons/enemy.png"></input>
+            <input type="image" class="toCombatButton" src="assets/buttons/enemy.png"></input>
+            <input type="image" class="toCombatButton" src="assets/buttons/enemy.png"></input>
+            <input type="image" class="toCombatButton" src="assets/buttons/enemy.png"></input>
+            <input type="image" class="toHomeButton" src="assets/buttons/road_sign.png"></input>
 
 
         </div>
 
 
-        <!--FIGHT-->
-        <div id="fight-screen" class="game-screen">
-            <!--background-->
-            <img src="assets/template-fight-scene.png">
+        <!--COMBAT-->
+        <div id="combat-screen" class="game-screen">
+
             <!--buttons-->
-            <input type="image" src="assets/sword.png" onclick="playerAttackButton()"></input>
-            <input type="image" src="assets/shield.png" onclick="playerDefendButton()"></input>
-            <input type="image" class="toMapButton" src="assets/run.png"></input>
+            <input type="image" src="assets/buttons/sword.png" onclick="playerAttackButton()"></input>
+            <input type="image" src="assets/buttons/shield.png" onclick="playerDefendButton()"></input>
+            <input type="image" class="toMapButton" src="assets/buttons/run.png"></input>
         </div>
 
 
 
         <!--VICTORY-->
         <div id="victory-screen" class="game-screen">
-            <!--background-->
-            <img src="assets/template-home-screen.png">
-            <!--buttons-->
+
         </div>
 
 
         <!--MENU-->
         <div id="menu-screen" class="game-screen">
-            <!--background-->
-            <img src="assets/template-menu-scroll.png">
+
             <!--buttons-->
         </div>
 
 
 
 
-        <!--FRAME-->
+        <!--FRAME
         <div id="frame" class="inner-div">
             <img src="assets/template-game-frame.png">
-        </div>
+        </div>-->
 
-        <!--MENU BUTTON-->
+        <!--MENU BUTTON
         <input id="menu-button" type="image" src="assets/settings.png" onclick="menuButton()"></input>
+-->
 
 
-
-        <!--background-->
+        <!--background
         <img src="assets/template-page-background.png">
-
+-->
     </div>
 
 

@@ -1,34 +1,57 @@
-/*html body {
+html body {
     padding: 0px;
     margin: 0px;
 }
 
-.game-background {
+.game-container {
     position: fixed;
+    width: 100%
 }
 
-.inner-div {
+.game-screen {
     position: absolute;
     width: 768px;
     height:1024px;
-    padding-left: 27%;
-    padding-top:5%;
-    margin: auto;
-
+    left:calc(50% - 364px);
 }
 
-#start-button{
+.button-container {
+    outline: red 3px solid;
+    width: 100%;
+    height: 100%;
+}
+
+.toHomeButton {
     position: absolute;
-    top: 80%;
-    left: 95%;
-    height: 20%;
+    width: 200px;
+    left:calc(50% - 100px);
+    top:calc(80% - 100px);
 }
 
-
-
- {
-
+#welcome-screen {
+    background-image: url("../backgrounds/template-welcome-screen.png");
 }
-img {
-    size: 100%;
+
+#home-screen {
+    background-image: url("../backgrounds/template-home-screen.png");
+}
+
+#shop-screen {
+    background-image: url("../backgrounds/template-shop-screen.png");
+}
+
+#map-screen {
+    background-image: url("../backgrounds/template-map-screen.png");
+}
+
+#combat-screen {
+    background-image: url("../backgrounds/template-combat-scene.png");
+}
+
+#victory-screen {
+    background-image: url("../backgrounds/template-victory-screen.png");
+}
+
+#menu-screen {
+    background-image: url("../backgrounds/template-menu-scroll.png");
 }
