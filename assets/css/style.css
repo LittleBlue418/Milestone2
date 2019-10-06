@@ -53,6 +53,12 @@ html body {
     pointer-events: none;
 }
 
+body {
+    background-image: url("../backgrounds/template-page-background.png");
+    background-repeat: no-repeat;
+    background-color: black;
+    background-position-x: 50%;
+}
 /* ----- Buttons */
 .button-container {
     outline: red 3px solid;
