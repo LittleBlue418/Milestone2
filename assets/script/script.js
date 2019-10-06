@@ -10,9 +10,9 @@ $(function () {
 
   welcome.hide();
   home.hide();
-  combat.hide();
+  combat.show();
   victory.hide();
-  map.show();
+  map.hide();
   shop.hide();
   menu.hide();
 
