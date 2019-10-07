@@ -21,12 +21,19 @@ $(function () {
     menu: $("#menu-screen"),
   }
 
+  var popups = {
+    winFight: $("#winFight"),
+    died: $("#died"),
+    potionDrop: $("#potionDrop"),
+    goldDrop: $("#goldDrop"),
+  }
+
   var statContainer = {
     player: $(".player-stats-container"),
     enemy: $(".enemy-stats-container"),
   }
 
-  //Screens
+  //Hiding / Showing
   gameScreen.welcome.show();
   gameScreen.home.hide();
   gameScreen.combat.hide();
@@ -36,6 +43,11 @@ $(function () {
   gameScreen.menu.hide();
   statContainer.player.hide();
   statContainer.enemy.hide();
+  popups.winFight.hide();
+  popups.died.hide();
+  popups.potionDrop.hide();
+  popups.goldDrop.hide();
+
 
   $("#welcome-screen .toHomeButton").click(function () {
     $("#playerHealth").text(player.health);
@@ -67,6 +79,10 @@ $(function () {
     statContainer.enemy.show();
 
   })
+
+
+
+
 
   //Shop Buttons
   $(".levelUpAttack").click(function () {
