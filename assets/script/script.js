@@ -208,18 +208,23 @@ $(function () {
         $('#playerHealth').val(player.health);
       }
 
+      //If you win
       if (currentEnemy1.health < 1) {
         gameScreen.popup.show();
         popups.winFight.show();
-
         currentEnemy1.health = 0;
         player.gold += currentEnemy1.gold;
         $("#playerGold").text(player.gold);
+      }
 
+      $("#winFight").click(function() {
         statContainer.enemy.hide();
+        gameScreen.popup.hide();
+        popups.winFight.hide();
         gameScreen.combat.hide();
         gameScreen.map.show();
-      }
+
+      })
 
  $("#died").click(function () {
     gameScreen.welcome.show();
