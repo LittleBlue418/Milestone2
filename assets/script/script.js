@@ -211,16 +211,16 @@ $(function () {
       //If you win
       if (currentEnemy1.health < 1) {
         gameScreen.popup.show();
-        popups.winFight.show();
+        popups.goldDrop.show();
         currentEnemy1.health = 0;
         player.gold += currentEnemy1.gold;
         $("#playerGold").text(player.gold);
       }
 
-      $("#winFight").click(function() {
+      $("#goldDrop").click(function() {
         statContainer.enemy.hide();
         gameScreen.popup.hide();
-        popups.winFight.hide();
+        popups.goldDrop.hide();
         gameScreen.combat.hide();
         gameScreen.map.show();
 
