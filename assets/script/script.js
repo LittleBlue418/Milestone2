@@ -1,6 +1,6 @@
 //Global objects and variables
 var player = {
-  health: 100,
+  health: 50,
   attack: 10,
   defense: 10,
   gold: 100
@@ -91,6 +91,8 @@ $(function () {
 
 
   //Combat
+
+  //Enemy object
   class Enemy {
     constructor(health, attack, defense, gold) {
       this.health = health;
@@ -100,6 +102,7 @@ $(function () {
     }
   };
 
+  //Enemy patterns
   var enemy1Attacking = [true, false, true];
   var enemy2Attacking = [true, false, true, false];
   var enemy3Attacking = [true, false, true, true, false];
@@ -110,12 +113,15 @@ $(function () {
 
   $(".mapButton1").click(function () {
     var currentEnemy1 = new Enemy(
-      Math.floor((Math.random() * 10) + 2),
-      Math.floor((Math.random() * 7) + 4),
-      Math.floor((Math.random() * 12) + 9),
-      Math.floor((Math.random() * 3) + 1));
+      Math.floor((Math.random() * ( 10 - 5 ) + 5)),
+      Math.floor((Math.random() * ( 10 - 5 ) + 5)),
+      Math.floor((Math.random() * ( 10 - 5 ) + 5)),
+      Math.floor((Math.random() * ( 10 - 5 ) + 5))
+      );
+    var currentEnemy1MaxHealth = currentEnemy1.health;
 
     $("#enemyHealth").text(currentEnemy1.health);
+    $("#enemyHealthMax").text(currentEnemy1MaxHealth);
     $("#enemyAttack").text(currentEnemy1.attack);
     $("#enemyDefense").text(currentEnemy1.defense);
     $("#enemyGold").text(currentEnemy1.gold);
@@ -129,7 +135,7 @@ $(function () {
       resolveCombat(true)
     })
 
-    $('#defendButton').click(function () {
+    $('.defenceButton').click(function () {
       resolveCombat(false)
     })
 
@@ -170,19 +176,27 @@ $(function () {
       }
 
 
+      // ERROR - miultiple allerts
 
       if (player.health < 1) {
-        console.log("You died!")
+        console.log("you lost")
         player.health = 0;
         gameScreen.welcome.show();
         gameScreen.combat.hide();
+        statContainer.enemy.hide();
+        statContainer.player.hide();
       }
 
       if (currentEnemy1.health < 1) {
-        console.log("Your enemy died!")
+
+        console.log("you won")
         currentEnemy1.health = 0;
         player.gold += currentEnemy1.gold;
         $("#playerGold").text(player.gold);
+
+        statContainer.enemy.hide();
+        gameScreen.combat.hide();
+        gameScreen.map.show();
 
         //potion drop
       }
