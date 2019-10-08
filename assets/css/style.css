@@ -115,14 +115,14 @@ body {
     top: 8%;
 
 }
-.mapButton4 {
+.enemy4Button {
     position: absolute;
     width: 150px;
     height: 150px;
     top: 60px;
     left:60%;
 }
-.mapButton3 {
+.enemy3Button {
     position: absolute;
     width: 150px;
     height: 150px;
@@ -130,7 +130,7 @@ body {
     top:calc(150px + 100px);
 }
 
-.mapButton2 {
+.enemy2Button {
     position: absolute;
     width: 150px;
     height: 150px;
@@ -139,7 +139,7 @@ body {
 
 }
 
-.mapButton1 {
+.enemy1Button {
     position: absolute;
     width: 150px;
     height: 150px;

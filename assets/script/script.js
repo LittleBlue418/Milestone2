@@ -130,36 +130,95 @@ $(function () {
 
   //Enemy patterns
   var enemyPotionDrop;
+  var enemyAttackState;
+  var roundCounter;
 
-  var enemy1Attacking = [true, false, true];
-  var enemy1PotionDrop = Math.floor((Math.random() * 3 + 0));
-
-  var enemy2Attacking = [true, false, true, false];
-  var enemy3Attacking = [true, false, true, true, false];
-  var enemy4Attacking = [true, false, true, true, true, false];
-
-  var roundCounter = 0;
-  var currentEnemy1;
   //Combat
 
-  $(".mapButton1").click(function () {
+  $(".enemy1Button").click(function () {
     roundCounter = 0;
-    enemyPotionDrop = Math.floor((Math.random() * 3 + 0));
+    enemyPotionDrop = 0;
 
-    currentEnemy1 = new Enemy(
+    enemyPotionDrop = Math.floor((Math.random() * 2 + 0));
+    enemyAttackState = [true, false, true];
+
+    currentEnemy = new Enemy(
       Math.floor((Math.random() * (10 - 5) + 5)),
       Math.floor((Math.random() * (10 - 5) + 5)),
       Math.floor((Math.random() * (10 - 5) + 5)),
       Math.floor((Math.random() * (10 - 5) + 5))
     );
-    var currentEnemy1MaxHealth = currentEnemy1.health;
 
-    $("#enemyHealth").text(currentEnemy1.health);
-    $("#enemyHealthMax").text(currentEnemy1MaxHealth);
-    $("#enemyAttack").text(currentEnemy1.attack);
-    $("#enemyDefense").text(currentEnemy1.defense);
-    $("#enemyGold").text(currentEnemy1.gold);
+    $("#enemyHealth").text(currentEnemy.health);
+    $("#enemyHealthMax").text(currentEnemy.health);
+    $("#enemyAttack").text(currentEnemy.attack);
+    $("#enemyDefense").text(currentEnemy.defense);
+    $("#enemyGold").text(currentEnemy.gold);
   })
+
+  $(".enemy2Button").click(function () {
+    roundCounter = 0;
+    enemyPotionDrop = 0;
+
+    enemyPotionDrop = Math.floor((Math.random() * 3 + 0));
+    enemyAttackState = [true, false, true, false];
+
+    currentEnemy = new Enemy(
+      Math.floor((Math.random() * (20 - 10) + 10)),
+      Math.floor((Math.random() * (20 - 10) + 10)),
+      Math.floor((Math.random() * (20 - 10) + 10)),
+      Math.floor((Math.random() * (20 - 10) + 10))
+    );
+
+    $("#enemyHealth").text(currentEnemy.health);
+    $("#enemyHealthMax").text(currentEnemy.health);
+    $("#enemyAttack").text(currentEnemy.attack);
+    $("#enemyDefense").text(currentEnemy.defense);
+    $("#enemyGold").text(currentEnemy.gold);
+  })
+
+  $(".enemy3Button").click(function () {
+    roundCounter = 0;
+    enemyPotionDrop = 0;
+
+    enemyPotionDrop = Math.floor((Math.random() * 4 + 0));
+    enemyAttackState = [true, false, true, true, false];
+
+    currentEnemy = new Enemy(
+      Math.floor((Math.random() * (30 - 20) + 20)),
+      Math.floor((Math.random() * (30 - 20) + 20)),
+      Math.floor((Math.random() * (30 - 20) + 20)),
+      Math.floor((Math.random() * (30 - 20) + 20))
+    );
+
+    $("#enemyHealth").text(currentEnemy.health);
+    $("#enemyHealthMax").text(currentEnemy.health);
+    $("#enemyAttack").text(currentEnemy.attack);
+    $("#enemyDefense").text(currentEnemy.defense);
+    $("#enemyGold").text(currentEnemy.gold);
+  })
+
+  $(".enemy4Button").click(function () {
+    roundCounter = 0;
+    enemyPotionDrop = 0;
+
+    enemyPotionDrop = Math.floor((Math.random() * 5 + 0));
+    enemyAttackState = [true, false, true, true, true, false];
+
+    currentEnemy = new Enemy(
+      Math.floor((Math.random() * (50 - 40) + 40)),
+      Math.floor((Math.random() * (50 - 40) + 40)),
+      Math.floor((Math.random() * (50 - 40) + 40)),
+      Math.floor((Math.random() * (50 - 40) + 40))
+    );
+
+    $("#enemyHealth").text(currentEnemy.health);
+    $("#enemyHealthMax").text(currentEnemy.health);
+    $("#enemyAttack").text(currentEnemy.attack);
+    $("#enemyDefense").text(currentEnemy.defense);
+    $("#enemyGold").text(currentEnemy.gold);
+  })
+
 
   $(".fleeButton").click(function () {
     alert("Are you sure?")
@@ -176,8 +235,7 @@ $(function () {
 
   function resolveCombat(isPlayerAttacking) {
 
-
-    var isEnemyAttacking = enemy1Attacking[roundCounter % enemy1Attacking.length];
+    var isEnemyAttacking = enemyAttackState[roundCounter % enemyAttackState.length];
     roundCounter++;
 
     console.log(roundCounter);
@@ -187,23 +245,23 @@ $(function () {
     if (isPlayerAttacking) {
       if (isEnemyAttacking) {
 
-        currentEnemy1.health -= player.attack
-        $("#enemyHealth").text(currentEnemy1.health);
+        currentEnemy.health -= player.attack
+        $("#enemyHealth").text(currentEnemy.health);
 
-        player.health -= currentEnemy1.attack
+        player.health -= currentEnemy.attack
         $("#playerHealth").text(player.health);
 
       } else {
-        var damage = player.attack - currentEnemy1.defense
+        var damage = player.attack - currentEnemy.defense
         if (damage > 0) {
-          currentEnemy1.health -= damage
-          $("#enemyHealth").text(currentEnemy1.health);
+          currentEnemy.health -= damage
+          $("#enemyHealth").text(currentEnemy.health);
         }
       }
 
     } else {
       if (isEnemyAttacking) {
-        var damage = currentEnemy1.attack - player.defense
+        var damage = currentEnemy.attack - player.defense
         if (damage > 0) {
           player.health -= damage
           $("#playerHealth").text(player.health);
@@ -223,17 +281,17 @@ $(function () {
     }
 
     //If you win
-    if (currentEnemy1.health < 1) {
+    if (currentEnemy.health < 1) {
       gameScreen.popup.show();
       popups.goldDrop.show();
-      currentEnemy1.health = 0;
-      player.gold += currentEnemy1.gold;
+      currentEnemy.health = 0;
+      player.gold += currentEnemy.gold;
       $("#playerGold").text(player.gold);
       console.log("potion drop = " + enemyPotionDrop);
     }
 
     //write combat outcome
-    $('#enemyHealth').val(currentEnemy1.health);
+    $('#enemyHealth').val(currentEnemy.health);
   }
 
 
