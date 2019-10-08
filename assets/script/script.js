@@ -96,7 +96,7 @@ $(function () {
   })
 
 
-  $("#menuButton").click(function() {
+  $(".menuButton").click(function() {
     console.log("menu button clicked")
    $("#menu-container").toggle();
   });
@@ -324,6 +324,7 @@ $(function () {
       popups.potionDrop.show();
 
       player.health += healthPotionStrength;
+      $("#playerHealth").text(player.health)
       console.log("potion");
       console.log(player.health);
 
