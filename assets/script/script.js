@@ -1,6 +1,6 @@
 //Global objects and variables
 var player = {
-  health: 20,
+  health: 1000,
   attack: 5,
   defense: 5,
   gold: 100
@@ -108,6 +108,11 @@ $(function () {
   })
 
 
+
+
+
+
+
   //Combat buttons
 
 
@@ -124,17 +129,24 @@ $(function () {
   };
 
   //Enemy patterns
+  var enemyPotionDrop;
+
   var enemy1Attacking = [true, false, true];
+  var enemy1PotionDrop = Math.floor((Math.random() * 3 + 0));
+
   var enemy2Attacking = [true, false, true, false];
   var enemy3Attacking = [true, false, true, true, false];
   var enemy4Attacking = [true, false, true, true, true, false];
 
   var roundCounter = 0;
-
+  var currentEnemy1;
   //Combat
 
   $(".mapButton1").click(function () {
-    var currentEnemy1 = new Enemy(
+    roundCounter = 0;
+    enemyPotionDrop = Math.floor((Math.random() * 3 + 0));
+
+    currentEnemy1 = new Enemy(
       Math.floor((Math.random() * (10 - 5) + 5)),
       Math.floor((Math.random() * (10 - 5) + 5)),
       Math.floor((Math.random() * (10 - 5) + 5)),
@@ -147,117 +159,119 @@ $(function () {
     $("#enemyAttack").text(currentEnemy1.attack);
     $("#enemyDefense").text(currentEnemy1.defense);
     $("#enemyGold").text(currentEnemy1.gold);
+  })
 
-    $(".fleeButton").click(function () {
-      alert("Are you sure?")
-      statContainer.enemy.hide();
-    })
+  $(".fleeButton").click(function () {
+    alert("Are you sure?")
+    statContainer.enemy.hide();
+  })
 
-    $(".attackButton").click(function () {
-      resolveCombat(true)
-    })
+  $(".attackButton").click(function () {
+    resolveCombat(true)
+  })
 
-    $('.defenceButton').click(function () {
-      resolveCombat(false)
-    })
+  $('.defenceButton').click(function () {
+    resolveCombat(false)
+  })
 
-    function resolveCombat(isPlayerAttacking) {
+  function resolveCombat(isPlayerAttacking) {
 
 
-      var isEnemyAttacking = enemy1Attacking[roundCounter % enemy1Attacking.length];
-      roundCounter++;
+    var isEnemyAttacking = enemy1Attacking[roundCounter % enemy1Attacking.length];
+    roundCounter++;
 
-      console.log(isEnemyAttacking);
-      console.log(roundCounter);
+    console.log(roundCounter);
+    console.log(isEnemyAttacking);
 
-      if (isPlayerAttacking) {
-        if (isEnemyAttacking) {
 
-          currentEnemy1.health -= player.attack
-          $("#enemyHealth").text(currentEnemy1.health);
+    if (isPlayerAttacking) {
+      if (isEnemyAttacking) {
 
-          player.health -= currentEnemy1.attack
-          $("#playerHealth").text(player.health);
+        currentEnemy1.health -= player.attack
+        $("#enemyHealth").text(currentEnemy1.health);
 
-        } else {
-          var damage = player.attack - currentEnemy1.defense
-          if (damage > 0) {
-            currentEnemy1.health -= damage
-            $("#enemyHealth").text(currentEnemy1.health);
-          }
-        }
+        player.health -= currentEnemy1.attack
+        $("#playerHealth").text(player.health);
 
       } else {
-        if (isEnemyAttacking) {
-          var damage = currentEnemy1.attack - player.defense
-          if (damage > 0) {
-            player.health -= damage
-            $("#playerHealth").text(player.health);
-          }
+        var damage = player.attack - currentEnemy1.defense
+        if (damage > 0) {
+          currentEnemy1.health -= damage
+          $("#enemyHealth").text(currentEnemy1.health);
         }
       }
 
-
-      // End battle
-
-      //If you die
-      if (player.health < 1) {
-        gameScreen.popup.show();
-        popups.died.show();
-        player.health = 0;
-        $('#playerHealth').val(player.health);
+    } else {
+      if (isEnemyAttacking) {
+        var damage = currentEnemy1.attack - player.defense
+        if (damage > 0) {
+          player.health -= damage
+          $("#playerHealth").text(player.health);
+        }
       }
+    }
 
-      //If you win
-      if (currentEnemy1.health < 1) {
-        gameScreen.popup.show();
-        popups.goldDrop.show();
-        currentEnemy1.health = 0;
-        player.gold += currentEnemy1.gold;
-        $("#playerGold").text(player.gold);
-      }
 
-      $("#goldDrop").click(function() {
-        statContainer.enemy.hide();
-        gameScreen.popup.hide();
-        popups.goldDrop.hide();
-        gameScreen.combat.hide();
-        gameScreen.map.show();
+    // End battle
 
-      })
+    //If you die
+    if (player.health < 1) {
+      gameScreen.popup.show();
+      popups.died.show();
+      player.health = 0;
+      $('#playerHealth').val(player.health);
+    }
 
- $("#died").click(function () {
+    //If you win
+    if (currentEnemy1.health < 1) {
+      gameScreen.popup.show();
+      popups.goldDrop.show();
+      currentEnemy1.health = 0;
+      player.gold += currentEnemy1.gold;
+      $("#playerGold").text(player.gold);
+      console.log("potion drop = " + enemyPotionDrop);
+    }
+
+    //write combat outcome
+    $('#enemyHealth').val(currentEnemy1.health);
+  }
+
+
+  console.log($("#goldDrop"))
+  $("#goldDrop").click(function () {
+    if (enemyPotionDrop == 1) {
+      popups.goldDrop.hide();
+      popups.potionDrop.show();
+      console.log("potion");
+    }
+    statContainer.enemy.hide();
+    gameScreen.popup.hide();
+    popups.goldDrop.hide();
+    gameScreen.combat.hide();
+    gameScreen.map.show();
+  });
+
+
+  $("#died").click(function () {
     gameScreen.welcome.show();
     gameScreen.combat.hide();
     statContainer.enemy.hide();
     statContainer.player.hide();
     gameScreen.popup.hide();
     popups.died.hide();
-  })
+  });
 
-
-      // Post Combat
-
-
-
-
-      //write combat outcome
-      $('#enemyHealth').val(currentEnemy1.health);
-
-
-
-    }
-  })
-
-
+  $("#potionDrop").click(function () {
+    statContainer.enemy.hide();
+    gameScreen.popup.hide();
+    popups.potionDrop.hide();
+    gameScreen.combat.hide();
+    gameScreen.map.show();
+  });
 
 
 
 })
-
-
-
-
 
 
 
