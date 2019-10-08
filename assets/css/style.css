@@ -59,12 +59,47 @@ body {
     background-color: black;
     background-position-x: 50%;
 }
+ /* ----- MENU */
+
+#menu-container {
+    position: absolute;
+    width: 768px;
+    height:1024px;
+    left:calc(50% - 384px);
+    pointer-events: none;
+
+}
+
+#dialogueScroll {
+    position: absolute;
+    width: 448px;
+    height: 640px;
+    left: calc(50% - 224px);
+    top:calc(50% - 320px);
+}
+
+#menuButton {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: calc(9% - 25px);
+    bottom:calc(8% - 25px);
+
+}
+#menu-text-box {
+    position: absolute;
+    width: 300px;
+    height: 600;
+    left: calc(54% - 150px);
+    top:calc(65% - 300px);
+}
 
 /* ----- Buttons */
 .button-container {
     outline: red 3px solid;
     width: 100%;
     height: 100%;
+
 }
 
 #welcome-screen .toHomeButton {
@@ -192,14 +227,7 @@ body {
     top:calc(50% - 100px);
 }
 
-#dialogueScroll {
-    position: absolute;
-    width: 448px;
-    height: 640;
-    left: calc(50% - 224px);
-    top:calc(50% - 320px);
 
-}
 
 /* ----- Player Stats */
 .player-stats-container {
@@ -270,3 +298,5 @@ body {
 .inner-round-counter-container p {
     text-align: center;
 }
+
+

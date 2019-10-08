@@ -28,8 +28,10 @@ $(function () {
     died: $("#died"),
     potionDrop: $("#potionDrop"),
     goldDrop: $("#goldDrop"),
-    dialogueScroll: $("#dialogueScroll"),
+    menu: $("#menu-container"),
   }
+
+
 
   var statContainer = {
     player: $(".player-stats-container"),
@@ -51,11 +53,11 @@ $(function () {
   statContainer.enemy.hide();
   statContainer.roundCounter.hide();
 
+  popups.menu.hide();
   popups.winFight.hide();
   popups.died.hide();
   popups.potionDrop.hide();
   popups.goldDrop.hide();
-  popups.dialogueScroll.hide();
 
   //Nagivation buttons
 
@@ -92,6 +94,11 @@ $(function () {
 
   })
 
+
+  $("#menuButton").click(function() {
+    console.log("menu button clicked")
+   $("#menu-container").toggle();
+  });
 
   // ----- SHOP
 
@@ -303,10 +310,9 @@ $(function () {
     $('#enemyHealth').val(currentEnemy.health);
   }
 
-
   console.log($("#goldDrop"))
-  $("#goldDrop").click(function () {
 
+  $("#goldDrop").click(function () {
     if (enemyPotionDrop == 1) {
       popups.goldDrop.hide();
       popups.potionDrop.show();
@@ -319,10 +325,7 @@ $(function () {
       gameScreen.combat.hide();
       gameScreen.map.show();
     }
-
-
   });
-
 
   $("#died").click(function () {
     gameScreen.welcome.show();
