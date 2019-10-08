@@ -7,6 +7,7 @@ var player = {
 }
 
  var roundCount = 0;
+ var healthPotionStrength =0;
 
 //On load function
 $(function () {
@@ -145,7 +146,7 @@ $(function () {
 
   $(".enemy1Button").click(function () {
     enemyPotionDrop = 0;
-    enemyPotionStrength = 10;
+    healthPotionStrength = 10;
 
     enemyPotionDrop = Math.floor((Math.random() * 2 + 0));
     enemyAttackState = [true, false, true];
@@ -168,6 +169,7 @@ $(function () {
 
   $(".enemy2Button").click(function () {
     enemyPotionDrop = 0;
+    healthPotionStrength = 20;
 
     enemyPotionDrop = Math.floor((Math.random() * 3 + 0));
     enemyAttackState = [true, false, true, false];
@@ -188,6 +190,7 @@ $(function () {
 
   $(".enemy3Button").click(function () {
     enemyPotionDrop = 0;
+    healthPotionStrength = 30;
 
     enemyPotionDrop = Math.floor((Math.random() * 4 + 0));
     enemyAttackState = [true, false, true, true, false];
@@ -293,6 +296,7 @@ $(function () {
       popups.died.show();
       player.health = 0;
       $('#playerHealth').val(player.health);
+
     }
 
     //If you win
@@ -303,7 +307,9 @@ $(function () {
       currentEnemy.health = 0;
       player.gold += currentEnemy.gold;
       $("#playerGold").text(player.gold);
-      console.log("potion drop = " + enemyPotionDrop);
+      console.log("potion drop number = " + enemyPotionDrop)
+      console.log("old health =  " + player.health);
+
     }
 
     //write combat outcome
@@ -316,7 +322,11 @@ $(function () {
     if (enemyPotionDrop == 1) {
       popups.goldDrop.hide();
       popups.potionDrop.show();
+
+      player.health += healthPotionStrength;
       console.log("potion");
+      console.log(player.health);
+
     } else {
       popups.goldDrop.hide();
       statContainer.enemy.hide();
