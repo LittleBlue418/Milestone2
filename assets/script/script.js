@@ -6,11 +6,12 @@ var player = {
   gold: 100
 }
 
-
+ var roundCount = 0;
 
 //On load function
 $(function () {
 
+  //Fetching screens & elements
   var gameScreen = {
     welcome: $("#welcome-screen"),
     home: $("#home-screen"),
@@ -27,11 +28,13 @@ $(function () {
     died: $("#died"),
     potionDrop: $("#potionDrop"),
     goldDrop: $("#goldDrop"),
+    dialogueScroll: $("#dialogueScroll"),
   }
 
   var statContainer = {
     player: $(".player-stats-container"),
     enemy: $(".enemy-stats-container"),
+    roundCounter: $(".round-counter-container")
   }
 
   //Hiding / Showing
@@ -43,13 +46,18 @@ $(function () {
   gameScreen.shop.hide();
   gameScreen.menu.hide();
   gameScreen.popup.hide();
+
   statContainer.player.hide();
   statContainer.enemy.hide();
+  statContainer.roundCounter.hide();
+
   popups.winFight.hide();
   popups.died.hide();
   popups.potionDrop.hide();
   popups.goldDrop.hide();
+  popups.dialogueScroll.hide();
 
+  //Nagivation buttons
 
   $("#welcome-screen .toHomeButton").click(function () {
     $("#playerHealth").text(player.health);
@@ -58,7 +66,6 @@ $(function () {
     $("#playerGold").text(player.gold);
   })
 
-  //Nagivation buttons
   $(".toHomeButton").click(function () {
     $(this).parents(".game-screen").hide();
     gameScreen.home.show();
@@ -79,14 +86,15 @@ $(function () {
     $(this).parents(".game-screen").hide();
     gameScreen.combat.show();
     statContainer.enemy.show();
+    statContainer.roundCounter.show();
+    roundCount = 0;
+    $("#round-counter-span").text(roundCount);
 
   })
 
 
+  // ----- SHOP
 
-
-
-  //Shop Buttons
   $(".levelUpAttack").click(function () {
     if (player.gold > 9) {
       player.attack += 10;
@@ -108,17 +116,11 @@ $(function () {
   })
 
 
+  //----- COMBAT
 
 
 
-
-
-  //Combat buttons
-
-
-
-
-  //Enemy object
+  //Enemy variables & objects
   class Enemy {
     constructor(health, attack, defense, gold) {
       this.health = health;
@@ -128,16 +130,15 @@ $(function () {
     }
   };
 
-  //Enemy patterns
   var enemyPotionDrop;
   var enemyAttackState;
-  var roundCounter;
 
-  //Combat
+
+  //Enemy generation
 
   $(".enemy1Button").click(function () {
-    roundCounter = 0;
     enemyPotionDrop = 0;
+    enemyPotionStrength = 10;
 
     enemyPotionDrop = Math.floor((Math.random() * 2 + 0));
     enemyAttackState = [true, false, true];
@@ -154,10 +155,11 @@ $(function () {
     $("#enemyAttack").text(currentEnemy.attack);
     $("#enemyDefense").text(currentEnemy.defense);
     $("#enemyGold").text(currentEnemy.gold);
+
+
   })
 
   $(".enemy2Button").click(function () {
-    roundCounter = 0;
     enemyPotionDrop = 0;
 
     enemyPotionDrop = Math.floor((Math.random() * 3 + 0));
@@ -178,7 +180,6 @@ $(function () {
   })
 
   $(".enemy3Button").click(function () {
-    roundCounter = 0;
     enemyPotionDrop = 0;
 
     enemyPotionDrop = Math.floor((Math.random() * 4 + 0));
@@ -199,7 +200,6 @@ $(function () {
   })
 
   $(".enemy4Button").click(function () {
-    roundCounter = 0;
     enemyPotionDrop = 0;
 
     enemyPotionDrop = Math.floor((Math.random() * 5 + 0));
@@ -219,10 +219,12 @@ $(function () {
     $("#enemyGold").text(currentEnemy.gold);
   })
 
+  // Combat buttons
 
   $(".fleeButton").click(function () {
     alert("Are you sure?")
     statContainer.enemy.hide();
+    statContainer.roundCounter.hide();
   })
 
   $(".attackButton").click(function () {
@@ -233,12 +235,17 @@ $(function () {
     resolveCombat(false)
   })
 
+  // Combat function
+
+
+
   function resolveCombat(isPlayerAttacking) {
 
-    var isEnemyAttacking = enemyAttackState[roundCounter % enemyAttackState.length];
-    roundCounter++;
+    var isEnemyAttacking = enemyAttackState[roundCount % enemyAttackState.length];
+    roundCount++;
+    $("#round-counter-span").text(roundCount);
 
-    console.log(roundCounter);
+    console.log(roundCount);
     console.log(isEnemyAttacking);
 
 
@@ -274,6 +281,7 @@ $(function () {
 
     //If you die
     if (player.health < 1) {
+      statContainer.roundCounter.hide();
       gameScreen.popup.show();
       popups.died.show();
       player.health = 0;
@@ -282,6 +290,7 @@ $(function () {
 
     //If you win
     if (currentEnemy.health < 1) {
+      statContainer.roundCounter.hide();
       gameScreen.popup.show();
       popups.goldDrop.show();
       currentEnemy.health = 0;
@@ -305,10 +314,10 @@ $(function () {
     } else {
       popups.goldDrop.hide();
       statContainer.enemy.hide();
-    gameScreen.popup.hide();
-    popups.goldDrop.hide();
-    gameScreen.combat.hide();
-    gameScreen.map.show();
+      gameScreen.popup.hide();
+      popups.goldDrop.hide();
+      gameScreen.combat.hide();
+      gameScreen.map.show();
     }
 
 
@@ -351,34 +360,3 @@ function menuButton() {
 
 
 
-$(function () {
-
-  //Attack
-
-
-  //Defend
-
-
-  //Flee
-  $('#fleeButton').click(function () {
-    console.log(`Run awaaaaaaaaay!`)
-  })
-
-
-  var enemyPattern = [true, false, true]
-
-  var roundCounter = 0;
-  var goldCount = 0;
-
-
-  var currentEnemy = {
-    health: 100,
-    attack: 9,
-    defense: 8,
-  }
-
-  //combat logic
-
-
-
-})

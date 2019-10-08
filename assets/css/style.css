@@ -192,7 +192,16 @@ body {
     top:calc(50% - 100px);
 }
 
-/* ----- Player stats */
+#dialogueScroll {
+    position: absolute;
+    width: 448px;
+    height: 640;
+    left: calc(50% - 224px);
+    top:calc(50% - 320px);
+
+}
+
+/* ----- Player Stats */
 .player-stats-container {
     position: absolute;
     width: 768px;
@@ -218,6 +227,7 @@ body {
     margin-bottom: 4px;
 }
 
+/* ----- Enemy Stats */
 .enemy-stats-container {
     position: absolute;
     width: 768px;
@@ -239,3 +249,24 @@ body {
     margin-bottom: 4px;
 }
 
+/* ----- Round counter */
+.round-counter-container {
+    position: absolute;
+    width: 768px;
+    height:1024px;
+    left:calc(50% - 384px);
+    pointer-events: none;
+}
+
+.inner-round-counter-container {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    left: calc(50% - 100px);
+    top: calc(45% - 100px);
+    pointer-events: none;
+}
+
+.inner-round-counter-container p {
+    text-align: center;
+}
