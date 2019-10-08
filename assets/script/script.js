@@ -239,16 +239,21 @@ $(function () {
 
   console.log($("#goldDrop"))
   $("#goldDrop").click(function () {
+
     if (enemyPotionDrop == 1) {
       popups.goldDrop.hide();
       popups.potionDrop.show();
       console.log("potion");
-    }
-    statContainer.enemy.hide();
+    } else {
+      popups.goldDrop.hide();
+      statContainer.enemy.hide();
     gameScreen.popup.hide();
     popups.goldDrop.hide();
     gameScreen.combat.hide();
     gameScreen.map.show();
+    }
+
+
   });
 
 
