@@ -357,23 +357,26 @@ $(function () {
 
 
   // animation test
-
-
   $("#animation-button").click(function () {
-    $("#animation-text").css({
-      "fontSize" : 20,
-    });
+    textPop($("#animation-text"))
+  })
 
-    $("#animation-text").animate({
+  function textPop(text) {
+    text.css({
+      "fontSize": 20,
+    });
+    text.animate({
       'opacity': 1,
       'fontSize': 100,
-    }, 1000, function () {
-      $("#animation-text").animate({
+    }, 900, function () {
+      text.animate({
         'opacity': 0,
-      })
+      }, 200)
 
     });
-  })
+  }
+
+
 
 
 
