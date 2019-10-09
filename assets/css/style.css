@@ -1,6 +1,7 @@
 html body {
     padding: 0px;
     margin: 0px;
+    font-family: 'Calligraffitti', cursive;
 }
 
 .game-container {
@@ -14,6 +15,7 @@ html body {
     height:1024px;
     left:calc(50% - 384px);
 }
+
 
 /* ----- Backgrounds */
 #home-screen {
@@ -67,6 +69,7 @@ body {
     height:1024px;
     left:calc(50% - 384px);
     pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.7);
 
 }
 
@@ -88,12 +91,21 @@ body {
 }
 #menu-text-box {
     position: absolute;
-    width: 300px;
+    width: 250px;
     height: 600;
-    left: calc(54% - 150px);
+    left: calc(52% - 125px);
     top:calc(65% - 300px);
+    list-style: none;
 }
 
+#menu-text-box h2 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+#menu-text-box a {
+
+}
 /* ----- Buttons */
 .button-container {
     outline: red 3px solid;
@@ -196,7 +208,7 @@ body {
     width: 768px;
     height:1024px;
     left:calc(50% - 384px);
-    background-color: rgba(0, 0, 0, 0.5)
+    background-color: rgba(0, 0, 0, 0.7)
 }
 #winFight {
     position: absolute;
@@ -298,5 +310,14 @@ body {
 .inner-round-counter-container p {
     text-align: center;
 }
+
+/* Animation test */
+
+#animation-text {
+    opacity: 0;
+    text-align: center;
+}
+
+
 
 

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rescue The Rainbow</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Calligraffitti&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="assets/script/script.js"></script>
+</head>
+
+<body>
+
+    <div class="game-container">
+
+        <!--WELCOME-->
+        <div id="welcome-screen" class="game-screen">
+            <div class="button-container">
+                <input class="toHomeButton" type="image" src="assets/buttons/scroll.png"></input>
+                <input type="image" class="menuButton" src="assets/buttons/settings.png">
+            </div>
+        </div>
+
+        <!--HOME-->
+        <div id="home-screen" class="game-screen">
+            <div class="button-container">
+                <div class="row-button-container2">
+                    <input type="image" class="toShopButton button2" src="assets/buttons/shop-sign.png"></input>
+                    <input type="image" class="toMapButton button2" src="assets/buttons/road_sign.png"></input>
+                </div>
+                <input type="image" class="menuButton" src="assets/buttons/settings.png">
+            </div>
+        </div>
+
+        <!--SHOP-->
+        <div id="shop-screen" class="game-screen">
+            <div class="button-container">
+                <div class="row-button-container3">
+                    <input type="image" class="levelUpAttack button3" src="assets/buttons/sword.png"></input>
+                    <input type="image" class="levelUpDefence button3" src="assets/buttons/shield.png"
+                        onclick="levelUpDefenseButton()"></input>
+                    <input type="image" class="toHomeButton button3" src="assets/buttons/door.png"></input>
+                </div>
+                <input type="image" class="menuButton" src="assets/buttons/settings.png">
+            </div>
+        </div>
+
+        <!--MAP-->
+        <div id="map-screen" class="game-screen">
+            <div class="button-container">
+                <div class="diagonal-button-container">
+                    <input type="image" class="toCombatButton enemy4Button" src="assets/buttons/enemy.png"></input>
+                    <input type="image" class="toCombatButton enemy3Button" src="assets/buttons/enemy.png"></input>
+                    <input type="image" class="toCombatButton enemy2Button" src="assets/buttons/enemy.png"></input>
+                    <input type="image" class="toCombatButton enemy1Button" src="assets/buttons/enemy.png"></input>
+                    <input type="image" class="toHomeButton mapButtonHome" src="assets/buttons/road_sign.png"></input>
+                </div>
+                <input type="image" class="menuButton" src="assets/buttons/settings.png">
+            </div>
+        </div>
+
+
+        <!--COMBAT-->
+        <div id="combat-screen" class="game-screen">
+            <div class="button-container">
+                <div class="row-button-container3">
+                    <input type="image" class="attackButton button3" src="assets/buttons/sword.png"></input>
+                    <input type="image" class="defenceButton button3" src="assets/buttons/shield.png"></input>
+                    <input type="image" class="toMapButton button3 fleeButton" src="assets/buttons/run.png"></input>
+
+                </div>
+                <input type="image" class="menuButton" src="assets/buttons/settings.png">
+            </div>
+        </div>
+
+        <!--PLAYER STATS-->
+        <div class="player-stats-container">
+            <div class="player-stats">
+                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span
+                        id="playerHealth"></span>/100
+                </p>
+                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="playerAttack"></span>
+                </p>
+                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="playerDefense"></span>
+                </p>
+                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="playerGold"></span>
+                </p>
+            </div>
+        </div>
+
+
+        <!--ENEMY STATS-->
+        <div class="enemy-stats-container">
+            <div class="enemy-stats">
+                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span
+                        id="enemyHealth"></span>/<span id="enemyHealthMax"></span></p>
+                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="enemyAttack"></span>
+                </p>
+                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="enemyDefense"></span>
+                </p>
+                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="enemyGold"></span>
+                </p>
+            </div>
+        </div>
+
+        <!--VICTORY-->
+        <div id="victory-screen" class="game-screen"></div>
+
+
+        <!--Menu-->
+        <div id="menu-container">
+            <div id="menu">
+                <input type="image" id="dialogueScroll" src="assets/buttons/dialogueScroll.png"></input>
+                <div id="menu-text-box">
+                    <h2>Menu</h2>
+                    <ul>
+                        <li><a href="#">New Game</a></li>
+                        <li><a href="#">Visit Artist Site</a></li>
+                        <li><a href="#">Visit Developer Site</a></li>
+                        <li><button>Close</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--Player stats-->
+
+
+
+
+    <!--Round Counter-->
+    <div class="round-counter-container">
+        <div class="inner-round-counter-container">
+            <p>Round: <span id="round-counter-span"></span></p>
+        </div>
+    </div>
+
+    <!--FRAME-->
+    <div id="frame" class="inner-div"></div>
+
+
+
+    <div id="pop-up-container">
+        <input type="image" id="winFight" src="assets/buttons/trophy.png"></input>
+        <input type="image" id="died" src="assets/buttons/dead.png"></input>
+        <input type="image" id="potionDrop" src="assets/buttons/potion.png"></input>
+        <input type="image" id="goldDrop" src="assets/buttons/gold.png"></input>
+    </div>
+
+
+
+
+    </div>
+
+
+
+</body>
+
+</html>

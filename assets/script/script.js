@@ -6,8 +6,8 @@ var player = {
   gold: 100
 }
 
- var roundCount = 0;
- var healthPotionStrength =0;
+var roundCount = 0;
+var healthPotionStrength = 0;
 
 //On load function
 $(function () {
@@ -96,9 +96,9 @@ $(function () {
   })
 
 
-  $(".menuButton").click(function() {
+  $(".menuButton").click(function () {
     console.log("menu button clicked")
-   $("#menu-container").toggle();
+    $("#menu-container").toggle();
   });
 
   // ----- SHOP
@@ -356,21 +356,25 @@ $(function () {
   });
 
 
-
-})
-
+  // animation test
 
 
-/*
-function menuButton() {
- var menu = $("#menu-screen")
- if (menu === "shown") {
-   menu.show();
- } else {
-   menu.hide();
- }
-}*/
+  $("#animation-button").click(function () {
+    $("#animation-text").css({
+      "fontSize" : 20,
+    });
+
+    $("#animation-text").animate({
+      'opacity': 1,
+      'fontSize': 100,
+    }, 1000, function () {
+      $("#animation-text").animate({
+        'opacity': 0,
+      })
+
+    });
+  })
 
 
 
-
+});
