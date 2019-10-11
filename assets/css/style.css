@@ -61,7 +61,23 @@ body {
     background-color: black;
     background-position-x: 50%;
 }
- /* ----- MENU */
+
+/* ----- POP ANIMATIONS */
+#pop-text-container {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    left:calc(50% - 150px);
+    top: 200px;
+    pointer-events: none;
+}
+
+.pop-text {
+    font-family: Impact, sans-serif;
+    color: red;
+    opacity: 0;
+}
+/* ----- MENU */
 
 #menu-container {
     position: absolute;

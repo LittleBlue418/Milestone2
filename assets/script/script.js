@@ -93,6 +93,8 @@ $(function () {
     roundCount = 0;
     $("#round-counter-span").text(roundCount);
 
+    textPop("pop-text");
+
   })
 
 
@@ -356,15 +358,17 @@ $(function () {
   });
 
 
-  // animation test
+  // TEXT POP
   $("#animation-button").click(function () {
     textPop($("#animation-text"))
   })
 
   function textPop(text) {
+    console.log("function called")
     text.css({
       "fontSize": 20,
     });
+
     text.animate({
       'opacity': 1,
       'fontSize': 100,
@@ -372,7 +376,7 @@ $(function () {
       text.animate({
         'opacity': 0,
       }, 200)
-
+console.log("function called")
     });
   }
 
