@@ -298,6 +298,8 @@ $(function () {
     } else {
       $(".enemy-action").text("Defend!")
     }
+    $(".heroine-damage-taken").text("- " + playerDamageTaken)
+    $(".enemy-damage-taken").text("- " + enemyDamageTaken)
 
 
 
