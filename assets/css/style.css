@@ -122,12 +122,12 @@ body {
 #menu-text-box a {
 
 }
+
 /* ----- Buttons */
 .button-container {
     outline: red 3px solid;
     width: 100%;
     height: 100%;
-
 }
 
 #welcome-screen .toHomeButton {
@@ -305,6 +305,28 @@ body {
     top:calc(50% - 100px);
 }
 
+/* ----- Loot & Potion Drop text */
+
+.loot-drop-container {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    top: 35%;
+    font-family: Impact, sans-serif;
+    font-size: 30px;
+    /*opacity: 0;*/
+}
+
+.potion-drop-text {
+    position: absolute;
+    left: 47%;
+    color: greenyellow;
+}
+.gold-drop-text {
+    position: absolute;
+    left: 47%;
+    color: goldenrod;
+}
 
 
 /* ----- Player Stats */

@@ -356,38 +356,24 @@ $(function () {
               }
             } else if (currentEnemy.health < 1) {
               statContainer.roundCounter.hide();
-                gameScreen.popup.show();
-                popups.goldDrop.show();
-                currentEnemy.health = 0;
-                player.gold += currentEnemy.gold;
-                $("#playerGold").text(player.gold);
-                console.log("potion drop number = " + enemyPotionDrop)
-                console.log("old health =  " + player.health);
+              gameScreen.popup.show();
+              popups.goldDrop.show();
+              currentEnemy.health = 0;
+              player.gold += currentEnemy.gold;
+              $("#playerGold").text(player.gold);
+              console.log("potion drop number = " + enemyPotionDrop)
+              console.log("old health =  " + player.health);
             }
 
             // Incrementing and updating round counter
             roundCount++;
             $("#round-counter-span").text(roundCount + 1);
             roundCounterAnimation($(".pop-text"));
+
           })
-
-        //eneble buttons
-        $('.defenceButton').removeAttr('disabled');
-        $('.attackButton').removeAttr('disabled');
-        $('.fleeButton').removeAttr('disabled');
-
-
       })
-
-
-
-
-    // End battle
-
-
-
   }
-
+  // End battle
   console.log($("#goldDrop"))
 
   $("#goldDrop").click(function () {
@@ -428,9 +414,6 @@ $(function () {
     gameScreen.map.show();
   });
 
-
-  // TEXT POPS
-
   function roundCounterAnimation(targetElement) {
     targetElement.animate({
       'opacity': 0.7,
@@ -439,8 +422,17 @@ $(function () {
       'opacity': 0,
     }, 200, function () {
       targetElement.removeAttr('style')
+
+      //eneble buttons
+      $('.defenceButton').removeAttr('disabled');
+      $('.attackButton').removeAttr('disabled');
+      $('.fleeButton').removeAttr('disabled');
     })
   };
+
+  // TEXT POPS
+
+
 
 
 
