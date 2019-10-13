@@ -372,20 +372,16 @@ $(function () {
     textPop($("#animation-text"))
   })
 
-  function textPop(text) {
-    console.log("function called")
-    text.css({
-      "fontSize": 10,
-    });
-
-    text.animate({
+  function textPop(targetElement) {
+    targetElement.animate({
       'opacity': 1,
       'fontSize': 50,
     }, 900, function () {
-      text.animate({
+      targetElement.animate({
         'opacity': 0,
-      }, 200)
-      console.log("function called")
+      }, 200, function () {
+        targetElement.removeAttr('style')
+      })
     });
   }
 
