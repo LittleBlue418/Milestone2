@@ -1,20 +1,21 @@
 //On load function
 $(function () {
 
-//Global objects and variables
-var playerMaxHealth = 100;
-var roundCount;
-var healthPotionStrength;
-var player;
+  //Global objects and variables
+  var playerMaxHealth = 100;
+  var roundCount;
+  var healthPotionStrength;
+  var player;
 
-function initializePlayer() {
-  player = {
-    health: playerMaxHealth,
-    attack: 10,
-    defense: 10,
-    gold: 0,
+  function initializePlayer() {
+    player = {
+      health: playerMaxHealth,
+      maxHealth: playerMaxHealth,
+      attack: 10,
+      defense: 10,
+      gold: 0,
+    }
   }
-}
 
   initializePlayer();
 
@@ -70,6 +71,7 @@ function initializePlayer() {
 
   $("#welcome-screen .toHomeButton").click(function () {
     $("#playerHealth").text(player.health);
+    $("#playerMaxHealth").text(player.maxHealth);
     $("#playerAttack").text(player.attack);
     $("#playerDefense").text(player.defense);
     $("#playerGold").text(player.gold);
