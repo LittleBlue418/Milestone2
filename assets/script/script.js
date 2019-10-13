@@ -1,13 +1,16 @@
 //Global objects and variables
+var playerMaxHealth = 100;
+var roundCount = 0;
+var healthPotionStrength = 0;
+
 var player = {
-  health: 100,
+  health: playerMaxHealth,
   attack: 10,
   defense: 10,
   gold: 0,
 }
 
-var roundCount = 0;
-var healthPotionStrength = 0;
+
 
 //On load function
 $(function () {
@@ -385,7 +388,7 @@ $(function () {
       popups.goldDrop.hide();
       popups.potionDrop.show();
 
-      player.health = Math.min(player.health + healthPotionStrength, 100);
+      player.health = Math.min(player.health + healthPotionStrength, playerMaxHealth);
 
       $("#playerHealth").text(player.health)
       $("#playerGold").text(player.gold);
@@ -420,7 +423,10 @@ $(function () {
     statContainer.player.hide();
     gameScreen.popup.hide();
     popups.died.hide();
-    player.health = 100;
+    player.health = playerMaxHealth;
+    player.attack = 10;
+    player.defense = 10;
+    player.gold = 0;
   });
 
   $("#potionDrop").click(function () {
