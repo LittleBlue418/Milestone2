@@ -291,11 +291,10 @@ $(function () {
       }
     }
 
-    currentEnemy.health -= Math.max(enemyDamageTaken, 0);
-    console.log("enemy health = " + currentEnemy.health)
 
-    player.health -= Math.max(playerDamageTaken, 0);
-    console.log("player health = " + player.health)
+    currentEnemy.health = Math.max(currentEnemy.health - enemyDamageTaken, 0);
+    player.health = Math.max(player.health - playerDamageTaken, 0);
+
 
 
     // Setting action text for enemy and heroine
