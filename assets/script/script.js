@@ -268,7 +268,7 @@ $(function () {
     $('.attackButton').attr('disabled', 'disabled');
     $('.fleeButton').attr('disabled', 'disabled');
 
-
+    console.log(enemyPotionDrop)
 
     // Picking enemy action from pre-set pattern
     var isEnemyAttacking = enemyAttackState[roundCount % enemyAttackState.length];
@@ -336,24 +336,13 @@ $(function () {
           }, function () {
             $(".damage-taken-text-container").removeAttr('style')
 
-
-            //Combat end
-
             //If you die
             if (player.health < 1) {
-              if (currentEnemy.health < 1) {
-                statContainer.roundCounter.hide();
-                gameScreen.popup.show();
-                popups.died.show();
-                player.health = 0;
-                $('#playerHealth').val(player.health);
-              } else {
-                statContainer.roundCounter.hide();
-                gameScreen.popup.show();
-                popups.died.show();
-                player.health = 0;
-                $('#playerHealth').val(player.health);
-              }
+              statContainer.roundCounter.hide();
+              gameScreen.popup.show();
+              popups.died.show();
+              player.health = 0;
+              $('#playerHealth').val(player.health);
             } else if (currentEnemy.health < 1) {
               statContainer.roundCounter.hide();
               gameScreen.popup.show();
@@ -361,30 +350,52 @@ $(function () {
               currentEnemy.health = 0;
               player.gold += currentEnemy.gold;
               $("#playerGold").text(player.gold);
-              console.log("potion drop number = " + enemyPotionDrop)
-              console.log("old health =  " + player.health);
-            }
+              $(".gold-drop-text")
+                .animate({
+                  'opacity': 1,
+                  'top': '30%',
+                }, 800)
+                .animate({
+                  'opacity': 0
+                }, 200, function () {
+                  $(".gold-drop-text").removeAttr('style')
+                })
+            } else {
+              // Incrementing and updating round counter
+              roundCount++;
+              $("#round-counter-span").text(roundCount + 1);
+              roundCounterAnimation($(".pop-text"));
 
-            // Incrementing and updating round counter
-            roundCount++;
-            $("#round-counter-span").text(roundCount + 1);
-            roundCounterAnimation($(".pop-text"));
-
+            };
           })
+
+
+        //Combat end
+
+
       })
+
+    // End battle
+    console.log($("#goldDrop"))
   }
-  // End battle
-  console.log($("#goldDrop"))
 
   $("#goldDrop").click(function () {
     if (enemyPotionDrop == 1) {
       popups.goldDrop.hide();
       popups.potionDrop.show();
-
       player.health += healthPotionStrength;
       $("#playerHealth").text(player.health)
-      console.log("potion");
-      console.log(player.health);
+      $("#playerGold").text(player.gold);
+      $(".potion-drop-text")
+        .animate({
+          'opacity': 1,
+          'top': '30%',
+        }, 800)
+        .animate({
+          'opacity': 0
+        }, 200, function () {
+          $(".potion-drop-text").removeAttr('style')
+        })
 
     } else {
       popups.goldDrop.hide();

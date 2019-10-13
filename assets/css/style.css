@@ -310,22 +310,25 @@ body {
 .loot-drop-container {
     position: absolute;
     width: 100%;
-    height: 50%;
-    top: 35%;
+    height: 100%;
     font-family: Impact, sans-serif;
     font-size: 30px;
-    /*opacity: 0;*/
+    pointer-events: none;
 }
 
 .potion-drop-text {
     position: absolute;
     left: 47%;
+    top: 45%;
     color: greenyellow;
+    opacity: 0;
 }
 .gold-drop-text {
     position: absolute;
     left: 47%;
+    top: 45%;
     color: goldenrod;
+    opacity: 0;
 }
 
 
