@@ -1,6 +1,6 @@
 //Global objects and variables
 var player = {
-  health: 1000,
+  health: 100,
   attack: 10,
   defense: 10,
   gold: 0,
