@@ -1,19 +1,24 @@
 //Global objects and variables
 var playerMaxHealth = 100;
-var roundCount = 0;
-var healthPotionStrength = 0;
+var roundCount;
+var healthPotionStrength;
+var player;
 
-var player = {
-  health: playerMaxHealth,
-  attack: 10,
-  defense: 10,
-  gold: 0,
+function initializePlayer() {
+  player = {
+    health: playerMaxHealth,
+    attack: 10,
+    defense: 10,
+    gold: 0,
+  }
 }
-
 
 
 //On load function
 $(function () {
+
+
+  initializePlayer();
 
   //Fetching screens & elements
   var gameScreen = {
@@ -423,10 +428,7 @@ $(function () {
     statContainer.player.hide();
     gameScreen.popup.hide();
     popups.died.hide();
-    player.health = playerMaxHealth;
-    player.attack = 10;
-    player.defense = 10;
-    player.gold = 0;
+    initializePlayer();
   });
 
   $("#potionDrop").click(function () {
