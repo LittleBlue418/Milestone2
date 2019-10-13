@@ -265,9 +265,7 @@ $(function () {
     // Picking enemy action from pre-set pattern
     var isEnemyAttacking = enemyAttackState[roundCount % enemyAttackState.length];
 
-    // incrementing and updating round counter
-    roundCount++;
-    $("#round-counter-span").text(roundCount + 1);
+
 
     // Resolving the combat effects
     if (isPlayerAttacking) {
@@ -338,6 +336,9 @@ $(function () {
           console.log("old health =  " + player.health);
         }
 
+        // Incrementing and updating round counter
+        roundCount++;
+        $("#round-counter-span").text(roundCount + 1);
         roundCounterAnimation($(".pop-text"));
       })
 
