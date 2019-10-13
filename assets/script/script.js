@@ -291,8 +291,11 @@ $(function () {
       }
     }
 
-    currentEnemy.health -= enemyDamageTaken
-    player.health -= playerDamageTaken
+    currentEnemy.health -= Math.max(enemyDamageTaken, 0);
+    console.log("enemy health = " + currentEnemy.health)
+
+    player.health -= Math.max(playerDamageTaken, 0);
+    console.log("player health = " + player.health)
 
 
     // Setting action text for enemy and heroine
@@ -334,26 +337,33 @@ $(function () {
           }, function () {
             $(".damage-taken-text-container").removeAttr('style')
 
+
+            //Combat end
+
             //If you die
             if (player.health < 1) {
+              if (currentEnemy.health < 1) {
+                statContainer.roundCounter.hide();
+                gameScreen.popup.show();
+                popups.died.show();
+                player.health = 0;
+                $('#playerHealth').val(player.health);
+              } else {
+                statContainer.roundCounter.hide();
+                gameScreen.popup.show();
+                popups.died.show();
+                player.health = 0;
+                $('#playerHealth').val(player.health);
+              }
+            } else if (currentEnemy.health < 1) {
               statContainer.roundCounter.hide();
-              gameScreen.popup.show();
-              popups.died.show();
-              player.health = 0;
-              $('#playerHealth').val(player.health);
-
-            }
-
-            //If you win
-            if (currentEnemy.health < 1) {
-              statContainer.roundCounter.hide();
-              gameScreen.popup.show();
-              popups.goldDrop.show();
-              currentEnemy.health = 0;
-              player.gold += currentEnemy.gold;
-              $("#playerGold").text(player.gold);
-              console.log("potion drop number = " + enemyPotionDrop)
-              console.log("old health =  " + player.health);
+                gameScreen.popup.show();
+                popups.goldDrop.show();
+                currentEnemy.health = 0;
+                player.gold += currentEnemy.gold;
+                $("#playerGold").text(player.gold);
+                console.log("potion drop number = " + enemyPotionDrop)
+                console.log("old health =  " + player.health);
             }
 
             // Incrementing and updating round counter
@@ -408,6 +418,7 @@ $(function () {
     statContainer.player.hide();
     gameScreen.popup.hide();
     popups.died.hide();
+    player.health = 100;
   });
 
   $("#potionDrop").click(function () {
