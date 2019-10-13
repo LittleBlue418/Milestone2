@@ -253,7 +253,9 @@ $(function () {
   })
 
   $('.defenceButton').click(function () {
+
     resolveCombat(false)
+
   })
 
 
@@ -261,6 +263,12 @@ $(function () {
   // Combat function
 
   function resolveCombat(isPlayerAttacking) {
+    //disabling buttons
+    $('.defenceButton').attr('disabled', 'disabled');
+    $('.attackButton').attr('disabled', 'disabled');
+    $('.fleeButton').attr('disabled', 'disabled');
+
+
 
     // Picking enemy action from pre-set pattern
     var isEnemyAttacking = enemyAttackState[roundCount % enemyAttackState.length];
@@ -354,7 +362,10 @@ $(function () {
             roundCounterAnimation($(".pop-text"));
           })
 
-
+        //eneble buttons
+        $('.defenceButton').removeAttr('disabled');
+        $('.attackButton').removeAttr('disabled');
+        $('.fleeButton').removeAttr('disabled');
 
 
       })
