@@ -91,7 +91,7 @@ $(function () {
     statContainer.enemy.show();
     statContainer.roundCounter.show();
     roundCount = 0;
-    $("#round-counter-span").text(roundCount+1);
+    $("#round-counter-span").text(roundCount + 1);
 
     roundCounterAnimation($(".pop-text"));
 
@@ -109,9 +109,9 @@ $(function () {
     if (player.gold > 25) {
       if (player.attack < 90) {
         player.attack += 5;
-      player.gold -= 10;
-      $("#playerAttack").text(player.attack);
-      $("#playerGold").text(player.gold);
+        player.gold -= 10;
+        $("#playerAttack").text(player.attack);
+        $("#playerGold").text(player.gold);
       } else {
         alert("You have reached manimum attack level")
       }
@@ -264,7 +264,7 @@ $(function () {
 
     var isEnemyAttacking = enemyAttackState[roundCount % enemyAttackState.length];
     roundCount++;
-    $("#round-counter-span").text(roundCount+1);
+    $("#round-counter-span").text(roundCount + 1);
 
     console.log(roundCount);
     console.log(isEnemyAttacking);
@@ -274,16 +274,13 @@ $(function () {
       if (isEnemyAttacking) {
 
         currentEnemy.health -= player.attack
-        $("#enemyHealth").text(currentEnemy.health);
 
         player.health -= currentEnemy.attack
-        $("#playerHealth").text(player.health);
 
       } else {
         var damage = player.attack - currentEnemy.defense
         if (damage > 0) {
           currentEnemy.health -= damage
-          $("#enemyHealth").text(currentEnemy.health);
         }
       }
 
@@ -292,10 +289,18 @@ $(function () {
         var damage = currentEnemy.attack - player.defense
         if (damage > 0) {
           player.health -= damage
-          $("#playerHealth").text(player.health);
         }
       }
     }
+
+    $(".action-text").animate({
+      'opacity': 1,
+    }, 600).animate({
+      'opacity': 0
+    }, function () {
+      $("#enemyHealth").text(currentEnemy.health);
+      $("#playerHealth").text(player.health);
+    })
 
 
     // End battle

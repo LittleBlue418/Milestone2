@@ -223,7 +223,22 @@ body {
     position: absolute;
     pointer-events: none;
 }
+.action-text {
+    position: absolute;
+    top: 45%;
+    font-family: Impact, sans-serif;
+    font-size: 50px;
+    opacity: 0;
+}
+.heroine-action {
+    left: 20%;
+    color: red;
+}
 
+.enemy-action {
+    left: 70%;
+    color: blue;
+}
 /* ----- Pop up icons */
 
 #pop-up-container {
