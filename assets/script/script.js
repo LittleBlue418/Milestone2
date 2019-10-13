@@ -304,40 +304,45 @@ $(function () {
 
 
     // Animate action text for enemy and heroine
-    $(".action-text").animate({
-      'opacity': 1,
-    }, 700).animate({
-      'opacity': 0
-    }, function () {
-      $("#enemyHealth").text(currentEnemy.health);
-      $("#playerHealth").text(player.health);
-      $(".action-text").removeAttr('style');
+    $(".action-text")
+      .animate({
+        'opacity': 1,
+      }, 700)
+      .delay(300)
+      .animate({
+        'opacity': 0
+      }, function () {
+        $("#enemyHealth").text(currentEnemy.health);
+        $("#playerHealth").text(player.health);
+        $(".action-text").removeAttr('style');
 
-      //If you die
-      if (player.health < 1) {
-        statContainer.roundCounter.hide();
-        gameScreen.popup.show();
-        popups.died.show();
-        player.health = 0;
-        $('#playerHealth').val(player.health);
+        //If you die
+        if (player.health < 1) {
+          statContainer.roundCounter.hide();
+          gameScreen.popup.show();
+          popups.died.show();
+          player.health = 0;
+          $('#playerHealth').val(player.health);
 
-      }
+        }
 
-      //If you win
-      if (currentEnemy.health < 1) {
-        statContainer.roundCounter.hide();
-        gameScreen.popup.show();
-        popups.goldDrop.show();
-        currentEnemy.health = 0;
-        player.gold += currentEnemy.gold;
-        $("#playerGold").text(player.gold);
-        console.log("potion drop number = " + enemyPotionDrop)
-        console.log("old health =  " + player.health);
-      }
+        //If you win
+        if (currentEnemy.health < 1) {
+          statContainer.roundCounter.hide();
+          gameScreen.popup.show();
+          popups.goldDrop.show();
+          currentEnemy.health = 0;
+          player.gold += currentEnemy.gold;
+          $("#playerGold").text(player.gold);
+          console.log("potion drop number = " + enemyPotionDrop)
+          console.log("old health =  " + player.health);
+        }
 
-      roundCounterAnimation($(".pop-text"));
-    })
 
+      })
+
+    $(".pop-text").delay(1000);
+    roundCounterAnimation($(".pop-text"));
 
     // End battle
 
