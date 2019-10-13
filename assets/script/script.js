@@ -91,9 +91,9 @@ $(function () {
     statContainer.enemy.show();
     statContainer.roundCounter.show();
     roundCount = 0;
-    $("#round-counter-span").text(roundCount);
+    $("#round-counter-span").text(roundCount+1);
 
-    textPop($(".pop-text"));
+    roundCounterAnimation($(".pop-text"));
 
   })
 
@@ -264,7 +264,7 @@ $(function () {
 
     var isEnemyAttacking = enemyAttackState[roundCount % enemyAttackState.length];
     roundCount++;
-    $("#round-counter-span").text(roundCount);
+    $("#round-counter-span").text(roundCount+1);
 
     console.log(roundCount);
     console.log(isEnemyAttacking);
@@ -325,6 +325,8 @@ $(function () {
 
     //write combat outcome
     $('#enemyHealth').val(currentEnemy.health);
+
+    roundCounterAnimation($(".pop-text"));
   }
 
   console.log($("#goldDrop"))
@@ -367,12 +369,9 @@ $(function () {
   });
 
 
-  // TEXT POP
-  $("#animation-button").click(function () {
-    textPop($("#animation-text"))
-  })
+  // TEXT POPS
 
-  function textPop(targetElement) {
+  function roundCounterAnimation(targetElement) {
     targetElement.animate({
       'opacity': 1,
       'fontSize': 50,
