@@ -314,32 +314,47 @@ $(function () {
         $("#playerHealth").text(player.health);
         $(".action-text-container").removeAttr('style');
 
-        //If you die
-        if (player.health < 1) {
-          statContainer.roundCounter.hide();
-          gameScreen.popup.show();
-          popups.died.show();
-          player.health = 0;
-          $('#playerHealth').val(player.health);
+        $(".damage-taken-text-container")
+          .animate({
+            'opacity': 1,
+            'top': '20%',
+          }, 700)
+          .animate({
+            'opacity': 0
+          }, function () {
+            $(".damage-taken-text-container").removeAttr('style')
 
-        }
+            //If you die
+            if (player.health < 1) {
+              statContainer.roundCounter.hide();
+              gameScreen.popup.show();
+              popups.died.show();
+              player.health = 0;
+              $('#playerHealth').val(player.health);
 
-        //If you win
-        if (currentEnemy.health < 1) {
-          statContainer.roundCounter.hide();
-          gameScreen.popup.show();
-          popups.goldDrop.show();
-          currentEnemy.health = 0;
-          player.gold += currentEnemy.gold;
-          $("#playerGold").text(player.gold);
-          console.log("potion drop number = " + enemyPotionDrop)
-          console.log("old health =  " + player.health);
-        }
+            }
 
-        // Incrementing and updating round counter
-        roundCount++;
-        $("#round-counter-span").text(roundCount + 1);
-        roundCounterAnimation($(".pop-text"));
+            //If you win
+            if (currentEnemy.health < 1) {
+              statContainer.roundCounter.hide();
+              gameScreen.popup.show();
+              popups.goldDrop.show();
+              currentEnemy.health = 0;
+              player.gold += currentEnemy.gold;
+              $("#playerGold").text(player.gold);
+              console.log("potion drop number = " + enemyPotionDrop)
+              console.log("old health =  " + player.health);
+            }
+
+            // Incrementing and updating round counter
+            roundCount++;
+            $("#round-counter-span").text(roundCount + 1);
+            roundCounterAnimation($(".pop-text"));
+          })
+
+
+
+
       })
 
 
@@ -395,8 +410,8 @@ $(function () {
 
   function roundCounterAnimation(targetElement) {
     targetElement.animate({
-      'opacity': 1,
-      'fontSize': 50,
+      'opacity': 0.7,
+      'fontSize': 40,
     }, 900).animate({
       'opacity': 0,
     }, 200, function () {
