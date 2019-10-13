@@ -93,7 +93,7 @@ $(function () {
     roundCount = 0;
     $("#round-counter-span").text(roundCount);
 
-    textPop("pop-text");
+    textPop($(".pop-text"));
 
   })
 
