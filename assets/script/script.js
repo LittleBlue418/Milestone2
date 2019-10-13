@@ -280,7 +280,7 @@ $(function () {
         console.log("Enemy damage taken = " + enemyDamageTaken)
         console.log("Player damage taken = " + playerDamageTaken)
       } else {
-        enemyDamageTaken = player.attack - currentEnemy.defense
+        enemyDamageTaken =  Math.max(player.attack - currentEnemy.defense, 0);
         console.log("Enemy damage taken = " + enemyDamageTaken)
         if (enemyDamageTaken > 0) {
           currentEnemy.health -= enemyDamageTaken
@@ -288,7 +288,7 @@ $(function () {
       }
     } else {
       if (isEnemyAttacking) {
-        playerDamageTaken = currentEnemy.attack - player.defense
+        playerDamageTaken = Math.max(currentEnemy.attack - player.defense, 0);
         console.log("Player damage taken = " + playerDamageTaken)
         if (playerDamageTaken > 0) {
           player.health -= playerDamageTaken
