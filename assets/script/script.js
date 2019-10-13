@@ -375,12 +375,12 @@ $(function () {
   function textPop(text) {
     console.log("function called")
     text.css({
-      "fontSize": 20,
+      "fontSize": 10,
     });
 
     text.animate({
       'opacity': 1,
-      'fontSize': 100,
+      'fontSize': 50,
     }, 900, function () {
       text.animate({
         'opacity': 0,
