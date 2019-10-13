@@ -223,7 +223,7 @@ body {
     position: absolute;
     pointer-events: none;
 }
-.action-text {
+.action-text-container {
     position: absolute;
     width: 100%;
     top: 45%;
@@ -241,6 +241,27 @@ body {
     position: absolute;
     left: 65%;
     color: blue;
+}
+
+.damage-taken-text-container {
+    position: absolute;
+    width: 100%;
+    top: 25%;
+    font-family: Impact, sans-serif;
+    font-size: 20px;
+    opacity: 0;
+}
+
+.heroine-damage-taken {
+    position: absolute;
+    left: 27%;
+    color: red;
+}
+
+.enemy-damage-taken {
+    position: absolute;
+    left: 73%;
+    color: red;
 }
 /* ----- Pop up icons */
 

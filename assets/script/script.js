@@ -302,7 +302,7 @@ $(function () {
 
 
     // Animate action text for enemy and heroine
-    $(".action-text")
+    $(".action-text-container")
       .animate({
         'opacity': 1,
       }, 700)
@@ -312,7 +312,7 @@ $(function () {
       }, function () {
         $("#enemyHealth").text(currentEnemy.health);
         $("#playerHealth").text(player.health);
-        $(".action-text").removeAttr('style');
+        $(".action-text-container").removeAttr('style');
 
         //If you die
         if (player.health < 1) {
