@@ -265,24 +265,33 @@ $(function () {
     // Picking enemy action from pre-set pattern
     var isEnemyAttacking = enemyAttackState[roundCount % enemyAttackState.length];
 
+    var playerDamageTaken = 0;
+    var enemyDamageTaken = 0;
 
 
     // Resolving the combat effects
     if (isPlayerAttacking) {
       if (isEnemyAttacking) {
         currentEnemy.health -= player.attack
+        enemyDamageTaken = player.attack
+
         player.health -= currentEnemy.attack
+        playerDamageTaken = currentEnemy.attack
+        console.log("Enemy damage taken = " + enemyDamageTaken)
+        console.log("Player damage taken = " + playerDamageTaken)
       } else {
-        var damage = player.attack - currentEnemy.defense
-        if (damage > 0) {
-          currentEnemy.health -= damage
+        enemyDamageTaken = player.attack - currentEnemy.defense
+        console.log("Enemy damage taken = " + enemyDamageTaken)
+        if (enemyDamageTaken > 0) {
+          currentEnemy.health -= enemyDamageTaken
         }
       }
     } else {
       if (isEnemyAttacking) {
-        var damage = currentEnemy.attack - player.defense
-        if (damage > 0) {
-          player.health -= damage
+        playerDamageTaken = currentEnemy.attack - player.defense
+        console.log("Player damage taken = " + playerDamageTaken)
+        if (playerDamageTaken > 0) {
+          player.health -= playerDamageTaken
         }
       }
     }
