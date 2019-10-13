@@ -1,3 +1,6 @@
+//On load function
+$(function () {
+
 //Global objects and variables
 var playerMaxHealth = 100;
 var roundCount;
@@ -12,11 +15,6 @@ function initializePlayer() {
     gold: 0,
   }
 }
-
-
-//On load function
-$(function () {
-
 
   initializePlayer();
 
