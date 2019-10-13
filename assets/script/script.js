@@ -385,7 +385,7 @@ $(function () {
       popups.goldDrop.hide();
       popups.potionDrop.show();
 
-      reCalculatePlayerHealth(player.health, healthPotionStrength)
+      player.health = Math.min(player.health + healthPotionStrength, 100);
 
       $("#playerHealth").text(player.health)
       $("#playerGold").text(player.gold);
@@ -411,16 +411,7 @@ $(function () {
     }
   });
 
-  function reCalculatePlayerHealth(playerHealth, healthPotion) {
-    if (playerHealth < 100) {
-      var remainder = 100 - playerHealth;
-      if (healthPotion < remainder) {
-        player.health += healthPotion
-      } else if (healthPotion > remainder) {
-        player.health += remainder
-      }
-    }
-  }
+
 
   $("#died").click(function () {
     gameScreen.welcome.show();
