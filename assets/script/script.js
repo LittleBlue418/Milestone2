@@ -350,6 +350,7 @@ $(function () {
               currentEnemy.health = 0;
               player.gold += currentEnemy.gold;
               $("#playerGold").text(player.gold);
+              $(".gold-drop-text").text("+ " + currentEnemy.gold);
               $(".gold-drop-text")
                 .animate({
                   'opacity': 1,
@@ -386,6 +387,7 @@ $(function () {
       player.health += healthPotionStrength;
       $("#playerHealth").text(player.health)
       $("#playerGold").text(player.gold);
+      $(".potion-drop-text").text("+ " + healthPotionStrength);
       $(".potion-drop-text")
         .animate({
           'opacity': 1,
