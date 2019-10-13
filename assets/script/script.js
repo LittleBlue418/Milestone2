@@ -338,11 +338,11 @@ $(function () {
           console.log("old health =  " + player.health);
         }
 
-
+        roundCounterAnimation($(".pop-text"));
       })
 
-    $(".pop-text").delay(1000);
-    roundCounterAnimation($(".pop-text"));
+
+
 
     // End battle
 
