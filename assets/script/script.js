@@ -272,22 +272,20 @@ $(function () {
     // Resolving the combat effects
     if (isPlayerAttacking) {
       if (isEnemyAttacking) {
-        currentEnemy.health -= player.attack
         enemyDamageTaken = player.attack
-
-        player.health -= currentEnemy.attack
         playerDamageTaken = currentEnemy.attack
-
       } else {
         enemyDamageTaken = Math.max(player.attack - currentEnemy.defense, 0);
-        currentEnemy.health -= enemyDamageTaken
       }
     } else {
       if (isEnemyAttacking) {
         playerDamageTaken = Math.max(currentEnemy.attack - player.defense, 0);
-        player.health -= playerDamageTaken
       }
     }
+
+    currentEnemy.health -= enemyDamageTaken
+    player.health -= playerDamageTaken
+
 
     // Setting action text for enemy and heroine
     if (isPlayerAttacking) {
