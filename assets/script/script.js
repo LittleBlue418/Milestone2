@@ -1,6 +1,6 @@
 //Global objects and variables
 var player = {
-  health: 100,
+  health: 1000,
   attack: 10,
   defense: 10,
   gold: 0,
@@ -384,7 +384,9 @@ $(function () {
     if (enemyPotionDrop == 1) {
       popups.goldDrop.hide();
       popups.potionDrop.show();
-      player.health += healthPotionStrength;
+
+      reCalculatePlayerHealth(player.health, healthPotionStrength)
+
       $("#playerHealth").text(player.health)
       $("#playerGold").text(player.gold);
       $(".potion-drop-text").text("+ " + healthPotionStrength);
@@ -408,6 +410,17 @@ $(function () {
       gameScreen.map.show();
     }
   });
+
+  function reCalculatePlayerHealth(playerHealth, healthPotion) {
+    if (playerHealth < 100) {
+      var remainder = 100 - playerHealth;
+      if (healthPotion < remainder) {
+        player.health += healthPotion
+      } else if (healthPotion > remainder) {
+        player.health += remainder
+      }
+    }
+  }
 
   $("#died").click(function () {
     gameScreen.welcome.show();
