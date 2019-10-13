@@ -1,9 +1,9 @@
 //Global objects and variables
 var player = {
-  health: 1000,
-  attack: 5,
-  defense: 5,
-  gold: 100
+  health: 100,
+  attack: 10,
+  defense: 10,
+  gold: 0,
 }
 
 var roundCount = 0;
@@ -106,23 +106,35 @@ $(function () {
   // ----- SHOP
 
   $(".levelUpAttack").click(function () {
-    if (player.gold > 9) {
-      player.attack += 10;
+    if (player.gold > 25) {
+      if (player.attack < 90) {
+        player.attack += 5;
       player.gold -= 10;
       $("#playerAttack").text(player.attack);
       $("#playerGold").text(player.gold);
-
+      } else {
+        alert("You have reached manimum attack level")
+      }
+    } else {
+      alert("You do not have enough gold to level up")
     }
   })
 
   $(".levelUpDefence").click(function () {
-    if (player.gold > 9) {
-      player.defense += 10;
-      player.gold -= 10;
-      $("#playerDefense").text(player.defense);
-      $("#playerGold").text(player.gold);
-
+    if (player.gold > 25) {
+      if (player.defense < 75) {
+        player.defense += 5;
+        player.gold -= 10;
+        $("#playerDefense").text(player.defense);
+        $("#playerGold").text(player.gold);
+      } else {
+        alert("You have reached maximum defense level")
+      }
+    } else {
+      alert("You do not have enough gold to level up")
     }
+
+
   })
 
 
@@ -154,9 +166,9 @@ $(function () {
     enemyAttackState = [true, false, true];
 
     currentEnemy = new Enemy(
-      Math.floor((Math.random() * (10 - 5) + 5)),
-      Math.floor((Math.random() * (10 - 5) + 5)),
-      Math.floor((Math.random() * (10 - 5) + 5)),
+      Math.floor((Math.random() * (40 - 30) + 30)),
+      Math.floor((Math.random() * (15 - 10) + 10)),
+      Math.floor((Math.random() * (15 - 10) + 10)),
       Math.floor((Math.random() * (10 - 5) + 5))
     );
 
@@ -177,10 +189,10 @@ $(function () {
     enemyAttackState = [true, false, true, false];
 
     currentEnemy = new Enemy(
-      Math.floor((Math.random() * (20 - 10) + 10)),
-      Math.floor((Math.random() * (20 - 10) + 10)),
-      Math.floor((Math.random() * (20 - 10) + 10)),
-      Math.floor((Math.random() * (20 - 10) + 10))
+      Math.floor((Math.random() * (50 - 45) + 45)),
+      Math.floor((Math.random() * (30 - 25) + 25)),
+      Math.floor((Math.random() * (40 - 35) + 35)),
+      Math.floor((Math.random() * (30 - 25) + 25))
     );
 
     $("#enemyHealth").text(currentEnemy.health);
@@ -198,10 +210,10 @@ $(function () {
     enemyAttackState = [true, false, true, true, false];
 
     currentEnemy = new Enemy(
-      Math.floor((Math.random() * (30 - 20) + 20)),
-      Math.floor((Math.random() * (30 - 20) + 20)),
-      Math.floor((Math.random() * (30 - 20) + 20)),
-      Math.floor((Math.random() * (30 - 20) + 20))
+      Math.floor((Math.random() * (60 - 55) + 55)),
+      Math.floor((Math.random() * (55 - 50) + 50)),
+      Math.floor((Math.random() * (45 - 40) + 40)),
+      Math.floor((Math.random() * (50 - 45) + 45))
     );
 
     $("#enemyHealth").text(currentEnemy.health);
@@ -217,12 +229,9 @@ $(function () {
     enemyPotionDrop = Math.floor((Math.random() * 5 + 0));
     enemyAttackState = [true, false, true, true, true, false];
 
-    currentEnemy = new Enemy(
-      Math.floor((Math.random() * (50 - 40) + 40)),
-      Math.floor((Math.random() * (50 - 40) + 40)),
-      Math.floor((Math.random() * (50 - 40) + 40)),
-      Math.floor((Math.random() * (50 - 40) + 40))
-    );
+    currentEnemy = new Enemy(100, 80, 80, 100);
+
+
 
     $("#enemyHealth").text(currentEnemy.health);
     $("#enemyHealthMax").text(currentEnemy.health);
@@ -376,7 +385,7 @@ $(function () {
       text.animate({
         'opacity': 0,
       }, 200)
-console.log("function called")
+      console.log("function called")
     });
   }
 
