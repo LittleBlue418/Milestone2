@@ -256,34 +256,30 @@ $(function () {
     resolveCombat(false)
   })
 
+
+
   // Combat function
-
-
 
   function resolveCombat(isPlayerAttacking) {
 
+    // Picking enemy action from pre-set pattern
     var isEnemyAttacking = enemyAttackState[roundCount % enemyAttackState.length];
+
+    // incrementing and updating round counter
     roundCount++;
     $("#round-counter-span").text(roundCount + 1);
 
-    console.log(roundCount);
-    console.log(isEnemyAttacking);
-
-
+    // Resolving the combat effects
     if (isPlayerAttacking) {
       if (isEnemyAttacking) {
-
         currentEnemy.health -= player.attack
-
         player.health -= currentEnemy.attack
-
       } else {
         var damage = player.attack - currentEnemy.defense
         if (damage > 0) {
           currentEnemy.health -= damage
         }
       }
-
     } else {
       if (isEnemyAttacking) {
         var damage = currentEnemy.attack - player.defense
@@ -293,13 +289,19 @@ $(function () {
       }
     }
 
+    // Setting action text for enemy and heroine
+    $(".enemy-action").text("test1")
+    $(".heroine-action").text("Waffles")
+
+    // Animate action text for enemy and heroine
     $(".action-text").animate({
       'opacity': 1,
-    }, 600).animate({
+    }, 700).animate({
       'opacity': 0
     }, function () {
       $("#enemyHealth").text(currentEnemy.health);
       $("#playerHealth").text(player.health);
+      $(".action-text").removeAttr('style');
     })
 
 
