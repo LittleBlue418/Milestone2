@@ -290,8 +290,18 @@ $(function () {
     }
 
     // Setting action text for enemy and heroine
-    $(".enemy-action").text("test1")
-    $(".heroine-action").text("Waffles")
+    if (isPlayerAttacking) {
+      $(".heroine-action").text("Attack!")
+    } else {
+      $(".heroine-action").text("Defend!")
+    }
+    if (isEnemyAttacking) {
+      $(".enemy-action").text("Attack!")
+    } else {
+      $(".enemy-action").text("Defend!")
+    }
+
+
 
     // Animate action text for enemy and heroine
     $(".action-text").animate({
@@ -302,38 +312,37 @@ $(function () {
       $("#enemyHealth").text(currentEnemy.health);
       $("#playerHealth").text(player.health);
       $(".action-text").removeAttr('style');
+
+      //If you die
+      if (player.health < 1) {
+        statContainer.roundCounter.hide();
+        gameScreen.popup.show();
+        popups.died.show();
+        player.health = 0;
+        $('#playerHealth').val(player.health);
+
+      }
+
+      //If you win
+      if (currentEnemy.health < 1) {
+        statContainer.roundCounter.hide();
+        gameScreen.popup.show();
+        popups.goldDrop.show();
+        currentEnemy.health = 0;
+        player.gold += currentEnemy.gold;
+        $("#playerGold").text(player.gold);
+        console.log("potion drop number = " + enemyPotionDrop)
+        console.log("old health =  " + player.health);
+      }
+
+      roundCounterAnimation($(".pop-text"));
     })
 
 
     // End battle
 
-    //If you die
-    if (player.health < 1) {
-      statContainer.roundCounter.hide();
-      gameScreen.popup.show();
-      popups.died.show();
-      player.health = 0;
-      $('#playerHealth').val(player.health);
 
-    }
 
-    //If you win
-    if (currentEnemy.health < 1) {
-      statContainer.roundCounter.hide();
-      gameScreen.popup.show();
-      popups.goldDrop.show();
-      currentEnemy.health = 0;
-      player.gold += currentEnemy.gold;
-      $("#playerGold").text(player.gold);
-      console.log("potion drop number = " + enemyPotionDrop)
-      console.log("old health =  " + player.health);
-
-    }
-
-    //write combat outcome
-    $('#enemyHealth').val(currentEnemy.health);
-
-    roundCounterAnimation($(".pop-text"));
   }
 
   console.log($("#goldDrop"))
@@ -382,14 +391,13 @@ $(function () {
     targetElement.animate({
       'opacity': 1,
       'fontSize': 50,
-    }, 900, function () {
-      targetElement.animate({
-        'opacity': 0,
-      }, 200, function () {
-        targetElement.removeAttr('style')
-      })
-    });
-  }
+    }, 900).animate({
+      'opacity': 0,
+    }, 200, function () {
+      targetElement.removeAttr('style')
+    })
+  };
+
 
 
 
