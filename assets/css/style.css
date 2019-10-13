@@ -218,7 +218,14 @@ body {
     top:calc(150px + 150px + 150px + 150px + 120px);
 }
 
+/* ----- Heroine & Enemies */
+.combat-image {
+    position: absolute;
+    pointer-events: none;
+}
+
 /* ----- Pop up icons */
+
 #pop-up-container {
     position: absolute;
     width: 768px;

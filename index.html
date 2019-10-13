@@ -21,6 +21,7 @@
 <body>
 
     <div class="game-container">
+        <!--BACKGROUNDS-->
 
         <!--WELCOME-->
         <div id="welcome-screen" class="game-screen">
@@ -67,9 +68,20 @@
             </div>
         </div>
 
-
         <!--COMBAT-->
         <div id="combat-screen" class="game-screen">
+
+            <!--ENEMIES-->
+            <div class="enemy-container combat-image">
+                <img src="assets/enemies/template-enemy1.png">
+            </div>
+
+            <!--HEROINE-->
+            <div class="heroine-container combat-image">
+                    <img src="assets/heroine/template-heroine-base.png">
+            </div>
+
+            <!--BUTTONS-->
             <div class="button-container">
                 <div class="row-button-container3">
                     <input type="image" class="attackButton button3" src="assets/buttons/sword.png"></input>
@@ -80,6 +92,13 @@
                 <input type="image" class="menuButton" src="assets/buttons/settings.png">
             </div>
         </div>
+
+        <!--VICTORY-->
+        <div id="victory-screen" class="game-screen"></div>
+
+
+
+        <!--OVERLAYS-->
 
         <!--PLAYER STATS-->
         <div class="player-stats-container">
@@ -96,7 +115,6 @@
             </div>
         </div>
 
-
         <!--ENEMY STATS-->
         <div class="enemy-stats-container">
             <div class="enemy-stats">
@@ -110,10 +128,6 @@
                 </p>
             </div>
         </div>
-
-        <!--VICTORY-->
-        <div id="victory-screen" class="game-screen"></div>
-
 
         <!--Menu-->
         <div id="menu-container">
@@ -130,6 +144,8 @@
                 </div>
             </div>
         </div>
+
+
 
         <!--Pop Animation Text
         <div id="pop-text-container">
