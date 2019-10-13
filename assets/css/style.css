@@ -168,6 +168,10 @@ body {
     height: 150px;
 }
 
+.button3:disabled {
+    opacity: 0.5;
+}
+
 .diagonal-button-container {
     position: absolute;
     outline:blue 3px solid;
