@@ -25,9 +25,14 @@ $(function () {
       this.attack = Math.floor((Math.random() * (15 - 10) + 10));
       this.defense = Math.floor((Math.random() * (15 - 10) + 10));
       this.gold = Math.floor((Math.random() * (10 - 5) + 5));
-      this.potionDrop = Math.floor((Math.random() * 2 + 0));
       this.attackPattern = [true, false, true];
-      this.healthPotionStrength = 10;
+
+       var potionDrop = Math.floor((Math.random() * 2 + 0));
+       if (potionDrop == 0) {
+         this.healthPotionStrength = 10;
+       } else {
+        this.healthPotionStrength = 0;
+       }
     }
   };
 
@@ -37,9 +42,14 @@ $(function () {
       this.attack = Math.floor((Math.random() * (30 - 25) + 25));
       this.defense = Math.floor((Math.random() * (40 - 35) + 35));
       this.gold = Math.floor((Math.random() * (30 - 25) + 25));
-      this.potionDrop = Math.floor((Math.random() * 3 + 0));
       this.attackPattern = [true, false, true, false];
-      this.healthPotionStrength = 20;
+
+      var potionDrop = Math.floor((Math.random() * 3 + 0));
+      if (potionDrop == 0) {
+        this.healthPotionStrength = 20;
+      } else {
+       this.healthPotionStrength = 0;
+      }
     }
   }
 
@@ -49,9 +59,14 @@ $(function () {
       this.attack = Math.floor((Math.random() * (55 - 50) + 50));
       this.defense = Math.floor((Math.random() * (45 - 40) + 40));
       this.gold = Math.floor((Math.random() * (50 - 45) + 45));
-      this.potionDrop = Math.floor((Math.random() * 4 + 0));
       this.attackPattern = [true, false, true, true, false];
-      this.healthPotionStrength = 30;
+
+      var potionDrop = Math.floor((Math.random() * 4 + 0));
+      if (potionDrop == 0) {
+        this.healthPotionStrength = 30;
+      } else {
+       this.healthPotionStrength = 0;
+      }
     }
   }
 
@@ -60,10 +75,10 @@ $(function () {
       this.health = 100;
       this.attack = 80;
       this.defense = 80;
-      this.gold = 100;
-      this.potionDrop = Math.floor((Math.random() * 5 + 0));
+      this.gold = 0;
       this.attackPattern = [true, false, true, true, true, false];
-      this.healthPotionStrength = 40;
+      this.healthPotionStrength = 0;
+
     }
   }
 
@@ -353,6 +368,7 @@ $(function () {
               popups.died.show();
               player.health = 0;
               $('#playerHealth').val(player.health);
+
             } else if (currentEnemy.health < 1) {
               statContainer.roundCounter.hide();
               gameScreen.popup.show();
@@ -391,7 +407,7 @@ $(function () {
   }
 
   $("#goldDrop").click(function () {
-    if (currentEnemy.potionDrop == 1) {
+    if (currentEnemy.healthPotionStrength > 0) {
       popups.goldDrop.hide();
       popups.potionDrop.show();
 
