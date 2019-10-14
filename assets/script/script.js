@@ -2,7 +2,7 @@
 $(function () {
 
   //Global objects and variables
-  var playerMaxHealth = 100;
+  const playerMaxHealth = 100;
   var roundCount;
   var healthPotionStrength;
   var player;
@@ -20,7 +20,7 @@ $(function () {
   initializePlayer();
 
   //Fetching screens & elements
-  var gameScreen = {
+  const gameScreen = {
     welcome: $("#welcome-screen"),
     home: $("#home-screen"),
     combat: $("#combat-screen"),
@@ -31,7 +31,7 @@ $(function () {
     popup: $("#pop-up-container"),
   }
 
-  var popups = {
+  const popups = {
     winFight: $("#winFight"),
     died: $("#died"),
     potionDrop: $("#potionDrop"),
@@ -41,7 +41,7 @@ $(function () {
 
 
 
-  var statContainer = {
+  const statContainer = {
     player: $(".player-stats-container"),
     enemy: $(".enemy-stats-container"),
     roundCounter: $(".round-counter-container")
@@ -279,7 +279,7 @@ $(function () {
     console.log(enemyPotionDrop)
 
     // Picking enemy action from pre-set pattern
-    var isEnemyAttacking = enemyAttackState[roundCount % enemyAttackState.length];
+    const isEnemyAttacking = enemyAttackState[roundCount % enemyAttackState.length];
 
     var playerDamageTaken = 0;
     var enemyDamageTaken = 0;
