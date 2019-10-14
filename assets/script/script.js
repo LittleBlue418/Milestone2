@@ -1,7 +1,22 @@
-//On load function
+/*
+ =================================
+    Math Functions
+ =================================
+ */
+
+function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
+
+
+/*
+=================================
+   On Load
+=================================
+*/
+
 $(function () {
-
-
   /*
   =================================
       Global Variables
@@ -12,14 +27,11 @@ $(function () {
   var roundCount;
   var player;
 
-
   /*
  =================================
      Classes
  =================================
  */
-
-
   class EnemyBase {
     constructor() {
 
@@ -37,10 +49,10 @@ $(function () {
   class Enemy1 extends EnemyBase {
     constructor() {
       super();
-      this.health = Math.floor((Math.random() * (40 - 30) + 30));
-      this.attack = Math.floor((Math.random() * (15 - 10) + 10));
-      this.defense = Math.floor((Math.random() * (15 - 10) + 10));
-      this.gold = Math.floor((Math.random() * (10 - 5) + 5));
+      this.health = randomInteger(30, 40);
+      this.attack = randomInteger(10, 15);
+      this.defense = randomInteger(10, 15);
+      this.gold = randomInteger(5, 10);
       this.attackPattern = [true, false, true];
 
       var potionDrop = Math.floor((Math.random() * 2 + 0));
@@ -52,13 +64,14 @@ $(function () {
     }
   };
 
+
   class Enemy2 extends EnemyBase {
     constructor() {
       super();
-      this.health = Math.floor((Math.random() * (50 - 45) + 45));
-      this.attack = Math.floor((Math.random() * (30 - 25) + 25));
-      this.defense = Math.floor((Math.random() * (40 - 35) + 35));
-      this.gold = Math.floor((Math.random() * (30 - 25) + 25));
+      this.health = randomInteger(45, 50);
+      this.attack = randomInteger(25, 30);
+      this.defense = randomInteger(35, 40);
+      this.gold = randomInteger(25, 30);
       this.attackPattern = [true, false, true, false];
 
       var potionDrop = Math.floor((Math.random() * 3 + 0));
@@ -73,10 +86,10 @@ $(function () {
   class Enemy3 extends EnemyBase {
     constructor() {
       super();
-      this.health = Math.floor((Math.random() * (60 - 55) + 55));
-      this.attack = Math.floor((Math.random() * (55 - 50) + 50));
-      this.defense = Math.floor((Math.random() * (45 - 40) + 40));
-      this.gold = Math.floor((Math.random() * (50 - 45) + 45));
+      this.health = randomInteger(55, 60);
+      this.attack = randomInteger(55, 50);
+      this.defense = randomInteger(40, 45);
+      this.gold = randomInteger(45, 50);
       this.attackPattern = [true, false, true, true, false];
 
       var potionDrop = Math.floor((Math.random() * 4 + 0));
@@ -99,7 +112,6 @@ $(function () {
       this.healthPotionStrength = 0;
     }
   }
-
 
 
   function initializePlayer() {
