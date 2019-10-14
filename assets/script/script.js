@@ -8,7 +8,9 @@ function randomInteger(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
-
+function randomBool(probability) {
+  return Math.random() < probability;
+};
 
 /*
 =================================
@@ -55,8 +57,7 @@ $(function () {
       this.gold = randomInteger(5, 10);
       this.attackPattern = [true, false, true];
 
-      var potionDrop = Math.floor((Math.random() * 2 + 0));
-      if (potionDrop == 0) {
+      if (randomBool(0.5)) {
         this.healthPotionStrength = 10;
       } else {
         this.healthPotionStrength = 0;
@@ -74,9 +75,8 @@ $(function () {
       this.gold = randomInteger(25, 30);
       this.attackPattern = [true, false, true, false];
 
-      var potionDrop = Math.floor((Math.random() * 3 + 0));
-      if (potionDrop == 0) {
-        this.healthPotionStrength = 20;
+      if (randomBool(0.333)) {
+        this.healthPotionStrength = 10;
       } else {
         this.healthPotionStrength = 0;
       }
@@ -92,9 +92,8 @@ $(function () {
       this.gold = randomInteger(45, 50);
       this.attackPattern = [true, false, true, true, false];
 
-      var potionDrop = Math.floor((Math.random() * 4 + 0));
-      if (potionDrop == 0) {
-        this.healthPotionStrength = 30;
+      if (randomBool(0.25)) {
+        this.healthPotionStrength = 10;
       } else {
         this.healthPotionStrength = 0;
       }
