@@ -19,8 +19,24 @@ $(function () {
  =================================
  */
 
-  class Enemy1 {
+
+  class EnemyBase {
     constructor() {
+
+    }
+
+    takeDamage(damageTaken) {
+      this.health = Math.max(this.health - damageTaken, 0);
+    }
+
+    isEnemyAttacking(roundCount) {
+      return this.attackPattern[roundCount % this.attackPattern.length];
+    }
+  }
+
+  class Enemy1 extends EnemyBase {
+    constructor() {
+      super();
       this.health = Math.floor((Math.random() * (40 - 30) + 30));
       this.attack = Math.floor((Math.random() * (15 - 10) + 10));
       this.defense = Math.floor((Math.random() * (15 - 10) + 10));
@@ -34,19 +50,11 @@ $(function () {
         this.healthPotionStrength = 0;
       }
     }
-
-    takeDamage(damageTaken) {
-      this.health = Math.max(this.health - damageTaken, 0);
-    }
-
-    isEnemyAttacking(roundCount) {
-      return this.attackPattern[roundCount % this.attackPattern.length];
-    }
-
   };
 
-  class Enemy2 {
+  class Enemy2 extends EnemyBase {
     constructor() {
+      super();
       this.health = Math.floor((Math.random() * (50 - 45) + 45));
       this.attack = Math.floor((Math.random() * (30 - 25) + 25));
       this.defense = Math.floor((Math.random() * (40 - 35) + 35));
@@ -60,18 +68,11 @@ $(function () {
         this.healthPotionStrength = 0;
       }
     }
-
-    takeDamage(damageTaken) {
-      this.health = Math.max(this.health - damageTaken, 0);
-    }
-
-    isEnemyAttacking(roundCount) {
-      return this.attackPattern[roundCount % this.attackPattern.length];
-    }
   }
 
-  class Enemy3 {
+  class Enemy3 extends EnemyBase {
     constructor() {
+      super();
       this.health = Math.floor((Math.random() * (60 - 55) + 55));
       this.attack = Math.floor((Math.random() * (55 - 50) + 50));
       this.defense = Math.floor((Math.random() * (45 - 40) + 40));
@@ -84,33 +85,18 @@ $(function () {
       } else {
         this.healthPotionStrength = 0;
       }
-
-    }
-    takeDamage(damageTaken) {
-      this.health = Math.max(this.health - damageTaken, 0);
-    }
-
-    isEnemyAttacking(roundCount) {
-      return this.attackPattern[roundCount % this.attackPattern.length];
     }
   }
 
-  class Enemy4 {
+  class Enemy4 extends EnemyBase {
     constructor() {
+      super();
       this.health = 100;
       this.attack = 80;
       this.defense = 80;
       this.gold = 0;
       this.attackPattern = [true, false, true, true, true, false];
       this.healthPotionStrength = 0;
-    }
-
-    takeDamage(damageTaken) {
-      this.health = Math.max(this.health - damageTaken, 0);
-    }
-
-    isEnemyAttacking(roundCount) {
-      return this.attackPattern[roundCount % this.attackPattern.length];
     }
   }
 
