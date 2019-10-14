@@ -27,13 +27,17 @@ $(function () {
       this.gold = Math.floor((Math.random() * (10 - 5) + 5));
       this.attackPattern = [true, false, true];
 
-       var potionDrop = Math.floor((Math.random() * 2 + 0));
-       if (potionDrop == 0) {
-         this.healthPotionStrength = 10;
-       } else {
+      var potionDrop = Math.floor((Math.random() * 2 + 0));
+      if (potionDrop == 0) {
+        this.healthPotionStrength = 10;
+      } else {
         this.healthPotionStrength = 0;
-       }
+      }
     }
+    takeDamage(damageTaken) {
+      this.health = Math.max(this.health - damageTaken, 0);
+    }
+
   };
 
   class Enemy2 {
@@ -48,8 +52,11 @@ $(function () {
       if (potionDrop == 0) {
         this.healthPotionStrength = 20;
       } else {
-       this.healthPotionStrength = 0;
+        this.healthPotionStrength = 0;
       }
+    }
+    takeDamage(damageTaken) {
+      this.health = Math.max(this.health - damageTaken, 0);
     }
   }
 
@@ -65,8 +72,11 @@ $(function () {
       if (potionDrop == 0) {
         this.healthPotionStrength = 30;
       } else {
-       this.healthPotionStrength = 0;
+        this.healthPotionStrength = 0;
       }
+    }
+    takeDamage(damageTaken) {
+      this.health = Math.max(this.health - damageTaken, 0);
     }
   }
 
@@ -78,7 +88,9 @@ $(function () {
       this.gold = 0;
       this.attackPattern = [true, false, true, true, true, false];
       this.healthPotionStrength = 0;
-
+    }
+    takeDamage(damageTaken) {
+      this.health = Math.max(this.health - damageTaken, 0);
     }
   }
 
@@ -317,7 +329,7 @@ $(function () {
     }
 
 
-    currentEnemy.health = Math.max(currentEnemy.health - enemyDamageTaken, 0);
+    currentEnemy.takeDamage(enemyDamageTaken);
     player.health = Math.max(player.health - playerDamageTaken, 0);
 
 
