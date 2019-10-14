@@ -12,6 +12,8 @@ function randomBool(probability) {
   return Math.random() < probability;
 };
 
+
+
 /*
 =================================
    On Load
@@ -19,6 +21,7 @@ function randomBool(probability) {
 */
 
 $(function () {
+
   /*
   =================================
       Global Variables
@@ -29,15 +32,18 @@ $(function () {
   var roundCount;
   var player;
 
+
   /*
  =================================
      Classes
  =================================
  */
-  class EnemyBase {
-    constructor() {
 
-    }
+  class EnemyBase {
+    constructor(health, attackPattern) {
+      this.health = health;
+      this.attackPattern = attackPattern;
+    };
 
     takeDamage(damageTaken) {
       this.health = Math.max(this.health - damageTaken, 0);
@@ -50,12 +56,16 @@ $(function () {
 
   class Enemy1 extends EnemyBase {
     constructor() {
-      super();
-      this.health = randomInteger(30, 40);
+
+      var health = randomInteger(30, 40);
+      var attackPattern = [true, false, true];
+
+      super(health, attackPattern);
+
       this.attack = randomInteger(10, 15);
       this.defense = randomInteger(10, 15);
       this.gold = randomInteger(5, 10);
-      this.attackPattern = [true, false, true];
+
 
       if (randomBool(0.5)) {
         this.healthPotionStrength = 10;
@@ -68,12 +78,15 @@ $(function () {
 
   class Enemy2 extends EnemyBase {
     constructor() {
-      super();
-      this.health = randomInteger(45, 50);
+      var health = randomInteger(45, 50);
+      var attackPattern = [true, false, true, false];
+
+      super(health, attackPattern);
+
       this.attack = randomInteger(25, 30);
       this.defense = randomInteger(35, 40);
       this.gold = randomInteger(25, 30);
-      this.attackPattern = [true, false, true, false];
+
 
       if (randomBool(0.333)) {
         this.healthPotionStrength = 10;
@@ -85,12 +98,15 @@ $(function () {
 
   class Enemy3 extends EnemyBase {
     constructor() {
-      super();
-      this.health = randomInteger(55, 60);
+      var health = randomInteger(55, 60);
+      var attackPattern = [true, false, true, true, false];
+
+      super(health, attackPattern);
+
       this.attack = randomInteger(55, 50);
       this.defense = randomInteger(40, 45);
       this.gold = randomInteger(45, 50);
-      this.attackPattern = [true, false, true, true, false];
+
 
       if (randomBool(0.25)) {
         this.healthPotionStrength = 10;
@@ -102,12 +118,14 @@ $(function () {
 
   class Enemy4 extends EnemyBase {
     constructor() {
-      super();
-      this.health = 100;
+      var health = 100;
+      var attackPattern = [true, false, true, true, true, false];
+
+      super(health, attackPattern);
+
       this.attack = 80;
       this.defense = 80;
       this.gold = 0;
-      this.attackPattern = [true, false, true, true, true, false];
       this.healthPotionStrength = 0;
     }
   }
