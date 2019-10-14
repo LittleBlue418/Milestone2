@@ -64,12 +64,14 @@ body {
 
 
 
-/* ----- Buttons */
+/* ----- BUTTONS */
+
 .buttonClass {
     background-size: contain;
-    background-repeat: none;
-    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: rgba(0, 0, 0, 0);
+    border: none;
 }
 
 .buttonClass:active {
@@ -79,6 +81,14 @@ body {
 .buttonClass:disabled {
     opacity: 0.5;
 }
+
+.button-container {
+    outline: red 3px solid;
+    width: 100%;
+    height: 100%;
+}
+
+/* ----- */
 
 #welcome-screen .toHomeButton {
     background-image: url(../buttons/scroll.png);
@@ -99,16 +109,7 @@ body {
 
 }
 
-
-
-
-.button-container {
-    outline: red 3px solid;
-    width: 100%;
-    height: 100%;
-}
-
-
+/* ----- */
 
 .row-button-container2 {
     position: absolute;
@@ -120,10 +121,20 @@ body {
     justify-content: space-evenly;
 }
 
+.toShopButton {
+    background-image: url(../buttons/shop-sign.png);
+}
+
+#home-screen .toMapButton {
+    background-image: url(../buttons/road_sign.png);
+}
+
 .button2 {
     width: 200px;
     height: 200px;
 }
+
+/* ----- */
 
 .row-button-container3 {
     position: absolute;
@@ -135,14 +146,19 @@ body {
     justify-content: space-evenly;
 }
 
-.button3 {
-    width: 150px;
-    height: 150px;
+.levelUpAttack {
+    background-image: url(../buttons/sword.png);
 }
 
-.button3:disabled {
-    opacity: 0.5;
+.levelUpDefence {
+    background-image: url(../buttons/shield.png);
 }
+
+#shop-screen .toHomeButton {
+    background-image: url(../buttons/door.png);
+}
+
+/* ----- */
 
 .diagonal-button-container {
     position: absolute;
@@ -152,16 +168,19 @@ body {
     height: 90%;
     width: 100%;
     top: 8%;
-
 }
+
 .enemy4Button {
+    background-image: url(../buttons/enemy.png);
     position: absolute;
     width: 150px;
     height: 150px;
     top: 60px;
     left:60%;
 }
+
 .enemy3Button {
+    background-image: url(../buttons/enemy.png);
     position: absolute;
     width: 150px;
     height: 150px;
@@ -170,15 +189,16 @@ body {
 }
 
 .enemy2Button {
+    background-image: url(../buttons/enemy.png);
     position: absolute;
     width: 150px;
     height: 150px;
     left:35%;
     top:calc(150px + 150px + 150px);
-
 }
 
 .enemy1Button {
+    background-image: url(../buttons/enemy.png);
     position: absolute;
     width: 150px;
     height: 150px;
@@ -186,7 +206,9 @@ body {
     top:calc(150px + 150px + 150px + 200px);
 
 }
+
 .mapButtonHome {
+    background-image: url(../buttons/road_sign.png);
     position: absolute;
     width: 150px;
     height: 150px;
@@ -194,14 +216,24 @@ body {
     top:calc(150px + 150px + 150px + 150px + 120px);
 }
 
+/* ----- */
 
+.attackButton {
+    background-image: url(../buttons/sword.png);
+}
 
+.defenceButton {
+    background-image: url(../buttons/shield.png);
+}
 
+.fleeButton {
+    background-image: url(../buttons/run.png);
+}
 
-
-
-
-
+.button3 {
+    width: 150px;
+    height: 150px;
+}
 
 
 /* ----- POP ANIMATIONS */
