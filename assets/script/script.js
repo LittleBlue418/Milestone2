@@ -34,8 +34,13 @@ $(function () {
         this.healthPotionStrength = 0;
       }
     }
+
     takeDamage(damageTaken) {
       this.health = Math.max(this.health - damageTaken, 0);
+    }
+
+    isEnemyAttacking(roundCount) {
+      return this.attackPattern[roundCount % this.attackPattern.length];
     }
 
   };
@@ -55,8 +60,13 @@ $(function () {
         this.healthPotionStrength = 0;
       }
     }
+
     takeDamage(damageTaken) {
       this.health = Math.max(this.health - damageTaken, 0);
+    }
+
+    isEnemyAttacking(roundCount) {
+      return this.attackPattern[roundCount % this.attackPattern.length];
     }
   }
 
@@ -74,9 +84,14 @@ $(function () {
       } else {
         this.healthPotionStrength = 0;
       }
+
     }
     takeDamage(damageTaken) {
       this.health = Math.max(this.health - damageTaken, 0);
+    }
+
+    isEnemyAttacking(roundCount) {
+      return this.attackPattern[roundCount % this.attackPattern.length];
     }
   }
 
@@ -89,8 +104,13 @@ $(function () {
       this.attackPattern = [true, false, true, true, true, false];
       this.healthPotionStrength = 0;
     }
+
     takeDamage(damageTaken) {
       this.health = Math.max(this.health - damageTaken, 0);
+    }
+
+    isEnemyAttacking(roundCount) {
+      return this.attackPattern[roundCount % this.attackPattern.length];
     }
   }
 
@@ -308,7 +328,7 @@ $(function () {
     console.log(currentEnemy.potionDrop)
 
     // Picking enemy action from pre-set pattern
-    const isEnemyAttacking = currentEnemy.attackPattern[roundCount % currentEnemy.attackPattern.length];
+    const isEnemyAttacking = currentEnemy.isEnemyAttacking(roundCount);
 
     var playerDamageTaken = 0;
     var enemyDamageTaken = 0;
