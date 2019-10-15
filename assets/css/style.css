@@ -9,6 +9,7 @@
      margin: 0px;
      font-family: 'Calligraffitti', cursive;
  }
+
  /*
  =================================
      Media Queries
@@ -23,19 +24,14 @@
         left: calc(50% - 384px);
     }
 }
+
  /*
  =================================
      Flex layout
  =================================
  */
 
- .game-container {
-     position: fixed;
-     width: 100%;
-     height: 100%;
- }
-
- .fancy-background {
+.fancy-background {
      background-image: url(../backgrounds/template-page-background.png);
      width: 100%;
      height: 100%;
@@ -43,6 +39,12 @@
      background-repeat: no-repeat;
      background-position-x: center;
      background-color: black;
+ }
+
+ .game-container {
+     position: fixed;
+     width: 100%;
+     height: 100%;
  }
 
  .game-screen {
@@ -60,6 +62,16 @@
 .inner-flex {
      width: 100%;
      flex: 1;
+ }
+
+ /*
+ =================================
+     Combat Screen
+ =================================
+ */
+
+#combat-screen {
+     background-image: url("../backgrounds/template-combat-scene.png");
  }
 
  .stat-section {
@@ -99,11 +111,6 @@
     justify-content: flex-end;
  }
 
- .welcome-buffer-section {
-    background-color: rgba(30, 27, 230, 0.5);
-    flex-grow: 3;
-    flex-basis: 0;
- }
 
 /* ----- Flex columns */
 
@@ -179,6 +186,34 @@
 
  /* ----- Inner Divs & Buttons*/
 
+#heroine-stats {
+    background-image: url(../stats/template-stats-left.png);
+    border: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: left;
+    transform: scale(1);
+    transition: transform 20ms ease-in-out;
+}
+
+#enemy-stats {
+    background-image: url(../stats/template-stats-right.png);
+    border: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    transform: scale(1);
+    transition: transform 20ms ease-in-out;
+}
+
  #heroine-base {
     background-image: url(../heroine/heroineBase.png);
     background-position: center;
@@ -236,33 +271,6 @@
     transition: transform 20ms ease-in-out;
  }
 
-#heroine-stats {
-    background-image: url(../stats/template-stats-left.png);
-    border: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: left;
-    transform: scale(1);
-    transition: transform 20ms ease-in-out;
-}
-
-#enemy-stats {
-    background-image: url(../stats/template-stats-right.png);
-    border: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: right;
-    transform: scale(1);
-    transition: transform 20ms ease-in-out;
-}
 
 
  .button {
@@ -287,23 +295,7 @@
  }
 
 
-
-
-/*
- =================================
-     Game screens
- =================================
- */
-
-#welcome-screen {
-     background-image: url("../backgrounds/template-welcome-screen.png");
- }
-
-#combat-screen {
-     background-image: url("../backgrounds/template-combat-scene.png");
- }
-
- #attack .button {
+#attack .button {
      background-image: url(../buttons/sword.png);
  }
 
@@ -319,9 +311,38 @@
     background-image: url(../buttons/settings.png);
 }
 
+
+
+
+
+
+/*
+ =================================
+     Game screens
+ =================================
+ */
+
+#welcome-screen {
+     background-image: url("../backgrounds/template-welcome-screen.png");
+ }
+
+
+
+
 #start-game .button {
     background-image: url(../buttons/scroll.png);
 }
+
+
+
+
+.welcome-buffer-section {
+    background-color: rgba(30, 27, 230, 0.5);
+    flex-grow: 3;
+    flex-basis: 0;
+ }
+
+
 
 
 
