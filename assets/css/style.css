@@ -9,7 +9,20 @@
      margin: 0px;
      font-family: 'Calligraffitti', cursive;
  }
+ /*
+ =================================
+     Media Queries
+ =================================
+ */
 
+@media(min-width: 768px) {
+    .game-container {
+        position: absolute;
+        max-width: 768px;
+        max-height: 1024px;
+        left: calc(50% - 384px);
+    }
+}
  /*
  =================================
      Flex layout
@@ -86,6 +99,12 @@
     justify-content: flex-end;
  }
 
+ .welcome-buffer-section {
+    background-color: rgba(30, 27, 230, 0.5);
+    flex-grow: 3;
+    flex-basis: 0;
+ }
+
 /* ----- Flex columns */
 
  .stats {
@@ -112,6 +131,16 @@
     padding: 5px;
     margin-bottom: 5px;
  }
+
+.start {
+    background-color: rgba(250, 84, 7, 0.5);
+    flex-grow: 0;
+    flex-basis: 200px;
+    flex-shrink: 1;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
 
  .menu {
     background-color: rgba(250, 84, 7, 0.5);
@@ -262,31 +291,15 @@
 
 
 
-
-
-padding-top: calc( 100 / 380 * 100%);
-
-
- /*
- =================================
-     Media Queries
- =================================
- */
-
-@media(min-width: 768px) {
-    .game-container {
-        position: absolute;
-        max-width: 768px;
-        max-height: 1024px;
-        left: calc(50% - 384px);
-    }
-}
-
 /*
  =================================
      Game screens
  =================================
  */
+
+#welcome-screen {
+     background-image: url("../backgrounds/template-welcome-screen.png");
+ }
 
 #combat-screen {
      background-image: url("../backgrounds/template-combat-scene.png");
@@ -306,6 +319,10 @@ padding-top: calc( 100 / 380 * 100%);
 
 .menu-button .button {
     background-image: url(../buttons/settings.png);
+}
+
+#start-game .button {
+    background-image: url(../buttons/scroll.png);
 }
 
 
@@ -346,9 +363,6 @@ padding-top: calc( 100 / 380 * 100%);
      background-image: url("../backgrounds/template-menu-scroll.png");
  }
 
- #welcome-screen {
-     background-image: url("../backgrounds/template-welcome-screen.png");
- }
 
  #frame {
      background-image: url("../backgrounds/template-game-frame.png");
