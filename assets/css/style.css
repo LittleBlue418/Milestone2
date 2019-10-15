@@ -91,10 +91,8 @@
  .stats {
     background-color: rgba(250, 84, 7, 0.5);
     flex-grow: 0;
-    flex-basis: 140px;
+    flex-basis: 900px;
     flex-shrink: 1;
-    padding: 5px;
-    margin-bottom: 5px;
  }
 
  .figure {
@@ -130,7 +128,7 @@
 
  .stats-inner {
     height: 0;
-    padding-top: 100%;
+    padding-top: 70%;
     overflow: hidden;
     position: relative;
  }
@@ -221,6 +219,7 @@
     top: 0;
     background-size: contain;
     background-repeat: no-repeat;
+    background-position-x: left;
     transform: scale(1);
     transition: transform 20ms ease-in-out;
 }
@@ -234,6 +233,7 @@
     top: 0;
     background-size: contain;
     background-repeat: no-repeat;
+    background-position-x: right;
     transform: scale(1);
     transition: transform 20ms ease-in-out;
 }
