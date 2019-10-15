@@ -121,7 +121,7 @@
     flex-shrink: 1;
  }
 
- .figure {
+ .figure-container {
     background-color: rgba(250, 84, 7, 0.5);
     flex-grow: 0;
     flex-basis: 400px;
@@ -196,8 +196,6 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: left;
-    transform: scale(1);
-    transition: transform 20ms ease-in-out;
 }
 
 #enemy-stats {
@@ -210,65 +208,69 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: right;
-    transform: scale(1);
-    transition: transform 20ms ease-in-out;
+}
+
+.figure {
+    background-position: center;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
  #heroine-base {
     background-image: url(../heroine/heroineBase.png);
-    background-position: center;
-    border: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    transform: scale(1);
-    transition: transform 20ms ease-in-out;
  }
 
- #heroine-sword-magic {
+ #heroine-sword {
+    /* Wooden sword */
+ }
+
+ #heroine-sword.iron {
+     /* Iron sword */
+ }
+
+ #heroine-sword.fancy {
+    /* Fancy sword */
+ }
+
+ #heroine-sword.magic {
     background-image: url(../heroine/heroine-sword-magic.png);
-    background-position: center;
-    border: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    transform: scale(1);
-    transition: transform 20ms ease-in-out;
  }
 
- #heroine-shield-fancy {
+ #heroine-shield {
+    /* Wooden shield */
+ }
+
+ #heroine-shield.iron {
+   /* Iron shield */
+ }
+
+ #heroine-shield.fancy {
     background-image: url(../heroine/heroine-shield-fancy.png);
-    background-position: center;
-    border: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    transform: scale(1);
-    transition: transform 20ms ease-in-out;
  }
 
+ #heroine-shield.magic {
+    /* Magic shield */
+ }
 
- #enemy {
+ #enemy.level1 {
     background-image: url(../enemies/enemy1.png);
-    background-position: center;
-    border: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    transform: scale(1);
-    transition: transform 20ms ease-in-out;
+ }
+
+ #enemy.level2 {
+    /* Level 2 enemy */
+ }
+
+ #enemy.level3 {
+    /* Level 2 enemy */
+ }
+
+ #enemy.level4 {
+    /* Level 2 enemy */
  }
 
 
@@ -293,7 +295,6 @@
  .button:disabled {
      opacity: 0.5;
  }
-
 
 #attack .button {
      background-image: url(../buttons/sword.png);
