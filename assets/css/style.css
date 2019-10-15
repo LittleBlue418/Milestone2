@@ -1,491 +1,569 @@
-html body {
-    padding: 0px;
-    margin: 0px;
-    font-family: 'Calligraffitti', cursive;
-}
+ /*
+ =================================
+     Page rules
+ =================================
+ */
 
-.game-container {
-    position: fixed;
-    width: 100%
-}
+ html body {
+     padding: 0px;
+     margin: 0px;
+     font-family: 'Calligraffitti', cursive;
+ }
+ /*
+ =================================
+     Flex layout
+ =================================
+ */
 
-.game-screen {
-    position: absolute;
-    width: 768px;
-    height:1024px;
-    left:calc(50% - 384px);
-}
+ .game-container {
+     position: fixed;
+     width: 100%;
+     height: 100%;
+ }
 
+ .game-screen {
+     width: 100%;
+     height: 100%;
+     background-position-x: center;
+     background-size: cover;
+     display: flex;
+     flex-direction: column;
+ }
 
-/* ----- Backgrounds */
-#home-screen {
-    background-image: url("../backgrounds/template-home-screen.png");
-}
+ .inner-flex {
+     width: 100%;
+     flex: 1;
+ }
 
-#shop-screen {
-    background-image: url("../backgrounds/template-shop-screen.png");
-}
+ .stat-section {
+     background-color: rgba(103, 3, 218, 0.5);
+ }
 
-#map-screen {
-    background-image: url("../backgrounds/template-map-screen.png");
-}
+ .center-section {
+     flex-grow: 2;
+ }
 
-#combat-screen {
-    background-image: url("../backgrounds/template-combat-scene.png");
-}
+ .button-section {
+     background-color: rgba(168, 28, 28, 0.5);
+     flex-grow: 0;
+     flex-basis: 0;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+ }
 
-#victory-screen {
-    background-image: url("../backgrounds/template-victory-screen.png");
-}
+ .action {
+    background-color: rgba(250, 84, 7, 0.5);
+    flex-grow: 0;
+    flex-basis: 200px;
+    flex-shrink: 1;
+    padding: 5px;
+    margin-bottom: 25px;
+ }
 
-#menu-screen {
-    background-image: url("../backgrounds/template-menu-scroll.png");
-}
+ .action-inner {
+     height: 0;
+     padding-top: 100%;
+     overflow: hidden;
+     position: relative;
+ }
 
-#welcome-screen {
-    background-image: url("../backgrounds/template-welcome-screen.png");
-}
+ .button {
+     background: rgba(103, 3, 218, 0.5);
+     border: 0;
 
-#frame {
-    background-image: url("../backgrounds/template-game-frame.png");
-    position: absolute;
-    width: 768px;
-    height:1024px;
-    left:calc(50% - 384px);
-    pointer-events: none;
-}
+     height: 100%;
+     width: 100%;
+     position: absolute;
+     top: 0;
+     background-size: contain;
+     background-repeat: no-repeat;
+     transform: scale(1);
+     transition: transform 20ms ease-in-out;
+ }
 
-body {
-    background-image: url("../backgrounds/template-page-background.png");
-    background-repeat: no-repeat;
-    background-color: black;
-    background-position-x: 50%;
-}
+ .button:active {
+     transform: scale(0.95);
+ }
 
+ .button:disabled {
+     opacity: 0.5;
+ }
 
+ #attack .button {
+     background-image: url(../buttons/sword.png);
+ }
 
-/* ----- BUTTONS */
-
-.buttonClass {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-}
-
-.buttonClass:active {
-    transform: scale(0.95);
-}
-
-.buttonClass:disabled {
-    opacity: 0.5;
-}
-
-.button-container {
-    outline: red 3px solid;
-    width: 100%;
-    height: 100%;
-}
-
-/* ----- */
-
-#welcome-screen .toHomeButton {
-    background-image: url(../buttons/scroll.png);
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    left:calc(50% - 100px);
-    top:calc(80% - 100px);
-}
-
-.menuButton {
-    background-image: url(../buttons/settings.png);
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    right: calc(9% - 25px);
-    bottom:calc(8% - 25px);
-
-}
-
-/* ----- */
-
-.row-button-container2 {
-    position: absolute;
-    outline:blue 3px solid;
-    width: 100%;
-    bottom: 60px;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.toShopButton {
-    background-image: url(../buttons/shop-sign.png);
-}
-
-#home-screen .toMapButton {
-    background-image: url(../buttons/road_sign.png);
-}
-
-.button2 {
-    width: 200px;
-    height: 200px;
-}
-
-/* ----- */
-
-.row-button-container3 {
-    position: absolute;
-    outline:blue 3px solid;
-    width: 100%;
-    bottom: 110px;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.levelUpAttack {
-    background-image: url(../buttons/sword.png);
-}
-
-.levelUpDefence {
+#defend .button {
     background-image: url(../buttons/shield.png);
 }
 
-#shop-screen .toHomeButton {
-    background-image: url(../buttons/door.png);
-}
-
-/* ----- */
-
-.diagonal-button-container {
-    position: absolute;
-    outline:blue 3px solid;
-    display:flex;
-    flex-direction: column;
-    height: 90%;
-    width: 100%;
-    top: 8%;
-}
-
-.enemy4Button {
-    background-image: url(../buttons/enemy.png);
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    top: 60px;
-    left:60%;
-}
-
-.enemy3Button {
-    background-image: url(../buttons/enemy.png);
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    left:45%;
-    top:calc(150px + 100px);
-}
-
-.enemy2Button {
-    background-image: url(../buttons/enemy.png);
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    left:35%;
-    top:calc(150px + 150px + 150px);
-}
-
-.enemy1Button {
-    background-image: url(../buttons/enemy.png);
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    left:20%;
-    top:calc(150px + 150px + 150px + 200px);
-
-}
-
-.mapButtonHome {
-    background-image: url(../buttons/road_sign.png);
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    left:70%;
-    top:calc(150px + 150px + 150px + 150px + 120px);
-}
-
-/* ----- */
-
-.attackButton {
-    background-image: url(../buttons/sword.png);
-}
-
-.defenceButton {
-    background-image: url(../buttons/shield.png);
-}
-
-.fleeButton {
+#flee .button {
     background-image: url(../buttons/run.png);
 }
 
-.button3 {
-    width: 150px;
-    height: 150px;
-}
-
-
-/* ----- POP ANIMATIONS */
-#pop-text-container {
-    position: absolute;
-    width: 300px;
-    height: 400px;
-    left:calc(50% - 150px);
-    top: 200px;
-    pointer-events: none;
-}
-
-.pop-text {
-    font-family: Impact, sans-serif;
-    font-size: 10;
-    opacity: 0;
-}
-/* ----- MENU */
-
-#menu-container {
-    position: absolute;
-    width: 768px;
-    height:1024px;
-    left:calc(50% - 384px);
-    pointer-events: none;
-    background-color: rgba(0, 0, 0, 0.7);
-
-}
-
-#dialogueScroll {
-    position: absolute;
-    width: 448px;
-    height: 640px;
-    left: calc(50% - 224px);
-    top:calc(50% - 320px);
-}
-
-
-#menu-text-box {
-    position: absolute;
-    width: 250px;
-    height: 600;
-    left: calc(52% - 125px);
-    top:calc(65% - 300px);
-    list-style: none;
-}
-
-#menu-text-box h2 {
-    font-size: 3rem;
-    font-weight: 700;
-}
-
-#menu-text-box a {
-
-}
+#combat-screen {
+     background-image: url("../backgrounds/template-combat-scene.png");
+ }
 
 
 
 
 
 
+ /* -------------------------
+
+ .game-screen {
+     position: absolute;
+     width: 768px;
+     height: 1024px;
+     left: calc(50% - 384px);
+ }
+  ----- Backgrounds
+
+ #home-screen {
+     background-image: url("../backgrounds/template-home-screen.png");
+ }
+
+ #shop-screen {
+     background-image: url("../backgrounds/template-shop-screen.png");
+ }
+
+ #map-screen {
+     background-image: url("../backgrounds/template-map-screen.png");
+ }
 
 
+ #victory-screen {
+     background-image: url("../backgrounds/template-victory-screen.png");
+ }
 
+ #menu-screen {
+     background-image: url("../backgrounds/template-menu-scroll.png");
+ }
 
-/* ----- Heroine & Enemies */
-.combat-image {
-    position: absolute;
-    pointer-events: none;
-}
-.action-text-container {
-    position: absolute;
-    width: 100%;
-    top: 45%;
-    font-family: Impact, sans-serif;
-    font-size: 50px;
-    opacity: 0;
-}
-.heroine-action {
-    position: absolute;
-    left: 20%;
-    color: red;
-}
+ #welcome-screen {
+     background-image: url("../backgrounds/template-welcome-screen.png");
+ }
 
-.enemy-action {
-    position: absolute;
-    left: 65%;
-    color: blue;
-}
+ #frame {
+     background-image: url("../backgrounds/template-game-frame.png");
+     position: absolute;
+     width: 768px;
+     height: 1024px;
+     left: calc(50% - 384px);
+     pointer-events: none;
+ }
 
-.damage-taken-text-container {
-    position: absolute;
-    width: 100%;
-    top: 25%;
-    font-family: Impact, sans-serif;
-    font-size: 20px;
-    opacity: 0;
-}
+ body {
+     background-image: url("../backgrounds/template-page-background.png");
+     background-repeat: no-repeat;
+     background-color: black;
+     background-position-x: 50%;
+ }
+  ----- BUTTONS
 
-.heroine-damage-taken {
-    position: absolute;
-    left: 27%;
-    color: red;
-}
+ .buttonClass {
+     background-size: contain;
+     background-repeat: no-repeat;
+     background-position: center;
+     background-color: rgba(0, 0, 0, 0);
+     border: none;
+ }
 
-.enemy-damage-taken {
-    position: absolute;
-    left: 70%;
-    color: red;
-}
-/* ----- Pop up icons */
+ .buttonClass:active {
+     transform: scale(0.95);
+ }
 
-#pop-up-container {
-    position: absolute;
-    width: 768px;
-    height:1024px;
-    left:calc(50% - 384px);
-    background-color: rgba(0, 0, 0, 0.7)
-}
-#winFight {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    left:calc(50% - 100px);
-    top:calc(50% - 100px);
-}
-#died {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    left:calc(50% - 100px);
-    top:calc(50% - 100px);
-}
-#potionDrop {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    left:calc(50% - 100px);
-    top:calc(50% - 100px);
-}
-#goldDrop {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    left:calc(50% - 100px);
-    top:calc(50% - 100px);
-}
+ .buttonClass:disabled {
+     opacity: 0.5;
+ }
 
-/* ----- Loot & Potion Drop text */
+ .button-container {
+     outline: red 3px solid;
+     width: 100%;
+     height: 100%;
+ }
+  -----
 
-.loot-drop-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    font-family: Impact, sans-serif;
-    font-size: 30px;
-    pointer-events: none;
-}
+ #welcome-screen .toHomeButton {
+     background-image: url(../buttons/scroll.png);
+     position: absolute;
+     width: 200px;
+     height: 200px;
+     left: calc(50% - 100px);
+     top: calc(80% - 100px);
+ }
 
-.potion-drop-text {
-    position: absolute;
-    left: 47%;
-    top: 45%;
-    color: greenyellow;
-    opacity: 0;
-}
-.gold-drop-text {
-    position: absolute;
-    left: 47%;
-    top: 45%;
-    color: goldenrod;
-    opacity: 0;
-}
+ .menuButton {
+     background-image: url(../buttons/settings.png);
+     position: absolute;
+     width: 50px;
+     height: 50px;
+     right: calc(9% - 25px);
+     bottom: calc(8% - 25px);
+ }
+  -----
 
+ .row-button-container2 {
+     position: absolute;
+     outline: blue 3px solid;
+     width: 100%;
+     bottom: 60px;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-evenly;
+ }
 
-/* ----- Player Stats */
-.player-stats-container {
-    position: absolute;
-    width: 768px;
-    height:1024px;
-    left:calc(50% - 384px);
-    pointer-events: none;
-}
+ .toShopButton {
+     background-image: url(../buttons/shop-sign.png);
+ }
 
-.iconSmall {
-    height: 25px;
-}
-.player-stats {
-    position: absolute;
-    left: 7%;
-    top: 5%;
-    outline: purple 3px solid;
-    background-color: aqua;
-    width: 140px;
-}
+ #home-screen .toMapButton {
+     background-image: url(../buttons/road_sign.png);
+ }
 
-.player-stats p {
-    font-size: 25px;
-    margin-bottom: 4px;
-}
+ .button2 {
+     width: 200px;
+     height: 200px;
+ }
+  -----
 
-/* ----- Enemy Stats */
-.enemy-stats-container {
-    position: absolute;
-    width: 768px;
-    height:1024px;
-    left:calc(50% - 384px);
-    pointer-events: none;
-}
+ .row-button-container3 {
+     position: absolute;
+     outline: blue 3px solid;
+     width: 100%;
+     bottom: 110px;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-evenly;
+ }
 
-.enemy-stats {
-    position: absolute;
-    right: 7%;
-    top: 5%;
-    outline: purple 3px solid;
-    background-color:pink;
-    width: 140px;
-}
-.enemy-stats p {
-    font-size: 25px;
-    margin-bottom: 4px;
-}
+ .levelUpAttack {
+     background-image: url(../buttons/sword.png);
+ }
 
-/* ----- Round counter */
-.round-counter-container {
-    position: absolute;
-    width: 768px;
-    height:1024px;
-    left:calc(50% - 384px);
-    pointer-events: none;
-}
+ .levelUpDefence {
+     background-image: url(../buttons/shield.png);
+ }
 
-.inner-round-counter-container {
-    position: absolute;
-    width: 200px;
-    height: 100px;
-    left: calc(50% - 100px);
-    top: calc(25% - 100px);
-    pointer-events: none;
-}
+ #shop-screen .toHomeButton {
+     background-image: url(../buttons/door.png);
+ }
+  -----
 
-.inner-round-counter-container p {
-    text-align: center;
-}
+ .diagonal-button-container {
+     position: absolute;
+     outline: blue 3px solid;
+     display: flex;
+     flex-direction: column;
+     height: 90%;
+     width: 100%;
+     top: 8%;
+ }
 
-/* Animation test */
+ .enemy4Button {
+     background-image: url(../buttons/enemy.png);
+     position: absolute;
+     width: 150px;
+     height: 150px;
+     top: 60px;
+     left: 60%;
+ }
 
-#animation-text {
-    opacity: 0;
-    text-align: center;
-}
+ .enemy3Button {
+     background-image: url(../buttons/enemy.png);
+     position: absolute;
+     width: 150px;
+     height: 150px;
+     left: 45%;
+     top: calc(150px + 100px);
+ }
 
+ .enemy2Button {
+     background-image: url(../buttons/enemy.png);
+     position: absolute;
+     width: 150px;
+     height: 150px;
+     left: 35%;
+     top: calc(150px + 150px + 150px);
+ }
 
+ .enemy1Button {
+     background-image: url(../buttons/enemy.png);
+     position: absolute;
+     width: 150px;
+     height: 150px;
+     left: 20%;
+     top: calc(150px + 150px + 150px + 200px);
+ }
 
+ .mapButtonHome {
+     background-image: url(../buttons/road_sign.png);
+     position: absolute;
+     width: 150px;
+     height: 150px;
+     left: 70%;
+     top: calc(150px + 150px + 150px + 150px + 120px);
+ }
+  -----
 
+ .attackButton {
+     background-image: url(../buttons/sword.png);
+ }
+
+ .defenceButton {
+     background-image: url(../buttons/shield.png);
+ }
+
+ .fleeButton {
+     background-image: url(../buttons/run.png);
+ }
+
+ .button3 {
+     width: 150px;
+     height: 150px;
+ }
+  ----- POP ANIMATIONS
+
+ #pop-text-container {
+     position: absolute;
+     width: 300px;
+     height: 400px;
+     left: calc(50% - 150px);
+     top: 200px;
+     pointer-events: none;
+ }
+
+ .pop-text {
+     font-family: Impact, sans-serif;
+     font-size: 10;
+     opacity: 0;
+ }
+  ----- MENU
+
+ #menu-container {
+     position: absolute;
+     width: 768px;
+     height: 1024px;
+     left: calc(50% - 384px);
+     pointer-events: none;
+     background-color: rgba(0, 0, 0, 0.7);
+ }
+
+ #dialogueScroll {
+     position: absolute;
+     width: 448px;
+     height: 640px;
+     left: calc(50% - 224px);
+     top: calc(50% - 320px);
+ }
+
+ #menu-text-box {
+     position: absolute;
+     width: 250px;
+     height: 600;
+     left: calc(52% - 125px);
+     top: calc(65% - 300px);
+     list-style: none;
+ }
+
+ #menu-text-box h2 {
+     font-size: 3rem;
+     font-weight: 700;
+ }
+
+ #menu-text-box a {}
+  ----- Heroine & Enemies
+
+ .combat-image {
+     position: absolute;
+     pointer-events: none;
+ }
+
+ .action-text-container {
+     position: absolute;
+     width: 100%;
+     top: 45%;
+     font-family: Impact, sans-serif;
+     font-size: 50px;
+     opacity: 0;
+ }
+
+ .heroine-action {
+     position: absolute;
+     left: 20%;
+     color: red;
+ }
+
+ .enemy-action {
+     position: absolute;
+     left: 65%;
+     color: blue;
+ }
+
+ .damage-taken-text-container {
+     position: absolute;
+     width: 100%;
+     top: 25%;
+     font-family: Impact, sans-serif;
+     font-size: 20px;
+     opacity: 0;
+ }
+
+ .heroine-damage-taken {
+     position: absolute;
+     left: 27%;
+     color: red;
+ }
+
+ .enemy-damage-taken {
+     position: absolute;
+     left: 70%;
+     color: red;
+ }
+  ----- Pop up icons
+
+ #pop-up-container {
+     position: absolute;
+     width: 768px;
+     height: 1024px;
+     left: calc(50% - 384px);
+     background-color: rgba(0, 0, 0, 0.7)
+ }
+
+ #winFight {
+     position: absolute;
+     width: 200px;
+     height: 200px;
+     left: calc(50% - 100px);
+     top: calc(50% - 100px);
+ }
+
+ #died {
+     position: absolute;
+     width: 200px;
+     height: 200px;
+     left: calc(50% - 100px);
+     top: calc(50% - 100px);
+ }
+
+ #potionDrop {
+     position: absolute;
+     width: 200px;
+     height: 200px;
+     left: calc(50% - 100px);
+     top: calc(50% - 100px);
+ }
+
+ #goldDrop {
+     position: absolute;
+     width: 200px;
+     height: 200px;
+     left: calc(50% - 100px);
+     top: calc(50% - 100px);
+ }
+  ----- Loot & Potion Drop text
+
+ .loot-drop-container {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     font-family: Impact, sans-serif;
+     font-size: 30px;
+     pointer-events: none;
+ }
+
+ .potion-drop-text {
+     position: absolute;
+     left: 47%;
+     top: 45%;
+     color: greenyellow;
+     opacity: 0;
+ }
+
+ .gold-drop-text {
+     position: absolute;
+     left: 47%;
+     top: 45%;
+     color: goldenrod;
+     opacity: 0;
+ }
+ ----- Player Stats
+
+ .player-stats-container {
+     position: absolute;
+     width: 768px;
+     height: 1024px;
+     left: calc(50% - 384px);
+     pointer-events: none;
+ }
+
+ .iconSmall {
+     height: 25px;
+ }
+
+ .player-stats {
+     position: absolute;
+     left: 7%;
+     top: 5%;
+     outline: purple 3px solid;
+     background-color: aqua;
+     width: 140px;
+ }
+
+ .player-stats p {
+     font-size: 25px;
+     margin-bottom: 4px;
+ }
+  ----- Enemy Stats
+
+ .enemy-stats-container {
+     position: absolute;
+     width: 768px;
+     height: 1024px;
+     left: calc(50% - 384px);
+     pointer-events: none;
+ }
+
+ .enemy-stats {
+     position: absolute;
+     right: 7%;
+     top: 5%;
+     outline: purple 3px solid;
+     background-color: pink;
+     width: 140px;
+ }
+
+ .enemy-stats p {
+     font-size: 25px;
+     margin-bottom: 4px;
+ }
+  ----- Round counter
+
+ .round-counter-container {
+     position: absolute;
+     width: 768px;
+     height: 1024px;
+     left: calc(50% - 384px);
+     pointer-events: none;
+ }
+
+ .inner-round-counter-container {
+     position: absolute;
+     width: 200px;
+     height: 100px;
+     left: calc(50% - 100px);
+     top: calc(25% - 100px);
+     pointer-events: none;
+ }
+
+ .inner-round-counter-container p {
+     text-align: center;
+ }
+  Animation test
+
+ #animation-text {
+     opacity: 0;
+     text-align: center;
+ }
