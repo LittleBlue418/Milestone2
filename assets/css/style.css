@@ -119,6 +119,8 @@
     flex-grow: 0;
     flex-basis: 900px;
     flex-shrink: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
  }
 
  .figure-container {
@@ -163,13 +165,6 @@
 
 /* ----- Inner Flex columns */
 
- .stats-inner {
-    height: 0;
-    padding-top: 70%;
-    overflow: hidden;
-    position: relative;
- }
-
 .action-inner {
      height: 0;
      padding-top: 100%;
@@ -186,27 +181,13 @@
 
  /* ----- Inner Divs & Buttons*/
 
-#heroine-stats {
+#heroine-stats-container {
     background-image: url(../stats/template-stats-left.png);
-    border: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
     background-position-x: left;
 }
 
-#enemy-stats {
+#enemy-stats-container {
     background-image: url(../stats/template-stats-right.png);
-    border: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
     background-position-x: right;
 }
 
