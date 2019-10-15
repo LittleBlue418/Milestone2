@@ -117,10 +117,11 @@
  .figure {
     background-color: rgba(250, 84, 7, 0.5);
     flex-grow: 0;
-    flex-basis: 300px;
+    flex-basis: 400px;
     flex-shrink: 1;
     padding: 5px;
     margin-bottom: 5px;
+    position: relative;
  }
 
 .action {
@@ -162,14 +163,6 @@
     position: relative;
  }
 
- .figure-inner {
-    height: 0;
-    padding-top: 100%;
-    overflow: hidden;
-    position: relative;
-    padding-left: 10%;
- }
-
 .action-inner {
      height: 0;
      padding-top: 100%;
@@ -188,6 +181,7 @@
 
  #heroine-base {
     background-image: url(../heroine/heroineBase.png);
+    background-position: center;
     border: 0;
     height: 100%;
     width: 100%;
@@ -201,6 +195,7 @@
 
  #heroine-sword-magic {
     background-image: url(../heroine/heroine-sword-magic.png);
+    background-position: center;
     border: 0;
     height: 100%;
     width: 100%;
@@ -214,6 +209,7 @@
 
  #heroine-shield-fancy {
     background-image: url(../heroine/heroine-shield-fancy.png);
+    background-position: center;
     border: 0;
     height: 100%;
     width: 100%;
@@ -228,6 +224,7 @@
 
  #enemy {
     background-image: url(../enemies/enemy1.png);
+    background-position: center;
     border: 0;
     height: 100%;
     width: 100%;
@@ -266,6 +263,7 @@
     transform: scale(1);
     transition: transform 20ms ease-in-out;
 }
+
 
  .button {
      background: rgba(103, 3, 218, 0.5);
