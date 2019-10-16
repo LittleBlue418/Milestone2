@@ -209,12 +209,29 @@
     height: 65%;
     width: 80%;
     top: 10%;
+}
 
+@media(min-width: 768px) {
+    .inner-stat-container {
+        border: 2px solid aqua;
+        position: relative;
+        height: 90%;
+        width: 80%;
+        top: 10%;
+    }
+
+    .stat-line {
+        height: 19%;
+    }
 }
 
 #heroine-stats-container .inner-stat-container {
-left: 15%;
- }
+    left: 15%;
+}
+
+#enemy-stats-container .inner-stat-container {
+    left: 8%;
+}
 
 .stat-line {
     display: flex;
