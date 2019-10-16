@@ -289,27 +289,35 @@
  =================================
      Welcome Screen
  =================================
- */
+*/
 
 #welcome-screen {
      background-image: url("../backgrounds/template-welcome-screen.png");
  }
 
+ /* ----- Flex Rows */
 
+.welcome-buffer-section {
+    background-color: rgba(30, 27, 230, 0.5);
+    flex-grow: 3;
+    flex-basis: 0;
+}
 
+/* ----- Inner Divs & Buttons*/
 
 #start-game .button {
     background-image: url(../buttons/scroll.png);
 }
 
 
+/*
+ =================================
+    Home Screen
+ =================================
+*/
 
 
-.welcome-buffer-section {
-    background-color: rgba(30, 27, 230, 0.5);
-    flex-grow: 3;
-    flex-basis: 0;
- }
+
 
 
 
