@@ -348,6 +348,8 @@
     background-image: url(../buttons/road_sign.png);
 }
 
+
+
 /*
  =================================
     Shop Screen
@@ -382,9 +384,59 @@
 
 
 
+/*
+ =================================
+    Map Screen
+ =================================
+*/
+
+#map-screen {
+     background-image: url("../backgrounds/template-map-screen.png");
+ }
+
+
+/* ----- Flex Rows */
+
+#map-screen .button-section {
+    background-color: rgba(168, 28, 28, 0.5);
+    flex-grow: 0;
+    justify-content: space-around;
+}
+
+/* ----- Flex Columns */
+
+#map-screen .action {
+    background-color: rgba(86, 16, 218, 0.5);
+    flex-grow: 0;
+    flex-basis: 100px;
+    flex-shrink: 1;
+    padding: 5px;
+    margin-bottom: 5px;
+ }
+
+/* ----- Inner Divs & Buttons */
 
 
 
+#enemy-1-button .button {
+    background-image: url(../buttons/enemy.png);
+}
+
+#enemy-2-button .button {
+    background-image: url(../buttons/enemy.png);
+}
+
+#enemy-3-button .button {
+    background-image: url(../buttons/enemy.png);
+}
+
+#enemy-4-button .button {
+    background-image: url(../buttons/enemy.png);
+}
+
+#map-to-home .button {
+    background-image: url(../buttons/road_sign.png);
+}
 
 
  /* -------------------------
@@ -401,9 +453,7 @@
 
 
 
- #map-screen {
-     background-image: url("../backgrounds/template-map-screen.png");
- }
+
 
 
  #victory-screen {
