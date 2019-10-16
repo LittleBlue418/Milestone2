@@ -438,6 +438,16 @@
     background-image: url(../buttons/road_sign.png);
 }
 
+/*
+ =================================
+    Map Screen
+ =================================
+*/
+
+#victory-screen {
+     background-image: url("../backgrounds/template-victory-screen.png");
+ }
+
 
  /* -------------------------
 
@@ -456,9 +466,7 @@
 
 
 
- #victory-screen {
-     background-image: url("../backgrounds/template-victory-screen.png");
- }
+
 
  #menu-screen {
      background-image: url("../backgrounds/template-menu-scroll.png");
