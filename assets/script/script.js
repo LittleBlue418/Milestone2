@@ -171,11 +171,11 @@ $(function () {
 
   //Hiding / Showing
   gameScreen.welcome.hide();
-  gameScreen.home.show();
+  gameScreen.home.hide();
   gameScreen.combat.hide();
   gameScreen.victory.hide();
   gameScreen.map.hide();
-  gameScreen.shop.hide();
+  gameScreen.shop.show();
   gameScreen.menu.hide();
   gameScreen.popup.hide();
 

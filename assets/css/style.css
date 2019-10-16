@@ -348,6 +348,40 @@
     background-image: url(../buttons/road_sign.png);
 }
 
+/*
+ =================================
+    Shop Screen
+ =================================
+*/
+
+#shop-screen {
+     background-image: url("../backgrounds/template-shop-screen.png");
+ }
+
+ /* ----- Flex Rows */
+
+ .shop-buffer-section {
+    background-color: rgba(30, 27, 230, 0.5);
+    flex-grow: 2;
+    flex-basis: 0;
+}
+
+/* ----- Inner Divs & Buttons */
+
+#upgrade-attack .button {
+    background-image: url(../buttons/sword.png);
+}
+
+#upgrade-defence .button {
+    background-image: url(../buttons/shield.png);
+}
+
+#shop-to-home .button {
+    background-image: url(../buttons/door.png);
+}
+
+
+
 
 
 
@@ -365,9 +399,7 @@
 
 
 
- #shop-screen {
-     background-image: url("../backgrounds/template-shop-screen.png");
- }
+
 
  #map-screen {
      background-image: url("../backgrounds/template-map-screen.png");

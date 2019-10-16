@@ -18,7 +18,7 @@
 
 <body>
     <div class="game-container">
-        <!--BACKGROUNDS-->
+        <!--SCREENS-->
 
         <!--COMBAT-->
         <div id="combat-screen" class="game-screen">
@@ -146,15 +146,37 @@
             </div>
         </div>
 
-        <!--SHOP
+        <!--SHOP-->
         <div id="shop-screen" class="game-screen">
-            <div class="button-container">
-                <div class="row-button-container3">
-                    <input type="button" class="buttonClass levelUpAttack button3">
-                    <input type="button" class="buttonClass levelUpDefence button3">
-                    <input type="button" class="buttonClass toHomeButton button3">
+            <div class="screen-flex-row stat-section">
+                <div class="stats heroine-stats" ></div>
+                <div class="stats"></div>
+            </div>
+            <div class="screen-flex-row shop-buffer-section"></div>
+            <div class="screen-flex-row button-section">
+                <div class="action" id="upgrade-attack">
+                    <div class="action-inner">
+                        <input type="button" class="button">
+                    </div>
                 </div>
-                <input type="button" class="buttonClass menuButton">
+                <div class="action" id="upgrade-defence">
+                    <div class="action-inner">
+                        <input type="button" class="button">
+                    </div>
+                </div>
+                <div class="action" id="shop-to-home">
+                    <div class="action-inner">
+                        <input type="button" class="button">
+                    </div>
+                </div>
+            </div>
+            <div class="screen-flex-row menu-section">
+                <div class="menu menu-button">
+                    <div class="menu-inner">
+                        <input type="button" class="button">
+                    </div>
+                </div>
+
             </div>
         </div>
 
