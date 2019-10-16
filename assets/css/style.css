@@ -158,17 +158,7 @@
     margin-bottom: 5px;
  }
 
-.start {
-    background-color: rgba(250, 84, 7, 0.5);
-    flex-grow: 0;
-    flex-basis: 200px;
-    flex-shrink: 1;
-    padding: 5px;
-    margin-bottom: 5px;
-}
-
-
- .menu {
+.menu {
     background-color: rgba(250, 84, 7, 0.5);
     flex-grow: 0;
     flex-basis: 50px;
@@ -301,6 +291,17 @@
     background-color: rgba(30, 27, 230, 0.5);
     flex-grow: 3;
     flex-basis: 0;
+}
+
+/* ----- Flex columns */
+
+.start {
+    background-color: rgba(250, 84, 7, 0.5);
+    flex-grow: 0;
+    flex-basis: 150px;
+    flex-shrink: 1;
+    padding: 5px;
+    margin-bottom: 5px;
 }
 
 /* ----- Inner Divs & Buttons*/
