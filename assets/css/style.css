@@ -36,6 +36,8 @@
  =================================
  */
 
+ /* ---- Flex Formatting */
+
  .game-container {
      position: fixed;
      width: 100%;
@@ -51,9 +53,6 @@
      flex-direction: column;
  }
 
-
-/* ---- Flex rows */
-
 .screen-flex-row {
      width: 100%;
      flex: 1;
@@ -62,6 +61,36 @@
      flex-direction: row;
      flex-grow: 1;
  }
+
+
+/* ---- Buttons */
+
+.button {
+     background: rgba(103, 3, 218, 0.5);
+     border: 0;
+     height: 100%;
+     width: 100%;
+     position: absolute;
+     top: 0;
+     background-size: contain;
+     background-repeat: no-repeat;
+     transform: scale(1);
+     transition: transform 20ms ease-in-out;
+ }
+
+ .button:active {
+     transform: scale(0.95);
+ }
+
+ .button:disabled {
+     opacity: 0.5;
+ }
+
+.menu-button .button {
+    background-image: url(../buttons/settings.png);
+}
+
+
 
  /*
  =================================
@@ -72,6 +101,8 @@
 #combat-screen {
      background-image: url("../backgrounds/template-combat-scene.png");
  }
+
+/* ----- Flex Rows */
 
  .stat-section {
     background-color: rgba(168, 28, 28, 0.5);
@@ -239,29 +270,6 @@
     /* Level 2 enemy */
  }
 
-
-
- .button {
-     background: rgba(103, 3, 218, 0.5);
-     border: 0;
-     height: 100%;
-     width: 100%;
-     position: absolute;
-     top: 0;
-     background-size: contain;
-     background-repeat: no-repeat;
-     transform: scale(1);
-     transition: transform 20ms ease-in-out;
- }
-
- .button:active {
-     transform: scale(0.95);
- }
-
- .button:disabled {
-     opacity: 0.5;
- }
-
 #attack .button {
      background-image: url(../buttons/sword.png);
  }
@@ -274,18 +282,12 @@
     background-image: url(../buttons/run.png);
 }
 
-.menu-button .button {
-    background-image: url(../buttons/settings.png);
-}
-
-
-
 
 
 
 /*
  =================================
-     Game screens
+     Welcome Screen
  =================================
  */
 
@@ -308,6 +310,8 @@
     flex-grow: 3;
     flex-basis: 0;
  }
+
+
 
 
 
