@@ -185,7 +185,7 @@
      position: relative;
  }
 
- /* ----- Inner Divs & Buttons*/
+ /* ----- Stats */
 
 .heroine-stats {
     background-image: url(../stats/template-stats-left.png);
@@ -196,6 +196,96 @@
     background-image: url(../stats/template-stats-right.png);
     background-position-x: right;
 }
+
+.stat-container {
+    border: 2px solid blue;
+    height: 100%;
+    width: 100%;
+}
+
+.inner-stat-container {
+    border: 2px solid aqua;
+    position: relative;
+    height: 80%;
+    width: 80%;
+    top: 10%;
+    left: 10%;
+}
+#heroine-stats-container .stat-line {
+    border: 2px solid red;
+    height: 20%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.health-stat{
+    background-image: url(../stats/stat-icon-health.png);
+}
+
+.attack-stat{
+    background-image: url(../stats/stat-icon-attack.png);
+}
+
+.defence-stat{
+    background-image: url(../stats/stat-icon-defence.png);
+}
+.gold-stat{
+    background-image: url(../stats/stat-icon-gold.png);
+}
+
+/*
+----- Player Stats
+
+ .player-stats-container {
+     position: absolute;
+     width: 768px;
+     height: 1024px;
+     left: calc(50% - 384px);
+     pointer-events: none;
+ }
+
+ .iconSmall {
+     height: 25px;
+ }
+
+ .player-stats {
+     position: absolute;
+     left: 7%;
+     top: 5%;
+     outline: purple 3px solid;
+     background-color: aqua;
+     width: 140px;
+ }
+
+ .player-stats p {
+     font-size: 25px;
+     margin-bottom: 4px;
+ }
+  ----- Enemy Stats
+
+ .enemy-stats-container {
+     position: absolute;
+     width: 768px;
+     height: 1024px;
+     left: calc(50% - 384px);
+     pointer-events: none;
+ }
+
+ .enemy-stats {
+     position: absolute;
+     right: 7%;
+     top: 5%;
+     outline: purple 3px solid;
+     background-color: pink;
+     width: 140px;
+ }
+
+ .enemy-stats p {
+     font-size: 25px;
+     margin-bottom: 4px;
+ }
+
+/* ----- Inner Divs & Buttons - Figures */
 
 .figure {
     background-position: center;
@@ -260,6 +350,9 @@
     /* Level 2 enemy */
  }
 
+
+/* ----- Inner Divs & Buttons - Buttons */
+
 #attack .button {
      background-image: url(../buttons/sword.png);
  }
@@ -271,7 +364,6 @@
 #flee .button {
     background-image: url(../buttons/run.png);
 }
-
 
 
 
@@ -816,56 +908,7 @@
      color: goldenrod;
      opacity: 0;
  }
- ----- Player Stats
 
- .player-stats-container {
-     position: absolute;
-     width: 768px;
-     height: 1024px;
-     left: calc(50% - 384px);
-     pointer-events: none;
- }
-
- .iconSmall {
-     height: 25px;
- }
-
- .player-stats {
-     position: absolute;
-     left: 7%;
-     top: 5%;
-     outline: purple 3px solid;
-     background-color: aqua;
-     width: 140px;
- }
-
- .player-stats p {
-     font-size: 25px;
-     margin-bottom: 4px;
- }
-  ----- Enemy Stats
-
- .enemy-stats-container {
-     position: absolute;
-     width: 768px;
-     height: 1024px;
-     left: calc(50% - 384px);
-     pointer-events: none;
- }
-
- .enemy-stats {
-     position: absolute;
-     right: 7%;
-     top: 5%;
-     outline: purple 3px solid;
-     background-color: pink;
-     width: 140px;
- }
-
- .enemy-stats p {
-     font-size: 25px;
-     margin-bottom: 4px;
- }
   ----- Round counter
 
  .round-counter-container {
