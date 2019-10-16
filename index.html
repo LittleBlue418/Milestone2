@@ -23,8 +23,8 @@
         <!--COMBAT-->
         <div id="combat-screen" class="game-screen">
             <div class="screen-flex-row stat-section">
-                <div class="stats" id="heroine-stats-container"></div>
-                <div class="stats" id="enemy-stats-container"></div>
+                <div class="stats heroine-stats" id="heroine-stats-container"></div>
+                <div class="stats enemy-stats" id="enemy-stats-container"></div>
             </div>
             <div class="screen-flex-row center-section">
                 <div class="figure-container" id="heroine-figure">
@@ -120,23 +120,29 @@
         <!--HOME-->
         <div id="home-screen" class="game-screen">
             <div class="screen-flex-row stat-section">
-                <div class="stats" id="heroine-stat-container">
-                    <div class="stats-inner">
-                        <div id="heroine-stats"></div>
+                <div class="stats heroine-stats" ></div>
+                <div class="stats"></div>
+            </div>
+            <div class="screen-flex-row home-buffer-section"></div>
+            <div class="screen-flex-row button-section">
+                <div class="action" id="home-to-shop">
+                    <div class="action-inner">
+                        <input type="button" class="button">
                     </div>
                 </div>
-                <div class="stats" id="placeholder-enemy-stat-container">
-                    <div class="stats-inner">
-                        <div id="enemy-stats"></div>
+                <div class="action" id="home-to-map">
+                    <div class="action-inner">
+                        <input type="button" class="button">
                     </div>
                 </div>
             </div>
-            <div class="button-container">
-                <div class="row-button-container2">
-                    <input type="button" class="buttonClass toShopButton button2">
-                    <input type="button" class="buttonClass toMapButton button2">
+            <div class="screen-flex-row menu-section">
+                <div class="menu menu-button">
+                    <div class="menu-inner">
+                        <input type="button" class="button">
+                    </div>
                 </div>
-                <input type="button" class="buttonClass menuButton">
+
             </div>
         </div>
 

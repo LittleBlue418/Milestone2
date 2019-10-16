@@ -187,12 +187,12 @@
 
  /* ----- Inner Divs & Buttons*/
 
-#heroine-stats-container {
+.heroine-stats {
     background-image: url(../stats/template-stats-left.png);
     background-position-x: left;
 }
 
-#enemy-stats-container {
+#combat-screen .enemy-stats {
     background-image: url(../stats/template-stats-right.png);
     background-position-x: right;
 }
@@ -317,14 +317,36 @@
  =================================
 */
 
+#home-screen {
+     background-image: url("../backgrounds/template-home-screen.png");
+ }
 
+ /* ----- Flex Rows */
 
+ .home-buffer-section {
+    background-color: rgba(30, 27, 230, 0.5);
+    flex-grow: 2;
+    flex-basis: 0;
+}
 
+/* ----- Flex columns */
 
+#home-screen .action {
+    flex-basis: 150px;
+    flex-shrink: 1;
+    padding: 5px;
+    margin-bottom: 5px;
+}
 
+/* ----- Inner Divs & Buttons */
 
+#home-to-shop .button {
+    background-image: url(../buttons/shop-sign.png);
+}
 
-
+#home-to-map .button {
+    background-image: url(../buttons/road_sign.png);
+}
 
 
 
@@ -341,9 +363,7 @@
  }
   ----- Backgrounds
 
- #home-screen {
-     background-image: url("../backgrounds/template-home-screen.png");
- }
+
 
  #shop-screen {
      background-image: url("../backgrounds/template-shop-screen.png");
