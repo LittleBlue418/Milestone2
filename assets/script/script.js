@@ -181,7 +181,7 @@ $(function () {
   popups.winFight.hide();
   popups.died.hide();
   popups.potionDrop.hide();
-  popups.goldDrop.hide();
+  popups.goldDrop.show();
 
   statContainer.player.hide();
   statContainer.enemy.hide();

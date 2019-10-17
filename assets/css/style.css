@@ -15,20 +15,6 @@
      background-color: black;
  }
 
- /*
- =================================
-     Media Queries
- =================================
- */
-
-@media(min-width: 768px) {
-    .game-container {
-        position: absolute;
-        max-width: 768px;
-        max-height: 1024px;
-        left: calc(50% - 384px);
-    }
-}
 
  /*
  =================================
@@ -38,11 +24,20 @@
 
  /* ---- Flex Formatting */
 
- .game-container {
+.game-container {
      position: fixed;
      width: 100%;
      height: 100%;
  }
+
+@media(min-width: 768px) {
+    .game-container {
+        position: absolute;
+        max-width: 768px;
+        max-height: 1024px;
+        left: calc(50% - 384px);
+    }
+}
 
  .game-screen {
      width: 100%;
@@ -260,11 +255,10 @@
 .defence-stat{
     background-image: url(../stats/stat-icon-defence.png);
 }
+
 .gold-stat{
     background-image: url(../stats/stat-icon-gold.png);
 }
-
-
 
 #heroine-stats-container .stat-text {
     padding-left: 20%;
@@ -356,56 +350,7 @@
     background-image: url(../buttons/run.png);
 }
 
-/* ----- Loot Drop */
 
- #pop-up-goldDrop {
-     position: absolute;
-     width: 100%;
-     height: 100%;
-     background-color: rgba(0, 0, 0, 0.7);
-     background-image: url(../backgrounds/popup-gold.png);
-     background-repeat: no-repeat;
-     background-size: cover;
-     background-position-x: center;
- }
-
-
-
-/*
-
- #winFight {
-     position: absolute;
-     width: 200px;
-     height: 200px;
-     left: calc(50% - 100px);
-     top: calc(50% - 100px);
- }
-
-
-
- #died {
-     position: absolute;
-     width: 200px;
-     height: 200px;
-     left: calc(50% - 100px);
-     top: calc(50% - 100px);
- }
-
- #potionDrop {
-     position: absolute;
-     width: 200px;
-     height: 200px;
-     left: calc(50% - 100px);
-     top: calc(50% - 100px);
- }
-
- #goldDrop {
-     position: absolute;
-     width: 200px;
-     height: 200px;
-     left: calc(50% - 100px);
-     top: calc(50% - 100px);
- }
 
 /*
  =================================
@@ -441,6 +386,7 @@
 #start-game .button {
     background-image: url(../buttons/scroll.png);
 }
+
 
 
 /*
@@ -546,6 +492,7 @@
     margin-bottom: 5px;
 }
 
+/* ----- Media Queries */
 
 @media (min-width: 360px)  {
     #map-screen .action {
@@ -578,8 +525,8 @@
 }
 
 
-/* ----- Inner Divs & Buttons */
 
+/* ----- Inner Divs & Buttons */
 
 
 #enemy-1-button .button {
@@ -602,6 +549,9 @@
     background-image: url(../buttons/road_sign.png);
 }
 
+
+
+
 /*
  =================================
     Victory Screen
@@ -611,6 +561,8 @@
 #victory-screen {
      background-image: url("../backgrounds/template-victory-screen.png");
  }
+
+
 
 
  /*
@@ -683,6 +635,68 @@
         font-weight: bold;
     }
 }
+
+
+
+
+ /*
+ =================================
+    Pop-ups
+ =================================
+ */
+
+
+ #goldDrop {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.7);
+     background-image: url(../backgrounds/popup-gold.png);
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position-x: center;
+ }
+
+/*
+
+ #winFight {
+     position: absolute;
+     width: 200px;
+     height: 200px;
+     left: calc(50% - 100px);
+     top: calc(50% - 100px);
+ }
+
+ #died {
+     position: absolute;
+     width: 200px;
+     height: 200px;
+     left: calc(50% - 100px);
+     top: calc(50% - 100px);
+ }
+
+ #potionDrop {
+     position: absolute;
+     width: 200px;
+     height: 200px;
+     left: calc(50% - 100px);
+     top: calc(50% - 100px);
+ }
+
+ #goldDrop {
+     position: absolute;
+     width: 200px;
+     height: 200px;
+     left: calc(50% - 100px);
+     top: calc(50% - 100px);
+ }
+
+
+
+
+
+
+
 
 
 
