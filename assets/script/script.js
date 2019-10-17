@@ -173,9 +173,9 @@ $(function () {
   gameScreen.home.hide();
   gameScreen.shop.hide();
   gameScreen.map.hide();
-  gameScreen.combat.hide();
+  gameScreen.combat.show();
   gameScreen.victory.hide();
-  gameScreen.menu.menu();
+  gameScreen.menu.hide();
 
 
   popups.winFight.hide();
