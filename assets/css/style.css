@@ -544,11 +544,43 @@
 #map-screen .action {
     background-color: rgba(86, 16, 218, 0.5);
     flex-grow: 0;
-    flex-basis: 100px;
+    flex-basis: 70px;
     flex-shrink: 1;
     padding: 5px;
     margin-bottom: 5px;
- }
+}
+
+
+@media (min-width: 360px)  {
+    #map-screen .action {
+        flex-basis: 80px;
+     }
+}
+
+@media (min-width: 360px) and (min-height: 812px) {
+    #map-screen .action {
+        flex-basis: 100px;
+     }
+}
+
+@media (min-width: 400px)  {
+    #map-screen .action {
+        flex-basis: 90px;
+     }
+}
+
+@media (min-width: 400px)  {
+    #map-screen .action {
+        flex-basis: 90px;
+     }
+}
+
+@media (min-width: 768px)  {
+    #map-screen .action {
+        flex-basis: 130px;
+     }
+}
+
 
 /* ----- Inner Divs & Buttons */
 
