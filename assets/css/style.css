@@ -277,57 +277,6 @@
     padding-right: 18%;
 }
 
-/*
------ Player Stats
-
- .player-stats-container {
-     position: absolute;
-     width: 768px;
-     height: 1024px;
-     left: calc(50% - 384px);
-     pointer-events: none;
- }
-
- .iconSmall {
-     height: 25px;
- }
-
- .player-stats {
-     position: absolute;
-     left: 7%;
-     top: 5%;
-     outline: purple 3px solid;
-     background-color: aqua;
-     width: 140px;
- }
-
- .player-stats p {
-     font-size: 25px;
-     margin-bottom: 4px;
- }
-  ----- Enemy Stats
-
- .enemy-stats-container {
-     position: absolute;
-     width: 768px;
-     height: 1024px;
-     left: calc(50% - 384px);
-     pointer-events: none;
- }
-
- .enemy-stats {
-     position: absolute;
-     right: 7%;
-     top: 5%;
-     outline: purple 3px solid;
-     background-color: pink;
-     width: 140px;
- }
-
- .enemy-stats p {
-     font-size: 25px;
-     margin-bottom: 4px;
- }
 
 /* ----- Inner Divs & Buttons - Figures */
 
@@ -608,7 +557,7 @@
 
 /*
  =================================
-    Map Screen
+    Victory Screen
  =================================
 */
 
@@ -617,28 +566,57 @@
  }
 
 
- /* -------------------------
+ /*
+ =================================
+    Menu
+ =================================
+ */
 
- .game-screen {
+#menu-screen {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+#menu-scroll {
+     background-image: url("../buttons/dialogueScroll.png");
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position-x: center;
      position: absolute;
-     width: 768px;
-     height: 1024px;
-     left: calc(50% - 384px);
+     left: 50%;
+     top: 50%;
+     transform: translate(-50%, -50%);
+     height: 80%;
+     width: 70%;
  }
-  ----- Backgrounds
 
-
-
-
-
-
-
-
-
-
- #menu-screen {
-     background-image: url("../backgrounds/template-menu-scroll.png");
+ #menu-text-box {
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 250px;
+    text-align: center;
  }
+
+ #menu-text-box ul {
+     list-style: none;
+     padding: 0;
+ }
+
+#menu-screen .button {
+    width: 55%;
+    position: inherit;
+    top: 0;
+    margin-top: 2%;
+    transform: scale(1);
+    transition: transform 20ms ease-in-out;
+}
+
+/* ------------------------------------
+
+
 
 
  #frame {
@@ -835,40 +813,7 @@
      font-size: 10;
      opacity: 0;
  }
-  ----- MENU
 
- #menu-container {
-     position: absolute;
-     width: 768px;
-     height: 1024px;
-     left: calc(50% - 384px);
-     pointer-events: none;
-     background-color: rgba(0, 0, 0, 0.7);
- }
-
- #dialogueScroll {
-     position: absolute;
-     width: 448px;
-     height: 640px;
-     left: calc(50% - 224px);
-     top: calc(50% - 320px);
- }
-
- #menu-text-box {
-     position: absolute;
-     width: 250px;
-     height: 600;
-     left: calc(52% - 125px);
-     top: calc(65% - 300px);
-     list-style: none;
- }
-
- #menu-text-box h2 {
-     font-size: 3rem;
-     font-weight: 700;
- }
-
- #menu-text-box a {}
   ----- Heroine & Enemies
 
  .combat-image {

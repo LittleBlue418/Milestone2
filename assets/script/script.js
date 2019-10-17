@@ -152,7 +152,6 @@ $(function () {
     map: $("#map-screen"),
     shop: $("#shop-screen"),
     menu: $("#menu-screen"),
-    popup: $("#pop-up-container"),
   }
 
   const popups = {
@@ -160,7 +159,7 @@ $(function () {
     died: $("#died"),
     potionDrop: $("#potionDrop"),
     goldDrop: $("#goldDrop"),
-    menu: $("#menu-container"),
+
   }
 
   const statContainer = {
@@ -174,16 +173,16 @@ $(function () {
   gameScreen.home.hide();
   gameScreen.combat.hide();
   gameScreen.victory.hide();
-  gameScreen.map.show();
+  gameScreen.map.hide();
   gameScreen.shop.hide();
-  gameScreen.menu.hide();
+  gameScreen.menu.show();
   gameScreen.popup.hide();
 
   statContainer.player.hide();
   statContainer.enemy.hide();
   statContainer.roundCounter.hide();
 
-  popups.menu.hide();
+  popups.menu.show();
   popups.winFight.hide();
   popups.died.hide();
   popups.potionDrop.hide();
