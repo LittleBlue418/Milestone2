@@ -204,13 +204,26 @@
 }
 
 .inner-stat-container {
-    border: 2px solid aqua;
+    outline: 2px solid aqua;
     position: relative;
-    height: 65%;
+    height: 20vw;
     width: 80%;
     top: 10%;
 }
 
+.stat-line {
+    height: 25%;
+    outline: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.stat-text {
+    font-size: 5vw;
+}
 @media(min-width: 768px) {
     .inner-stat-container {
         height: 90%;
@@ -229,15 +242,7 @@
     left: 8%;
 }
 
-.stat-line {
-    height: 25%;
-    outline: 2px solid red;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
+
 
 
 #enemy-stats-container .stat-line {
@@ -259,9 +264,7 @@
     background-image: url(../stats/stat-icon-gold.png);
 }
 
-.stat-text {
-    font-size: 6vw;
-}
+
 
 #heroine-stats-container .stat-text {
     padding-left: 20%;
