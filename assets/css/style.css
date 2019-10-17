@@ -593,7 +593,7 @@
  #menu-text-box {
     position: absolute;
     left: 50%;
-    top: 55%;
+    top: 65%;
     transform: translate(-50%, -50%);
     height: 400px;
     width: 250px;
@@ -606,13 +606,37 @@
  }
 
 #menu-screen .button {
-    width: 55%;
+    width: 65%;
     position: inherit;
     top: 0;
-    margin-top: 2%;
+    margin-top: 3%;
     transform: scale(1);
     transition: transform 20ms ease-in-out;
+    font-size: 5vw;
 }
+
+#menu-screen h2 {
+    font-size: 11vw;
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    #menu-text-box {
+        height: 600px;
+        width: 350px;
+    }
+
+    #menu-screen .button {
+        width: 75%;
+        font-size: 4vw;
+    }
+
+    #menu-screen h2 {
+        font-size: 7vw;
+        font-weight: bold;
+    }
+}
+
 
 /* ------------------------------------
 
