@@ -216,7 +216,6 @@
     outline: 2px solid red;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -231,6 +230,9 @@
 
     .stat-line {
         height: 19%;
+    }
+    .stat-text {
+        font-size: 4vw;
     }
 }
 
@@ -272,7 +274,7 @@
 
 #enemy-stats-container .stat-text {
     text-align: right;
-    padding-right: 15%;
+    padding-right: 18%;
 }
 
 /*
