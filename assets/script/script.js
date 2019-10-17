@@ -147,10 +147,10 @@ $(function () {
   const gameScreen = {
     welcome: $("#welcome-screen"),
     home: $("#home-screen"),
+    shop: $("#shop-screen"),
+    map: $("#map-screen"),
     combat: $("#combat-screen"),
     victory: $("#victory-screen"),
-    map: $("#map-screen"),
-    shop: $("#shop-screen"),
     menu: $("#menu-screen"),
   }
 
@@ -171,22 +171,22 @@ $(function () {
   //Hiding / Showing
   gameScreen.welcome.hide();
   gameScreen.home.hide();
+  gameScreen.shop.hide();
+  gameScreen.map.hide();
   gameScreen.combat.hide();
   gameScreen.victory.hide();
-  gameScreen.map.hide();
-  gameScreen.shop.hide();
-  gameScreen.menu.show();
-  gameScreen.popup.hide();
+  gameScreen.menu.menu();
+
+
+  popups.winFight.hide();
+  popups.died.hide();
+  popups.potionDrop.hide();
+  popups.goldDrop.hide();
 
   statContainer.player.hide();
   statContainer.enemy.hide();
   statContainer.roundCounter.hide();
 
-  popups.menu.show();
-  popups.winFight.hide();
-  popups.died.hide();
-  popups.potionDrop.hide();
-  popups.goldDrop.hide();
 
   //Nagivation buttons
 
