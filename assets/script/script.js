@@ -170,10 +170,14 @@ $(function () {
     roundCounter: $(".round-counter-container")
   }
 
+  const gameButton = {
+    startGame: $("#startGame"),
+  }
+
   //Hiding / Showing
-  gameScreen.welcome.hide();
+  gameScreen.welcome.show();
   gameScreen.home.hide();
-  gameScreen.shop.show();
+  gameScreen.shop.hide();
   gameScreen.map.hide();
   gameScreen.combat.hide();
   gameScreen.victory.hide();
@@ -192,12 +196,14 @@ $(function () {
 
   //Nagivation buttons
 
-  $("#welcome-screen .toHomeButton").click(function () {
+  gameButton.startGame.click(function () {
     $("#playerHealth").text(player.health);
     $("#playerMaxHealth").text(player.maxHealth);
     $("#playerAttack").text(player.attack);
     $("#playerDefense").text(player.defense);
     $("#playerGold").text(player.gold);
+    gameScreen.welcome.hide();
+    gameScreen.home.show();
   })
 
   $(".toHomeButton").click(function () {
