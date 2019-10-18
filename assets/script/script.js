@@ -171,14 +171,14 @@ $(function () {
   }
 
   //Hiding / Showing
-  gameScreen.welcome.hide();
+  gameScreen.welcome.show();
   gameScreen.home.hide();
   gameScreen.shop.hide();
   gameScreen.map.hide();
-  gameScreen.combat.show();
+  gameScreen.combat.hide();
   gameScreen.victory.hide();
   gameScreen.menu.hide();
-  gameScreen.popupBackground.show();
+  gameScreen.popupBackground.hide();
 
   popups.goldDrop.hide();
   popups.potionDrop.hide();
