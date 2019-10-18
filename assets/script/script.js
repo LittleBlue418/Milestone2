@@ -152,12 +152,14 @@ $(function () {
     combat: $("#combat-screen"),
     victory: $("#victory-screen"),
     menu: $("#menu-screen"),
-    popup: $("#pop-up-background"),
+    popupBackground: $("#pop-up-background"),
   }
 
   const popups = {
     goldDrop: $("#goldDrop"),
+    goldDropText: $("#gold-drop-text"),
     potionDrop: $("#potionDrop"),
+    potionDropText: $("#potion-drop-text"),
     died: $("#died"),
     winFight: $("#winFight"),
   }
@@ -176,12 +178,13 @@ $(function () {
   gameScreen.combat.show();
   gameScreen.victory.hide();
   gameScreen.menu.hide();
-  gameScreen.popup.show();
+  gameScreen.popupBackground.show();
 
   popups.goldDrop.hide();
   popups.potionDrop.hide();
   popups.died.hide();
   popups.winFight.hide();
+
 
 
 

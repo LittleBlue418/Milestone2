@@ -353,6 +353,79 @@
 }
 
 
+/*
+ =================================
+    Pop-ups & Loot Drops
+ =================================
+ */
+
+/*----- Pop screens */
+
+#pop-up-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+}
+
+.text-pop {
+    position: absolute;
+    font-family: Impact, sans-serif;
+    font-size: 30px;
+    opacity: 0;
+}
+
+#potion-drop-text {
+     left: 47%;
+     top: 45%;
+     color: greenyellow;
+}
+
+#gold-drop-text {
+     left: 47%;
+     top: 45%;
+     color: goldenrod;
+}
+
+ .pop-up-button {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    position: absolute;
+    width: 40vw;
+    height: 40vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+ }
+
+ @media (min-width: 768px) {
+    .pop-up-button {
+        width: 250px;
+        height: 250px;
+        left: 50%;
+        top: 50%;
+    }
+ }
+
+#goldDrop {
+    background-image: url(../buttons/gold.png);
+}
+
+#potionDrop {
+    background-image: url(../buttons/potion.png);
+}
+
+#died {
+    background-image: url(../buttons/dead.png);
+}
+
+#winFight {
+    background-image: url(../buttons/trophy.png);
+}
+
+
 
 /*
  =================================
@@ -641,57 +714,6 @@
 
 
 
- /*
- =================================
-    Pop-ups
- =================================
- */
-
-
-
- #pop-up-background {
-     position: absolute;
-     width: 100%;
-     height: 100%;
-     background-color: rgba(0, 0, 0, 0.7);
- }
-
- .pop-up-button {
-     background-repeat: no-repeat;
-     background-size: cover;
-     background-position-x: center;
-     position: absolute;
-     width: 40vw;
-     height: 40vw;
-     left: 50%;
-     top: 50%;
-     transform: translate(-50%, -50%);
- }
-
- @media (min-width: 768px) {
-    .pop-up-button {
-        width: 250px;
-        height: 250px;
-        left: 50%;
-        top: 50%;
-    }
- }
-
-#goldDrop {
-    background-image: url(../buttons/gold.png);
-}
-
-#potionDrop {
-    background-image: url(../buttons/potion.png);
-}
-
-#died {
-    background-image: url(../buttons/dead.png);
-}
-
-#winFight {
-    background-image: url(../buttons/trophy.png);
-}
 
 
 
@@ -889,22 +911,7 @@
      width: 150px;
      height: 150px;
  }
-  ----- POP ANIMATIONS
 
- #pop-text-container {
-     position: absolute;
-     width: 300px;
-     height: 400px;
-     left: calc(50% - 150px);
-     top: 200px;
-     pointer-events: none;
- }
-
- .pop-text {
-     font-family: Impact, sans-serif;
-     font-size: 10;
-     opacity: 0;
- }
 
   ----- Heroine & Enemies
 
