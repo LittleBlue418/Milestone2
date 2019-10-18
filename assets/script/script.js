@@ -177,7 +177,9 @@ $(function () {
     homeToMap: $("#home-to-map"),
     shopToHome: $("#shop-to-home"),
     mapToHome: $("#map-to-home"),
-    closeMenu: $("#close-menu")
+    closeMenu: $("#close-menu"),
+    fleeFight: $("#flee-fight"),
+    startCombat: $(".start-combat"),
   }
 
   //Hiding / Showing
@@ -215,8 +217,11 @@ $(function () {
 
   gameButton.menu.click(function () {
     gameScreen.menu.toggle();
-    console.log("hi")
   });
+
+  gameButton.closeMenu.click(function () {
+    gameScreen.menu.hide();
+  })
 
   gameButton.toShop.click(function () {
     $(this).parents(".game-screen").hide();
@@ -240,25 +245,13 @@ $(function () {
     statContainer.player.show();
   })
 
-  gameButton.closeMenu.click(function () {
-    gameScreen.menu.hide();
-  })
-
-
-  $(".toHomeButton").click(function () {
+  gameButton.fleeFight.click(function () {
     $(this).parents(".game-screen").hide();
     gameScreen.home.show();
     statContainer.player.show();
   })
 
-
-
-  $(".toMapButton").click(function () {
-    $(this).parents(".game-screen").hide();
-    gameScreen.map.show();
-  })
-
-  $(".toCombatButton").click(function () {
+  gameButton.startCombat.click(function () {
     $(this).parents(".game-screen").hide();
     gameScreen.combat.show();
     statContainer.enemy.show();
