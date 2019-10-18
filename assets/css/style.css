@@ -63,7 +63,6 @@
 /* ---- Buttons */
 
 .button {
-     background: rgba(103, 3, 218, 0.5);
      border: 0;
      height: 100%;
      width: 100%;
@@ -102,24 +101,20 @@
 /* ----- Flex Rows */
 
  .stat-section {
-    background-color: rgba(168, 28, 28, 0.5);
     justify-content: space-between;
  }
 
 .center-section {
-    background-color: rgba(9, 247, 48, 0.5);
     flex-grow: 2;
     justify-content: space-around;
  }
 
 .button-section {
-     background-color: rgba(168, 28, 28, 0.5);
      flex-grow: 0;
      justify-content: space-around;
  }
 
  .menu-section {
-    background-color: rgba(168, 28, 28, 0.5);
     flex-grow: 0;
     justify-content: flex-end;
  }
@@ -128,7 +123,6 @@
 /* ----- Flex columns */
 
  .stats {
-    background-color: rgba(250, 84, 7, 0.5);
     flex-grow: 0;
     flex-basis: 900px;
     flex-shrink: 1;
@@ -137,7 +131,6 @@
  }
 
  .figure-container {
-    background-color: rgba(250, 84, 7, 0.5);
     flex-grow: 0;
     flex-basis: 400px;
     flex-shrink: 1;
@@ -147,7 +140,6 @@
  }
 
 .action {
-    background-color: rgba(250, 84, 7, 0.5);
     flex-grow: 0;
     flex-basis: 140px;
     flex-shrink: 1;
@@ -156,7 +148,6 @@
  }
 
 .menu {
-    background-color: rgba(250, 84, 7, 0.5);
     flex-grow: 0;
     flex-basis: 50px;
     flex-shrink: 1;
@@ -473,7 +464,6 @@
  /* ----- Flex Rows */
 
 .welcome-buffer-section {
-    background-color: rgba(30, 27, 230, 0.5);
     flex-grow: 3;
     flex-basis: 0;
 }
@@ -481,7 +471,6 @@
 /* ----- Flex columns */
 
 .start {
-    background-color: rgba(250, 84, 7, 0.5);
     flex-grow: 0;
     flex-basis: 150px;
     flex-shrink: 1;
@@ -510,7 +499,6 @@
  /* ----- Flex Rows */
 
  .home-buffer-section {
-    background-color: rgba(30, 27, 230, 0.5);
     flex-grow: 2;
     flex-basis: 0;
 }
@@ -549,7 +537,6 @@
  /* ----- Flex Rows */
 
  .shop-buffer-section {
-    background-color: rgba(30, 27, 230, 0.5);
     flex-grow: 2;
     flex-basis: 0;
 }
@@ -616,7 +603,6 @@
 /* ----- Flex Rows */
 
 #map-screen .button-section {
-    background-color: rgba(168, 28, 28, 0.5);
     flex-grow: 0;
     justify-content: space-around;
 }
@@ -624,7 +610,6 @@
 /* ----- Flex Columns */
 
 #map-screen .action {
-    background-color: rgba(86, 16, 218, 0.5);
     flex-grow: 0;
     flex-basis: 70px;
     flex-shrink: 1;
