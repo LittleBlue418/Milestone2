@@ -213,7 +213,8 @@
 }
 @media(min-width: 768px) {
     .inner-stat-container {
-        height: 90%;
+        height: 78%;
+        top: 17%;
     }
 
     .stat-line {
