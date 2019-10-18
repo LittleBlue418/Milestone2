@@ -177,6 +177,7 @@ $(function () {
     homeToMap: $("#home-to-map"),
     shopToHome: $("#shop-to-home"),
     mapToHome: $("#map-to-home"),
+    closeMenu: $("#close-menu")
   }
 
   //Hiding / Showing
@@ -214,6 +215,7 @@ $(function () {
 
   gameButton.menu.click(function () {
     gameScreen.menu.toggle();
+    console.log("hi")
   });
 
   gameButton.toShop.click(function () {
@@ -236,6 +238,10 @@ $(function () {
     $(this).parents(".game-screen").hide();
     gameScreen.home.show();
     statContainer.player.show();
+  })
+
+  gameButton.closeMenu.click(function () {
+    gameScreen.menu.hide();
   })
 
 
