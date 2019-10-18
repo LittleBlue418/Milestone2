@@ -535,6 +535,38 @@
     background-image: url(../buttons/door.png);
 }
 
+#shop-pop-up-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#gold-spent-text-attack {
+    left: 10%;
+    top: 77%;
+    color: goldenrod;
+    font-size: 25px;
+}
+
+#attack-level-up-text {
+    left: 18%;
+    top: 77%;
+    color: red;
+}
+
+#gold-spent-text-defence {
+    left: 42%;
+    top: 77%;
+    color: goldenrod;
+    font-size: 25px;
+}
+
+#defence-level-up-text {
+    left: 49%;
+    top: 77%;
+    color: blue;
+}
 
 
 /*

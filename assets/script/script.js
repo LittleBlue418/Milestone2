@@ -171,9 +171,9 @@ $(function () {
   }
 
   //Hiding / Showing
-  gameScreen.welcome.show();
+  gameScreen.welcome.hide();
   gameScreen.home.hide();
-  gameScreen.shop.hide();
+  gameScreen.shop.show();
   gameScreen.map.hide();
   gameScreen.combat.hide();
   gameScreen.victory.hide();
