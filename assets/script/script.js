@@ -173,9 +173,9 @@ $(function () {
   //Hiding / Showing
   gameScreen.welcome.hide();
   gameScreen.home.hide();
-  gameScreen.shop.show();
+  gameScreen.shop.hide();
   gameScreen.map.hide();
-  gameScreen.combat.hide();
+  gameScreen.combat.show();
   gameScreen.victory.hide();
   gameScreen.menu.hide();
   gameScreen.popupBackground.hide();

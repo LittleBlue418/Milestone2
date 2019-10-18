@@ -233,7 +233,7 @@
     }
 }
 
-#heroine-stats-container .inner-stat-container {
+.heroine-stats .inner-stat-container {
     left: 13%;
 }
 
@@ -242,7 +242,7 @@
 }
 
 
-#enemy-stats-container .stat-line {
+.enemy-stats .stat-line {
     background-position: right;
 }
 
@@ -262,11 +262,11 @@
     background-image: url(../stats/stat-icon-gold.png);
 }
 
-#heroine-stats-container .stat-text {
+.heroine-stats .stat-text {
     padding-left: 20%;
 }
 
-#enemy-stats-container .stat-text {
+.enemy-stats .stat-text {
     text-align: right;
     padding-right: 18%;
 }
