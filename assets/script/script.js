@@ -152,14 +152,14 @@ $(function () {
     combat: $("#combat-screen"),
     victory: $("#victory-screen"),
     menu: $("#menu-screen"),
+    popup: $("#pop-up-background"),
   }
 
   const popups = {
-    winFight: $("#winFight"),
-    died: $("#died"),
-    potionDrop: $("#potionDrop"),
     goldDrop: $("#goldDrop"),
-
+    potionDrop: $("#potionDrop"),
+    died: $("#died"),
+    winFight: $("#winFight"),
   }
 
   const statContainer = {
@@ -176,12 +176,15 @@ $(function () {
   gameScreen.combat.show();
   gameScreen.victory.hide();
   gameScreen.menu.hide();
+  gameScreen.popup.show();
 
-
-  popups.winFight.hide();
-  popups.died.hide();
+  popups.goldDrop.hide();
   popups.potionDrop.hide();
-  popups.goldDrop.show();
+  popups.died.hide();
+  popups.winFight.hide();
+
+
+
 
   statContainer.player.hide();
   statContainer.enemy.hide();

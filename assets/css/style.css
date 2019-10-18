@@ -648,50 +648,51 @@
  */
 
 
- #goldDrop {
+
+ #pop-up-background {
      position: absolute;
      width: 100%;
      height: 100%;
      background-color: rgba(0, 0, 0, 0.7);
-     background-image: url(../backgrounds/popup-gold.png);
+ }
+
+ .pop-up-button {
      background-repeat: no-repeat;
      background-size: cover;
      background-position-x: center;
- }
-
-/*
-
- #winFight {
      position: absolute;
-     width: 200px;
-     height: 200px;
-     left: calc(50% - 100px);
-     top: calc(50% - 100px);
+     width: 40vw;
+     height: 40vw;
+     left: 50%;
+     top: 50%;
+     transform: translate(-50%, -50%);
  }
 
- #died {
-     position: absolute;
-     width: 200px;
-     height: 200px;
-     left: calc(50% - 100px);
-     top: calc(50% - 100px);
+ @media (min-width: 768px) {
+    .pop-up-button {
+        width: 250px;
+        height: 250px;
+        left: 50%;
+        top: 50%;
+    }
  }
 
- #potionDrop {
-     position: absolute;
-     width: 200px;
-     height: 200px;
-     left: calc(50% - 100px);
-     top: calc(50% - 100px);
- }
+#goldDrop {
+    background-image: url(../buttons/gold.png);
+}
 
- #goldDrop {
-     position: absolute;
-     width: 200px;
-     height: 200px;
-     left: calc(50% - 100px);
-     top: calc(50% - 100px);
- }
+#potionDrop {
+    background-image: url(../buttons/potion.png);
+}
+
+#died {
+    background-image: url(../buttons/dead.png);
+}
+
+#winFight {
+    background-image: url(../buttons/trophy.png);
+}
+
 
 
 
