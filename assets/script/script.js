@@ -174,8 +174,8 @@ $(function () {
   gameScreen.welcome.hide();
   gameScreen.home.hide();
   gameScreen.shop.hide();
-  gameScreen.map.show();
-  gameScreen.combat.hide();
+  gameScreen.map.hide();
+  gameScreen.combat.show();
   gameScreen.victory.hide();
   gameScreen.menu.hide();
   gameScreen.popupBackground.hide();
@@ -185,13 +185,9 @@ $(function () {
   popups.died.hide();
   popups.winFight.hide();
 
-
-
-
-
   statContainer.player.hide();
   statContainer.enemy.hide();
-  statContainer.roundCounter.hide();
+  statContainer.roundCounter.show();
 
 
   //Nagivation buttons

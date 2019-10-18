@@ -354,12 +354,12 @@
 
 
 /*
- =================================
-    Pop-ups & Loot Drops
- =================================
- */
+=================================
+    Pop-ups / Loot Drops / Round Counter
+=================================
+*/
 
-/*----- Pop screens */
+/*----- Pop-ups / Loot Drops */
 
 #pop-up-background {
     position: absolute;
@@ -424,6 +424,39 @@
 #winFight {
     background-image: url(../buttons/trophy.png);
 }
+
+/* ----- Round counter */
+
+ .round-counter-container {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     pointer-events: none;
+ }
+
+ .inner-round-counter-container {
+    position: absolute;
+    width: 40vw;
+    height: 40vw;
+    left: 50%;
+    top: 24%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+ }
+
+ @media (min-width: 768px) {
+    .inner-round-counter-container {
+        width: 250px;
+        height: 250px;
+    }
+ }
+
+ .inner-round-counter-container p {
+    font-family: Impact, sans-serif;
+    font-size: 30px;
+    text-align: center;
+ }
+
 
 
 
@@ -1047,28 +1080,7 @@
      opacity: 0;
  }
 
-  ----- Round counter
 
- .round-counter-container {
-     position: absolute;
-     width: 768px;
-     height: 1024px;
-     left: calc(50% - 384px);
-     pointer-events: none;
- }
-
- .inner-round-counter-container {
-     position: absolute;
-     width: 200px;
-     height: 100px;
-     left: calc(50% - 100px);
-     top: calc(25% - 100px);
-     pointer-events: none;
- }
-
- .inner-round-counter-container p {
-     text-align: center;
- }
   Animation test
 
  #animation-text {
