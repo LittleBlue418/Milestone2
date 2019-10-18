@@ -172,6 +172,7 @@ $(function () {
 
   const gameButton = {
     startGame: $("#startGame"),
+    menu: $(".menu-button"),
   }
 
   //Hiding / Showing
@@ -196,6 +197,7 @@ $(function () {
 
   //Nagivation buttons
 
+
   gameButton.startGame.click(function () {
     $("#playerHealth").text(player.health);
     $("#playerMaxHealth").text(player.maxHealth);
@@ -205,6 +207,11 @@ $(function () {
     gameScreen.welcome.hide();
     gameScreen.home.show();
   })
+
+  gameButton.menu.click(function () {
+    gameScreen.menu.toggle();
+  });
+
 
   $(".toHomeButton").click(function () {
     $(this).parents(".game-screen").hide();
@@ -235,10 +242,6 @@ $(function () {
   })
 
 
-  $(".menuButton").click(function () {
-    console.log("menu button clicked")
-    $("#menu-container").toggle();
-  });
 
   // ----- SHOP
 
