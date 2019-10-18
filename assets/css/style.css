@@ -332,11 +332,11 @@
 
 /* ----- Buttons */
 
-#attack .button {
+#attack-button .button {
      background-image: url(../buttons/sword.png);
  }
 
-#defend .button {
+#defend-button .button {
     background-image: url(../buttons/shield.png);
 }
 
