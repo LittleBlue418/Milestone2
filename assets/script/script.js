@@ -22,6 +22,8 @@ function randomBool(probability) {
 
 $(function () {
 
+
+
   /*
   =================================
       Global Variables
@@ -130,20 +132,23 @@ $(function () {
     }
   }
 
-
-  function initializePlayer() {
-    player = {
-      health: playerMaxHealth,
-      maxHealth: playerMaxHealth,
-      attack: 10,
-      defense: 10,
-      gold: 0,
+  class Player {
+    constructor() {
+      this.health = playerMaxHealth;
+      this.maxHealth = playerMaxHealth;
+      this.attack = 10;
+      this.defense = 10;
+      this.gold = 0;
     }
   }
 
-  initializePlayer();
 
-  //Fetching screens & elements
+  /*
+  =================================
+     Hooking up pages & buttons
+  =================================
+  */
+
   const gameScreen = {
     welcome: $("#welcome-screen"),
     home: $("#home-screen"),
@@ -182,7 +187,7 @@ $(function () {
     startCombat: $(".start-combat"),
   }
 
-  //Hiding / Showing
+
   gameScreen.welcome.show();
   gameScreen.home.hide();
   gameScreen.shop.hide();
@@ -199,13 +204,21 @@ $(function () {
 
   statContainer.player.hide();
   statContainer.enemy.hide();
-  statContainer.roundCounter.show();
+  statContainer.roundCounter.hide();
+
+  /*
+  =================================
+    Button Functions
+  =================================
+  */
 
 
   //Nagivation buttons
 
 
   gameButton.startGame.click(function () {
+    player = new Player();
+
     $("#playerHealth").text(player.health);
     $("#playerMaxHealth").text(player.maxHealth);
     $("#playerAttack").text(player.attack);
