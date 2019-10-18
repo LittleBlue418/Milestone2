@@ -179,17 +179,19 @@ $(function () {
   const gameButton = {
     startGame: $("#startGame"),
     menu: $(".menu-button"),
+    closeMenu: $("#close-menu"),
     toShop: $("#home-to-shop"),
     homeToMap: $("#home-to-map"),
     shopToHome: $("#shop-to-home"),
     mapToHome: $("#map-to-home"),
-    closeMenu: $("#close-menu"),
-    fleeFight: $("#flee-fight"),
     startCombat: $(".start-combat"),
     enemy1Button: $("#enemy-1-button"),
     enemy2Button: $("#enemy-2-button"),
     enemy3Button: $("#enemy-3-button"),
     enemy4Button: $("#enemy-4-button"),
+    fleeFight: $("#flee-fight"),
+    attackButton: $("#attack-button"),
+    defendButton: $("#defend-button"),
   }
 
   const statField = {
@@ -277,10 +279,7 @@ $(function () {
     gameScreen.home.show();
   })
 
-  gameButton.fleeFight.click(function () {
-    gameScreen.combat.hide();
-    gameScreen.map.show();
-  })
+
 
   gameButton.startCombat.click(function () {
     gameScreen.map.hide();
@@ -366,23 +365,18 @@ function updateEnemyStats() {
 
   // Combat buttons
 
-  $(".fleeButton").click(function () {
-    alert("Are you sure?")
-    statContainer.enemy.hide();
-    statContainer.roundCounter.hide();
-  })
-
-  $(".attackButton").click(function () {
+  gameButton.attackButton.click(function () {
     resolveCombat(true)
   })
 
-  $('.defenceButton').click(function () {
-
+  gameButton.defendButton.click(function () {
     resolveCombat(false)
-
   })
 
-
+  gameButton.fleeFight.click(function () {
+    gameScreen.combat.hide();
+    gameScreen.map.show();
+  })
 
   // Combat function
 
