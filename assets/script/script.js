@@ -139,7 +139,8 @@ $(function () {
       this.attack = 10;
       this.defense = 10;
       this.gold = 0;
-    }
+    };
+
   }
 
 
@@ -167,11 +168,6 @@ $(function () {
     potionDropText: $("#potion-drop-text"),
     died: $("#died"),
     winFight: $("#winFight"),
-  }
-
-  const statContainer = {
-    player: $(".player-stats-container"),
-    enemy: $(".enemy-stats-container"),
     roundCounter: $(".round-counter-container")
   }
 
@@ -187,6 +183,22 @@ $(function () {
     startCombat: $(".start-combat"),
   }
 
+  const statField = {
+    playerHealthText: $(".playerHealth"),
+    playerMaxHealthText: $(".playerMaxHealth"),
+    playerAttack: $(".playerAttack"),
+    playerDefence: $(".playerDefense"),
+    playerGold: $(".playerGold"),
+    roundCountText: $("#round-counter"),
+  }
+
+  function updatePlayerStats () {
+    statField.playerHealthText.text(player.health);
+    statField.playerMaxHealthText.text(player.maxHealth);
+    statField.playerAttack.text(player.attack);
+    statField.playerDefence.text(player.defense);
+    statField.playerGold.text(player.gold);
+  }
 
   gameScreen.welcome.show();
   gameScreen.home.hide();
@@ -201,10 +213,7 @@ $(function () {
   popups.potionDrop.hide();
   popups.died.hide();
   popups.winFight.hide();
-
-  statContainer.player.hide();
-  statContainer.enemy.hide();
-  statContainer.roundCounter.hide();
+  popups.roundCounter.hide();
 
   /*
   =================================
@@ -218,12 +227,8 @@ $(function () {
 
   gameButton.startGame.click(function () {
     player = new Player();
+    updatePlayerStats();
 
-    $("#playerHealth").text(player.health);
-    $("#playerMaxHealth").text(player.maxHealth);
-    $("#playerAttack").text(player.attack);
-    $("#playerDefense").text(player.defense);
-    $("#playerGold").text(player.gold);
     gameScreen.welcome.hide();
     gameScreen.home.show();
   })
@@ -237,40 +242,37 @@ $(function () {
   })
 
   gameButton.toShop.click(function () {
-    $(this).parents(".game-screen").hide();
+    gameScreen.show.hide();
     gameScreen.shop.show();
   })
 
   gameButton.homeToMap.click(function () {
-    $(this).parents(".game-screen").hide();
+    gameScreen.home.hide();
     gameScreen.map.show();
   })
 
   gameButton.shopToHome.click(function () {
-    $(this).parents(".game-screen").hide();
+    gameScreen.show.hide();
     gameScreen.home.show();
-    statContainer.player.show();
   })
 
   gameButton.mapToHome.click(function () {
-    $(this).parents(".game-screen").hide();
+    gameScreen.map.hide();
     gameScreen.home.show();
-    statContainer.player.show();
   })
 
   gameButton.fleeFight.click(function () {
-    $(this).parents(".game-screen").hide();
+    gameScreen.combat.hide();
     gameScreen.home.show();
-    statContainer.player.show();
   })
 
   gameButton.startCombat.click(function () {
-    $(this).parents(".game-screen").hide();
+    gameScreen.map.hide();
     gameScreen.combat.show();
-    statContainer.enemy.show();
-    statContainer.roundCounter.show();
+
+    popups.roundCounter.show();
     roundCount = 0;
-    $("#round-counter-span").text(roundCount + 1);
+    statField.roundCountText.text("Round " + (roundCount + 1));
 
     roundCounterAnimation($(".pop-text"));
 
