@@ -33,6 +33,7 @@ $(function () {
   const playerMaxHealth = 100;
   var roundCount;
   var player;
+  var currentEnemy;
 
 
   /*
@@ -64,6 +65,7 @@ $(function () {
 
       super(health, attackPattern);
 
+      this.maxHealth = health;
       this.attack = randomInteger(10, 15);
       this.defense = randomInteger(10, 15);
       this.gold = randomInteger(5, 10);
@@ -85,6 +87,7 @@ $(function () {
 
       super(health, attackPattern);
 
+      this.maxHealth = health;
       this.attack = randomInteger(25, 30);
       this.defense = randomInteger(35, 40);
       this.gold = randomInteger(25, 30);
@@ -105,6 +108,7 @@ $(function () {
 
       super(health, attackPattern);
 
+      this.maxHealth = health;
       this.attack = randomInteger(55, 50);
       this.defense = randomInteger(40, 45);
       this.gold = randomInteger(45, 50);
@@ -125,6 +129,7 @@ $(function () {
 
       super(health, attackPattern);
 
+      this.maxHealth = health;
       this.attack = 80;
       this.defense = 80;
       this.gold = 0;
@@ -181,6 +186,10 @@ $(function () {
     closeMenu: $("#close-menu"),
     fleeFight: $("#flee-fight"),
     startCombat: $(".start-combat"),
+    enemy1Button: $("#enemy-1-button"),
+    enemy2Button: $("#enemy-2-button"),
+    enemy3Button: $("#enemy-3-button"),
+    enemy4Button: $("#enemy-4-button"),
   }
 
   const statField = {
@@ -190,15 +199,22 @@ $(function () {
     playerDefence: $(".playerDefense"),
     playerGold: $(".playerGold"),
     roundCountText: $("#round-counter"),
+    enemyHealthText: $(".enemyHealth"),
+    enemyMaxHealthText: $(".enemyMaxHealth"),
+    enemyAttack: $(".enemyAttack"),
+    enemyDefence: $(".enemyDefense"),
+    enemyGold: $(".enemyGold"),
   }
 
-  function updatePlayerStats () {
+  function updatePlayerStats() {
     statField.playerHealthText.text(player.health);
     statField.playerMaxHealthText.text(player.maxHealth);
     statField.playerAttack.text(player.attack);
     statField.playerDefence.text(player.defense);
     statField.playerGold.text(player.gold);
   }
+
+
 
   gameScreen.welcome.show();
   gameScreen.home.hide();
@@ -222,7 +238,7 @@ $(function () {
   */
 
 
-  //Nagivation buttons
+  // ----- Nagivation buttons
 
 
   gameButton.startGame.click(function () {
@@ -263,7 +279,7 @@ $(function () {
 
   gameButton.fleeFight.click(function () {
     gameScreen.combat.hide();
-    gameScreen.home.show();
+    gameScreen.map.show();
   })
 
   gameButton.startCombat.click(function () {
@@ -279,8 +295,7 @@ $(function () {
   })
 
 
-
-  // ----- SHOP
+  // ----- Shop Buttons
 
   $(".levelUpAttack").click(function () {
     if (player.gold > 25) {
@@ -315,47 +330,37 @@ $(function () {
   })
 
 
-  //----- COMBAT
+  // ----- Enemy Generating Buttons
 
-
-
-  //Enemy variables & objects
-
-
-
-
-
-  //Enemy generation
-
-  $(".enemy1Button").click(function () {
+  gameButton.enemy1Button.click(function () {
     currentEnemy = new Enemy1();
-    updateEnemyStats(currentEnemy);
+    updateEnemyStats();
   })
 
-  $(".enemy2Button").click(function () {
+  gameButton.enemy2Button.click(function () {
     currentEnemy = new Enemy2();
-    updateEnemyStats(currentEnemy);
+    updateEnemyStats();
   })
 
-  $(".enemy3Button").click(function () {
+  gameButton.enemy3Button.click(function () {
     currentEnemy = new Enemy3();
-    updateEnemyStats(currentEnemy);
+    updateEnemyStats();
   })
 
-  $(".enemy4Button").click(function () {
+  gameButton.enemy4Button.click(function () {
     currentEnemy = new Enemy4();
-    updateEnemyStats(currentEnemy);
+    updateEnemyStats();
   })
 
-  function updateEnemyStats(enemy) {
-    $("#enemyHealth").text(enemy.health);
-    $("#enemyHealthMax").text(enemy.health);
-    $("#enemyAttack").text(enemy.attack);
-    $("#enemyDefense").text(enemy.defense);
-    $("#enemyGold").text(enemy.gold);
+function updateEnemyStats() {
+    statField.enemyHealthText.text(currentEnemy.health);
+    statField.enemyMaxHealthText.text(currentEnemy.maxHealth);
+    statField.enemyAttack.text(currentEnemy.attack);
+    statField.enemyDefence.text(currentEnemy.defense);
+    statField.enemyGold.text(currentEnemy.gold);
   }
 
-
+//----- COMBAT
 
 
 
