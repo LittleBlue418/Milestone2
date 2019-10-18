@@ -173,6 +173,10 @@ $(function () {
   const gameButton = {
     startGame: $("#startGame"),
     menu: $(".menu-button"),
+    toShop: $("#home-to-shop"),
+    homeToMap: $("#home-to-map"),
+    shopToHome: $("#shop-to-home"),
+    mapToHome: $("#map-to-home"),
   }
 
   //Hiding / Showing
@@ -212,6 +216,28 @@ $(function () {
     gameScreen.menu.toggle();
   });
 
+  gameButton.toShop.click(function () {
+    $(this).parents(".game-screen").hide();
+    gameScreen.shop.show();
+  })
+
+  gameButton.homeToMap.click(function () {
+    $(this).parents(".game-screen").hide();
+    gameScreen.map.show();
+  })
+
+  gameButton.shopToHome.click(function () {
+    $(this).parents(".game-screen").hide();
+    gameScreen.home.show();
+    statContainer.player.show();
+  })
+
+  gameButton.mapToHome.click(function () {
+    $(this).parents(".game-screen").hide();
+    gameScreen.home.show();
+    statContainer.player.show();
+  })
+
 
   $(".toHomeButton").click(function () {
     $(this).parents(".game-screen").hide();
@@ -219,10 +245,7 @@ $(function () {
     statContainer.player.show();
   })
 
-  $(".toShopButton").click(function () {
-    $(this).parents(".game-screen").hide();
-    gameScreen.shop.show();
-  })
+
 
   $(".toMapButton").click(function () {
     $(this).parents(".game-screen").hide();
