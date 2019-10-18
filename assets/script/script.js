@@ -174,8 +174,8 @@ $(function () {
   gameScreen.welcome.hide();
   gameScreen.home.hide();
   gameScreen.shop.hide();
-  gameScreen.map.hide();
-  gameScreen.combat.show();
+  gameScreen.map.show();
+  gameScreen.combat.hide();
   gameScreen.victory.hide();
   gameScreen.menu.hide();
   gameScreen.popupBackground.hide();
