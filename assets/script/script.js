@@ -181,6 +181,7 @@ $(function () {
   const gameButton = {
     startGame: $("#startGame"),
     menu: $(".menu-button"),
+    newGame: $("#new-game"),
     closeMenu: $("#close-menu"),
     toShop: $("#home-to-shop"),
     levelUpAttack: $("#upgrade-attack"),
@@ -262,6 +263,12 @@ $(function () {
     gameScreen.menu.toggle();
   });
 
+  gameButton.newGame.click(function () {
+    $(this).parents(".game-screen").hide();
+    gameScreen.menu.hide();
+    gameScreen.welcome.show();
+  })
+
   gameButton.closeMenu.click(function () {
     gameScreen.menu.hide();
   })
@@ -285,8 +292,6 @@ $(function () {
     gameScreen.map.hide();
     gameScreen.home.show();
   })
-
-
 
   gameButton.startCombat.click(function () {
     gameScreen.map.hide();
