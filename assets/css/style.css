@@ -186,13 +186,11 @@
 }
 
 .stat-container {
-    border: 2px solid blue;
     height: 100%;
     width: 100%;
 }
 
 .inner-stat-container {
-    outline: 2px solid aqua;
     position: relative;
     height: 20vw;
     width: 80%;
@@ -201,7 +199,6 @@
 
 .stat-line {
     height: 25%;
-    outline: 2px solid red;
     display: flex;
     flex-direction: column;
     background-repeat: no-repeat;
