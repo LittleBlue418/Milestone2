@@ -502,17 +502,18 @@ $(function () {
     // End Combat
   }
 
-  $("#goldDrop").click(function () {
+  // Clicking on gold drop
+  popups.goldDrop.click(function () {
+
+    // If the enemy drops a health potion
     if (currentEnemy.healthPotionStrength > 0) {
       popups.goldDrop.hide();
       popups.potionDrop.show();
 
       player.health = Math.min(player.health + currentEnemy.healthPotionStrength, playerMaxHealth);
 
-      $("#playerHealth").text(player.health)
-      $("#playerGold").text(player.gold);
-      $(".potion-drop-text").text("+ " + currentEnemy.healthPotionStrength);
-      $(".potion-drop-text")
+      popups.potionDropText.text("+ " + currentEnemy.healthPotionStrength);
+      popups.potionDropText
         .animate({
           'opacity': 1,
           'top': '30%',
@@ -520,34 +521,30 @@ $(function () {
         .animate({
           'opacity': 0
         }, 200, function () {
-          $(".potion-drop-text").removeAttr('style')
+          popups.potionDropText.removeAttr('style')
+          updatePlayerStats();
         })
 
+        // If the enemy does not drop a health potion
     } else {
       popups.goldDrop.hide();
-      statContainer.enemy.hide();
-      gameScreen.popup.hide();
-      popups.goldDrop.hide();
+      gameScreen.popupBackground.hide();
       gameScreen.combat.hide();
       gameScreen.map.show();
     }
   });
 
 
-
-  $("#died").click(function () {
+  // Clicking on the "you died" popup
+  popups.died.click(function () {
     gameScreen.welcome.show();
     gameScreen.combat.hide();
-    statContainer.enemy.hide();
-    statContainer.player.hide();
-    gameScreen.popup.hide();
+    gameScreen.popupBackground.hide();
     popups.died.hide();
-    initializePlayer();
   });
 
-  $("#potionDrop").click(function () {
-    statContainer.enemy.hide();
-    gameScreen.popup.hide();
+  popups.potionDrop.click(function () {
+    gameScreen.popupBackground.hide();
     popups.potionDrop.hide();
     gameScreen.combat.hide();
     gameScreen.map.show();
@@ -563,9 +560,9 @@ $(function () {
       targetElement.removeAttr('style')
 
       //eneble buttons
-      $('.defenceButton').removeAttr('disabled');
-      $('.attackButton').removeAttr('disabled');
-      $('.fleeButton').removeAttr('disabled');
+      gameButton.defendButton.removeAttr('disabled');
+      gameButton.attackButton.removeAttr('disabled');
+      gameButton.fleeFight.removeAttr('disabled');
     })
   };
 
