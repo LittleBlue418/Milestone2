@@ -344,9 +344,52 @@
 
 /*
 =================================
-    Pop-ups / Loot Drops / Round Counter
+    Action / Damage / Pop-ups / Loot Drops / Round Counter
 =================================
 */
+
+/*----- Action Taken / Damage Taken */
+
+.action-text-container {
+    position: absolute;
+    width: 100%;
+    top: 45%;
+    font-family: Impact, sans-serif;
+    font-size: 50px;
+    opacity: 0;
+}
+.heroine-action {
+    position: absolute;
+    left: 20%;
+    color: red;
+}
+
+.enemy-action {
+    position: absolute;
+    left: 65%;
+    color: blue;
+}
+
+.damage-taken-text-container {
+    position: absolute;
+    width: 100%;
+    top: 25%;
+    font-family: Impact, sans-serif;
+    font-size: 20px;
+    opacity: 0;
+}
+
+.heroine-damage-taken {
+    position: absolute;
+    left: 27%;
+    color: red;
+}
+
+.enemy-damage-taken {
+    position: absolute;
+    left: 70%;
+    color: red;
+}
 
 /*----- Pop-ups / Loot Drops */
 

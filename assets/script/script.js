@@ -379,12 +379,13 @@ function updateEnemyStats() {
   // Combat function
 
   function resolveCombat(isPlayerAttacking) {
+    console.log("function called")
     //disabling buttons
-    $('.defenceButton').attr('disabled', 'disabled');
-    $('.attackButton').attr('disabled', 'disabled');
-    $('.fleeButton').attr('disabled', 'disabled');
+    gameButton.defendButton.attr('disabled', 'disabled');
+    gameButton.attackButton.attr('disabled', 'disabled');
+    gameButton.fleeFight.attr('disabled', 'disabled');
 
-    console.log(currentEnemy.potionDrop)
+    console.log(currentEnemy.healthPotionStrength)
 
     // Picking enemy action from pre-set pattern
     const isEnemyAttacking = currentEnemy.isEnemyAttacking(roundCount);
@@ -411,7 +412,8 @@ function updateEnemyStats() {
     currentEnemy.takeDamage(enemyDamageTaken);
     player.health = Math.max(player.health - playerDamageTaken, 0);
 
-
+    updateEnemyStats();
+    updatePlayerStats();
 
     // Setting action text for enemy and heroine
     if (isPlayerAttacking) {
