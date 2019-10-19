@@ -209,8 +209,7 @@ $(function () {
   }
 
   function updatePlayerStats() {
-    statField.playerHealthText.text(player.health);
-    statField.playerMaxHealthText.text(player.maxHealth);
+    statField.playerHealthText.text(player.health + " / " + player.maxHealth);
     statField.playerAttack.text(player.attack);
     statField.playerDefence.text(player.defense);
     statField.playerGold.text(player.gold);
@@ -352,8 +351,7 @@ $(function () {
   })
 
 function updateEnemyStats() {
-    statField.enemyHealthText.text(currentEnemy.health);
-    statField.enemyMaxHealthText.text(currentEnemy.maxHealth);
+    statField.enemyHealthText.text(currentEnemy.health + " / " + currentEnemy.maxHealth);
     statField.enemyAttack.text(currentEnemy.attack);
     statField.enemyDefence.text(currentEnemy.defense);
     statField.enemyGold.text(currentEnemy.gold);
