@@ -353,35 +353,44 @@
 .action-text-container {
     position: absolute;
     width: 100%;
-    top: 45%;
+    height: 40vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
     font-family: Impact, sans-serif;
-    font-size: 50px;
+    font-size: 12vw;
     opacity: 0;
-}
+ }
+
 .heroine-action {
     position: absolute;
-    left: 20%;
+    left: 10%;
     color: red;
 }
 
 .enemy-action {
     position: absolute;
-    left: 65%;
+    left: 60%;
     color: blue;
 }
 
-.damage-taken-text-container {
+ .damage-taken-text-container {
     position: absolute;
     width: 100%;
-    top: 25%;
+    height: 40vw;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
     font-family: Impact, sans-serif;
-    font-size: 20px;
+    font-size: 5vw;
     opacity: 0;
-}
+ }
 
 .heroine-damage-taken {
     position: absolute;
-    left: 27%;
+    left: 25%;
     color: red;
 }
 
@@ -390,6 +399,19 @@
     left: 70%;
     color: red;
 }
+
+ @media (min-width: 768px) {
+    .action-text-container {
+        height: 310px;
+        font-size: 80px;
+        top: 60%;
+     }
+     .damage-taken-text-container {
+        height: 310px;
+        font-size: 30px;
+        top: 50%;
+    }
+ }
 
 /*----- Pop-ups / Loot Drops */
 
