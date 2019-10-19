@@ -181,6 +181,8 @@ $(function () {
     menu: $(".menu-button"),
     closeMenu: $("#close-menu"),
     toShop: $("#home-to-shop"),
+    levelUpAttack: $("#upgrade-attack"),
+    levelUpDefence: $("#upgrade-defence"),
     homeToMap: $("#home-to-map"),
     shopToHome: $("#shop-to-home"),
     mapToHome: $("#map-to-home"),
@@ -295,13 +297,12 @@ $(function () {
 
   // ----- Shop Buttons
 
-  $(".levelUpAttack").click(function () {
+  gameButton.levelUpAttack.click(function () {
     if (player.gold > 25) {
       if (player.attack < 90) {
         player.attack += 5;
         player.gold -= 10;
-        $("#playerAttack").text(player.attack);
-        $("#playerGold").text(player.gold);
+        updatePlayerStats();
       } else {
         alert("You have reached manimum attack level")
       }
@@ -310,13 +311,12 @@ $(function () {
     }
   })
 
-  $(".levelUpDefence").click(function () {
+  gameButton.levelUpDefence.click(function () {
     if (player.gold > 25) {
       if (player.defense < 75) {
         player.defense += 5;
         player.gold -= 10;
-        $("#playerDefense").text(player.defense);
-        $("#playerGold").text(player.gold);
+        updatePlayerStats();
       } else {
         alert("You have reached maximum defense level")
       }
