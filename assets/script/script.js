@@ -260,7 +260,7 @@ $(function () {
   })
 
   gameButton.toShop.click(function () {
-    gameScreen.show.hide();
+    gameScreen.home.hide();
     gameScreen.shop.show();
   })
 
@@ -270,7 +270,7 @@ $(function () {
   })
 
   gameButton.shopToHome.click(function () {
-    gameScreen.show.hide();
+    gameScreen.shop.hide();
     gameScreen.home.show();
   })
 
