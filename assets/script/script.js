@@ -173,7 +173,9 @@ $(function () {
     potionDropText: $("#potion-drop-text"),
     died: $("#died"),
     winFight: $("#winFight"),
-    roundCounter: $(".round-counter-container")
+    roundCounter: $(".round-counter-container"),
+    actionTextContainer: $(".action-text-container"),
+    damageTakenContainer: $(".damage-taken-text-container"),
   }
 
   const gameButton = {
@@ -354,14 +356,14 @@ $(function () {
     updateEnemyStats();
   })
 
-function updateEnemyStats() {
+  function updateEnemyStats() {
     statField.enemyHealthText.text(currentEnemy.health + " / " + currentEnemy.maxHealth);
     statField.enemyAttack.text(currentEnemy.attack);
     statField.enemyDefence.text(currentEnemy.defense);
     statField.enemyGold.text(currentEnemy.gold);
   }
 
-//----- COMBAT
+  //----- COMBAT
 
 
 
@@ -415,9 +417,6 @@ function updateEnemyStats() {
     currentEnemy.takeDamage(enemyDamageTaken);
     player.health = Math.max(player.health - playerDamageTaken, 0);
 
-    updateEnemyStats();
-    updatePlayerStats();
-
     // Setting action text for enemy and heroine
     if (isPlayerAttacking) {
       statField.heroineActionText.text("Attack!")
@@ -437,7 +436,7 @@ function updateEnemyStats() {
 
 
     // Animate action text for enemy and heroine
-    $(".action-text-container")
+    popups.actionTextContainer
       .animate({
         'opacity': 1,
       }, 700)
@@ -445,37 +444,42 @@ function updateEnemyStats() {
       .animate({
         'opacity': 0
       }, function () {
-        $("#enemyHealth").text(currentEnemy.health);
-        $("#playerHealth").text(player.health);
-        $(".action-text-container").removeAttr('style');
 
-        $(".damage-taken-text-container")
+
+        // remove attributes
+        popups.actionTextContainer.removeAttr('style');
+
+        // Animate damage taken text for enemy and heroine
+        popups.damageTakenContainer
           .animate({
             'opacity': 1,
-            'top': '20%',
+            'top': '35%',
           }, 700)
           .animate({
             'opacity': 0
           }, function () {
-            $(".damage-taken-text-container").removeAttr('style')
+
+            // Update enemy / player stats after the animation
+            updateEnemyStats();
+            updatePlayerStats();
+
+            // remove attributes
+            popups.damageTakenContainer.removeAttr('style')
 
             //If you die
             if (player.health < 1) {
-              statContainer.roundCounter.hide();
-              gameScreen.popup.show();
+              gameScreen.popupBackground.show();
               popups.died.show();
-              player.health = 0;
-              $('#playerHealth').val(player.health);
 
+              //If your enemy dies
             } else if (currentEnemy.health < 1) {
-              statContainer.roundCounter.hide();
-              gameScreen.popup.show();
+              gameScreen.popupBackground.show();
               popups.goldDrop.show();
-              currentEnemy.health = 0;
+
+              //Gold Drop
               player.gold += currentEnemy.gold;
-              $("#playerGold").text(player.gold);
-              $(".gold-drop-text").text("+ " + currentEnemy.gold);
-              $(".gold-drop-text")
+              popups.goldDropText.text("+ " + currentEnemy.gold);
+              popups.goldDropText
                 .animate({
                   'opacity': 1,
                   'top': '30%',
@@ -483,25 +487,19 @@ function updateEnemyStats() {
                 .animate({
                   'opacity': 0
                 }, 200, function () {
-                  $(".gold-drop-text").removeAttr('style')
+                  popups.goldDropText.removeAttr('style')
+                  updatePlayerStats();
                 })
             } else {
+
               // Incrementing and updating round counter
               roundCount++;
-              $("#round-counter-span").text(roundCount + 1);
-              roundCounterAnimation($(".pop-text"));
-
+              statField.roundCountText.text(roundCount + 1);
+              roundCounterAnimation(statField.roundCountText);
             };
           })
-
-
-        //Combat end
-
-
       })
-
-    // End battle
-    console.log($("#goldDrop"))
+    // End Combat
   }
 
   $("#goldDrop").click(function () {
