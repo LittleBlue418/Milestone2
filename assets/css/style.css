@@ -463,19 +463,19 @@
     }
  }
 
-#goldDrop {
+#goldDrop .button {
     background-image: url(../buttons/gold.png);
 }
 
-#potionDrop {
+#potionDrop .button {
     background-image: url(../buttons/potion.png);
 }
 
-#died {
+#died .button {
     background-image: url(../buttons/dead.png);
 }
 
-#winFight {
+#winFight .button {
     background-image: url(../buttons/trophy.png);
 }
 
