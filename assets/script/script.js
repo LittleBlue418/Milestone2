@@ -208,6 +208,10 @@ $(function () {
     enemyAttack: $(".enemyAttack"),
     enemyDefence: $(".enemyDefense"),
     enemyGold: $(".enemyGold"),
+    heroineActionText: $(".heroine-action"),
+    heroineDamageTaken: $(".heroine-damage-taken"),
+    enemyActionText: $(".enemy-action"),
+    enemyDamageTaken: $(".enemy-damage-taken"),
   }
 
   function updatePlayerStats() {
@@ -379,17 +383,16 @@ function updateEnemyStats() {
   // Combat function
 
   function resolveCombat(isPlayerAttacking) {
-    console.log("function called")
+
     //disabling buttons
     gameButton.defendButton.attr('disabled', 'disabled');
     gameButton.attackButton.attr('disabled', 'disabled');
     gameButton.fleeFight.attr('disabled', 'disabled');
 
-    console.log(currentEnemy.healthPotionStrength)
+    // Using EnemyBase function to define whether enemy is attacking
+    var isEnemyAttacking = currentEnemy.isEnemyAttacking(roundCount);
 
-    // Picking enemy action from pre-set pattern
-    const isEnemyAttacking = currentEnemy.isEnemyAttacking(roundCount);
-
+    // Scoped Variables
     var playerDamageTaken = 0;
     var enemyDamageTaken = 0;
 
@@ -417,17 +420,19 @@ function updateEnemyStats() {
 
     // Setting action text for enemy and heroine
     if (isPlayerAttacking) {
-      $(".heroine-action").text("Attack!")
+      statField.heroineActionText.text("Attack!")
     } else {
-      $(".heroine-action").text("Defend!")
+      statField.heroineActionText.text("Defend!")
     }
+
     if (isEnemyAttacking) {
-      $(".enemy-action").text("Attack!")
+      statField.enemyActionText.text("Attack!")
     } else {
-      $(".enemy-action").text("Defend!")
+      statField.enemyActionText.text("Defend!")
     }
-    $(".heroine-damage-taken").text("- " + playerDamageTaken)
-    $(".enemy-damage-taken").text("- " + enemyDamageTaken)
+
+    statField.heroineDamageTaken.text("- " + playerDamageTaken)
+    statField.enemyDamageTaken.text("- " + enemyDamageTaken)
 
 
 
