@@ -55,3 +55,12 @@ E - Signpost to the artist's portfolio / other work | 5 | 5
 * Log in functionality
 * Game audio (with an on/off toggle)
 
+### Structure
+
+When thinking about how i would build the different screens it was important to me that the user should not have to wait for load time when moving from a shop screen to a home screen (or other). I felt that a refresh and page load would break the flow of the play. Forthis reason i decided to build the 'screens' of the game into the same single page website, that would complete and run on load to give the smoothest play possible. 
+
+It was also important for me to be mindfull of the flow of play, and of the learned language of game play. For this reason rather than have navigation through a menu i worked to build clear nagivation buttons that the user can interact with. I chose instead to build the menu as a pop-up screen element within the game, and to use it to signpost to my CV as well as the artist's portfolio. 
+
+Visual feedback for the player was another key element i included. Buttons have a size change when clicked, and are greyed out when the player cannot click them. After each action there are visual animations to show the actions taken and health loss to clearly indicate actions and consiquences. 
+
+ 
