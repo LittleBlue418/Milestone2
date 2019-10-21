@@ -409,6 +409,71 @@ $(function () {
 
   // Combat function
 
+  //Putting animations into a class separate from the core mechanics
+  class CombatUI {
+    constructor() {
+
+    }
+
+    animateActions(isPlayerAttacking, isEnemyAttacking) {
+
+      // Setting action text for enemy and heroine
+      if (isPlayerAttacking) {
+        statField.heroineActionText.text("Attack!")
+      } else {
+        statField.heroineActionText.text("Defend!")
+      }
+
+      if (isEnemyAttacking) {
+        statField.enemyActionText.text("Attack!")
+      } else {
+        statField.enemyActionText.text("Defend!")
+      }
+
+      // Animate action text for enemy and heroine
+      return popups.actionTextContainer
+        .animate({
+          'opacity': 1,
+        }, 700)
+        .delay(300)
+        .animate({
+          'opacity': 0
+        }, function () {
+
+          // remove attributes
+          popups.actionTextContainer.removeAttr('style');
+        })
+        .promise()
+    }
+
+    animateDamage(playerDamageTaken, enemyDamageTaken) {
+
+      // Setting damage taken text for enemy and heroine
+      statField.heroineDamageTaken.text("- " + playerDamageTaken)
+      statField.enemyDamageTaken.text("- " + enemyDamageTaken)
+
+      // Animate damage taken text for enemy and heroine
+      return popups.damageTakenContainer
+      .animate({
+        'opacity': 1,
+        'top': '35%',
+      }, 700)
+      .animate({
+        'opacity': 0
+      }, function () {
+
+        // remove attributes
+        popups.damageTakenContainer.removeAttr('style');
+      })
+      .promise()
+    }
+
+
+  }
+
+
+  var combatUI = new CombatUI();
+
   function resolveCombat(isPlayerAttacking) {
 
     //disabling buttons
@@ -442,54 +507,19 @@ $(function () {
     currentEnemy.takeDamage(enemyDamageTaken);
     player.health = Math.max(player.health - playerDamageTaken, 0);
 
-    // Setting action text for enemy and heroine
-    if (isPlayerAttacking) {
-      statField.heroineActionText.text("Attack!")
-    } else {
-      statField.heroineActionText.text("Defend!")
-    }
-
-    if (isEnemyAttacking) {
-      statField.enemyActionText.text("Attack!")
-    } else {
-      statField.enemyActionText.text("Defend!")
-    }
-
-    statField.heroineDamageTaken.text("- " + playerDamageTaken)
-    statField.enemyDamageTaken.text("- " + enemyDamageTaken)
-
 
 
     // Animate action text for enemy and heroine
-    popups.actionTextContainer
-      .animate({
-        'opacity': 1,
-      }, 700)
-      .delay(300)
-      .animate({
-        'opacity': 0
-      }, function () {
-
-
-        // remove attributes
-        popups.actionTextContainer.removeAttr('style');
-
-        // Animate damage taken text for enemy and heroine
-        popups.damageTakenContainer
-          .animate({
-            'opacity': 1,
-            'top': '35%',
-          }, 700)
-          .animate({
-            'opacity': 0
-          }, function () {
+    combatUI.animateActions(isPlayerAttacking, isEnemyAttacking)
+      .then(function () {
+        combatUI.animateDamage(playerDamageTaken, enemyDamageTaken)
+          .then(function () {
 
             // Update enemy / player stats after the animation
             updateEnemyStats();
             updatePlayerStats();
 
-            // remove attributes
-            popups.damageTakenContainer.removeAttr('style')
+
 
             //If you die
             if (player.health < 1) {
@@ -550,7 +580,7 @@ $(function () {
           updatePlayerStats();
         })
 
-        // If the enemy does not drop a health potion
+      // If the enemy does not drop a health potion
     } else {
       popups.goldDrop.hide();
       gameScreen.popupBackground.hide();
