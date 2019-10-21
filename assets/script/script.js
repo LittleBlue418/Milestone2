@@ -454,18 +454,89 @@ $(function () {
 
       // Animate damage taken text for enemy and heroine
       return popups.damageTakenContainer
-      .animate({
-        'opacity': 1,
-        'top': '35%',
-      }, 700)
-      .animate({
-        'opacity': 0
-      }, function () {
+        .animate({
+          'opacity': 1,
+          'top': '35%',
+        }, 700)
+        .animate({
+          'opacity': 0
+        }, function () {
 
-        // remove attributes
-        popups.damageTakenContainer.removeAttr('style');
+          // remove attributes
+          popups.damageTakenContainer.removeAttr('style');
+        })
+        .promise()
+    }
+
+    goldDrop(gold) {
+      //change the game screen
+      gameScreen.popupBackground.show();
+      popups.goldDrop.show();
+
+      //Sets the gold number for the animation
+      popups.goldDropText.text("+ " + gold);
+
+
+      var promise = new Promise(function (resolve, reject) {
+
+        //Remove any existing event handlers and then adds one
+        popups.goldDrop.off("click")
+        popups.goldDrop.on("click", function () {
+
+          //Animates the gold
+          popups.goldDropText
+            .animate({
+              'opacity': 1,
+              'top': '30%',
+            }, 800)
+            .animate({
+              'opacity': 0
+            }, 200, function () {
+
+              //reset the animation
+              popups.goldDropText.removeAttr('style')
+              popups.goldDrop.hide();
+              gameScreen.popupBackground.hide();
+              resolve()
+            })
+        })
       })
-      .promise()
+      return promise;
+    }
+
+    potionDrop(healthPotionStrength) {
+      //change the game screen
+      gameScreen.popupBackground.show();
+      popups.potionDrop.show();
+
+      //Sets the health number for the animation
+      popups.potionDropText.text("+ " + healthPotionStrength);
+
+      var promise = new Promise(function (resolve, reject) {
+
+        //Remove any existing event handlers and then adds one
+        popups.potionDrop.off("click")
+        popups.potionDrop.on("click", function () {
+
+          //Animates the health
+          popups.potionDropText
+            .animate({
+              'opacity': 1,
+              'top': '30%',
+            }, 800)
+            .animate({
+              'opacity': 0
+            }, 200, function () {
+
+              //reset the animation
+              popups.potionDropText.removeAttr('style')
+              popups.potionDrop.hide();
+              gameScreen.popupBackground.hide();
+              resolve()
+            })
+        })
+      })
+      return promise;
     }
 
 
@@ -533,18 +604,25 @@ $(function () {
 
               //Gold Drop
               player.gold += currentEnemy.gold;
-              popups.goldDropText.text("+ " + currentEnemy.gold);
-              popups.goldDropText
-                .animate({
-                  'opacity': 1,
-                  'top': '30%',
-                }, 800)
-                .animate({
-                  'opacity': 0
-                }, 200, function () {
-                  popups.goldDropText.removeAttr('style')
-                  updatePlayerStats();
-                })
+              combatUI.goldDrop(currentEnemy.gold).then(function () {
+                updatePlayerStats();
+
+                // If the enemy drops a health potion
+                if (currentEnemy.healthPotionStrength > 0) {
+                  player.health = Math.min(player.health + currentEnemy.healthPotionStrength, playerMaxHealth);
+                  combatUI.potionDrop(currentEnemy.healthPotionStrength)
+                    .then(function () {
+                      updatePlayerStats();
+                      gameScreen.combat.hide();
+                      gameScreen.map.show();
+                    })
+
+                  // If the enemy does not drop a health potion
+                } else {
+                  gameScreen.combat.hide();
+                  gameScreen.map.show();
+                }
+              })
             } else {
 
               // Incrementing and updating round counter
@@ -557,38 +635,6 @@ $(function () {
     // End Combat
   }
 
-  // Clicking on gold drop
-  popups.goldDrop.click(function () {
-
-    // If the enemy drops a health potion
-    if (currentEnemy.healthPotionStrength > 0) {
-      popups.goldDrop.hide();
-      popups.potionDrop.show();
-
-      player.health = Math.min(player.health + currentEnemy.healthPotionStrength, playerMaxHealth);
-
-      popups.potionDropText.text("+ " + currentEnemy.healthPotionStrength);
-      popups.potionDropText
-        .animate({
-          'opacity': 1,
-          'top': '30%',
-        }, 800)
-        .animate({
-          'opacity': 0
-        }, 200, function () {
-          popups.potionDropText.removeAttr('style')
-          updatePlayerStats();
-        })
-
-      // If the enemy does not drop a health potion
-    } else {
-      popups.goldDrop.hide();
-      gameScreen.popupBackground.hide();
-      gameScreen.combat.hide();
-      gameScreen.map.show();
-    }
-  });
-
 
   // Clicking on the "you died" popup
   popups.died.click(function () {
@@ -596,13 +642,6 @@ $(function () {
     gameScreen.combat.hide();
     gameScreen.popupBackground.hide();
     popups.died.hide();
-  });
-
-  popups.potionDrop.click(function () {
-    gameScreen.popupBackground.hide();
-    popups.potionDrop.hide();
-    gameScreen.combat.hide();
-    gameScreen.map.show();
   });
 
   function roundCounterAnimation(targetElement) {
