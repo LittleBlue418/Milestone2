@@ -95,7 +95,7 @@
  */
 
 #combat-screen {
-     background-image: url("../backgrounds/template-combat-scene.png");
+     background-image: url(../art/backgrounds/background-combat-screen.png);
  }
 
 /* ----- Flex Rows */
@@ -176,12 +176,12 @@
  /* ----- Stats */
 
 .heroine-stats {
-    background-image: url(../stats/template-stats-left.png);
+    background-image: url(../art/stat-bars/stats-heroine-base.png);
     background-position-x: left;
 }
 
 .enemy-stats {
-    background-image: url(../stats/template-stats-right.png);
+    background-image: url(../art/stat-bars/stats-enemy-base.png);
     background-position-x: right;
 }
 
@@ -236,19 +236,19 @@
 }
 
 .health-stat{
-    background-image: url(../stats/stat-icon-health.png);
+    background-image: url(../art/stat-bars/stats-health.png);
 }
 
 .attack-stat{
-    background-image: url(../stats/stat-icon-attack.png);
+    background-image: url(../art/stat-bars/stats-attack.png);
 }
 
 .defence-stat{
-    background-image: url(../stats/stat-icon-defence.png);
+    background-image: url(../art/stat-bars/stats-defence.png);
 }
 
 .gold-stat{
-    background-image: url(../stats/stat-icon-gold.png);
+    background-image: url(../art/stat-bars/stats-gold.png);
 }
 
 .heroine-stats .stat-text {
@@ -275,70 +275,70 @@
 }
 
  #heroine-base {
-    background-image: url(../heroine/heroineBase.png);
+    background-image: url(../art/figures/heroine-body.png);
  }
 
  #heroine-sword {
-    /* Wooden sword */
+    background-image: url(../art/figures/heroine-sword-wood.png);
  }
 
  #heroine-sword.iron {
-     /* Iron sword */
+    background-image: url(../art/figures/heroine-sword-basic.png);
  }
 
  #heroine-sword.fancy {
-    /* Fancy sword */
+    background-image: url(../art/figures/heroine-sword-fancy.png);
  }
 
  #heroine-sword.magic {
-    background-image: url(../heroine/heroine-sword-magic.png);
+    background-image: url(../art/figures/heroine-sword-magic.png);
  }
 
  #heroine-shield {
-    /* Wooden shield */
+    background-image: url(../art/figures/heroine-shield-wood.png);
  }
 
  #heroine-shield.iron {
-   /* Iron shield */
+    background-image: url(../art/figures/heroine-shield-basic.png);
  }
 
  #heroine-shield.fancy {
-    background-image: url(../heroine/heroine-shield-fancy.png);
+    background-image: url(../art/figures/heroine-shield-fancy.png);
  }
 
  #heroine-shield.magic {
-    /* Magic shield */
+    background-image: url(../art/figures/heroine-shield-magic.png);
  }
 
  #enemy.level1 {
-    background-image: url(../enemies/enemy1.png);
+    background-image: url(../art/figures/enemy-1.png);
  }
 
  #enemy.level2 {
-    /* Level 2 enemy */
+    background-image: url(../art/figures/enemy-2.png);
  }
 
  #enemy.level3 {
-    /* Level 2 enemy */
+    background-image: url(../art/figures/enemy-3.png);
  }
 
  #enemy.level4 {
-    /* Level 2 enemy */
+    background-image: url(../art/figures/enemy-4.png);
  }
 
 
 /* ----- Buttons */
 
 #attack-button .button {
-     background-image: url(../buttons/sword.png);
+     background-image: url(../art/buttons/button-combat-attack.png);
  }
 
 #defend-button .button {
-    background-image: url(../buttons/shield.png);
+    background-image: url(../art/buttons/button-combat-defend.png);
 }
 
 #flee-fight .button {
-    background-image: url(../buttons/run.png);
+    background-image: url(../art/buttons/button-combat-flee.png);
 }
 
 
@@ -556,7 +556,7 @@
 */
 
 #home-screen {
-     background-image: url("../backgrounds/template-home-screen.png");
+     background-image: url(../art/backgrounds/background-home-screen.png);
  }
 
  /* ----- Flex Rows */
@@ -578,11 +578,11 @@
 /* ----- Inner Divs & Buttons */
 
 #home-to-shop .button {
-    background-image: url(../buttons/shop-sign.png);
+    background-image: url(../art/buttons/button-home-shop.png);
 }
 
 #home-to-map .button {
-    background-image: url(../buttons/road_sign.png);
+    background-image: url(../art/buttons/button-home-adventure.png);
 }
 
 
@@ -594,7 +594,7 @@
 */
 
 #shop-screen {
-     background-image: url("../backgrounds/template-shop-screen.png");
+     background-image: url(../art/backgrounds/background-shop-screen.png);
  }
 
  /* ----- Flex Rows */
@@ -607,15 +607,15 @@
 /* ----- Inner Divs & Buttons */
 
 #upgrade-attack .button {
-    background-image: url(../buttons/sword.png);
+    background-image: url(../art/buttons/button-shop-upgrade-attack.png);
 }
 
 #upgrade-defence .button {
-    background-image: url(../buttons/shield.png);
+    background-image: url(../art/buttons/button-shop-upgrade-defence.png);
 }
 
 #shop-to-home .button {
-    background-image: url(../buttons/door.png);
+    background-image: url(../art/buttons/button-shop-leave.png);
 }
 
 #shop-pop-up-background {
@@ -659,7 +659,7 @@
 */
 
 #map-screen {
-     background-image: url("../backgrounds/template-map-screen.png");
+     background-image: url(../art/backgrounds/background-map-screen.png);
  }
 
 
@@ -718,11 +718,11 @@
 
 
 #enemy-1-button .button {
-    background-image: url(../buttons/enemy.png);
+    background-image: url(../art/buttons/button-map-enemy-1.png);
 }
 
 #enemy-2-button .button {
-    background-image: url(../buttons/enemy.png);
+    background-image: url(../art/buttons/button-map-enemy-2.png);
 }
 
 #enemy-3-button .button {
@@ -734,7 +734,7 @@
 }
 
 #map-to-home .button {
-    background-image: url(../buttons/road_sign.png);
+    background-image: url(../art/buttons/button-map-home.png);
 }
 
 
@@ -747,7 +747,7 @@
 */
 
 #victory-screen {
-     background-image: url("../backgrounds/template-victory-screen.png");
+     background-image: url(../art/backgrounds/background-victory.png);
  }
 
 
