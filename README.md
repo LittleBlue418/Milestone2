@@ -23,3 +23,18 @@ My UX process centered on a mobile first design, that would scale responsively f
 * As an Employer, I want to get an overview of the developers skill level with JavaScript and with building responsive websites. 
 * As an artist I want to be able to showcase the full range of my game design skills, from characters and world building to buttons and stat containers. 
 * As a player / user I want to be able to play an engaging and emersive game that rewards and challenges me. 
+
+#### Research & Prioritization
+
+Working from the user stories I put together the problems that I wanted to solve. Working through them it was clear that the code running the site, and the art, would need to be prioritized over advanced mechanics or overly complicated game play.  
+
+Opportunity / Problem | Importance | Viability / Feasibility
+----------------------|-------------|----------------------
+A - Display my JavaScript skills | 5 | 4 
+B - Provide a framework for the artist to display their skills | 3 | 3
+C - Build engaging game mechanics for the user / player  | 5 | 4
+D - Signpost to my CV / Portfolio | 5 | 5
+E - Signpost to the artist's portfolio / other work | 5 | 5
+
+[image here]
+
