@@ -34,6 +34,7 @@ $(function () {
   var roundCount;
   var player;
   var currentEnemy;
+  var infoCombatPopUp = true;
 
 
   /*
@@ -167,6 +168,10 @@ $(function () {
   }
 
   const popups = {
+    infoHelpUs: $("#info-help-us"),
+    infoUpgradeCost: $("#info-upgrade-cost"),
+    infoUpgradeLimmit: $("#info-upgrade-limmit"),
+    infoCombat: $("#info-combat"),
     goldDrop: $("#goldDrop"),
     goldDropText: $("#gold-drop-text"),
     potionDrop: $("#potionDrop"),
@@ -180,6 +185,7 @@ $(function () {
 
   const gameButton = {
     startGame: $("#startGame"),
+    infoOk: $(".info-ok"),
     menu: $(".menu-button"),
     newGame: $("#new-game"),
     closeMenu: $("#close-menu"),
@@ -235,6 +241,10 @@ $(function () {
   gameScreen.menu.hide();
   gameScreen.popupBackground.hide();
 
+  popups.infoHelpUs.hide();
+  popups.infoUpgradeCost.hide();
+  popups.infoUpgradeLimmit.hide();
+  popups.infoCombat.hide();
   popups.goldDrop.hide();
   popups.potionDrop.hide();
   popups.died.hide();
@@ -257,6 +267,11 @@ $(function () {
 
     gameScreen.welcome.hide();
     gameScreen.home.show();
+    popups.infoHelpUs.show();
+  })
+
+  gameButton.infoOk.click(function () {
+    $(this).parents(".info-pop-up").hide();
   })
 
   gameButton.menu.click(function () {
@@ -281,6 +296,8 @@ $(function () {
   gameButton.homeToMap.click(function () {
     gameScreen.home.hide();
     gameScreen.map.show();
+
+
   })
 
   gameButton.shopToHome.click(function () {
@@ -296,7 +313,10 @@ $(function () {
   gameButton.startCombat.click(function () {
     gameScreen.map.hide();
     gameScreen.combat.show();
-
+    if (infoCombatPopUp) {
+      popups.infoCombat.show();
+      infoCombatPopUp = false;
+    }
     popups.roundCounter.show();
     roundCount = 0;
     statField.roundCountText.text("Round " + (roundCount + 1));
@@ -315,10 +335,10 @@ $(function () {
         player.gold -= 10;
         updatePlayerStats();
       } else {
-        alert("You have reached manimum attack level")
+        popups.infoUpgradeLimmit.show();
       }
     } else {
-      alert("You do not have enough gold to level up")
+      popups.infoUpgradeCost.show();
     }
   })
 
@@ -329,10 +349,10 @@ $(function () {
         player.gold -= 10;
         updatePlayerStats();
       } else {
-        alert("You have reached maximum defense level")
+        popups.infoUpgradeLimmit.show();
       }
     } else {
-      alert("You do not have enough gold to level up")
+      popups.infoUpgradeCost.show();
     }
 
 

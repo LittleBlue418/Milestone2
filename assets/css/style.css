@@ -586,7 +586,32 @@
     background-image: url(../art/buttons/button-home-adventure.png);
 }
 
+.info-pop-up {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
 
+#info-help-us {
+    background-image: url(../buttons/hint-pop-up.png);
+}
+
+.info-text-box {
+    position: absolute;
+    top: 25%;
+    width: 40%;
+    left: 30%;
+}
+
+.info-ok  {
+    background-color: saddlebrown;
+    position: absolute;
+    top: 68%;
+    width: 10%;
+    height: 5%;
+    left: 60%;
+}
 
 /*
  =================================
@@ -652,6 +677,13 @@
     color: blue;
 }
 
+#info-upgrade-cost {
+    background-image: url(../buttons/hint-pop-up.png);
+}
+
+#info-upgrade-limmit {
+    background-image: url(../buttons/hint-pop-up.png);
+}
 
 /*
  =================================
@@ -739,7 +771,9 @@
 }
 
 
-
+#info-combat {
+    background-image: url(../buttons/hint-pop-up.png);
+}
 
 /*
  =================================
