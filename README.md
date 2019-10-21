@@ -38,3 +38,20 @@ E - Signpost to the artist's portfolio / other work | 5 | 5
 
 [image here]
 
+### Scope 
+##### Initial Scope
+* A landing screen that makes it clear that this is the start point for the game
+* A home screen that builds the world of the game for the player
+* A combat screen to diaplay the core mechanics of the game
+* A shop screen to allow the user to level up 
+* A map screen to present the user with a choice of enemies and show the final objective
+* A menu to signpost to my CV and the artist's portfolio
+
+##### 'Nice to Have' Scope
+* More advanced images and animations for loot drops to give a more visual feedback reward to the player
+* More advanced animations around the combat to give visual feedback to the player
+* More advanced shop mechanics that would scale prices as the player leveld up
+* A fade to black between screen changes to give a softer transition
+* Log in functionality
+* Game audio (with an on/off toggle)
+
