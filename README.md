@@ -8,9 +8,18 @@ The goal with creating a portfolio peice with the artist was for me to create th
 
 The goal with creating an engaging game for the user to play was to create a game mechanic that was interesting and challenging enough to hold a players interest and encourage them to try to 'beat' the game. It was important that they not be able to win each fight by simply clicking the same 'attack' button over and over.  
  
+*** 
+### Website
  
- ### Website
- 
- You can view the website [here]( https://littleblue418.github.io/Milestone2/)
+You can view the website [here]( https://littleblue418.github.io/Milestone2/)
 
- 
+***
+## UX 
+
+### Strategy & Planning
+My UX process centered on a mobile first design, that would scale responsively for any screen size but still look and play well on desktop. The style should be consistent, creating a 'world' of the game and a consistent experience. It was also important to considder how to design in a way that the user could navigate and play without breaking the imersion of playing a game.
+
+#### User Stories
+* As an Employer, I want to get an overview of the developers skill level with JavaScript and with building responsive websites. 
+* As an artist I want to be able to showcase the full range of my game design skills, from characters and world building to buttons and stat containers. 
+* As a player / user I want to be able to play an engaging and emersive game that rewards and challenges me. 
