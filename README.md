@@ -63,4 +63,13 @@ It was also important for me to be mindfull of the flow of play, and of the lear
 
 Visual feedback for the player was another key element i included. Buttons have a size change when clicked, and are greyed out when the player cannot click them. After each action there are visual animations to show the actions taken and health loss to clearly indicate actions and consiquences. 
 
- 
+### Skeleton 
+
+After working through the scope and structure I collaborated closely with the artist to discuss and draw up wireframes that would fit for a scalable screen. We decided to design for a tablet/iPad sized screen as the largest 'grow' to avoid over scaling the art, having to have multiple art files, or having to have huge art files. In this way the game is optimized for a device, but still looks good on a desktop. 
+
+##### Wireframes & Diagrams 
+You can view the mobile wireframes [here]
+
+### Surface
+Much of the surface design was built in collaboration with the artist. We worked together to establish a look and feel for the world of the game, and to ensure that backgrounds, figures and assets fit within that world. Early in the conversation we decided to go with a traditional fantasy RPG look and feel, dungeons and dragons inspired, but with more of a cute aesthetic.  
+You can view the origional sketches [here]
