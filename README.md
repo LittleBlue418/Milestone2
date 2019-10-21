@@ -93,6 +93,7 @@ As i was building a game it was important to me that all of the action, and acti
 * I would have loved to build in character creation, custom names etc. This would ahve been part of creating an account. 
 * One idea that was discussed but dropped due to time constraints was the idea of having a character chreation screen where you could choose clothing and hair colour for your character. Although this would have been part of the player account it was primarilly dropped as we would not have had enough time to draw the character assets. 
 
+***
 ## Technologies Used
 * [HTML](https://en.wikipedia.org/wiki/HTML) - Main language used to structure the page.
 * [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) - Providing styling for the site.
@@ -101,4 +102,23 @@ As i was building a game it was important to me that all of the action, and acti
 * [Font Awesome](https://fontawesome.com/) - Page icons
 * [Photoshop / Illustrator](https://www.adobe.com/se/creativecloud.html?gclid=CjwKCAjw1_PqBRBIEiwA71rmtVqgSn2vcdRcH6n_2tweCJ9feZvicaaHlyuOlJio4ZYG_y4iyvk9IBoCrLMQAvD_BwE&sdid=8JD95K3M&mv=search&ef_id=CjwKCAjw1_PqBRBIEiwA71rmtVqgSn2vcdRcH6n_2tweCJ9feZvicaaHlyuOlJio4ZYG_y4iyvk9IBoCrLMQAvD_BwE:G:s&s_kwcid=AL!3085!3!281036364465!e!!g!!adobe%20creative%20suite) - Creating graphics, creating wireframes 
 
+***
+## Testing 
+### Testing plan
 
+Given the nature of this project, and the complexity of the JavaScript compared to previous projects, i decided to make a testing plan and begin early to ensure that I had tested all aspects of the project. 
+
+### Gameplay Testing 
+For the gameplay creation and testing i worked with a [friend of mine](https://github.com/parmus) who has built [his own games](https://github.com/parmus/dicy). We started the gameplay testing with pen and paper and dice, working through the combat mechanics to find a system that would be fairly simple to impliment, but would allow elements of strategy. After testing a few options we decided on a system involving enemy patterns. Each enemy would have a pattern of attack / defend moves, and the player could learn the pattern by observing the battle. In this way the player could choose when to attack and defend to maximise damage done and minimise damage taken.  
+
+[image here]
+
+Once the initial game was built I was able to start testing the mechanics as a player. I also worked with [another friend](https://www.linkedin.com/in/craig-fleming-633bb4125/) who has worked ss a professional GM for [Steamforged Games](https://steamforged.com/). During this testing process we decided to remove the option to buy health potions, and instead build in the mechanics for potion drop from combat. Again in this way we force the player to think tactically about how they want to play, rather than simply attacking over and over untill they win, then paying to be revived. In this way it adds a puzzle like element to the gameplay.  
+
+### Responsive Design Testing
+
+### Automated testing
+
+### Accessability Testing 
+
+### Feedback 
