@@ -73,3 +73,32 @@ You can view the mobile wireframes [here]
 ### Surface
 Much of the surface design was built in collaboration with the artist. We worked together to establish a look and feel for the world of the game, and to ensure that backgrounds, figures and assets fit within that world. Early in the conversation we decided to go with a traditional fantasy RPG look and feel, dungeons and dragons inspired, but with more of a cute aesthetic.  
 You can view the origional sketches [here]
+
+### Design Decisions
+During the UX design process I made specific design decisions that I want to explain: 
+
+**Not to have a traditional website menu or nav bar** 
+As i was building a game it was important to me that all of the action, and actions, would be built into the game itself. For this reason all ofthe player choices and navigations are buttons in the game screens. Altyhough there is a menu, that links to other websites, it is again part of the game and appears as a pop-up within the game screen. 
+
+***
+## Features
+### Existing features
+* **Shop - Level up attack & defence** - The shop screen has buttons to allow the player to spend gold that they have earned to level up attack and defence. I chose to build this in as a feature rather than have the player automatically gain experience to give the player controll over how they choose to level, and to allow them to build a stratagy based on the enemy they are fighting. 
+* **Enemy visibility** - The importance of the map screen is that it gives the player a clear path to their final enemy objective. As part fo this i choise not to 'hide' or grey out any of the enemies. In this way the player can choose which enemies they wish to fight in the order they wish to fight them. They can look ahead to get an idea of the end goal, and they can go back and fight weaker enemies once they have leveled up if they want to 'grind' to gain gold
+* **Health Potions** - After origionally thinking about putting them into the shop as an item to purchese, I decided to instead build in a randomized loot drop after combat. This forces the player to think critically about which enemies they choose to fight, and also forces them to think strategically about how they choose to fight. They cannot simply attack each time and win the game. See player testing below for more details.  
+
+### Features Left to Implement 
+* I would like to add the ability for the player to create an account, save games and return to them later on. 
+* I would like to build in music for the game to help immerse the player more fully in the world of the story. 
+* I would have loved to build in character creation, custom names etc. This would ahve been part of creating an account. 
+* One idea that was discussed but dropped due to time constraints was the idea of having a character chreation screen where you could choose clothing and hair colour for your character. Although this would have been part of the player account it was primarilly dropped as we would not have had enough time to draw the character assets. 
+
+## Technologies Used
+* [HTML](https://en.wikipedia.org/wiki/HTML) - Main language used to structure the page.
+* [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) - Providing styling for the site.
+* [JavaScript](https://en.wikipedia.org/wiki/JavaScript) - Adding functionality to the skill circles, as well as 'on click', 'hidden' and 'scroll'. 
+* [JQuery](https://jquery.com/) - Supporting library for much of the JavaScript functionality. 
+* [Font Awesome](https://fontawesome.com/) - Page icons
+* [Photoshop / Illustrator](https://www.adobe.com/se/creativecloud.html?gclid=CjwKCAjw1_PqBRBIEiwA71rmtVqgSn2vcdRcH6n_2tweCJ9feZvicaaHlyuOlJio4ZYG_y4iyvk9IBoCrLMQAvD_BwE&sdid=8JD95K3M&mv=search&ef_id=CjwKCAjw1_PqBRBIEiwA71rmtVqgSn2vcdRcH6n_2tweCJ9feZvicaaHlyuOlJio4ZYG_y4iyvk9IBoCrLMQAvD_BwE:G:s&s_kwcid=AL!3085!3!281036364465!e!!g!!adobe%20creative%20suite) - Creating graphics, creating wireframes 
+
+
