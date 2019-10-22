@@ -226,36 +226,43 @@ $(function () {
     enemyDamageTaken: $(".enemy-damage-taken"),
   }
 
+
+
+
+  hideAllScreens();
+  gameScreen.welcome.show();
+
+
+  function hideAllScreens() {
+    gameScreen.welcome.hide();
+    gameScreen.home.hide();
+    gameScreen.shop.hide();
+    gameScreen.map.hide();
+    gameScreen.combat.hide();
+    gameScreen.victory.hide();
+    gameScreen.menu.hide();
+    gameScreen.popupBackground.hide();
+
+    popups.infoBackground.hide();
+    popups.infoWelcome.hide();
+    popups.infoGold.hide();
+    popups.infoLevel.hide();
+    popups.infoCombat.hide();
+
+    popups.goldDrop.hide();
+    popups.potionDrop.hide();
+    popups.died.hide();
+    popups.winFight.hide();
+
+    popups.roundCounter.hide();
+  }
+
   function updatePlayerStats() {
     statField.playerHealthText.text(player.health + " / " + player.maxHealth);
     statField.playerAttack.text(player.attack);
     statField.playerDefence.text(player.defense);
     statField.playerGold.text(player.gold);
   }
-
-
-
-  gameScreen.welcome.show();
-  gameScreen.home.hide();
-  gameScreen.shop.hide();
-  gameScreen.map.hide();
-  gameScreen.combat.hide();
-  gameScreen.victory.hide();
-  gameScreen.menu.hide();
-  gameScreen.popupBackground.hide();
-
-  popups.infoBackground.hide();
-  popups.infoWelcome.hide();
-  popups.infoGold.hide();
-  popups.infoLevel.hide();
-  popups.infoCombat.hide();
-
-  popups.goldDrop.hide();
-  popups.potionDrop.hide();
-  popups.died.hide();
-  popups.winFight.hide();
-
-  popups.roundCounter.hide();
 
   /*
   =================================
@@ -270,8 +277,7 @@ $(function () {
   gameButton.startGame.click(function () {
     player = new Player();
     updatePlayerStats();
-
-    gameScreen.welcome.hide();
+    hideAllScreens();
     gameScreen.home.show();
     popups.infoBackground.show();
     popups.infoWelcome.show();
@@ -288,8 +294,7 @@ $(function () {
   });
 
   gameButton.newGame.click(function () {
-    $(this).parents(".game-screen").hide();
-    gameScreen.menu.hide();
+    hideAllScreens();
     gameScreen.welcome.show();
   })
 
@@ -298,29 +303,29 @@ $(function () {
   })
 
   gameButton.toShop.click(function () {
-    gameScreen.home.hide();
+    hideAllScreens();
     gameScreen.shop.show();
   })
 
   gameButton.homeToMap.click(function () {
-    gameScreen.home.hide();
+    hideAllScreens();
     gameScreen.map.show();
 
 
   })
 
   gameButton.shopToHome.click(function () {
-    gameScreen.shop.hide();
+    hideAllScreens();
     gameScreen.home.show();
   })
 
   gameButton.mapToHome.click(function () {
-    gameScreen.map.hide();
+    hideAllScreens();
     gameScreen.home.show();
   })
 
   gameButton.startCombat.click(function () {
-    gameScreen.map.hide();
+    hideAllScreens();
     gameScreen.combat.show();
     if (infoCombatPopUp) {
       popups.infoCombat.show();
@@ -412,7 +417,7 @@ $(function () {
   })
 
   gameButton.fleeFight.click(function () {
-    gameScreen.combat.hide();
+    hideAllScreens();
     gameScreen.map.show();
   })
 
