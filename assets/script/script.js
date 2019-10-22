@@ -615,7 +615,7 @@ $(function () {
         statField.roundCountText.removeAttr('style')
 
         //eneble buttons
-        combatUI.combatButtonsVisible(true);
+        this.combatButtonsVisible(true);
       })
     };
 
