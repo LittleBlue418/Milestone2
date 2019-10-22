@@ -196,7 +196,6 @@ $(function () {
     died: $("#died"),
     winFight: $("#winFight"),
 
-    roundCounter: $(".round-counter-container"),
     actionTextContainer: $(".action-text-container"),
     damageTakenContainer: $(".damage-taken-text-container"),
   }
@@ -268,8 +267,6 @@ $(function () {
     popups.potionDrop.hide();
     popups.died.hide();
     popups.winFight.hide();
-
-    popups.roundCounter.hide();
   }
 
   function updatePlayerStats() {
@@ -347,11 +344,9 @@ $(function () {
       popups.infoCombat.show();
       player.combatPopUp = false;
     }
-    popups.roundCounter.show();
-    roundCount = 0;
-    statField.roundCountText.text("Round " + (roundCount + 1));
 
-    roundCounterAnimation($(".pop-text"));
+    roundCount = 0;
+    combatUI.roundCounterAnimation(roundCount);
 
   })
 
@@ -604,6 +599,23 @@ $(function () {
       })
       return promise;
     }
+
+    roundCounterAnimation(roundCount) {
+      statField.roundCountText.text("Round " + (roundCount + 1));
+
+      statField.roundCountText.animate({
+        'opacity': 0.7,
+        'fontSize': 40,
+      }, 900).animate({
+        'opacity': 0,
+      }, 200, function () {
+        statField.roundCountText.removeAttr('style')
+
+        //eneble buttons
+        combatUI.combatButtonsVisible(true);
+      })
+    };
+
   }
 
 
@@ -665,6 +677,7 @@ $(function () {
 
               //Gold Drop
               player.gold += currentEnemy.gold;
+
               combatUI.goldDropAnimation(currentEnemy.gold).then(function () {
                 updatePlayerStats();
 
@@ -688,8 +701,7 @@ $(function () {
 
               // Incrementing and updating round counter
               roundCount++;
-              statField.roundCountText.text(roundCount + 1);
-              roundCounterAnimation(statField.roundCountText);
+              combatUI.roundCounterAnimation(roundCount);
             };
           })
       })
@@ -704,27 +716,6 @@ $(function () {
     gameScreen.popupBackground.hide();
     popups.died.hide();
   });
-
-  function roundCounterAnimation(targetElement) {
-    targetElement.animate({
-      'opacity': 0.7,
-      'fontSize': 40,
-    }, 900).animate({
-      'opacity': 0,
-    }, 200, function () {
-      targetElement.removeAttr('style')
-
-      //eneble buttons
-      combatUI.combatButtonsVisible(true);
-    })
-  };
-
-  // TEXT POPS
-
-
-
-
-
 
 
 
