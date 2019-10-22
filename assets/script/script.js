@@ -154,6 +154,10 @@ $(function () {
     isDead(){
       return (this.health < 1);
     }
+
+    takeDamage(damageTaken) {
+      this.health = Math.max(this.health - damageTaken, 0);
+    }
   }
 
 
@@ -630,7 +634,7 @@ $(function () {
 
 
     currentEnemy.takeDamage(enemyDamageTaken);
-    player.health = Math.max(player.health - playerDamageTaken, 0);
+    player.takeDamage(playerDamageTaken);
 
 
 
