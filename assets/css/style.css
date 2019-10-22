@@ -70,6 +70,24 @@
     }
 }
 
+@keyframes floating {
+    0% {
+        transform: translateY(2px);
+    }
+    100% {
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes pulsing {
+    0% {
+        transform: scale(1.05)  translateY(2px);
+    }
+    100% {
+        transform: scale(1.0)  translateY(0);
+    }
+}
+
 .signpost {
     animation-name: wiggle;
     animation-duration: 1.5s;
@@ -77,6 +95,30 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     transform-origin: center bottom;
+}
+
+.floating {
+    animation-name: floating;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.pulsing {
+    animation-name: pulsing;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.delayL {
+    animation-delay: -0.5s;
+}
+
+.delayS {
+    animation-delay: -0.2s;
 }
 
 .button {
@@ -189,7 +231,7 @@
     padding: 5px;
     margin-bottom: 5%;
     margin-right: 5%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.3);
     border-radius: 50%;
  }
 
