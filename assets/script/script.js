@@ -200,9 +200,9 @@ $(function () {
     enemy2Button: $("#enemy-2-button"),
     enemy3Button: $("#enemy-3-button"),
     enemy4Button: $("#enemy-4-button"),
-    fleeFight: $("#flee-fight"),
-    attackButton: $("#attack-button"),
-    defendButton: $("#defend-button"),
+    fleeFight: $(".flee-fight"),
+    attackButton: $(".attack-button"),
+    defendButton: $(".defend-button"),
   }
 
   const statField = {
