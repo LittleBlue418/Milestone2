@@ -766,7 +766,7 @@
 }
 
 #menu-scroll {
-     background-image: url("../buttons/dialogueScroll.png");
+     background-image: url(../art/pop-ups/pop-up-menu.png);
      background-repeat: no-repeat;
      background-size: cover;
      background-position-x: center;
@@ -774,8 +774,8 @@
      left: 50%;
      top: 50%;
      transform: translate(-50%, -50%);
-     height: 80%;
-     width: 70%;
+     height: 74vh;
+     width: 92vw;
  }
 
  #menu-text-box {
@@ -784,7 +784,7 @@
     top: 52%;
     transform: translate(-50%, -50%);
     height: 50vh;
-    width: 80vw;
+    width: 65vw;
     text-align: center;
  }
 
@@ -794,13 +794,18 @@
  }
 
 #menu-screen .button {
-    width: 65%;
+    width: 73%;
     position: inherit;
     top: 0;
     margin-top: 3%;
     transform: scale(1);
     transition: transform 20ms ease-in-out;
-    font-size: 6vw;
+    font-size: 115%;
+    background-color: rgb(236, 214, 184);
+    outline: rgba(138, 95, 65, 0.534) 2px solid;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-top: 7%;
 }
 
 #menu-screen h2 {
@@ -821,6 +826,10 @@
         max-height: 1024px;
         left: calc(50% - 384px);
     }
+    #menu-scroll {
+        height: 73%;
+        width: 68%;
+    }
 
     #menu-text-box {
         top: 58%;
@@ -829,8 +838,7 @@
     }
 
     #menu-screen .button {
-        width: 75%;
-        font-size: 32px;
+        font-size: 200%;
     }
 
     #menu-screen h2 {
