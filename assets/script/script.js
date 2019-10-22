@@ -148,11 +148,7 @@ $(function () {
     };
 
     isDead(){
-      if (this.health < 1) {
-        return true;
-      } else {
-        return false;
-      }
+      return (this.health < 1);
     }
   }
 
