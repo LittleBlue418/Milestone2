@@ -145,13 +145,15 @@ $(function () {
       this.defense = 10;
       this.gold = 0;
       this.combatPopUp = true;
-
-      if (this.health < 1) {
-        this.isAlive = false;
-      } else {
-        this.isAlive = true;
-      }
     };
+
+    isDead(){
+      if (this.health < 1) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 
 
@@ -590,8 +592,10 @@ $(function () {
           hideAllScreens();
           gameScreen.welcome.show();
           resolve()
+        })
       })
-    })
+      return promise;
+    }
   }
 
 
@@ -643,7 +647,7 @@ $(function () {
 
 
             //If you die
-            if (player.isAlive == false) {
+            if (player.isDead()) {
               combatUI.died();
 
               //If your enemy dies
