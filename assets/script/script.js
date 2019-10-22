@@ -619,6 +619,11 @@ $(function () {
       })
     };
 
+    endCombat() {
+      gameScreen.combat.hide();
+      gameScreen.map.show();
+    }
+
   }
 
 
@@ -693,8 +698,7 @@ $(function () {
             //re-setting screens
             .then(function () {
               combatUI.updatePlayerStats(player);
-              gameScreen.combat.hide();
-              gameScreen.map.show();
+              combatUI.endCombat();
             })
 
           //If both alive, continue combat
