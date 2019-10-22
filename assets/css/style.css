@@ -412,17 +412,20 @@
     font-family: Impact, sans-serif;
     font-size: 12vw;
     opacity: 0;
+    color: red;
  }
 
 .heroine-action {
     position: absolute;
     left: 10%;
-    color: red;
 }
 
 .enemy-action {
     position: absolute;
     left: 60%;
+}
+
+.defending {
     color: rgb(84, 84, 243);
 }
 

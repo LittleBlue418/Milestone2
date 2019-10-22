@@ -469,12 +469,14 @@ $(function () {
       } else {
         statField.heroineActionText.text("Defend!")
       }
+      statField.heroineActionText.toggleClass('defending', !isPlayerAttacking)
 
       if (isEnemyAttacking) {
         statField.enemyActionText.text("Attack!")
       } else {
         statField.enemyActionText.text("Defend!")
       }
+      statField.enemyActionText.toggleClass('defending', !isEnemyAttacking)
 
       // Animate action text
       return popups.actionTextContainer
