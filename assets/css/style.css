@@ -586,32 +586,6 @@
     background-image: url(../art/buttons/button-home-adventure.png);
 }
 
-.info-pop-up {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#info-help-us {
-    background-image: url(../buttons/hint-pop-up.png);
-}
-
-.info-text-box {
-    position: absolute;
-    top: 25%;
-    width: 40%;
-    left: 30%;
-}
-
-.info-ok  {
-    background-color: saddlebrown;
-    position: absolute;
-    top: 68%;
-    width: 10%;
-    height: 5%;
-    left: 60%;
-}
 
 /*
  =================================
@@ -677,13 +651,7 @@
     color: blue;
 }
 
-#info-upgrade-cost {
-    background-image: url(../buttons/hint-pop-up.png);
-}
 
-#info-upgrade-limmit {
-    background-image: url(../buttons/hint-pop-up.png);
-}
 
 /*
  =================================
@@ -770,10 +738,6 @@
     background-image: url(../art/buttons/button-map-home.png);
 }
 
-
-#info-combat {
-    background-image: url(../buttons/hint-pop-up.png);
-}
 
 /*
  =================================
@@ -872,6 +836,89 @@
     #menu-screen h2 {
         font-size: 54px;
         font-weight: bold;
+    }
+}
+
+
+ /*
+ =================================
+    Info Pop-ups
+ =================================
+ */
+
+
+#info-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.info-box {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: bottom;
+    position: absolute;
+    bottom: 0%;
+    width: 100vw;
+    height: 75%;
+}
+
+.info-welcome {
+background-image: url(../art/pop-ups/pop-up-info-welcome.png);
+}¨
+
+#info-combat {
+    background-image: url(../buttons/hint-pop-up.png);
+}
+
+#info-upgrade-cost {
+    background-image: url(../buttons/hint-pop-up.png);
+}
+
+#info-upgrade-limmit {
+    background-image: url(../buttons/hint-pop-up.png);
+}
+
+.info-text {
+    position: absolute;
+    top: 13%;
+    width: 55%;
+    left: 30%;
+    font-size: 6vw;
+}
+
+.info-button  {
+    background-color: plum;
+    outline: rebeccapurple 2px solid;
+    position: absolute;
+    width: 20%;
+    height: 6%;
+    top: 44%;
+    left: 63%;
+    font-size: 5vw;
+}
+
+@media (min-width: 768px) {
+    #info-screen {
+        position: absolute;
+        max-width: 768px;
+        max-height: 1024px;
+        left: calc(50% - 384px);
+    }
+    .info-box {
+        height: 80%;
+        width: 80%;
+        bottom: 4%;
+        left: 4%;
+    }
+    .info-text {
+        top: 15%;
+        font-size: 33px;
+    }
+    .info-button {
+        font-size: 30px;
     }
 }
 

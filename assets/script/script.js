@@ -168,7 +168,8 @@ $(function () {
   }
 
   const popups = {
-    infoHelpUs: $("#info-help-us"),
+    infoBackground: $("#info-screen"),
+    infoWelcome: $(".info-welcome"),
     infoUpgradeCost: $("#info-upgrade-cost"),
     infoUpgradeLimmit: $("#info-upgrade-limmit"),
     infoCombat: $("#info-combat"),
@@ -241,7 +242,8 @@ $(function () {
   gameScreen.menu.hide();
   gameScreen.popupBackground.hide();
 
-  popups.infoHelpUs.hide();
+  popups.infoBackground.hide();
+  popups.infoWelcome.hide();
   popups.infoUpgradeCost.hide();
   popups.infoUpgradeLimmit.hide();
   popups.infoCombat.hide();
@@ -267,11 +269,13 @@ $(function () {
 
     gameScreen.welcome.hide();
     gameScreen.home.show();
-    popups.infoHelpUs.show();
+    popups.infoBackground.show();
+    popups.infoWelcome.show();
   })
 
   gameButton.infoOk.click(function () {
-    $(this).parents(".info-pop-up").hide();
+    $(this).parents(".info-box").hide();
+    popups.infoBackground.hide();
   })
 
   gameButton.menu.click(function () {
