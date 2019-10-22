@@ -56,7 +56,7 @@ $(function () {
       return this.attackPattern[roundCount % this.attackPattern.length];
     }
 
-    isDead(){
+    isDead() {
       return (this.health < 1);
     }
   }
@@ -151,7 +151,7 @@ $(function () {
       this.combatPopUp = true;
     };
 
-    isDead(){
+    isDead() {
       return (this.health < 1);
     }
 
@@ -585,7 +585,7 @@ $(function () {
       return promise;
     }
 
-    died(){
+    died() {
       gameScreen.popupBackground.show();
       popups.died.show();
 
@@ -657,56 +657,57 @@ $(function () {
     // Animate action text for enemy and heroine
     combatUI.animateActions(isPlayerAttacking, isEnemyAttacking)
       .then(function () {
-        combatUI.animateDamage(playerDamageTaken, enemyDamageTaken)
-          .then(function () {
+        return combatUI.animateDamage(playerDamageTaken, enemyDamageTaken)
+      })
+      .then(function () {
 
-            // Update enemy / player stats after the animation
-            updateEnemyStats();
+        // Update enemy / player stats after the animation
+        updateEnemyStats();
+        updatePlayerStats();
+
+
+
+        //If you die
+        if (player.isDead()) {
+          combatUI.died();
+
+          //If your enemy dies
+        } else if (currentEnemy.isDead()) {
+          gameScreen.popupBackground.show();
+          popups.goldDrop.show();
+
+          //Gold Drop
+          player.gold += currentEnemy.gold;
+
+          combatUI.goldDropAnimation(currentEnemy.gold).then(function () {
             updatePlayerStats();
 
-
-
-            //If you die
-            if (player.isDead()) {
-              combatUI.died();
-
-              //If your enemy dies
-            } else if (currentEnemy.isDead()) {
-              gameScreen.popupBackground.show();
-              popups.goldDrop.show();
-
-              //Gold Drop
-              player.gold += currentEnemy.gold;
-
-              combatUI.goldDropAnimation(currentEnemy.gold).then(function () {
-                updatePlayerStats();
-
-                // If the enemy drops a health potion
-                if (currentEnemy.healthPotionStrength > 0) {
-                  player.drinkPotion(currentEnemy.healthPotionStrength);
-                  combatUI.potionDropAnimation(currentEnemy.healthPotionStrength)
-                    .then(function () {
-                      updatePlayerStats();
-                      gameScreen.combat.hide();
-                      gameScreen.map.show();
-                    })
-
-                  // If the enemy does not drop a health potion
-                } else {
+            // If the enemy drops a health potion
+            if (currentEnemy.healthPotionStrength > 0) {
+              player.drinkPotion(currentEnemy.healthPotionStrength);
+              combatUI.potionDropAnimation(currentEnemy.healthPotionStrength)
+                .then(function () {
+                  updatePlayerStats();
                   gameScreen.combat.hide();
                   gameScreen.map.show();
-                }
-              })
-            } else {
+                })
 
-              // Incrementing and updating round counter
-              roundCount++;
-              combatUI.roundCounterAnimation(roundCount);
-            };
+              // If the enemy does not drop a health potion
+            } else {
+              gameScreen.combat.hide();
+              gameScreen.map.show();
+            }
           })
+        } else {
+
+          // Incrementing and updating round counter
+          roundCount++;
+          combatUI.roundCounterAnimation(roundCount);
+        };
       })
-    // End Combat
   }
+  // End Combat
+
 
 
   // Clicking on the "you died" popup
