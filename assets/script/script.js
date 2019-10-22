@@ -158,6 +158,10 @@ $(function () {
     takeDamage(damageTaken) {
       this.health = Math.max(this.health - damageTaken, 0);
     }
+
+    drinkPotion(healthPotionStrength) {
+      this.health = Math.min(this.health + healthPotionStrength, this.maxHealth);
+    }
   }
 
 
@@ -666,7 +670,7 @@ $(function () {
 
                 // If the enemy drops a health potion
                 if (currentEnemy.healthPotionStrength > 0) {
-                  player.health = Math.min(player.health + currentEnemy.healthPotionStrength, playerMaxHealth);
+                  player.drinkPotion(currentEnemy.healthPotionStrength);
                   combatUI.potionDrop(currentEnemy.healthPotionStrength)
                     .then(function () {
                       updatePlayerStats();
