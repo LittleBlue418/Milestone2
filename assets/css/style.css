@@ -61,6 +61,23 @@
 
 
 /* ---- Buttons */
+@keyframes wiggle {
+    0% {
+        transform: rotate(-2deg);
+    }
+    100% {
+        transform: rotate(2deg);
+    }
+}
+
+.signpost {
+    animation-name: wiggle;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    transform-origin: center bottom;
+}
 
 .button {
      border: 0;
@@ -172,6 +189,8 @@
     padding: 5px;
     margin-bottom: 5%;
     margin-right: 5%;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
  }
 
  @media(min-width: 768px) {
