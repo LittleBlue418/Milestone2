@@ -170,15 +170,17 @@ $(function () {
   const popups = {
     infoBackground: $("#info-screen"),
     infoWelcome: $(".info-welcome"),
-    infoUpgradeCost: $("#info-upgrade-cost"),
-    infoUpgradeLimmit: $("#info-upgrade-limmit"),
-    infoCombat: $("#info-combat"),
+    infoGold: $(".info-gold"),
+    infoLevel: $(".info-level"),
+    infoCombat: $(".info-combat"),
+
     goldDrop: $("#goldDrop"),
     goldDropText: $("#gold-drop-text"),
     potionDrop: $("#potionDrop"),
     potionDropText: $("#potion-drop-text"),
     died: $("#died"),
     winFight: $("#winFight"),
+
     roundCounter: $(".round-counter-container"),
     actionTextContainer: $(".action-text-container"),
     damageTakenContainer: $(".damage-taken-text-container"),
@@ -244,13 +246,15 @@ $(function () {
 
   popups.infoBackground.hide();
   popups.infoWelcome.hide();
-  popups.infoUpgradeCost.hide();
-  popups.infoUpgradeLimmit.hide();
+  popups.infoGold.hide();
+  popups.infoLevel.hide();
   popups.infoCombat.hide();
+
   popups.goldDrop.hide();
   popups.potionDrop.hide();
   popups.died.hide();
   popups.winFight.hide();
+
   popups.roundCounter.hide();
 
   /*
@@ -276,6 +280,7 @@ $(function () {
   gameButton.infoOk.click(function () {
     $(this).parents(".info-box").hide();
     popups.infoBackground.hide();
+    gameButton.infoOk.hide();
   })
 
   gameButton.menu.click(function () {

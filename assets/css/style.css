@@ -863,22 +863,23 @@
     bottom: 0%;
     width: 100vw;
     height: 75%;
+
 }
 
 .info-welcome {
-background-image: url(../art/pop-ups/pop-up-info-welcome.png);
-}¨
-
-#info-combat {
-    background-image: url(../buttons/hint-pop-up.png);
+    background-image: url(../art/pop-ups/pop-up-info-welcome.png);
 }
 
-#info-upgrade-cost {
-    background-image: url(../buttons/hint-pop-up.png);
+.info-gold {
+    background-image: url(../art/pop-ups/pop-up-info-welcome.png);
 }
 
-#info-upgrade-limmit {
-    background-image: url(../buttons/hint-pop-up.png);
+.info-level {
+    background-image: url(../art/pop-ups/pop-up-info-welcome.png);
+}
+
+.info-combat {
+    background-image: url(../art/pop-ups/pop-up-info-combat.png);
 }
 
 .info-text {
@@ -889,7 +890,16 @@ background-image: url(../art/pop-ups/pop-up-info-welcome.png);
     font-size: 6vw;
 }
 
-.info-button  {
+.info-gold .info-text {
+    font-size: 5vw;
+}
+
+.info-combat .info-text {
+    top: 11%;
+    font-size: 5vw;
+}
+
+.info-ok  {
     background-color: plum;
     outline: rebeccapurple 2px solid;
     position: absolute;
@@ -900,6 +910,14 @@ background-image: url(../art/pop-ups/pop-up-info-welcome.png);
     font-size: 5vw;
 }
 
+.info-gold .info-ok {
+    top: 46%;
+}
+.info-combat .info-ok {
+    top: 49%;
+    left: 61%;
+    width: 18%;
+}
 @media (min-width: 768px) {
     #info-screen {
         position: absolute;
@@ -917,7 +935,13 @@ background-image: url(../art/pop-ups/pop-up-info-welcome.png);
         top: 15%;
         font-size: 33px;
     }
-    .info-button {
+    .info-gold .info-text {
+        font-size: 30px;
+    }
+    .info-combat .info-text {
+        font-size: 30px;
+    }
+    .info-ok {
         font-size: 30px;
     }
 }
