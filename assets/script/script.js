@@ -145,8 +145,13 @@ $(function () {
       this.defense = 10;
       this.gold = 0;
       this.combatPopUp = true;
-    };
 
+      if (this.health < 1) {
+        this.isAlive = false;
+      } else {
+        this.isAlive = true;
+      }
+    };
   }
 
 
@@ -433,6 +438,8 @@ $(function () {
     constructor() {
 
     }
+
+    // Toggling buttons on the combat screen
     combatButtonsVisible(desiredVisible) {
       if (desiredVisible) {
         gameButton.defendButton.removeAttr('disabled');
@@ -444,9 +451,11 @@ $(function () {
         gameButton.fleeFight.attr('disabled', 'disabled');
       }
     }
+
+    //Function for setting and animating player & enemy actions
     animateActions(isPlayerAttacking, isEnemyAttacking) {
 
-      // Setting action text for enemy and heroine
+      // Setting action text
       if (isPlayerAttacking) {
         statField.heroineActionText.text("Attack!")
       } else {
@@ -459,7 +468,7 @@ $(function () {
         statField.enemyActionText.text("Defend!")
       }
 
-      // Animate action text for enemy and heroine
+      // Animate action text
       return popups.actionTextContainer
         .animate({
           'opacity': 1,
@@ -475,13 +484,14 @@ $(function () {
         .promise()
     }
 
+    // Function for setting and animating player & enemy damage taken
     animateDamage(playerDamageTaken, enemyDamageTaken) {
 
-      // Setting damage taken text for enemy and heroine
+      // Setting damage taken text
       statField.heroineDamageTaken.text("- " + playerDamageTaken)
       statField.enemyDamageTaken.text("- " + enemyDamageTaken)
 
-      // Animate damage taken text for enemy and heroine
+      // Animate damage taken text
       return popups.damageTakenContainer
         .animate({
           'opacity': 1,
@@ -497,7 +507,9 @@ $(function () {
         .promise()
     }
 
+    // Gold drop function if player wins fight
     goldDrop(gold) {
+
       //change the game screen
       gameScreen.popupBackground.show();
       popups.goldDrop.show();
@@ -568,7 +580,18 @@ $(function () {
       return promise;
     }
 
+    died(){
+      gameScreen.popupBackground.show();
+      popups.died.show();
 
+      var promise = new Promise(function (resolve, reject) {
+        popups.died.off("click")
+        popups.died.on("click", function () {
+          hideAllScreens();
+          gameScreen.welcome.show();
+          resolve()
+      })
+    })
   }
 
 
@@ -620,9 +643,8 @@ $(function () {
 
 
             //If you die
-            if (player.health < 1) {
-              gameScreen.popupBackground.show();
-              popups.died.show();
+            if (player.isAlive == false) {
+              combatUI.died();
 
               //If your enemy dies
             } else if (currentEnemy.health < 1) {
