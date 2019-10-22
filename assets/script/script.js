@@ -676,8 +676,6 @@ $(function () {
 
           //If your enemy dies
         } else if (currentEnemy.isDead()) {
-          gameScreen.popupBackground.show();
-          popups.goldDrop.show();
 
           //Gold Drop
           player.gold += currentEnemy.gold;
