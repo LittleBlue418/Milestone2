@@ -202,4 +202,5 @@ The art for this site was produced by [Sofia Persson](https://www.linkedin.com/i
 * [Trello](https://trello.com/en) - Tracking tasks & bugs 
 * [WebAIM](https://webaim.org/resources/contrastchecker/) - Checking and adjusting colours to meet accesability requirements
 
-### Work Based On Other Code
+### Acknowledgements 
+* I was inspire to build this project after seeing the work of [another student](https://github.com/JackSnowdon) who also built a [combat game](https://jacksnowdon.github.io/die-hard/?fbclid=IwAR2-6FrK2tpa4ZimVbj1NarXhO4MachKbblSMYZDOE4pxg9H3N2ks2PF3z4)
