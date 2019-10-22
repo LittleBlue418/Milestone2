@@ -17,185 +17,414 @@
 </head>
 
 <body>
+    <!--Game Frame-->
 
     <div class="game-container">
-        <!--BACKGROUNDS-->
 
-        <!--WELCOME-->
+        <!--SCREENS-->
+
+        <!--Welcome Screen-->
         <div id="welcome-screen" class="game-screen">
-            <div class="button-container">
-                <input class="buttonClass toHomeButton " type="button">
-                <input class="buttonClass menuButton " type="button">
+            <div class="screen-flex-row welcome-buffer-section"></div>
+            <div class="screen-flex-row button-section">
+                <div class="start" id="start-game">
+                    <div class="action-inner">
+                        <input id="startGame" type="button" class="button">
+                    </div>
+                </div>
             </div>
+            <div class="screen-flex-row menu-section">
+                <div class="menu ">
+                    <div class="menu-inner">
+                        <input type="button" class="button menu-button">
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!--HOME-->
+        <!--Home Screen-->
         <div id="home-screen" class="game-screen">
-            <div class="button-container">
-                <div class="row-button-container2">
-                    <input type="button" class="buttonClass toShopButton button2">
-                    <input type="button" class="buttonClass toMapButton button2">
+            <div class="screen-flex-row stat-section">
+                <div class="stats heroine-stats">
+                    <div class="stat-container">
+                        <div class="inner-stat-container">
+                            <div class="stat-line health-stat">
+                                <span class="playerHealth stat-text"></span>
+                            </div>
+                            <div class="stat-line attack-stat">
+                                <span class="playerAttack stat-text"></span>
+                            </div>
+                            <div class="stat-line defence-stat">
+                                <span class="playerDefense stat-text"></span>
+                            </div>
+                            <div class="stat-line gold-stat">
+                                <span class="playerGold stat-text"></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <input type="button" class="buttonClass menuButton">
+                <div class="stats"></div>
+            </div>
+            <div class="screen-flex-row home-buffer-section"></div>
+            <div class="screen-flex-row button-section">
+                <div class="action" id="home-to-shop">
+                    <div class="action-inner">
+                        <input type="button" class="button">
+                    </div>
+                </div>
+                <div class="action" id="home-to-map">
+                    <div class="action-inner">
+                        <input type="button" class="button">
+                    </div>
+                </div>
+            </div>
+            <div class="screen-flex-row menu-section">
+                <div class="menu">
+                    <div class="menu-inner">
+                        <input type="button" class="button menu-button">
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!--SHOP-->
+        <!--Shop Screen-->
         <div id="shop-screen" class="game-screen">
-            <div class="button-container">
-                <div class="row-button-container3">
-                    <input type="button" class="buttonClass levelUpAttack button3">
-                    <input type="button" class="buttonClass levelUpDefence button3">
-                    <input type="button" class="buttonClass toHomeButton button3">
+            <div class="screen-flex-row stat-section">
+                <div class="stats heroine-stats">
+                    <div class="stat-container">
+                        <div class="inner-stat-container">
+                            <div class="stat-line health-stat">
+                                <span class="playerHealth stat-text"></span>
+                            </div>
+                            <div class="stat-line attack-stat">
+                                <span class="playerAttack stat-text"></span>
+                            </div>
+                            <div class="stat-line defence-stat">
+                                <span class="playerDefense stat-text"></span>
+                            </div>
+                            <div class="stat-line gold-stat">
+                                <span class="playerGold stat-text"></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <input type="button" class="buttonClass menuButton">
+                <div class="stats"></div>
+            </div>
+            <div class="screen-flex-row shop-buffer-section"></div>
+            <div class="screen-flex-row button-section">
+                <div class="action" id="upgrade-attack">
+                    <div class="action-inner">
+                        <input type="button" class="button">
+                    </div>
+                </div>
+                <div class="action" id="upgrade-defence">
+                    <div class="action-inner">
+                        <input type="button" class="button">
+                    </div>
+                </div>
+                <div class="action" id="shop-to-home">
+                    <div class="action-inner">
+                        <input type="button" class="button">
+                    </div>
+                </div>
+            </div>
+            <div class="screen-flex-row menu-section">
+                <div class="menu">
+                    <div class="menu-inner">
+                        <input type="button" class="button menu-button">
+                    </div>
+                </div>
+
+            </div>
+            <div id="shop-pop-up-background">
+                <div id="gold-spent-text-attack" class="text-pop">- 25</div>
+                <div id="attack-level-up-text" class="text-pop">+ 5</div>
+                <div id="gold-spent-text-defence" class="text-pop">- 25</div>
+                <div id="defence-level-up-text" class="text-pop">+ 5</div>
             </div>
         </div>
 
-        <!--MAP-->
+        <!--Map Screen-->
         <div id="map-screen" class="game-screen">
-            <div class="button-container">
-                <div class="diagonal-button-container">
-                    <input type="button" class="buttonClass toCombatButton enemy4Button">
-                    <input type="button" class="buttonClass toCombatButton enemy3Button">
-                    <input type="button" class="buttonClass toCombatButton enemy2Button">
-                    <input type="button" class="buttonClass toCombatButton enemy1Button">
-                    <input type="button" class="buttonClass toHomeButton mapButtonHome">
+            <div class="screen-flex-row stat-section">
+                <div class="stats heroine-stats">
+                    <div class="stat-container">
+                        <div class="inner-stat-container">
+                            <div class="stat-line health-stat">
+                                <span class="playerHealth stat-text"></span>
+                            </div>
+                            <div class="stat-line attack-stat">
+                                <span class="playerAttack stat-text"></span>
+                            </div>
+                            <div class="stat-line defence-stat">
+                                <span class="playerDefense stat-text"></span>
+                            </div>
+                            <div class="stat-line gold-stat">
+                                <span class="playerGold stat-text"></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <input type="button" class="buttonClass menuButton">
+                <div class="stats"></div>
             </div>
+            <div class="screen-flex-row button-section">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="action" id="enemy-4-button">
+                    <div class="action-inner">
+                        <input type="button" class="start-combat button">
+                    </div>
+                </div>
+            </div>
+            <div class="screen-flex-row button-section">
+                <div></div>
+                <div></div>
+                <div class="action" id="enemy-3-button">
+                    <div class="action-inner">
+                        <input type="button" class="start-combat button">
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="screen-flex-row button-section">
+                <div></div>
+                <div class="action" id="enemy-2-button">
+                    <div class="action-inner">
+                        <input type="button" class="start-combat button">
+                    </div>
+                </div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="screen-flex-row button-section">
+                <div class="action" id="enemy-1-button">
+                    <div class="action-inner">
+                        <input type="button" class="start-combat button">
+                    </div>
+                </div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="screen-flex-row button-section">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="action" id="map-to-home">
+                    <div class="action-inner">
+                        <input type="button" class="button">
+                    </div>
+                </div>
+            </div>
+            <div class="screen-flex-row menu-section">
+                <div class="menu">
+                    <div class="menu-inner">
+                        <input type="button" class="button menu-button">
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!--COMBAT-->
+        <!--Combat Screen-->
         <div id="combat-screen" class="game-screen">
-
-            <!--ENEMIES-->
-            <div class="enemy-container combat-image">
-                <img src="assets/enemies/template-enemy1.png">
+            <!--Core Screen-->
+            <div class="screen-flex-row stat-section">
+                <div class="stats heroine-stats">
+                    <div class="stat-container">
+                        <div class="inner-stat-container">
+                            <div class="stat-line health-stat">
+                                <span class="playerHealth stat-text"></span>
+                            </div>
+                            <div class="stat-line attack-stat">
+                                <span class="playerAttack stat-text"></span>
+                            </div>
+                            <div class="stat-line defence-stat">
+                                <span class="playerDefense stat-text"></span>
+                            </div>
+                            <div class="stat-line gold-stat">
+                                <span class="playerGold stat-text"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats enemy-stats">
+                    <div class="stat-container">
+                        <div class="inner-stat-container">
+                            <div class="stat-line health-stat">
+                                <span class="enemyHealth stat-text"></span>
+                            </div>
+                            <div class="stat-line attack-stat">
+                                <span class="enemyAttack stat-text"></span>
+                            </div>
+                            <div class="stat-line defence-stat">
+                                <span class="enemyDefense stat-text"></span>
+                            </div>
+                            <div class="stat-line gold-stat">
+                                <span class="enemyGold stat-text"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="screen-flex-row center-section">
+                <div class="figure-container" id="heroine-figure">
+                    <div id="heroine-base" class="figure"></div>
+                    <div id="heroine-sword" class="figure magic"></div>
+                    <div id="heroine-shield" class="figure fancy"></div>
+                </div>
+                <div class="figure-container" id="enemy-figure">
+                    <div id="enemy" class="figure level1"></div>
+                </div>
+            </div>
+            <div class="screen-flex-row button-section">
+                <div class="action" id="attack-button">
+                    <div class="action-inner">
+                        <input type="button" class="attack-button button">
+                    </div>
+                </div>
+                <div class="action" id="defend-button">
+                    <div class="action-inner">
+                        <input type="button" class="defend-button button">
+                    </div>
+                </div>
+                <div class="action" id="flee-fight">
+                    <div class="action-inner">
+                        <input type="button" class="flee-fight button">
+                    </div>
+                </div>
+            </div>
+            <div class="screen-flex-row menu-section">
+                <div class="menu">
+                    <div class="menu-inner">
+                        <input type="button" class="button menu-button">
+                    </div>
+                </div>
 
             </div>
 
-            <!--HEROINE-->
-            <div class="heroine-container combat-image">
-                <img src="assets/heroine/template-heroine-base.png">
 
-            </div>
-
-            <!--ACTION TEXT-->
+            <!--Action Taken Text-->
             <div class="action-text-container">
-                <div class="heroine-action"></div>
-                <div class="enemy-action"></div>
+                <div class="heroine-action">defend</div>
+                <div class="enemy-action">defend</div>
             </div>
 
-            <!--DAMAGE TAKEN TEXT-->
+            <!--Damage Taken Text-->
             <div class="damage-taken-text-container">
-                <div class="heroine-damage-taken"></div>
-                <div class="enemy-damage-taken"></div>
+                <div class="heroine-damage-taken">-12</div>
+                <div class="enemy-damage-taken">-13</div>
             </div>
 
-            <!--BUTTONS-->
-            <div class="button-container">
-                <div class="row-button-container3">
-                    <input type="button" class="buttonClass attackButton button3">
-                    <input type="button" class="buttonClass defenceButton button3">
-                    <input type="button" class="buttonClass toMapButton button3 fleeButton">
-
-                </div>
-                <input type="button" class="buttonClass menuButton">
+            <!--Pop-ups and loot drops-->
+            <div id="pop-up-background">
+                <div id="gold-drop-text" class=" text-pop">Test</div>
+                <div id="potion-drop-text" class=" text-pop">Test 2</div>
             </div>
-        </div>
 
-        <!--VICTORY-->
-        <div id="victory-screen" class="game-screen"></div>
-
-
-
-        <!--OVERLAYS-->
-
-        <!--PLAYER STATS-->
-        <div class="player-stats-container">
-            <div class="player-stats">
-                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span
-                        id="playerHealth"></span> / <span id="playerMaxHealth"></span>
-                </p>
-                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="playerAttack"></span>
-                </p>
-                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="playerDefense"></span>
-                </p>
-                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="playerGold"></span>
-                </p>
+            <div id="goldDrop" class="pop-up-button">
+                <input type="button" class="button">
             </div>
-        </div>
-
-        <!--ENEMY STATS-->
-        <div class="enemy-stats-container">
-            <div class="enemy-stats">
-                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span
-                        id="enemyHealth"></span>/<span id="enemyHealthMax"></span></p>
-                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="enemyAttack"></span>
-                </p>
-                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="enemyDefense"></span>
-                </p>
-                <p><span><img class="iconSmall" src="assets/buttons/sword.png"></span> <span id="enemyGold"></span>
-                </p>
+            <div id="potionDrop" class="pop-up-button">
+                <input type="button" class="button">
             </div>
-        </div>
+            <div id="died" class="pop-up-button">
+                <input type="button" class="button">
+            </div>
+            <div id="winFight" class="pop-up-button">
+                <input type="button" class="button">
+            </div>
 
-        <!--Menu-->
-        <div id="menu-container">
-            <div id="menu">
-                <input type="image" id="dialogueScroll" src="assets/buttons/dialogueScroll.png"></input>
-                <div id="menu-text-box">
-                    <h2>Menu</h2>
-                    <ul>
-                        <li><a href="#">New Game</a></li>
-                        <li><a href="#">Visit Artist Site</a></li>
-                        <li><a href="#">Visit Developer Site</a></li>
-                        <li><button>Close</button></li>
-                    </ul>
+            <!--Round Counter-->
+            <div class="round-counter-container">
+                <div class="inner-round-counter-container">
+                    <p id="round-counter"></p>
                 </div>
             </div>
         </div>
 
-
-
-        <!--Pop Animation Text
-        <div id="pop-text-container">
-            <p class="pop-text">Test</p>
-
-        </div>-->
+        <!--Victory Screen-->
+        <div id="victory-screen" class="game-screen">
+            <div class="screen-flex-row welcome-buffer-section"></div>
+            <div class="screen-flex-row menu-section">
+                <div class="menu">
+                    <div class="menu-inner">
+                        <input type="button" class="button menu-button">
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
-    <!--Player stats-->
 
-
-
-
-    <!--Round Counter-->
-    <div class="round-counter-container">
-        <div class="inner-round-counter-container pop-text">
-            <p class="round-counter-pop">Round: <span id="round-counter-span"></span></p>
+    <!--Menu Screen-->
+    <div id="menu-screen">
+        <div id="menu-scroll">
+            <div id="menu-text-box">
+                <h2>Menu</h2>
+                <ul>
+                    <li><button id="new-game" class="button"> New Game</button></li>
+                    <li><button class="button">
+                            <a href="https://www.instagram.com/rudolf_y_art/" target="_blank">Artist Portfolio</a>
+                        </button></li>
+                    <li><button class="button">
+                            <a href="https://littleblue418.github.io/Milestone1/" target="_blank">Developer Portfolio</a>
+                        </button></li>
+                    <li><button id="close-menu" class="button">Close</button></li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <!--FRAME-->
-    <div id="frame" class="inner-div"></div>
-
-
-
-    <div id="pop-up-container">
-        <input type="image" id="winFight" src="assets/buttons/trophy.png"></input>
-        <input type="image" id="died" src="assets/buttons/dead.png"></input>
-        <input type="image" id="potionDrop" src="assets/buttons/potion.png"></input>
-        <input type="image" id="goldDrop" src="assets/buttons/gold.png"></input>
-        <div class="loot-drop-container">
-            <div class="potion-drop-text"></div>
-            <div class="gold-drop-text"></div>
+    <!--Info Popups-->
+    <div id="info-screen">
+        <div class="info-welcome info-box">
+            <div class="info-text">
+                <p>Hello adventurer! <br>
+                    The scary dragon has stolen the rainbow! Can
+                    you help us please?</p>
+            </div>
+            <button class="info-ok button">ok</button>
         </div>
+        <div class="info-gold info-box">
+            <div class="info-text">
+                <p>Hello adventurer!
+                    <br>It looks like you don't have quite enough
+                    gold for that... <br><br>You
+                    can get gold by fighting monsters!</p>
+            </div>
+            <button class="info-ok button">ok</button>
+        </div>
+        <div class="info-level info-box">
+            <div class="info-text">
+                <p>Hello adventurer!
+                <br>It looks like you can't upgrade that
+                stat any more!</p>
+            </div>
+            <button class="info-ok button">ok</button>
+        </div>
+        <div class="info-combat info-box">
+            <div class="info-text">
+                <p>Hello adventurer! <br>
+                    Combat is dangerous, but it's easier
+                    if you spot the enemies' attack pattern! <br><br>
+                    Also, some enemies drop health potions!
+                </p>
+            </div>
+            <button class="info-ok button">ok</button>
+        </div>
+
     </div>
 
 
+
+    <!--Game Frame-->
+    <div id="frame-container">
+        <div id="frame"></div>
+    </div>
 
 </body>
 

@@ -22,6 +22,8 @@ function randomBool(probability) {
 
 $(function () {
 
+
+
   /*
   =================================
       Global Variables
@@ -31,6 +33,7 @@ $(function () {
   const playerMaxHealth = 100;
   var roundCount;
   var player;
+  var currentEnemy;
 
 
   /*
@@ -52,6 +55,10 @@ $(function () {
     isEnemyAttacking(roundCount) {
       return this.attackPattern[roundCount % this.attackPattern.length];
     }
+
+    isDead() {
+      return (this.health < 1);
+    }
   }
 
   class Enemy1 extends EnemyBase {
@@ -62,6 +69,7 @@ $(function () {
 
       super(health, attackPattern);
 
+      this.maxHealth = health;
       this.attack = randomInteger(10, 15);
       this.defense = randomInteger(10, 15);
       this.gold = randomInteger(5, 10);
@@ -83,6 +91,7 @@ $(function () {
 
       super(health, attackPattern);
 
+      this.maxHealth = health;
       this.attack = randomInteger(25, 30);
       this.defense = randomInteger(35, 40);
       this.gold = randomInteger(25, 30);
@@ -103,6 +112,7 @@ $(function () {
 
       super(health, attackPattern);
 
+      this.maxHealth = health;
       this.attack = randomInteger(55, 50);
       this.defense = randomInteger(40, 45);
       this.gold = randomInteger(45, 50);
@@ -123,6 +133,7 @@ $(function () {
 
       super(health, attackPattern);
 
+      this.maxHealth = health;
       this.attack = 80;
       this.defense = 80;
       this.gold = 0;
@@ -130,141 +141,267 @@ $(function () {
     }
   }
 
+  class Player {
+    constructor() {
+      this.health = playerMaxHealth;
+      this.maxHealth = playerMaxHealth;
+      this.attack = 10;
+      this.defense = 10;
+      this.gold = 0;
+      this.combatPopUp = true;
+    };
 
-  function initializePlayer() {
-    player = {
-      health: playerMaxHealth,
-      maxHealth: playerMaxHealth,
-      attack: 10,
-      defense: 10,
-      gold: 0,
+    isDead() {
+      return (this.health < 1);
+    }
+
+    takeDamage(damageTaken) {
+      this.health = Math.max(this.health - damageTaken, 0);
+    }
+
+    drinkPotion(healthPotionStrength) {
+      this.health = Math.min(this.health + healthPotionStrength, this.maxHealth);
     }
   }
 
-  initializePlayer();
 
-  //Fetching screens & elements
+  /*
+  =================================
+     Hooking up pages & buttons
+  =================================
+  */
+
   const gameScreen = {
     welcome: $("#welcome-screen"),
     home: $("#home-screen"),
+    shop: $("#shop-screen"),
+    map: $("#map-screen"),
     combat: $("#combat-screen"),
     victory: $("#victory-screen"),
-    map: $("#map-screen"),
-    shop: $("#shop-screen"),
     menu: $("#menu-screen"),
-    popup: $("#pop-up-container"),
+    popupBackground: $("#pop-up-background"),
   }
 
   const popups = {
-    winFight: $("#winFight"),
-    died: $("#died"),
-    potionDrop: $("#potionDrop"),
+    infoBackground: $("#info-screen"),
+    infoWelcome: $(".info-welcome"),
+    infoGold: $(".info-gold"),
+    infoLevel: $(".info-level"),
+    infoCombat: $(".info-combat"),
+
     goldDrop: $("#goldDrop"),
-    menu: $("#menu-container"),
+    goldDropText: $("#gold-drop-text"),
+    potionDrop: $("#potionDrop"),
+    potionDropText: $("#potion-drop-text"),
+    died: $("#died"),
+    winFight: $("#winFight"),
+
+    actionTextContainer: $(".action-text-container"),
+    damageTakenContainer: $(".damage-taken-text-container"),
   }
 
-  const statContainer = {
-    player: $(".player-stats-container"),
-    enemy: $(".enemy-stats-container"),
-    roundCounter: $(".round-counter-container")
+  const gameButton = {
+    startGame: $("#startGame"),
+    infoOk: $(".info-ok"),
+    menu: $(".menu-button"),
+    newGame: $("#new-game"),
+    closeMenu: $("#close-menu"),
+    toShop: $("#home-to-shop"),
+    levelUpAttack: $("#upgrade-attack"),
+    levelUpDefence: $("#upgrade-defence"),
+    homeToMap: $("#home-to-map"),
+    shopToHome: $("#shop-to-home"),
+    mapToHome: $("#map-to-home"),
+    startCombat: $(".start-combat"),
+    enemy1Button: $("#enemy-1-button"),
+    enemy2Button: $("#enemy-2-button"),
+    enemy3Button: $("#enemy-3-button"),
+    enemy4Button: $("#enemy-4-button"),
+    fleeFight: $(".flee-fight"),
+    attackButton: $(".attack-button"),
+    defendButton: $(".defend-button"),
   }
 
-  //Hiding / Showing
+  const statField = {
+    playerHealthText: $(".playerHealth"),
+    playerMaxHealthText: $(".playerMaxHealth"),
+    playerAttack: $(".playerAttack"),
+    playerDefence: $(".playerDefense"),
+    playerGold: $(".playerGold"),
+    roundCountText: $("#round-counter"),
+    enemyHealthText: $(".enemyHealth"),
+    enemyMaxHealthText: $(".enemyMaxHealth"),
+    enemyAttack: $(".enemyAttack"),
+    enemyDefence: $(".enemyDefense"),
+    enemyGold: $(".enemyGold"),
+    heroineActionText: $(".heroine-action"),
+    heroineDamageTaken: $(".heroine-damage-taken"),
+    enemyActionText: $(".enemy-action"),
+    enemyDamageTaken: $(".enemy-damage-taken"),
+  }
+
+
+
+
+  hideAllScreens();
   gameScreen.welcome.show();
-  gameScreen.home.hide();
-  gameScreen.combat.hide();
-  gameScreen.victory.hide();
-  gameScreen.map.hide();
-  gameScreen.shop.hide();
-  gameScreen.menu.hide();
-  gameScreen.popup.hide();
 
-  statContainer.player.hide();
-  statContainer.enemy.hide();
-  statContainer.roundCounter.hide();
 
-  popups.menu.hide();
-  popups.winFight.hide();
-  popups.died.hide();
-  popups.potionDrop.hide();
-  popups.goldDrop.hide();
+  function hideAllScreens() {
+    gameScreen.welcome.hide();
+    gameScreen.home.hide();
+    gameScreen.shop.hide();
+    gameScreen.map.hide();
+    gameScreen.combat.hide();
+    gameScreen.victory.hide();
+    gameScreen.menu.hide();
+    gameScreen.popupBackground.hide();
 
-  //Nagivation buttons
+    popups.infoBackground.hide();
+    popups.infoWelcome.hide();
+    popups.infoGold.hide();
+    popups.infoLevel.hide();
+    popups.infoCombat.hide();
 
-  $("#welcome-screen .toHomeButton").click(function () {
-    $("#playerHealth").text(player.health);
-    $("#playerMaxHealth").text(player.maxHealth);
-    $("#playerAttack").text(player.attack);
-    $("#playerDefense").text(player.defense);
-    $("#playerGold").text(player.gold);
-  })
+    popups.goldDrop.hide();
+    popups.potionDrop.hide();
+    popups.died.hide();
+    popups.winFight.hide();
+  }
 
-  $(".toHomeButton").click(function () {
-    $(this).parents(".game-screen").hide();
+
+  /*
+  =================================
+    Button Functions
+  =================================
+  */
+
+
+  // ----- Nagivation buttons
+
+
+  gameButton.startGame.click(function () {
+    player = new Player();
+    combatUI.updatePlayerStats(player);
+    hideAllScreens();
     gameScreen.home.show();
-    statContainer.player.show();
+    popups.infoBackground.show();
+    popups.infoWelcome.show();
   })
 
-  $(".toShopButton").click(function () {
-    $(this).parents(".game-screen").hide();
+  gameButton.infoOk.click(function () {
+    $(this).parents(".info-box").hide();
+    popups.infoBackground.hide();
+    popups.infoWelcome.hide();
+  })
+
+  gameButton.menu.click(function () {
+    gameScreen.menu.toggle();
+  });
+
+  gameButton.newGame.click(function () {
+    hideAllScreens();
+    gameScreen.welcome.show();
+  })
+
+  gameButton.closeMenu.click(function () {
+    gameScreen.menu.hide();
+  })
+
+  gameButton.toShop.click(function () {
+    hideAllScreens();
     gameScreen.shop.show();
   })
 
-  $(".toMapButton").click(function () {
-    $(this).parents(".game-screen").hide();
+  gameButton.homeToMap.click(function () {
+    hideAllScreens();
     gameScreen.map.show();
+
+
   })
 
-  $(".toCombatButton").click(function () {
-    $(this).parents(".game-screen").hide();
+  gameButton.shopToHome.click(function () {
+    hideAllScreens();
+    gameScreen.home.show();
+  })
+
+  gameButton.mapToHome.click(function () {
+    hideAllScreens();
+    gameScreen.home.show();
+  })
+
+  gameButton.startCombat.click(function () {
+    hideAllScreens();
     gameScreen.combat.show();
-    statContainer.enemy.show();
-    statContainer.roundCounter.show();
-    roundCount = 0;
-    $("#round-counter-span").text(roundCount + 1);
+    if (player.combatPopUp) {
+      popups.infoBackground.show();
+      popups.infoCombat.show();
+      player.combatPopUp = false;
+    }
 
-    roundCounterAnimation($(".pop-text"));
+    roundCount = 0;
+    combatUI.roundCounterAnimation(roundCount);
 
   })
 
 
-  $(".menuButton").click(function () {
-    console.log("menu button clicked")
-    $("#menu-container").toggle();
-  });
+  // ----- Shop Buttons
 
-  // ----- SHOP
-
-  $(".levelUpAttack").click(function () {
+  gameButton.levelUpAttack.click(function () {
     if (player.gold > 25) {
       if (player.attack < 90) {
         player.attack += 5;
         player.gold -= 10;
-        $("#playerAttack").text(player.attack);
-        $("#playerGold").text(player.gold);
+        combatUI.updatePlayerStats(player);
       } else {
-        alert("You have reached manimum attack level")
+        popups.infoBackground.show();
+        popups.infoLevel.show();
       }
     } else {
-      alert("You do not have enough gold to level up")
+      popups.infoBackground.show();
+      popups.infoGold.show();
     }
   })
 
-  $(".levelUpDefence").click(function () {
+  gameButton.levelUpDefence.click(function () {
     if (player.gold > 25) {
       if (player.defense < 75) {
         player.defense += 5;
         player.gold -= 10;
-        $("#playerDefense").text(player.defense);
-        $("#playerGold").text(player.gold);
+        combatUI.updatePlayerStats(player);
       } else {
-        alert("You have reached maximum defense level")
+        popups.infoBackground.show();
+        popups.infoLevel.show();
       }
     } else {
-      alert("You do not have enough gold to level up")
+      popups.infoBackground.show();
+      popups.infoGold.show();
     }
 
 
+  })
+
+
+  // ----- Enemy Generating Buttons
+
+  gameButton.enemy1Button.click(function () {
+    currentEnemy = new Enemy1();
+    combatUI.updateEnemyStats(currentEnemy);
+  })
+
+  gameButton.enemy2Button.click(function () {
+    currentEnemy = new Enemy2();
+    combatUI.updateEnemyStats(currentEnemy);
+  })
+
+  gameButton.enemy3Button.click(function () {
+    currentEnemy = new Enemy3();
+    combatUI.updateEnemyStats(currentEnemy);
+  })
+
+  gameButton.enemy4Button.click(function () {
+    currentEnemy = new Enemy4();
+    combatUI.updateEnemyStats(currentEnemy);
   })
 
 
@@ -272,79 +409,237 @@ $(function () {
 
 
 
-  //Enemy variables & objects
-
-
-
-
-
-  //Enemy generation
-
-  $(".enemy1Button").click(function () {
-    currentEnemy = new Enemy1();
-    updateEnemyStats(currentEnemy);
-  })
-
-  $(".enemy2Button").click(function () {
-    currentEnemy = new Enemy2();
-    updateEnemyStats(currentEnemy);
-  })
-
-  $(".enemy3Button").click(function () {
-    currentEnemy = new Enemy3();
-    updateEnemyStats(currentEnemy);
-  })
-
-  $(".enemy4Button").click(function () {
-    currentEnemy = new Enemy4();
-    updateEnemyStats(currentEnemy);
-  })
-
-  function updateEnemyStats(enemy) {
-    $("#enemyHealth").text(enemy.health);
-    $("#enemyHealthMax").text(enemy.health);
-    $("#enemyAttack").text(enemy.attack);
-    $("#enemyDefense").text(enemy.defense);
-    $("#enemyGold").text(enemy.gold);
-  }
-
-
-
-
-
   // Combat buttons
 
-  $(".fleeButton").click(function () {
-    alert("Are you sure?")
-    statContainer.enemy.hide();
-    statContainer.roundCounter.hide();
-  })
-
-  $(".attackButton").click(function () {
+  gameButton.attackButton.click(function () {
     resolveCombat(true)
   })
 
-  $('.defenceButton').click(function () {
-
+  gameButton.defendButton.click(function () {
     resolveCombat(false)
-
   })
 
-
+  gameButton.fleeFight.click(function () {
+    hideAllScreens();
+    gameScreen.map.show();
+  })
 
   // Combat function
 
+  //Putting animations into a class separate from the core mechanics
+  class CombatUI {
+    constructor() {
+
+    }
+
+    updateEnemyStats(currentEnemy) {
+      statField.enemyHealthText.text(currentEnemy.health + " / " + currentEnemy.maxHealth);
+      statField.enemyAttack.text(currentEnemy.attack);
+      statField.enemyDefence.text(currentEnemy.defense);
+      statField.enemyGold.text(currentEnemy.gold);
+    }
+
+    updatePlayerStats(player) {
+      statField.playerHealthText.text(player.health + " / " + player.maxHealth);
+      statField.playerAttack.text(player.attack);
+      statField.playerDefence.text(player.defense);
+      statField.playerGold.text(player.gold);
+    }
+
+
+    // Toggling buttons on the combat screen
+    combatButtonsVisible(desiredVisible) {
+      if (desiredVisible) {
+        gameButton.defendButton.removeAttr('disabled');
+        gameButton.attackButton.removeAttr('disabled');
+        gameButton.fleeFight.removeAttr('disabled');
+      } else {
+        gameButton.defendButton.attr('disabled', 'disabled');
+        gameButton.attackButton.attr('disabled', 'disabled');
+        gameButton.fleeFight.attr('disabled', 'disabled');
+      }
+    }
+
+    //Function for setting and animating player & enemy actions
+    animateActions(isPlayerAttacking, isEnemyAttacking) {
+
+      // Setting action text
+      if (isPlayerAttacking) {
+        statField.heroineActionText.text("Attack!")
+      } else {
+        statField.heroineActionText.text("Defend!")
+      }
+
+      if (isEnemyAttacking) {
+        statField.enemyActionText.text("Attack!")
+      } else {
+        statField.enemyActionText.text("Defend!")
+      }
+
+      // Animate action text
+      return popups.actionTextContainer
+        .animate({
+          'opacity': 1,
+        }, 700)
+        .delay(300)
+        .animate({
+          'opacity': 0
+        }, function () {
+
+          // remove attributes
+          popups.actionTextContainer.removeAttr('style');
+        })
+        .promise()
+    }
+
+    // Function for setting and animating player & enemy damage taken
+    animateDamage(playerDamageTaken, enemyDamageTaken) {
+
+      // Setting damage taken text
+      statField.heroineDamageTaken.text("- " + playerDamageTaken)
+      statField.enemyDamageTaken.text("- " + enemyDamageTaken)
+
+      // Animate damage taken text
+      return popups.damageTakenContainer
+        .animate({
+          'opacity': 1,
+          'top': '35%',
+        }, 700)
+        .animate({
+          'opacity': 0
+        }, function () {
+
+          // remove attributes
+          popups.damageTakenContainer.removeAttr('style');
+        })
+        .promise()
+    }
+
+    // Gold drop function if player wins fight
+    goldDropAnimation(gold) {
+
+      //change the game screen
+      gameScreen.popupBackground.show();
+      popups.goldDrop.show();
+
+      //Sets the gold number for the animation
+      popups.goldDropText.text("+ " + gold);
+
+
+      var promise = new Promise(function (resolve, reject) {
+
+        //Remove any existing event handlers and then adds one
+        popups.goldDrop.off("click")
+        popups.goldDrop.on("click", function () {
+
+          //Animates the gold
+          popups.goldDropText
+            .animate({
+              'opacity': 1,
+              'top': '30%',
+            }, 800)
+            .animate({
+              'opacity': 0
+            }, 200, function () {
+
+              //reset the animation
+              popups.goldDropText.removeAttr('style')
+              popups.goldDrop.hide();
+              gameScreen.popupBackground.hide();
+              resolve()
+            })
+        })
+      })
+      return promise;
+    }
+
+    potionDropAnimation(healthPotionStrength) {
+      //change the game screen
+      gameScreen.popupBackground.show();
+      popups.potionDrop.show();
+
+      //Sets the health number for the animation
+      popups.potionDropText.text("+ " + healthPotionStrength);
+
+      var promise = new Promise(function (resolve, reject) {
+
+        //Remove any existing event handlers and then adds one
+        popups.potionDrop.off("click")
+        popups.potionDrop.on("click", function () {
+
+          //Animates the health
+          popups.potionDropText
+            .animate({
+              'opacity': 1,
+              'top': '30%',
+            }, 800)
+            .animate({
+              'opacity': 0
+            }, 200, function () {
+
+              //reset the animation
+              popups.potionDropText.removeAttr('style')
+              popups.potionDrop.hide();
+              gameScreen.popupBackground.hide();
+              resolve()
+            })
+        })
+      })
+      return promise;
+    }
+
+    died() {
+      gameScreen.popupBackground.show();
+      popups.died.show();
+
+      var promise = new Promise(function (resolve, reject) {
+        popups.died.off("click")
+        popups.died.on("click", function () {
+          hideAllScreens();
+          gameScreen.welcome.show();
+          resolve()
+        })
+      })
+      return promise;
+    }
+
+    roundCounterAnimation(roundCount) {
+      var combatUI = this
+      statField.roundCountText.text("Round " + (roundCount + 1));
+
+      statField.roundCountText.animate({
+        'opacity': 0.7,
+        'fontSize': 40,
+      }, 900).animate({
+        'opacity': 0,
+      }, 200, function () {
+        statField.roundCountText.removeAttr('style')
+
+        //eneble buttons
+        combatUI.combatButtonsVisible(true);
+      })
+    };
+
+    endCombat() {
+      gameScreen.combat.hide();
+      gameScreen.map.show();
+    }
+
+  }
+
+
+  var combatUI = new CombatUI();
+
   function resolveCombat(isPlayerAttacking) {
+    //To inject: combatUI / currentEnemy / player / (roundCount)
+
     //disabling buttons
-    $('.defenceButton').attr('disabled', 'disabled');
-    $('.attackButton').attr('disabled', 'disabled');
-    $('.fleeButton').attr('disabled', 'disabled');
+    combatUI.combatButtonsVisible(false);
 
-    console.log(currentEnemy.potionDrop)
+    // Using EnemyBase function to define whether enemy is attacking
+    var isEnemyAttacking = currentEnemy.isEnemyAttacking(roundCount);
 
-    // Picking enemy action from pre-set pattern
-    const isEnemyAttacking = currentEnemy.isEnemyAttacking(roundCount);
-
+    // Scoped Variables
     var playerDamageTaken = 0;
     var enemyDamageTaken = 0;
 
@@ -363,169 +658,68 @@ $(function () {
       }
     }
 
-
+    //Player & Enemy take damage
     currentEnemy.takeDamage(enemyDamageTaken);
-    player.health = Math.max(player.health - playerDamageTaken, 0);
-
-
-
-    // Setting action text for enemy and heroine
-    if (isPlayerAttacking) {
-      $(".heroine-action").text("Attack!")
-    } else {
-      $(".heroine-action").text("Defend!")
-    }
-    if (isEnemyAttacking) {
-      $(".enemy-action").text("Attack!")
-    } else {
-      $(".enemy-action").text("Defend!")
-    }
-    $(".heroine-damage-taken").text("- " + playerDamageTaken)
-    $(".enemy-damage-taken").text("- " + enemyDamageTaken)
-
-
+    player.takeDamage(playerDamageTaken);
 
     // Animate action text for enemy and heroine
-    $(".action-text-container")
-      .animate({
-        'opacity': 1,
-      }, 700)
-      .delay(300)
-      .animate({
-        'opacity': 0
-      }, function () {
-        $("#enemyHealth").text(currentEnemy.health);
-        $("#playerHealth").text(player.health);
-        $(".action-text-container").removeAttr('style');
+    combatUI.animateActions(isPlayerAttacking, isEnemyAttacking)
 
-        $(".damage-taken-text-container")
-          .animate({
-            'opacity': 1,
-            'top': '20%',
-          }, 700)
-          .animate({
-            'opacity': 0
-          }, function () {
-            $(".damage-taken-text-container").removeAttr('style')
-
-            //If you die
-            if (player.health < 1) {
-              statContainer.roundCounter.hide();
-              gameScreen.popup.show();
-              popups.died.show();
-              player.health = 0;
-              $('#playerHealth').val(player.health);
-
-            } else if (currentEnemy.health < 1) {
-              statContainer.roundCounter.hide();
-              gameScreen.popup.show();
-              popups.goldDrop.show();
-              currentEnemy.health = 0;
-              player.gold += currentEnemy.gold;
-              $("#playerGold").text(player.gold);
-              $(".gold-drop-text").text("+ " + currentEnemy.gold);
-              $(".gold-drop-text")
-                .animate({
-                  'opacity': 1,
-                  'top': '30%',
-                }, 800)
-                .animate({
-                  'opacity': 0
-                }, 200, function () {
-                  $(".gold-drop-text").removeAttr('style')
-                })
-            } else {
-              // Incrementing and updating round counter
-              roundCount++;
-              $("#round-counter-span").text(roundCount + 1);
-              roundCounterAnimation($(".pop-text"));
-
-            };
-          })
-
-
-        //Combat end
-
-
+      //Animate damage taken text
+      .then(function () {
+        return combatUI.animateDamage(playerDamageTaken, enemyDamageTaken)
       })
 
-    // End battle
-    console.log($("#goldDrop"))
+      .then(function () {
+
+        // Update enemy / player stats after the animation
+        combatUI.updateEnemyStats(currentEnemy);
+        combatUI.updatePlayerStats(player);
+
+        //If you die
+        if (player.isDead()) {
+          combatUI.died();
+
+          //If your enemy dies
+        } else if (currentEnemy.isDead()) {
+
+          //Gold Drop
+          player.gold += currentEnemy.gold;
+          combatUI.goldDropAnimation(currentEnemy.gold)
+            .then(function () {
+              combatUI.updatePlayerStats(player);
+
+              // If potion
+              if (currentEnemy.healthPotionStrength > 0) {
+                player.drinkPotion(currentEnemy.healthPotionStrength);
+                return combatUI.potionDropAnimation(currentEnemy.healthPotionStrength)
+              }
+            })
+
+            //re-setting screens
+            .then(function () {
+              combatUI.updatePlayerStats(player);
+              combatUI.endCombat();
+            })
+
+          //If both alive, continue combat
+        } else {
+          roundCount++;
+          combatUI.roundCounterAnimation(roundCount);
+        };
+      })
   }
-
-  $("#goldDrop").click(function () {
-    if (currentEnemy.healthPotionStrength > 0) {
-      popups.goldDrop.hide();
-      popups.potionDrop.show();
-
-      player.health = Math.min(player.health + currentEnemy.healthPotionStrength, playerMaxHealth);
-
-      $("#playerHealth").text(player.health)
-      $("#playerGold").text(player.gold);
-      $(".potion-drop-text").text("+ " + currentEnemy.healthPotionStrength);
-      $(".potion-drop-text")
-        .animate({
-          'opacity': 1,
-          'top': '30%',
-        }, 800)
-        .animate({
-          'opacity': 0
-        }, 200, function () {
-          $(".potion-drop-text").removeAttr('style')
-        })
-
-    } else {
-      popups.goldDrop.hide();
-      statContainer.enemy.hide();
-      gameScreen.popup.hide();
-      popups.goldDrop.hide();
-      gameScreen.combat.hide();
-      gameScreen.map.show();
-    }
-  });
+  // End Combat
 
 
 
-  $("#died").click(function () {
+  // Clicking on the "you died" popup
+  popups.died.click(function () {
     gameScreen.welcome.show();
     gameScreen.combat.hide();
-    statContainer.enemy.hide();
-    statContainer.player.hide();
-    gameScreen.popup.hide();
+    gameScreen.popupBackground.hide();
     popups.died.hide();
-    initializePlayer();
   });
-
-  $("#potionDrop").click(function () {
-    statContainer.enemy.hide();
-    gameScreen.popup.hide();
-    popups.potionDrop.hide();
-    gameScreen.combat.hide();
-    gameScreen.map.show();
-  });
-
-  function roundCounterAnimation(targetElement) {
-    targetElement.animate({
-      'opacity': 0.7,
-      'fontSize': 40,
-    }, 900).animate({
-      'opacity': 0,
-    }, 200, function () {
-      targetElement.removeAttr('style')
-
-      //eneble buttons
-      $('.defenceButton').removeAttr('disabled');
-      $('.attackButton').removeAttr('disabled');
-      $('.fleeButton').removeAttr('disabled');
-    })
-  };
-
-  // TEXT POPS
-
-
-
-
-
 
 
 
