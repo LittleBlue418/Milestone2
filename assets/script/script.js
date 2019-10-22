@@ -34,7 +34,6 @@ $(function () {
   var roundCount;
   var player;
   var currentEnemy;
-  var infoCombatPopUp = true;
 
 
   /*
@@ -145,6 +144,7 @@ $(function () {
       this.attack = 10;
       this.defense = 10;
       this.gold = 0;
+      this.combatPopUp = true;
     };
 
   }
@@ -286,7 +286,7 @@ $(function () {
   gameButton.infoOk.click(function () {
     $(this).parents(".info-box").hide();
     popups.infoBackground.hide();
-    gameButton.infoOk.hide();
+    popups.infoWelcome.hide();
   })
 
   gameButton.menu.click(function () {
@@ -327,9 +327,10 @@ $(function () {
   gameButton.startCombat.click(function () {
     hideAllScreens();
     gameScreen.combat.show();
-    if (infoCombatPopUp) {
+    if (player.combatPopUp) {
+      popups.infoBackground.show();
       popups.infoCombat.show();
-      infoCombatPopUp = false;
+      player.combatPopUp = false;
     }
     popups.roundCounter.show();
     roundCount = 0;
@@ -349,10 +350,12 @@ $(function () {
         player.gold -= 10;
         updatePlayerStats();
       } else {
-        popups.infoUpgradeLimmit.show();
+        popups.infoBackground.show();
+        popups.infoLevel.show();
       }
     } else {
-      popups.infoUpgradeCost.show();
+      popups.infoBackground.show();
+      popups.infoGold.show();
     }
   })
 
@@ -363,10 +366,12 @@ $(function () {
         player.gold -= 10;
         updatePlayerStats();
       } else {
-        popups.infoUpgradeLimmit.show();
+        popups.infoBackground.show();
+        popups.infoLevel.show();
       }
     } else {
-      popups.infoUpgradeCost.show();
+      popups.infoBackground.show();
+      popups.infoGold.show();
     }
 
 
