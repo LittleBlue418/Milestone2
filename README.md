@@ -55,32 +55,57 @@ E - Signpost to the artist's portfolio / other work | 5 | 5
 * Log in functionality
 * Game audio (with an on/off toggle)
 
+#### Art Scope
+Due to the time constraints the artist and i set a seporate scope for the art. Although everything on this list will eventualy be included, the nice to have scope are items that we can add after the hand in date, as this is designed to be a living portfolio.
+##### Initial Scope
+* Background for: home / map / combat / victory screens
+* Figures for Heroine: basic / sword varieties x4 / shield varieties x4
+* Figure for: Enemy x4
+* Icons for: Enemy x4
+* Icons for: Gold / Potion / Death / Victory 
+* All buttons
+* Stat container / stat icons x4 
+* Shop sign
+* Player info pop up: welcome / gold / stat / combat
+* Menu popup
+
+##### 'Nice to Have' Scope
+* Full screen background for the desktop view
+* Figures for the desktop background view - to be either side of the screen
+* Unique combat screen backgrouns for each enemy x3
+* Unique stat containers for each enemy x4
+* Game logo / icon as a start button / favicon
+* Frame for the game
+* Unique potion icons for the different enemies x3
+
+
 ### Structure
 
-When thinking about how i would build the different screens it was important to me that the user should not have to wait for load time when moving from a shop screen to a home screen (or other). I felt that a refresh and page load would break the flow of the play. Forthis reason i decided to build the 'screens' of the game into the same single page website, that would complete and run on load to give the smoothest play possible. 
+When thinking about how I would build the different screens it was important to me that the user should not have to wait for load time when moving from a shop screen to a home screen (or other). I felt that a refresh and page load would break the flow of the play. For this reason I decided to build the 'screens' of the game into the same single page website, that would complete and run on load to give the smoothest play possible. 
 
-It was also important for me to be mindfull of the flow of play, and of the learned language of game play. For this reason rather than have navigation through a menu i worked to build clear nagivation buttons that the user can interact with. I chose instead to build the menu as a pop-up screen element within the game, and to use it to signpost to my CV as well as the artist's portfolio. 
+It was also important for me to be mindfull of the flow of play, and of the learned language of game play. For this reason rather than have navigation through a menu I worked to build clear nagivation buttons that the user can interact with. I chose instead to build the menu as a pop-up screen element within the game, and to use it to signpost to my CV as well as the artist's portfolio. 
 
-Visual feedback for the player was another key element i included. Buttons have a size change when clicked, and are greyed out when the player cannot click them. After each action there are visual animations to show the actions taken and health loss to clearly indicate actions and consiquences. 
+Visual feedback for the player was another key element I included. Buttons have a size change when clicked, and are greyed out when the player cannot click them. After each action there are visual animations to show the actions taken and health loss to clearly indicate actions and consiquences. 
 
 ### Skeleton 
 
 After working through the scope and structure I collaborated closely with the artist to discuss and draw up wireframes that would fit for a scalable screen. We decided to design for a tablet/iPad sized screen as the largest 'grow' to avoid over scaling the art, having to have multiple art files, or having to have huge art files. In this way the game is optimized for a device, but still looks good on a desktop. 
 
 ##### Wireframes & Diagrams 
-You can view the mobile wireframes [here]
+You can view the wireframes [here]
 
 ### Surface
-Much of the surface design was built in collaboration with the artist. We worked together to establish a look and feel for the world of the game, and to ensure that backgrounds, figures and assets fit within that world. Early in the conversation we decided to go with a traditional fantasy RPG look and feel, dungeons and dragons inspired, but with more of a cute aesthetic.  
+Much of the surface design was built in collaboration with the artist. We worked together to establish a look and feel for the world of the game, and to ensure that backgrounds, figures and assets fit within that world. Early in the conversation we decided to go with a traditional fantasy RPG look and feel, dungeons and dragons inspired, but with more of a 'cute' aesthetic.  
 You can view the origional sketches [here]
 
 ### Design Decisions
 During the UX design process I made specific design decisions that I want to explain: 
 
 **Not to have a traditional website menu or nav bar** 
-As i was building a game it was important to me that all of the action, and actions, would be built into the game itself. For this reason all ofthe player choices and navigations are buttons in the game screens. Altyhough there is a menu, that links to other websites, it is again part of the game and appears as a pop-up within the game screen. 
+As I was building a game it was important to me that all of the action, and actions, would be built into the game itself. For this reason all of the player choices and navigations are buttons in the game screens. Although there is a menu, that links to other websites, it is again part of the game and appears as a pop-up within the game screen. 
 
 ***
+
 ## Features
 ### Existing features
 * **Shop - Level up attack & defence** - The shop screen has buttons to allow the player to spend gold that they have earned to level up attack and defence. I chose to build this in as a feature rather than have the player automatically gain experience to give the player controll over how they choose to level, and to allow them to build a stratagy based on the enemy they are fighting. 
@@ -90,8 +115,8 @@ As i was building a game it was important to me that all of the action, and acti
 ### Features Left to Implement 
 * I would like to add the ability for the player to create an account, save games and return to them later on. 
 * I would like to build in music for the game to help immerse the player more fully in the world of the story. 
-* I would have loved to build in character creation, custom names etc. This would ahve been part of creating an account. 
-* One idea that was discussed but dropped due to time constraints was the idea of having a character chreation screen where you could choose clothing and hair colour for your character. Although this would have been part of the player account it was primarilly dropped as we would not have had enough time to draw the character assets. 
+* I would like to build in character creation, custom names etc. This would be part of creating an account. 
+* One idea that was discussed but dropped due to time constraints was the idea of having a character chreation screen where you could choose clothing and hair colour for your character. Although this would have been part of the player account it was primarilly dropped as we would not have had enough time to draw the character assets. It is unsure whether or not this feature will ever be implimented.
 
 ***
 ## Technologies Used
@@ -106,19 +131,75 @@ As i was building a game it was important to me that all of the action, and acti
 ## Testing 
 ### Testing plan
 
-Given the nature of this project, and the complexity of the JavaScript compared to previous projects, i decided to make a testing plan and begin early to ensure that I had tested all aspects of the project. 
+Given the nature of this project, and the complexity of the JavaScript compared to previous projects, I decided to make a testing plan and begin early to ensure that I had tested all aspects of the project. 
 
-### Gameplay Testing 
-For the gameplay creation and testing i worked with a [friend of mine](https://github.com/parmus) who has built [his own games](https://github.com/parmus/dicy). We started the gameplay testing with pen and paper and dice, working through the combat mechanics to find a system that would be fairly simple to impliment, but would allow elements of strategy. After testing a few options we decided on a system involving enemy patterns. Each enemy would have a pattern of attack / defend moves, and the player could learn the pattern by observing the battle. In this way the player could choose when to attack and defend to maximise damage done and minimise damage taken.  
+### Game Mechanics Testing 
+For the gameplay creation and testing i worked with a [friend](https://github.com/parmus) who has built [his own games](https://github.com/parmus/dicy). We started the gameplay testing with pen and paper and dice, working through the combat mechanics to find a system that would be fairly simple to impliment, but would allow elements of strategy. After testing a few options we decided on a system involving enemy patterns. Each enemy would have a pattern of attack / defend moves, and the player could learn the pattern by observing the battle. In this way the player could choose when to attack and defend to maximise damage done and minimise damage taken.  
 
 [image here]
 
-Once the initial game was built I was able to start testing the mechanics as a player. I also worked with [another friend](https://www.linkedin.com/in/craig-fleming-633bb4125/) who has worked ss a professional GM for [Steamforged Games](https://steamforged.com/). During this testing process we decided to remove the option to buy health potions, and instead build in the mechanics for potion drop from combat. Again in this way we force the player to think tactically about how they want to play, rather than simply attacking over and over untill they win, then paying to be revived. In this way it adds a puzzle like element to the gameplay.  
+Once the initial game was built I was able to start testing the mechanics as a player. I also worked with [another friend](https://www.linkedin.com/in/craig-fleming-633bb4125/) who has worked as a professional GM for [Steamforged Games](https://steamforged.com/). During this testing process we decided to remove the option to buy health potions, and instead build in the mechanics for potion drop from combat. Again in this way we force the player to think tactically about how they want to play, rather than simply attacking over and over untill they win, then paying to be revived. In this way it adds a puzzle like element to the gameplay.  
 
-### Responsive Design Testing
+### Manual Testing 
+During the build process I have been **manualy testing**; ensuring that each button, link and icon that should perform an action would complete that action. I have tested on different screens and devices to ensure that everything looks and scales as it should. 
 
-### Automated testing
+Other people have tested the site for me, including my Mentor, friends and family, and my peers on the slack peer-code-review channel. You can red the **feedback**, as well as the steps that I have taken and implementations made as a result in [this document]
+
+I used **Chrome developer tools** for testing my site. Using the device toolbar to continually check that my structure and content worked on the mobile and desktop screen as intended. I frequently tested the different classes and rules that were applying to different elements to bug test on things that weren't behaving as they should, but also to test out possible solutions before moving those solutions into my code. 
 
 ### Accessability Testing 
 
-### Feedback 
+
+### Automated testing
+During the refactoring stage of working with my JS code base i worked to build testable classes and functions. You can see my testing document [here]
+
+***
+## Deployment
+This site is hosted using Github pages, and is deployed directly from the master branch. You can view the website [here](https://littleblue418.github.io/Milestone1/.). 
+
+### Deployment Process
+To deploy this site to Github you can follow these steps. 
+1. In your Github profile create a new repository, make sure to give it a unique name.
+1. Copy the remot repository URL from the Quick setup page.
+1. Open your Terminal aplication
+ 1. `cd` untill you are in the folder that contains your project. 
+ 1. `git init` to create a .git file (make sure that you also have a README file).
+ 1. `git add .` will add all of your code and files
+ 1. `git commit -m "initial commit` Leave a commit message
+ 1. `git remote add origin [https://...]` Paste in the remot repository URL from the Quick setup page in your new Github repository
+ 1. `git push -u origin master` will push everything to your new repository 
+1. In the settings tab of your new repository scroll down untill you see the Github pages setting and select 'master'. 
+1. You can now see the link to your Github pages, make sure to paste it into your README file! 
+
+
+You can read more at this [Github help page](https://help.github.com/en/articles/adding-an-existing-project-to-github-using-the-command-line) 
+ 
+### Local Development
+To host this site locally, or work on the code yourself, you can clone or download the repository. 
+1. You can find the repository page [here](https://github.com/LittleBlue418/Milestone1)
+1. Click on the "clone or download" button at the top right
+1. Copy the URL
+1. Go to your Terminal aplication
+ 1. `cd` Change the current working directory to the location where you want your clone directory to be made
+ 1. Type `git clone` and paste in the URL
+ 1. Press enter
+1. The local clone will now be created
+
+You can read more at this [Github help page](https://help.github.com/en/articles/cloning-a-repository) 
+
+***
+
+## Credits
+### Content
+The text for this site was written by me.
+
+### Art
+The art for this site was produced by [Sofia Persson](https://www.linkedin.com/in/sofia-persson-52a9aa146/) [Portfolio](https://www.instagram.com/rudolf_y_art/)
+
+### Websites
+* [Visual Studio Code](https://code.visualstudio.com/) - IDE and bug testing
+* [Github](https://github.com/LittleBlue418) - Code repository, website hosting & deployment
+* [Trello](https://trello.com/en) - Tracking tasks & bugs 
+* [WebAIM](https://webaim.org/resources/contrastchecker/) - Checking and adjusting colours to meet accesability requirements
+
+### Work Based On Other Code
