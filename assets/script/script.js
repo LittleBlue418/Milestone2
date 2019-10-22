@@ -269,12 +269,6 @@ $(function () {
     popups.winFight.hide();
   }
 
-  function updatePlayerStats() {
-    statField.playerHealthText.text(player.health + " / " + player.maxHealth);
-    statField.playerAttack.text(player.attack);
-    statField.playerDefence.text(player.defense);
-    statField.playerGold.text(player.gold);
-  }
 
   /*
   =================================
@@ -288,7 +282,7 @@ $(function () {
 
   gameButton.startGame.click(function () {
     player = new Player();
-    updatePlayerStats();
+    combatUI.updatePlayerStats(player);
     hideAllScreens();
     gameScreen.home.show();
     popups.infoBackground.show();
@@ -358,7 +352,7 @@ $(function () {
       if (player.attack < 90) {
         player.attack += 5;
         player.gold -= 10;
-        updatePlayerStats();
+        combatUI.updatePlayerStats(player);
       } else {
         popups.infoBackground.show();
         popups.infoLevel.show();
@@ -374,7 +368,7 @@ $(function () {
       if (player.defense < 75) {
         player.defense += 5;
         player.gold -= 10;
-        updatePlayerStats();
+        combatUI.updatePlayerStats(player);
       } else {
         popups.infoBackground.show();
         popups.infoLevel.show();
@@ -443,6 +437,13 @@ $(function () {
       statField.enemyAttack.text(currentEnemy.attack);
       statField.enemyDefence.text(currentEnemy.defense);
       statField.enemyGold.text(currentEnemy.gold);
+    }
+
+    updatePlayerStats(player) {
+      statField.playerHealthText.text(player.health + " / " + player.maxHealth);
+      statField.playerAttack.text(player.attack);
+      statField.playerDefence.text(player.defense);
+      statField.playerGold.text(player.gold);
     }
 
 
@@ -667,7 +668,7 @@ $(function () {
 
         // Update enemy / player stats after the animation
         combatUI.updateEnemyStats(currentEnemy);
-        updatePlayerStats();
+        combatUI.updatePlayerStats(player);
 
         //If you die
         if (player.isDead()) {
@@ -682,7 +683,7 @@ $(function () {
           player.gold += currentEnemy.gold;
           combatUI.goldDropAnimation(currentEnemy.gold)
             .then(function () {
-              updatePlayerStats();
+              combatUI.updatePlayerStats(player);
 
               // If potion
               if (currentEnemy.healthPotionStrength > 0) {
@@ -693,7 +694,7 @@ $(function () {
 
             //re-setting screens
             .then(function () {
-              updatePlayerStats();
+              combatUI.updatePlayerStats(player);
               gameScreen.combat.hide();
               gameScreen.map.show();
             })
