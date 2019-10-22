@@ -604,6 +604,7 @@ $(function () {
     }
 
     roundCounterAnimation(roundCount) {
+      var combatUI = this
       statField.roundCountText.text("Round " + (roundCount + 1));
 
       statField.roundCountText.animate({
@@ -615,7 +616,7 @@ $(function () {
         statField.roundCountText.removeAttr('style')
 
         //eneble buttons
-        this.combatButtonsVisible(true);
+        combatUI.combatButtonsVisible(true);
       })
     };
 
