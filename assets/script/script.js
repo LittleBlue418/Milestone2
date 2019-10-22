@@ -648,24 +648,23 @@ $(function () {
       }
     }
 
-
+    //Player & Enemy take damage
     currentEnemy.takeDamage(enemyDamageTaken);
     player.takeDamage(playerDamageTaken);
 
-
-
     // Animate action text for enemy and heroine
     combatUI.animateActions(isPlayerAttacking, isEnemyAttacking)
+
+      //Animate damage taken text
       .then(function () {
         return combatUI.animateDamage(playerDamageTaken, enemyDamageTaken)
       })
+
       .then(function () {
 
         // Update enemy / player stats after the animation
         updateEnemyStats();
         updatePlayerStats();
-
-
 
         //If you die
         if (player.isDead()) {
@@ -678,29 +677,26 @@ $(function () {
 
           //Gold Drop
           player.gold += currentEnemy.gold;
+          combatUI.goldDropAnimation(currentEnemy.gold)
+            .then(function () {
+              updatePlayerStats();
 
-          combatUI.goldDropAnimation(currentEnemy.gold).then(function () {
-            updatePlayerStats();
+              // If potion
+              if (currentEnemy.healthPotionStrength > 0) {
+                player.drinkPotion(currentEnemy.healthPotionStrength);
+                return combatUI.potionDropAnimation(currentEnemy.healthPotionStrength)
+              }
+            })
 
-            // If the enemy drops a health potion
-            if (currentEnemy.healthPotionStrength > 0) {
-              player.drinkPotion(currentEnemy.healthPotionStrength);
-              combatUI.potionDropAnimation(currentEnemy.healthPotionStrength)
-                .then(function () {
-                  updatePlayerStats();
-                  gameScreen.combat.hide();
-                  gameScreen.map.show();
-                })
-
-              // If the enemy does not drop a health potion
-            } else {
+            //re-setting screens
+            .then(function () {
+              updatePlayerStats();
               gameScreen.combat.hide();
               gameScreen.map.show();
-            }
-          })
-        } else {
+            })
 
-          // Incrementing and updating round counter
+          //If both alive, continue combat
+        } else {
           roundCount++;
           combatUI.roundCounterAnimation(roundCount);
         };
