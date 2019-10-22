@@ -234,19 +234,7 @@
 .stat-text {
     font-size: 5vw;
 }
-@media(min-width: 768px) {
-    .inner-stat-container {
-        height: 78%;
-        top: 17%;
-    }
 
-    .stat-line {
-        height: 19%;
-    }
-    .stat-text {
-        font-size: 35px;
-    }
-}
 
 .heroine-stats .inner-stat-container {
     left: 13%;
@@ -286,6 +274,32 @@
     padding-right: 18%;
 }
 
+@media(min-width: 768px) {
+    .stat-container {
+        margin-top: 25px;
+    }
+    .inner-stat-container {
+        height: 78%;
+        top: 11%;
+        width: 100%;
+    }
+    .enemy-stats .inner-stat-container {
+        width: 88%;
+    }
+
+    .stat-line {
+        height: 17%;
+    }
+    .stat-text {
+        font-size: 28px;
+    }
+    .heroine-stats .stat-text {
+        padding-left: 10%;
+    }
+    .enemy-stats .stat-text {
+        padding-right: 10%;
+    }
+}
 
 /* ----- Figures */
 
