@@ -389,6 +389,17 @@
 */
 
 /*----- Action Taken / Damage Taken */
+.outlined {
+     text-shadow:
+    -1px -1px 0 #000,
+     0   -1px 0 #000,
+     1px -1px 0 #000,
+     1px  0   0 #000,
+     1px  1px 0 #000,
+     0    1px 0 #000,
+    -1px  1px 0 #000,
+    -1px  0   0 #000;
+}
 
 .action-text-container {
     position: absolute;
@@ -412,7 +423,7 @@
 .enemy-action {
     position: absolute;
     left: 60%;
-    color: blue;
+    color: rgb(84, 84, 243);
 }
 
  .damage-taken-text-container {
@@ -424,7 +435,7 @@
     transform: translate(-50%, -50%);
     pointer-events: none;
     font-family: Impact, sans-serif;
-    font-size: 5vw;
+    font-size: 6vw;
     opacity: 0;
  }
 
@@ -448,7 +459,7 @@
      }
      .damage-taken-text-container {
         height: 310px;
-        font-size: 30px;
+        font-size: 35px;
         top: 50%;
     }
  }
