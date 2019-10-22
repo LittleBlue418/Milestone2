@@ -392,30 +392,24 @@ $(function () {
 
   gameButton.enemy1Button.click(function () {
     currentEnemy = new Enemy1();
-    updateEnemyStats();
+    combatUI.updateEnemyStats(currentEnemy);
   })
 
   gameButton.enemy2Button.click(function () {
     currentEnemy = new Enemy2();
-    updateEnemyStats();
+    combatUI.updateEnemyStats(currentEnemy);
   })
 
   gameButton.enemy3Button.click(function () {
     currentEnemy = new Enemy3();
-    updateEnemyStats();
+    combatUI.updateEnemyStats(currentEnemy);
   })
 
   gameButton.enemy4Button.click(function () {
     currentEnemy = new Enemy4();
-    updateEnemyStats();
+    combatUI.updateEnemyStats(currentEnemy);
   })
 
-  function updateEnemyStats() {
-    statField.enemyHealthText.text(currentEnemy.health + " / " + currentEnemy.maxHealth);
-    statField.enemyAttack.text(currentEnemy.attack);
-    statField.enemyDefence.text(currentEnemy.defense);
-    statField.enemyGold.text(currentEnemy.gold);
-  }
 
   //----- COMBAT
 
@@ -443,6 +437,14 @@ $(function () {
     constructor() {
 
     }
+
+    updateEnemyStats(currentEnemy) {
+      statField.enemyHealthText.text(currentEnemy.health + " / " + currentEnemy.maxHealth);
+      statField.enemyAttack.text(currentEnemy.attack);
+      statField.enemyDefence.text(currentEnemy.defense);
+      statField.enemyGold.text(currentEnemy.gold);
+    }
+
 
     // Toggling buttons on the combat screen
     combatButtonsVisible(desiredVisible) {
@@ -622,6 +624,7 @@ $(function () {
   var combatUI = new CombatUI();
 
   function resolveCombat(isPlayerAttacking) {
+    //To inject: combatUI / currentEnemy / player / (roundCount)
 
     //disabling buttons
     combatUI.combatButtonsVisible(false);
@@ -663,7 +666,7 @@ $(function () {
       .then(function () {
 
         // Update enemy / player stats after the animation
-        updateEnemyStats();
+        combatUI.updateEnemyStats(currentEnemy);
         updatePlayerStats();
 
         //If you die
