@@ -55,6 +55,10 @@ $(function () {
     isEnemyAttacking(roundCount) {
       return this.attackPattern[roundCount % this.attackPattern.length];
     }
+
+    isDead(){
+      return (this.health < 1);
+    }
   }
 
   class Enemy1 extends EnemyBase {
@@ -647,7 +651,7 @@ $(function () {
               combatUI.died();
 
               //If your enemy dies
-            } else if (currentEnemy.health < 1) {
+            } else if (currentEnemy.isDead()) {
               gameScreen.popupBackground.show();
               popups.goldDrop.show();
 
