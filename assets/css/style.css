@@ -142,6 +142,11 @@
      opacity: 0.5;
  }
 
+ .action-inner:hover {
+    box-shadow: 0 0 20px 8px rgba(255, 196, 0, 0.562), inset 0 0 20px 8px rgba(255, 196, 0, 0.562);
+    border-radius: 50%;
+ }
+
 .menu .button {
     background-image: url(../buttons/settings.png);
 }
