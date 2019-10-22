@@ -433,7 +433,17 @@ $(function () {
     constructor() {
 
     }
-
+    combatButtonsVisible(desiredVisible) {
+      if (desiredVisible) {
+        gameButton.defendButton.removeAttr('disabled');
+        gameButton.attackButton.removeAttr('disabled');
+        gameButton.fleeFight.removeAttr('disabled');
+      } else {
+        gameButton.defendButton.attr('disabled', 'disabled');
+        gameButton.attackButton.attr('disabled', 'disabled');
+        gameButton.fleeFight.attr('disabled', 'disabled');
+      }
+    }
     animateActions(isPlayerAttacking, isEnemyAttacking) {
 
       // Setting action text for enemy and heroine
@@ -567,9 +577,7 @@ $(function () {
   function resolveCombat(isPlayerAttacking) {
 
     //disabling buttons
-    gameButton.defendButton.attr('disabled', 'disabled');
-    gameButton.attackButton.attr('disabled', 'disabled');
-    gameButton.fleeFight.attr('disabled', 'disabled');
+    combatUI.combatButtonsVisible(false);
 
     // Using EnemyBase function to define whether enemy is attacking
     var isEnemyAttacking = currentEnemy.isEnemyAttacking(roundCount);
@@ -673,9 +681,7 @@ $(function () {
       targetElement.removeAttr('style')
 
       //eneble buttons
-      gameButton.defendButton.removeAttr('disabled');
-      gameButton.attackButton.removeAttr('disabled');
-      gameButton.fleeFight.removeAttr('disabled');
+      combatUI.combatButtonsVisible(true);
     })
   };
 

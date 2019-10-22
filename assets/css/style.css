@@ -607,7 +607,7 @@
  /* ----- Flex Rows */
 
  .home-buffer-section {
-    flex-grow: 2;
+    flex-grow: 1.5;
     flex-basis: 0;
 }
 
