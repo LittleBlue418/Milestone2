@@ -518,7 +518,7 @@ $(function () {
     }
 
     // Gold drop function if player wins fight
-    goldDrop(gold) {
+    goldDropAnimation(gold) {
 
       //change the game screen
       gameScreen.popupBackground.show();
@@ -555,7 +555,7 @@ $(function () {
       return promise;
     }
 
-    potionDrop(healthPotionStrength) {
+    potionDropAnimation(healthPotionStrength) {
       //change the game screen
       gameScreen.popupBackground.show();
       popups.potionDrop.show();
@@ -665,13 +665,13 @@ $(function () {
 
               //Gold Drop
               player.gold += currentEnemy.gold;
-              combatUI.goldDrop(currentEnemy.gold).then(function () {
+              combatUI.goldDropAnimation(currentEnemy.gold).then(function () {
                 updatePlayerStats();
 
                 // If the enemy drops a health potion
                 if (currentEnemy.healthPotionStrength > 0) {
                   player.drinkPotion(currentEnemy.healthPotionStrength);
-                  combatUI.potionDrop(currentEnemy.healthPotionStrength)
+                  combatUI.potionDropAnimation(currentEnemy.healthPotionStrength)
                     .then(function () {
                       updatePlayerStats();
                       gameScreen.combat.hide();
