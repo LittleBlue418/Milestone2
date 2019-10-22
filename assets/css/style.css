@@ -115,6 +115,13 @@
      justify-content: space-around;
  }
 
+ @media(min-width: 768px) {
+    .button-section {
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+}
+
  .menu-section {
     flex-grow: 0;
     justify-content: flex-end;
@@ -148,6 +155,16 @@
     margin-bottom: 5px;
  }
 
+ @media(min-width: 768px) {
+    .action {
+        flex-grow: 0;
+        flex-basis: 190px;
+        flex-shrink: 1;
+        padding: 1px;
+        margin-bottom: 5px;
+     }
+ }
+
 .menu {
     flex-grow: 0;
     flex-basis: 50px;
@@ -155,6 +172,14 @@
     padding: 5px;
     margin-bottom: 5%;
     margin-right: 5%;
+ }
+
+ @media(min-width: 768px) {
+     .menu {
+         flex-basis: 65px;
+         margin-bottom: 7%;
+        margin-right: 7%;
+     }
  }
 
 
@@ -541,6 +566,11 @@
     padding: 5px;
     margin-bottom: 5px;
 }
+@media(min-width: 768px) {
+    .start {
+        flex-basis: 200px;
+    }
+}
 
 /* ----- Inner Divs & Buttons*/
 
@@ -570,10 +600,17 @@
 /* ----- Flex columns */
 
 #home-screen .action {
-    flex-basis: 150px;
+    flex-basis: 180px;
     flex-shrink: 1;
     padding: 5px;
     margin-bottom: 5px;
+}
+
+@media(min-width: 768px) {
+    #home-screen .action {
+        flex-basis: 250px;
+    }
+
 }
 
 /* ----- Inner Divs & Buttons */
@@ -677,7 +714,7 @@
     flex-grow: 0;
     flex-basis: 70px;
     flex-shrink: 1;
-    padding: 5px;
+    padding: 1px;
     margin-bottom: 5px;
 }
 
@@ -697,13 +734,7 @@
 
 @media (min-width: 400px)  {
     #map-screen .action {
-        flex-basis: 90px;
-     }
-}
-
-@media (min-width: 400px)  {
-    #map-screen .action {
-        flex-basis: 90px;
+        flex-basis: 100px;
      }
 }
 
