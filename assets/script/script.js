@@ -30,7 +30,6 @@ $(function () {
   =================================
   */
 
-  const playerMaxHealth = 100;
   var roundCount;
   var player;
   var currentEnemy;
@@ -142,29 +141,6 @@ $(function () {
       this.gold = 0;
       this.level = 4;
       this.healthPotionStrength = 0;
-    }
-  }
-
-  class Player {
-    constructor() {
-      this.health = playerMaxHealth;
-      this.maxHealth = playerMaxHealth;
-      this.attack = 10;
-      this.defense = 10;
-      this.gold = 0;
-      this.combatPopUp = true;
-    };
-
-    isDead() {
-      return (this.health < 1);
-    }
-
-    takeDamage(damageTaken) {
-      this.health = Math.max(this.health - damageTaken, 0);
-    }
-
-    drinkPotion(healthPotionStrength) {
-      this.health = Math.min(this.health + healthPotionStrength, this.maxHealth);
     }
   }
 
