@@ -59,8 +59,12 @@
      flex-grow: 1;
  }
 
+ /*
+ =================================
+    Animations & Buttons
+ =================================
+ */
 
-/* ---- Buttons */
 @keyframes wiggle {
     0% {
         transform: rotate(-2deg);
@@ -175,10 +179,6 @@
 
 /* ----- Flex Rows */
 
- .stat-section {
-    justify-content: space-between;
- }
-
 .center-section {
     flex-grow: 2;
     justify-content: space-around;
@@ -203,15 +203,7 @@
 
 
 /* ----- Flex columns */
-/*
- .stats {
-    flex-grow: 0;
-    flex-basis: 900px;
-    flex-shrink: 1;
-    background-size: contain;
-    background-repeat: no-repeat;
- }
-*/
+
  .figure-container {
     flex-grow: 0;
     flex-basis: 400px;
@@ -273,108 +265,6 @@
      overflow: hidden;
      position: relative;
  }
-
- /* ----- Stats
-
-.heroine-stats {
-    background-image: url(../art/stat-bars/stats-heroine-base.png);
-    background-position-x: left;
-}
-
-.enemy-stats {
-    background-image: url(../art/stat-bars/stats-enemy-base.png);
-    background-position-x: right;
-}
-
-.stat-container {
-    height: 100%;
-    width: 100%;
-}
-
-.inner-stat-container {
-    position: relative;
-    height: 20vw;
-    width: 80%;
-    top: 10%;
-}
-
-.stat-line {
-    height: 25%;
-    display: flex;
-    flex-direction: column;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.stat-text {
-    font-size: 5vw;
-}
-
-
-.heroine-stats .inner-stat-container {
-    left: 13%;
-}
-
-#enemy-stats-container .inner-stat-container {
-    left: 8%;
-}
-
-
-.enemy-stats .stat-line {
-    background-position: right;
-}
-
-.health-stat{
-    background-image: url(../art/stat-bars/stats-health.png);
-}
-
-.attack-stat{
-    background-image: url(../art/stat-bars/stats-attack.png);
-}
-
-.defence-stat{
-    background-image: url(../art/stat-bars/stats-defence.png);
-}
-
-.gold-stat{
-    background-image: url(../art/stat-bars/stats-gold.png);
-}
-
-.heroine-stats .stat-text {
-    padding-left: 20%;
-}
-
-.enemy-stats .stat-text {
-    text-align: right;
-    padding-right: 18%;
-}
-
-@media(min-width: 768px) {
-    .stat-container {
-        margin-top: 25px;
-    }
-    .inner-stat-container {
-        height: 78%;
-        top: 11%;
-        width: 100%;
-    }
-    .enemy-stats .inner-stat-container {
-        width: 88%;
-    }
-
-    .stat-line {
-        height: 17%;
-    }
-    .stat-text {
-        font-size: 28px;
-    }
-    .heroine-stats .stat-text {
-        padding-left: 10%;
-    }
-    .enemy-stats .stat-text {
-        padding-right: 10%;
-    }
-}
 
 /* ----- Figures */
 
@@ -1060,59 +950,6 @@
         font-size: 40px;
     }
 }
-
-/*
-
-
-
-.heroine-stats .stat-text {
-    padding-left: 20%;
-}
-
-.enemy-stats .stat-text {
-    text-align: right;
-    padding-right: 18%;
-}
-
-
-
-@media(min-width: 768px) {
-.stat-container {
-        margin-top: 25px;
-    }
-    .inner-stat-container {
-        height: 78%;
-        top: 11%;
-        width: 100%;
-    }
-    .enemy-stats .inner-stat-container {
-        width: 88%;
-    }
-
-    .stat-line {
-        height: 17%;
-    }
-    .stat-text {
-        font-size: 28px;
-    }
-    .heroine-stats .stat-text {
-        padding-left: 10%;
-    }
-    .enemy-stats .stat-text {
-        padding-right: 10%;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
 
  /*
  =================================
