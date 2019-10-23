@@ -617,6 +617,7 @@ $(function () {
     goldDropAnimation(gold) {
 
       //change the game screen
+      gameScreen.stats.hide();
       gameScreen.popupBackground.show();
       popups.goldDrop.show();
 
@@ -687,6 +688,7 @@ $(function () {
     }
 
     died() {
+      gameScreen.stats.hide();
       gameScreen.popupBackground.show();
       popups.died.show();
 
@@ -721,6 +723,7 @@ $(function () {
     endCombat() {
       gameScreen.combat.hide();
       gameScreen.map.show();
+      gameScreen.stats.show();
     }
 
   }
