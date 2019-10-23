@@ -137,7 +137,7 @@ $(function () {
       super(health, attackPattern);
 
       this.maxHealth = health;
-      this.attack = 80;
+      this.attack = 100;
       this.defense = 80;
       this.gold = 0;
       this.level = 4;
@@ -151,7 +151,7 @@ $(function () {
       this.maxHealth = playerMaxHealth;
       this.attack = 10;
       this.defense = 10;
-      this.gold = 100;
+      this.gold = 200;
       this.combatPopUp = true;
     };
 
@@ -361,50 +361,56 @@ $(function () {
 
   gameButton.levelUpAttack.click(function () {
     shop.levelUpAttack(player);
+    shop.attackLevelUpCost += 5;
   })
 
   gameButton.levelUpDefence.click(function () {
     shop.levelUpDefence(player);
+    shop.defenceLevelUpCost += 5;
   })
 
 
-class Shop {
-  constructor () {
+  class Shop {
+    constructor() {
+      this.attackLevelUpCost = 25;
+      this.defenceLevelUpCost = 25;
+    }
 
-  }
-  levelUpAttack(player) {
-    if (player.gold > 25) {
-      if (player.attack < 90) {
-        player.attack += 5;
-        player.gold -= 10;
-        combatUI.updatePlayerStats(player);
+    levelUpAttack(player) {
+      if (player.gold > this.attackLevelUpCost) {
+        if (player.attack < 90) {
+          player.attack += 5;
+          player.gold -= this.attackLevelUpCost;
+          combatUI.updatePlayerStats(player);
+        } else {
+          popups.infoBackground.show();
+          popups.infoLevel.show();
+        }
       } else {
         popups.infoBackground.show();
-        popups.infoLevel.show();
+        popups.infoGold.show();
       }
-    } else {
-      popups.infoBackground.show();
-      popups.infoGold.show();
+      console.log(this.attackLevelUpCost)
     }
-  };
 
-  levelUpDefence(player) {
-    if (player.gold > 25) {
-      if (player.defense < 75) {
-        player.defense += 5;
-        player.gold -= 10;
-        combatUI.updatePlayerStats(player);
+    levelUpDefence(player) {
+      if (player.gold > this.attackLevelUpCost) {
+        if (player.defense < 90) {
+          player.defense += 5;
+          player.gold -= this.attackLevelUpCost;
+          combatUI.updatePlayerStats(player);
+        } else {
+          popups.infoBackground.show();
+          popups.infoLevel.show();
+        }
       } else {
         popups.infoBackground.show();
-        popups.infoLevel.show();
+        popups.infoGold.show();
       }
-    } else {
-      popups.infoBackground.show();
-      popups.infoGold.show();
     }
   }
-}
-var shop = new Shop();
+
+  var shop = new Shop();
   // ----- Enemy Generating Buttons
 
   gameButton.enemy1Button.click(function () {
@@ -485,7 +491,7 @@ var shop = new Shop();
         figures.enemyFigure.addClass("figure level2")
       } else if (currentEnemy.level == 3) {
         figures.enemyFigure.addClass("figure level3")
-      }else if (currentEnemy.level == 4) {
+      } else if (currentEnemy.level == 4) {
         figures.enemyFigure.addClass("figure")
         figures.enemyLargeFigure.addClass("figureL level4")
       }
