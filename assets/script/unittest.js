@@ -52,3 +52,55 @@ describe("Player tests", function () {
   })
 
 });
+
+describe("Enemy tests", function () {
+
+  beforeEach(function () {
+    enemy = new EnemyBase(10, [true, false]);
+  });
+
+  describe("New Enemy instance", function () {
+    it("should have health equal to maxHealth", function () {
+      expect(enemy.health).toBe(enemy.maxHealth);
+    });
+  });
+
+  describe("Enemy Death", function () {
+    it("Should return false when enemy health is positive", function () {
+      expect(enemy.isDead()).toBe(false);
+    });
+    it("Should return true when enemy health is zero", function () {
+      enemy.health = 0;
+      expect(enemy.isDead()).toBe(true);
+    })
+    it("Should return true when enemy health is negative", function () {
+      enemy.health = -1;
+      expect(enemy.isDead()).toBe(true);
+    })
+  });
+
+  describe("Enemy damage taken", function () {
+    it("Should remove damage ammount from health", function () {
+      enemy.takeDamage(enemy.health-1);
+      expect(enemy.health).toBe(1);
+    })
+    it("Enemy health should be set to zero if the damage is greater than the remaining health", function () {
+      enemy.takeDamage(enemy.health+1);
+      expect(enemy.health).toBe(0);
+    })
+  })
+
+  describe("Enemy attack function", function () {
+    it("Should pick action from pattern according to round", function () {
+      var x = enemy.isEnemyAttacking(1);
+      expect(x).toBe(enemy.attackPattern[1]);
+    })
+    it("Attack pattern should wrap around", function () {
+      var x = enemy.isEnemyAttacking(enemy.attackPattern.length+1);
+      expect(x).toBe(enemy.attackPattern[1]);
+    })
+  })
+
+
+
+});

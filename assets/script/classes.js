@@ -1,5 +1,5 @@
 
-const playerMaxHealth = 1000;
+const playerMaxHealth = 100;
 
 class Player {
   constructor() {
@@ -21,5 +21,25 @@ class Player {
 
   drinkPotion(healthPotionStrength) {
     this.health = Math.min(this.health + healthPotionStrength, this.maxHealth);
+  }
+}
+
+class EnemyBase {
+  constructor(health, attackPattern) {
+    this.health = health;
+    this.maxHealth = health;
+    this.attackPattern = attackPattern;
+  };
+
+  takeDamage(damageTaken) {
+    this.health = Math.max(this.health - damageTaken, 0);
+  }
+
+  isEnemyAttacking(roundCount) {
+    return this.attackPattern[roundCount % this.attackPattern.length];
+  }
+
+  isDead() {
+    return (this.health < 1);
   }
 }

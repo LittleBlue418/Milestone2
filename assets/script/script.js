@@ -41,24 +41,7 @@ $(function () {
  =================================
  */
 
-  class EnemyBase {
-    constructor(health, attackPattern) {
-      this.health = health;
-      this.attackPattern = attackPattern;
-    };
 
-    takeDamage(damageTaken) {
-      this.health = Math.max(this.health - damageTaken, 0);
-    }
-
-    isEnemyAttacking(roundCount) {
-      return this.attackPattern[roundCount % this.attackPattern.length];
-    }
-
-    isDead() {
-      return (this.health < 1);
-    }
-  }
 
   class Enemy1 extends EnemyBase {
     constructor() {
@@ -68,7 +51,6 @@ $(function () {
 
       super(health, attackPattern);
 
-      this.maxHealth = health;
       this.attack = randomInteger(10, 15);
       this.defense = randomInteger(10, 15);
       this.gold = randomInteger(5, 10);
@@ -91,7 +73,6 @@ $(function () {
 
       super(health, attackPattern);
 
-      this.maxHealth = health;
       this.attack = randomInteger(25, 30);
       this.defense = randomInteger(35, 40);
       this.gold = randomInteger(25, 30);
@@ -113,7 +94,6 @@ $(function () {
 
       super(health, attackPattern);
 
-      this.maxHealth = health;
       this.attack = randomInteger(55, 50);
       this.defense = randomInteger(40, 45);
       this.gold = randomInteger(45, 50);
@@ -135,7 +115,6 @@ $(function () {
 
       super(health, attackPattern);
 
-      this.maxHealth = health;
       this.attack = 100;
       this.defense = 80;
       this.gold = 0;
