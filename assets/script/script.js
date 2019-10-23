@@ -182,6 +182,7 @@ $(function () {
     map: $("#map-screen"),
     combat: $("#combat-screen"),
     victory: $("#victory-screen"),
+    stats: $("#stat-screen"),
     menu: $("#menu-screen"),
     popupBackground: $("#pop-up-background"),
   }
@@ -232,16 +233,21 @@ $(function () {
     playerAttack: $(".playerAttack"),
     playerDefence: $(".playerDefense"),
     playerGold: $(".playerGold"),
-    roundCountText: $("#round-counter"),
+
+    enemyStatContainer: $(".enemy-stats"),
     enemyHealthText: $(".enemyHealth"),
     enemyMaxHealthText: $(".enemyMaxHealth"),
     enemyAttack: $(".enemyAttack"),
     enemyDefence: $(".enemyDefense"),
     enemyGold: $(".enemyGold"),
+
     heroineActionText: $(".heroine-action"),
     heroineDamageTaken: $(".heroine-damage-taken"),
+
     enemyActionText: $(".enemy-action"),
     enemyDamageTaken: $(".enemy-damage-taken"),
+
+    roundCountText: $("#round-counter"),
   }
 
   const figures = {
@@ -265,6 +271,7 @@ $(function () {
     gameScreen.map.hide();
     gameScreen.combat.hide();
     gameScreen.victory.hide();
+    gameScreen.stats.hide();
     gameScreen.menu.hide();
     gameScreen.popupBackground.hide();
 
@@ -296,6 +303,7 @@ $(function () {
     combatUI.updatePlayerStats(player);
     hideAllScreens();
     gameScreen.home.show();
+    gameScreen.stats.show();
     popups.infoBackground.show();
     popups.infoWelcome.show();
   })
@@ -322,29 +330,34 @@ $(function () {
   gameButton.toShop.click(function () {
     hideAllScreens();
     gameScreen.shop.show();
+    gameScreen.stats.show();
   })
 
   gameButton.homeToMap.click(function () {
     hideAllScreens();
     gameScreen.map.show();
-
+    gameScreen.stats.show();
 
   })
 
   gameButton.shopToHome.click(function () {
     hideAllScreens();
     gameScreen.home.show();
+    gameScreen.stats.show();
   })
 
   gameButton.mapToHome.click(function () {
     hideAllScreens();
     gameScreen.home.show();
+    gameScreen.stats.show();
   })
 
   gameButton.startCombat.click(function () {
     hideAllScreens();
     shop.updatePlayerImage(player);
     gameScreen.combat.show();
+    gameScreen.stats.show();
+
     if (player.combatPopUp) {
       popups.infoBackground.show();
       popups.infoCombat.show();
@@ -479,6 +492,7 @@ $(function () {
   gameButton.fleeFight.click(function () {
     hideAllScreens();
     gameScreen.map.show();
+    gameScreen.stats.show();
   })
 
   // Combat function
@@ -488,6 +502,10 @@ $(function () {
     constructor() {
 
     }
+    /*
+    showEnemyStatContainer() {
+      statField.enemyStatContainer.css("opacity", 0)
+    }*/
 
     updateEnemyStats(currentEnemy) {
       statField.enemyHealthText.text(currentEnemy.health + " / " + currentEnemy.maxHealth);
