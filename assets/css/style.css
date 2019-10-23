@@ -400,35 +400,35 @@
     background-image: url(../art/figures/heroine-body.png);
  }
 
- #heroine-sword {
+ .sword-wood {
     background-image: url(../art/figures/heroine-sword-wood.png);
  }
 
- #heroine-sword.iron {
+ .sword-basic {
     background-image: url(../art/figures/heroine-sword-basic.png);
  }
 
- #heroine-sword.fancy {
+ .sword-fancy {
     background-image: url(../art/figures/heroine-sword-fancy.png);
  }
 
- #heroine-sword.magic {
+ .sword-magic {
     background-image: url(../art/figures/heroine-sword-magic.png);
  }
 
- #heroine-shield {
+ .shield-wood {
     background-image: url(../art/figures/heroine-shield-wood.png);
  }
 
- #heroine-shield.iron {
+ .shield-basic {
     background-image: url(../art/figures/heroine-shield-basic.png);
  }
 
- #heroine-shield.fancy {
+ .shield-fancy {
     background-image: url(../art/figures/heroine-shield-fancy.png);
  }
 
- #heroine-shield.magic {
+ .shield-magic {
     background-image: url(../art/figures/heroine-shield-magic.png);
  }
 

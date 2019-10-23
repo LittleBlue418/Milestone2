@@ -151,7 +151,7 @@ $(function () {
       this.maxHealth = playerMaxHealth;
       this.attack = 10;
       this.defense = 10;
-      this.gold = 200;
+      this.gold = 0;
       this.combatPopUp = true;
     };
 
@@ -343,7 +343,7 @@ $(function () {
 
   gameButton.startCombat.click(function () {
     hideAllScreens();
-
+    shop.updatePlayerImage(player);
     gameScreen.combat.show();
     if (player.combatPopUp) {
       popups.infoBackground.show();
@@ -406,6 +406,30 @@ $(function () {
       } else {
         popups.infoBackground.show();
         popups.infoGold.show();
+      }
+    }
+
+    updatePlayerImage(player) {
+      if (player.attack > 29 && player.attack < 59) {
+        figures.heroineSword.removeClass("sword-wood");
+        figures.heroineSword.addClass("sword-basic");
+      } else if (player.attack > 59 && player.attack < 90) {
+        figures.heroineSword.removeClass("sword-basic");
+        figures.heroineSword.addClass("sword-fancy");
+      } else if (player.attack == 90) {
+        figures.heroineSword.removeClass("sword-fancy");
+        figures.heroineSword.addClass("sword-magic");
+      }
+
+      if (player.defense > 29 && player.defense < 59) {
+        figures.heroineShield.removeClass("shield-wood");
+        figures.heroineShield.addClass("shield-basic");
+      } else if (player.defense > 59 && player.defense < 90) {
+        figures.heroineShield.removeClass("shield-basic");
+        figures.heroineShield.addClass("shield-fancy");
+      } else if (player.defense == 90) {
+        figures.heroineShield.removeClass("shield-fancy");
+        figures.heroineShield.addClass("shield-magic");
       }
     }
   }
@@ -482,11 +506,9 @@ $(function () {
     updateEnemyImage(currentEnemy) {
       figures.enemyFigure.removeClass()
       figures.enemyLargeFigure.removeClass()
-      console.log("inside the function")
 
       if (currentEnemy.level == 1) {
         figures.enemyFigure.addClass("figure level1")
-        console.log("inside the if")
       } else if (currentEnemy.level == 2) {
         figures.enemyFigure.addClass("figure level2")
       } else if (currentEnemy.level == 3) {
