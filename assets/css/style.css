@@ -144,7 +144,9 @@
      background-size: contain;
      background-repeat: no-repeat;
      transform: scale(1);
-     transition: transform 20ms ease-in-out;
+     transition:
+        transform 20ms ease-in-out,
+        opacity 100ms ease-in-out;
      background-color: rgba(0, 0, 0, 0);
  }
 
@@ -158,8 +160,14 @@
 
  .action-inner:hover {
     box-shadow: 0 0 20px 8px rgba(255, 196, 0, 0.562), inset 0 0 20px 8px rgba(255, 196, 0, 0.562);
-    border-radius: 50%;
- }
+}
+
+ @media (hover:none), (hover:on-demand) {
+    .action-inner:hover {
+        box-shadow: none;
+        border-radius: none;
+     }
+}
 
 .menu .button {
     background-image: url(../buttons/settings.png);
@@ -241,6 +249,8 @@
      height: 0;
      padding-top: 100%;
      position: relative;
+     border-radius: 50%;
+     transition: box-shadow 100ms ease-in-out;
  }
 
  .menu-inner {
