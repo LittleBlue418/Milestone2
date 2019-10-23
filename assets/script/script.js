@@ -357,6 +357,7 @@ $(function () {
     shop.updatePlayerImage(player);
     gameScreen.combat.show();
     gameScreen.stats.show();
+    combatUI.showEnemyStatContainer();
 
     if (player.combatPopUp) {
       popups.infoBackground.show();
@@ -491,6 +492,7 @@ $(function () {
 
   gameButton.fleeFight.click(function () {
     hideAllScreens();
+    combatUI.hideEnemyStatContainer();
     gameScreen.map.show();
     gameScreen.stats.show();
   })
@@ -502,10 +504,14 @@ $(function () {
     constructor() {
 
     }
-    /*
+
     showEnemyStatContainer() {
+      statField.enemyStatContainer.css("opacity", 1)
+    }
+
+    hideEnemyStatContainer() {
       statField.enemyStatContainer.css("opacity", 0)
-    }*/
+    }
 
     updateEnemyStats(currentEnemy) {
       statField.enemyHealthText.text(currentEnemy.health + " / " + currentEnemy.maxHealth);
@@ -770,6 +776,7 @@ $(function () {
 
         //If you die
         if (player.isDead()) {
+          combatUI.hideEnemyStatContainer();
           combatUI.died();
 
           //If your enemy dies
@@ -791,6 +798,7 @@ $(function () {
             //re-setting screens
             .then(function () {
               combatUI.updatePlayerStats(player);
+              combatUI.hideEnemyStatContainer();
               combatUI.endCombat();
             })
 
