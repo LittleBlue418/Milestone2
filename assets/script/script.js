@@ -151,7 +151,7 @@ $(function () {
       this.maxHealth = playerMaxHealth;
       this.attack = 10;
       this.defense = 10;
-      this.gold = 0;
+      this.gold = 100;
       this.combatPopUp = true;
     };
 
@@ -360,6 +360,19 @@ $(function () {
   // ----- Shop Buttons
 
   gameButton.levelUpAttack.click(function () {
+    shop.levelUpAttack(player);
+  })
+
+  gameButton.levelUpDefence.click(function () {
+    shop.levelUpDefence(player);
+  })
+
+
+class Shop {
+  constructor () {
+
+  }
+  levelUpAttack(player) {
     if (player.gold > 25) {
       if (player.attack < 90) {
         player.attack += 5;
@@ -373,9 +386,9 @@ $(function () {
       popups.infoBackground.show();
       popups.infoGold.show();
     }
-  })
+  };
 
-  gameButton.levelUpDefence.click(function () {
+  levelUpDefence(player) {
     if (player.gold > 25) {
       if (player.defense < 75) {
         player.defense += 5;
@@ -389,11 +402,9 @@ $(function () {
       popups.infoBackground.show();
       popups.infoGold.show();
     }
-
-
-  })
-
-
+  }
+}
+var shop = new Shop();
   // ----- Enemy Generating Buttons
 
   gameButton.enemy1Button.click(function () {
