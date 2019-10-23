@@ -1,5 +1,5 @@
 
-const playerMaxHealth = 100;
+const playerMaxHealth = 1000;
 
 class Player {
   constructor() {

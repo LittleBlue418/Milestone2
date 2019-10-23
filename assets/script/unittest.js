@@ -29,29 +29,25 @@ describe("Player tests", function () {
 
   describe("Player damage taken", function () {
     it("Should remove damage ammount from health", function () {
-      player.takeDamage(10);
-      expect(player.health).toBe(90);
+      player.takeDamage(player.health-1);
+      expect(player.health).toBe(1);
     })
     it("Player health should be set to zero if the damage is greater than the remaining health", function () {
-      player.takeDamage(101);
+      player.takeDamage(player.health+1);
       expect(player.health).toBe(0);
     })
   })
 
   describe("Player drink health potion", function () {
     it("Should restore health if the player has lost health", function () {
-      player.takeDamage(20);
-      player.drinkPotion(12);
-      expect(player.health).toBe(92);
+      player.health = 0;
+      player.drinkPotion(1);
+      expect(player.health).toBe(1);
     })
     it("Should only restore up to player max health", function () {
-      player.takeDamage(20);
-      player.drinkPotion(22);
-      expect(player.health).toBe(100);
-    })
-    it("Should not restore health if the player has max health", function () {
-      player.drinkPotion(22);
-      expect(player.health).toBe(100);
+      player.health = player.maxHealth - 1;
+      player.drinkPotion(2);
+      expect(player.health).toBe(player.maxHealth);
     })
   })
 
