@@ -151,7 +151,7 @@ $(function () {
       this.maxHealth = playerMaxHealth;
       this.attack = 10;
       this.defense = 10;
-      this.gold = 0;
+      this.gold = 100;
       this.combatPopUp = true;
     };
 
@@ -193,6 +193,11 @@ $(function () {
     infoGold: $(".info-gold"),
     infoLevel: $(".info-level"),
     infoCombat: $(".info-combat"),
+
+    spentAttack: $("#gold-spent-text-attack"),
+    spentDefence: $("#gold-spent-text-defence"),
+    attackLevelUp: $("#attack-level-up-text"),
+    defenceLevelUp: $("#defence-level-up-text"),
 
     goldDrop: $("#goldDrop"),
     goldDropText: $("#gold-drop-text"),
@@ -375,6 +380,7 @@ $(function () {
 
   gameButton.levelUpAttack.click(function () {
     shop.levelUpAttack(player);
+    shop.animateAttackUpgrade();
     shop.attackLevelUpCost += 5;
   })
 
@@ -446,6 +452,24 @@ $(function () {
         figures.heroineShield.addClass("shield-magic");
       }
     }
+
+    animateAttackUpgrade() {
+      return popups.spentAttack
+        .animate({
+          'opacity': 1,
+          'top': '45%',
+        }, 700)
+        .animate({
+          'opacity': 0
+        }, function () {
+
+          // remove attributes
+          popups.spentAttack.removeAttr('style');
+        })
+        .promise()
+    }
+
+
   }
 
   var shop = new Shop();

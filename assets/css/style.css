@@ -436,7 +436,7 @@
 .text-pop {
     position: absolute;
     font-family: Impact, sans-serif;
-    font-size: 30px;
+    font-size: 6vw;
     opacity: 0;
 }
 
@@ -470,6 +470,9 @@
         height: 250px;
         left: 50%;
         top: 50%;
+    }
+    .text-pop {
+        font-size: 45px;
     }
  }
 
@@ -640,6 +643,8 @@
     background-image: url(../art/buttons/button-shop-leave.png);
 }
 
+/* ----- Shop animation styling */
+
 #shop-pop-up-background {
     position: absolute;
     width: 100%;
@@ -650,8 +655,7 @@
 #gold-spent-text-attack {
     left: 10%;
     top: 77%;
-    color: goldenrod;
-    font-size: 25px;
+    color: rgb(250, 180, 2);
 }
 
 #attack-level-up-text {
@@ -663,15 +667,23 @@
 #gold-spent-text-defence {
     left: 42%;
     top: 77%;
-    color: goldenrod;
-    font-size: 25px;
+    color: rgb(250, 180, 2);
 }
 
 #defence-level-up-text {
     left: 49%;
     top: 77%;
-    color: blue;
+    color: rgb(84, 84, 243);
 }
+
+@media (min-width: 768px) {
+
+     .damage-taken-text-container {
+        height: 310px;
+        font-size: 35px;
+        top: 50%;
+    }
+ }
 
 .shop-sign-background {
     position: absolute;
