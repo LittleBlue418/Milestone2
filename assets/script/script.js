@@ -151,7 +151,7 @@ $(function () {
       this.maxHealth = playerMaxHealth;
       this.attack = 10;
       this.defense = 10;
-      this.gold = 100;
+      this.gold = 0;
       this.combatPopUp = true;
     };
 
@@ -380,12 +380,19 @@ $(function () {
 
   gameButton.levelUpAttack.click(function () {
     shop.levelUpAttack(player);
-    shop.animateAttackUpgrade();
+    shop.animateAttackSpend()
+      .then(function() {
+        return shop.animateAttackUpgrade()
+      })
     shop.attackLevelUpCost += 5;
   })
 
   gameButton.levelUpDefence.click(function () {
     shop.levelUpDefence(player);
+    shop.animateDefenceSpend()
+      .then(function() {
+        return shop.animateDefenceUpgrade()
+      })
     shop.defenceLevelUpCost += 5;
   })
 
@@ -453,21 +460,82 @@ $(function () {
       }
     }
 
-    animateAttackUpgrade() {
-      return popups.spentAttack
-        .animate({
-          'opacity': 1,
-          'top': '45%',
-        }, 700)
-        .animate({
-          'opacity': 0
-        }, function () {
+    animateAttackSpend() {
+      var promise = new Promise(function (resolve, reject) {
+        popups.spentAttack
+          .animate({
+            'opacity': 1,
+            'top': '45%',
+          }, 700)
+          .animate({
+            'opacity': 0
+          }, function () {
 
-          // remove attributes
-          popups.spentAttack.removeAttr('style');
-        })
-        .promise()
+            // remove attributes
+            popups.spentAttack.removeAttr('style');
+            resolve()
+          })
+      })
+      return promise;
     }
+
+    animateAttackUpgrade() {
+      var promise = new Promise(function (resolve, reject) {
+        popups.attackLevelUp
+          .animate({
+            'opacity': 1,
+            'top': '45%',
+          }, 700)
+          .animate({
+            'opacity': 0
+          }, function () {
+
+            // remove attributes
+            popups.attackLevelUp.removeAttr('style');
+            resolve()
+          })
+      })
+      return promise;
+    }
+
+    animateDefenceSpend() {
+      var promise = new Promise(function (resolve, reject) {
+        popups.spentDefence
+          .animate({
+            'opacity': 1,
+            'top': '45%',
+          }, 700)
+          .animate({
+            'opacity': 0
+          }, function () {
+
+            // remove attributes
+            popups.spentDefence.removeAttr('style');
+            resolve()
+          })
+      })
+      return promise;
+    }
+
+    animateDefenceUpgrade() {
+      var promise = new Promise(function (resolve, reject) {
+        popups.defenceLevelUp
+          .animate({
+            'opacity': 1,
+            'top': '45%',
+          }, 700)
+          .animate({
+            'opacity': 0
+          }, function () {
+
+            // remove attributes
+            popups.defenceLevelUp.removeAttr('style');
+            resolve()
+          })
+      })
+      return promise;
+    }
+
 
 
   }
