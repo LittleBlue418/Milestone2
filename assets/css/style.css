@@ -388,6 +388,13 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+.figureL {
+    width: 100%;
+    height: 100%;
+    background-position-x: center;
+    background-size: cover;
+    position: absolute;
+}
 
  #heroine-base {
     background-image: url(../art/figures/heroine-body.png);
@@ -425,19 +432,19 @@
     background-image: url(../art/figures/heroine-shield-magic.png);
  }
 
- #enemy.level1 {
+ .level1 {
     background-image: url(../art/figures/enemy-1.png);
  }
 
- #enemy.level2 {
+ .level2 {
     background-image: url(../art/figures/enemy-2.png);
  }
 
- #enemy.level3 {
+ .level3 {
     background-image: url(../art/figures/enemy-3.png);
  }
 
- #enemy.level4 {
+ .level4 {
     background-image: url(../art/figures/enemy-4.png);
  }
 

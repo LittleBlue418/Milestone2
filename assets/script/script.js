@@ -73,6 +73,7 @@ $(function () {
       this.attack = randomInteger(10, 15);
       this.defense = randomInteger(10, 15);
       this.gold = randomInteger(5, 10);
+      this.level = 1;
 
 
       if (randomBool(0.5)) {
@@ -95,6 +96,7 @@ $(function () {
       this.attack = randomInteger(25, 30);
       this.defense = randomInteger(35, 40);
       this.gold = randomInteger(25, 30);
+      this.level = 2;
 
 
       if (randomBool(0.333)) {
@@ -116,6 +118,7 @@ $(function () {
       this.attack = randomInteger(55, 50);
       this.defense = randomInteger(40, 45);
       this.gold = randomInteger(45, 50);
+      this.level = 3;
 
 
       if (randomBool(0.25)) {
@@ -137,6 +140,7 @@ $(function () {
       this.attack = 80;
       this.defense = 80;
       this.gold = 0;
+      this.level = 4;
       this.healthPotionStrength = 0;
     }
   }
@@ -240,6 +244,13 @@ $(function () {
     enemyDamageTaken: $(".enemy-damage-taken"),
   }
 
+  const figures = {
+    heroineSword: $("#heroine-sword"),
+    heroineShield: $("#heroine-shield"),
+    enemyFigure: $("#enemy"),
+    enemyLargeFigure: $("#enemy4"),
+  }
+
 
 
 
@@ -332,6 +343,7 @@ $(function () {
 
   gameButton.startCombat.click(function () {
     hideAllScreens();
+
     gameScreen.combat.show();
     if (player.combatPopUp) {
       popups.infoBackground.show();
@@ -387,21 +399,25 @@ $(function () {
   gameButton.enemy1Button.click(function () {
     currentEnemy = new Enemy1();
     combatUI.updateEnemyStats(currentEnemy);
+    combatUI.updateEnemyImage(currentEnemy);
   })
 
   gameButton.enemy2Button.click(function () {
     currentEnemy = new Enemy2();
     combatUI.updateEnemyStats(currentEnemy);
+    combatUI.updateEnemyImage(currentEnemy);
   })
 
   gameButton.enemy3Button.click(function () {
     currentEnemy = new Enemy3();
     combatUI.updateEnemyStats(currentEnemy);
+    combatUI.updateEnemyImage(currentEnemy);
   })
 
   gameButton.enemy4Button.click(function () {
     currentEnemy = new Enemy4();
     combatUI.updateEnemyStats(currentEnemy);
+    combatUI.updateEnemyImage(currentEnemy);
   })
 
 
@@ -446,6 +462,23 @@ $(function () {
       statField.playerGold.text(player.gold);
     }
 
+    updateEnemyImage(currentEnemy) {
+      figures.enemyFigure.removeClass()
+      figures.enemyLargeFigure.removeClass()
+      console.log("inside the function")
+
+      if (currentEnemy.level == 1) {
+        figures.enemyFigure.addClass("figure level1")
+        console.log("inside the if")
+      } else if (currentEnemy.level == 2) {
+        figures.enemyFigure.addClass("figure level2")
+      } else if (currentEnemy.level == 3) {
+        figures.enemyFigure.addClass("figure level3")
+      }else if (currentEnemy.level == 4) {
+        figures.enemyFigure.addClass("figure")
+        figures.enemyLargeFigure.addClass("figureL level4")
+      }
+    }
 
     // Toggling buttons on the combat screen
     combatButtonsVisible(desiredVisible) {
