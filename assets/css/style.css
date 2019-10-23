@@ -189,13 +189,6 @@
      justify-content: space-around;
  }
 
- @media(min-width: 768px) {
-    .button-section {
-        padding-left: 2%;
-        padding-right: 2%;
-    }
-}
-
  .menu-section {
     flex-grow: 0;
     justify-content: flex-end;
@@ -217,18 +210,8 @@
     flex-grow: 0;
     flex-basis: 140px;
     flex-shrink: 1;
-    padding: 5px;
-    margin-bottom: 5px;
- }
-
- @media(min-width: 768px) {
-    .action {
-        flex-grow: 0;
-        flex-basis: 190px;
-        flex-shrink: 1;
-        padding: 1px;
-        margin-bottom: 5px;
-     }
+    padding: 2px;
+    margin-bottom: 0px;
  }
 
 .menu {
@@ -236,17 +219,18 @@
     flex-basis: 50px;
     flex-shrink: 1;
     padding: 5px;
-    margin-bottom: 5%;
-    margin-right: 5%;
+    margin-bottom: 2%;
+    margin-right: 2%;
     background-color: rgba(0,0,0,0.3);
     border-radius: 50%;
  }
 
  @media(min-width: 768px) {
+     .action {
+        flex-basis: 200px;
+     }
      .menu {
          flex-basis: 65px;
-         margin-bottom: 7%;
-        margin-right: 7%;
      }
  }
 
@@ -764,7 +748,7 @@
 
 #map-screen .action {
     flex-grow: 0;
-    flex-basis: 70px;
+    flex-basis: 80px;
     flex-shrink: 1;
     padding: 1px;
     margin-bottom: 5px;
@@ -774,26 +758,27 @@
 
 @media (min-width: 360px)  {
     #map-screen .action {
-        flex-basis: 80px;
+        flex-basis: 90px;
      }
 }
 
 @media (min-width: 360px) and (min-height: 812px) {
     #map-screen .action {
-        flex-basis: 100px;
-     }
+        flex-basis: 115px;
+    }
 }
 
 @media (min-width: 400px)  {
     #map-screen .action {
-        flex-basis: 100px;
-     }
+        flex-basis: 110px;
+    }
 }
 
 @media (min-width: 768px)  {
     #map-screen .action {
-        flex-basis: 130px;
+        flex-basis: 150px;
      }
+
 }
 
 
@@ -1069,7 +1054,7 @@
     position: absolute;
     bottom: 0%;
     width: 100vw;
-    height: 75%;
+    height: 80%;
 
 }
 
@@ -1135,8 +1120,6 @@
     .info-box {
         height: 80%;
         width: 80%;
-        bottom: 4%;
-        left: 4%;
     }
     .info-text {
         top: 15%;
@@ -1150,43 +1133,5 @@
     }
     .info-ok {
         font-size: 30px;
-    }
-}
-
-
-
-/*
-=================================
-    Frame
-=================================
-*/
-
-#frame-container {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-#frame {
-    width: 100%;
-    height: 100%;
-    background-position-x: center;
-    background-size: cover;
-    background-image: url("../backgrounds/template-game-frame.png");
-    pointer-events: none;
-    opacity: 0;
-}
-
-@media(min-width: 768px) {
-    #frame-container {
-        position: absolute;
-        max-width: 768px;
-        max-height: 1024px;
-        left: calc(50% - 384px);
-    }
-
-    #frame {
-    opacity: 1;
     }
 }
