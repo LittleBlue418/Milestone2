@@ -111,12 +111,6 @@ $(function () {
   }
 
   const popups = {
-    infoBackground: $("#info-screen"),
-    infoWelcome: $(".info-welcome"),
-    infoGold: $(".info-gold"),
-    infoLevel: $(".info-level"),
-    infoCombat: $(".info-combat"),
-
     spentAttack: $("#gold-spent-text-attack"),
     spentDefence: $("#gold-spent-text-defence"),
     attackLevelUp: $("#attack-level-up-text"),
@@ -135,7 +129,6 @@ $(function () {
 
   const gameButton = {
     startGame: $("#startGame"),
-    infoOk: $(".info-ok"),
     menu: $(".menu-button"),
     newGame: $("#new-game"),
     closeMenu: $("#close-menu"),
@@ -232,10 +225,6 @@ $(function () {
     gameScreen.home.show();
     gameScreen.stats.show();
     infoScreen.showWelcome();
-  })
-
-  gameButton.infoOk.click(function () {
-    infoScreen.hide();
   })
 
   gameButton.menu.click(function () {
