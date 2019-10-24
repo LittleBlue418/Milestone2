@@ -115,11 +115,6 @@ $(function () {
     spentDefence: $("#gold-spent-text-defence"),
     attackLevelUp: $("#attack-level-up-text"),
     defenceLevelUp: $("#defence-level-up-text"),
-
-    goldDrop: $("#goldDrop"),
-    potionDrop: $("#potionDrop"),
-    died: $("#died"),
-    winFight: $("#winFight"),
   }
 
   const gameButton = {
@@ -174,9 +169,6 @@ $(function () {
 
     infoScreen.hide();
 
-    popups.goldDrop.hide();
-    popups.potionDrop.hide();
-    popups.died.hide();
   }
 
 
@@ -531,10 +523,17 @@ $(function () {
       this.goldDropText = $("#gold-drop-text")
       this.potionDropText = $("#potion-drop-text")
 
+      this.goldDrop = $("#goldDrop")
+      this.potionDrop = $("#potionDrop")
+      this.died = $("#died")
       this.winFight = $("#winFight")
 
       //Set up
       this.winFight.hide();
+      this.died.hide();
+      this.goldDrop.hide();
+      this.potionDrop.hide();
+
     }
 
 
@@ -663,7 +662,7 @@ $(function () {
       //change the game screen
       gameScreen.stats.hide();
       gameScreen.popupBackground.show();
-      popups.goldDrop.show();
+      this.goldDrop.show();
 
       //Sets the gold number for the animation
       this.goldDropText.text("+ " + gold);
@@ -672,8 +671,8 @@ $(function () {
       var promise = new Promise((resolve, reject) => {
 
         //Remove any existing event handlers and then adds one
-        popups.goldDrop.off("click")
-        popups.goldDrop.on("click", () => {
+        this.goldDrop.off("click")
+        this.goldDrop.on("click", () => {
 
           //Animates the gold
           this.goldDropText
@@ -687,7 +686,7 @@ $(function () {
 
               //reset the animation
               this.goldDropText.removeAttr('style')
-              popups.goldDrop.hide();
+              this.goldDrop.hide();
               gameScreen.popupBackground.hide();
               resolve()
             })
@@ -699,7 +698,7 @@ $(function () {
     potionDropAnimation(healthPotionStrength) {
       //change the game screen
       gameScreen.popupBackground.show();
-      popups.potionDrop.show();
+      this.potionDrop.show();
 
       //Sets the health number for the animation
       this.potionDropText.text("+ " + healthPotionStrength);
@@ -707,8 +706,8 @@ $(function () {
       var promise = new Promise((resolve, reject) => {
 
         //Remove any existing event handlers and then adds one
-        popups.potionDrop.off("click")
-        popups.potionDrop.on("click", () => {
+        this.potionDrop.off("click")
+        this.potionDrop.on("click", () => {
 
           //Animates the health
           this.potionDropText
@@ -722,7 +721,7 @@ $(function () {
 
               //reset the animation
               this.potionDropText.removeAttr('style')
-              popups.potionDrop.hide();
+              this.potionDrop.hide();
               gameScreen.popupBackground.hide();
               resolve()
             })
@@ -732,15 +731,12 @@ $(function () {
     }
 
     died() {
-      gameScreen.stats.hide();
-      gameScreen.popupBackground.show();
-      popups.died.show();
+      this.died.show();
 
       var promise = new Promise((resolve, reject) => {
-        popups.died.off("click")
-        popups.died.on("click", () => {
-          hideAllScreens();
-          gameScreen.welcome.show();
+        this.died.off("click")
+        this.died.on("click", () => {
+          this.died.hide();
           resolve()
         })
       })
@@ -834,8 +830,13 @@ $(function () {
 
         //If you die
         if (player.isDead()) {
+          gameScreen.stats.hide();
+          gameScreen.popupBackground.show();
           combatUI.hideEnemyStatContainer();
-          combatUI.died();
+          combatUI.died().then(() => {
+            hideAllScreens();
+            gameScreen.welcome.show();
+          });
 
           //If your enemy dies
         } else if (currentEnemy.isDead()) {
@@ -878,17 +879,5 @@ $(function () {
       })
   }
   // End Combat
-
-
-
-  // Clicking on the "you died" popup
-  popups.died.click(function () {
-    gameScreen.welcome.show();
-    gameScreen.combat.hide();
-    gameScreen.popupBackground.hide();
-    popups.died.hide();
-  });
-
-
 
 });
