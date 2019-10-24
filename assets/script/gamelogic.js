@@ -26,7 +26,6 @@ class Player {
     this.attack = 10;
     this.defense = 10;
     this.gold = 0;
-    this.combatPopUp = true;
   };
 
   isDead() {

@@ -65,6 +65,7 @@ $(function () {
   const gameButton = {
     startGame: $("#startGame"),
     infoOk: $(".info-ok"),
+    combatInfoOk: $(".info-combat .info-ok"),
     menu: $(".menu-button"),
     newGame: $("#new-game"),
     closeMenu: $("#close-menu"),
@@ -215,16 +216,11 @@ $(function () {
     gameScreen.combat.show();
     gameScreen.stats.show();
     combatUI.showEnemyStatContainer();
-
-    if (player.combatPopUp) {
-      popups.infoBackground.show();
-      popups.infoCombat.show();
-      player.combatPopUp = false;
-    }
-
-    roundCount = 0;
-    combatUI.roundCounterAnimation(roundCount);
-
+    combatUI.firstCombatPopup()
+      .then(function () {
+        roundCount = 0;
+        combatUI.roundCounterAnimation(roundCount);
+      })
   })
 
 
@@ -233,7 +229,7 @@ $(function () {
   gameButton.levelUpAttack.click(function () {
     shop.levelUpAttack(player);
     shop.animateAttackSpend()
-      .then(function() {
+      .then(function () {
         return shop.animateAttackUpgrade()
       })
     shop.attackLevelUpCost += 5;
@@ -242,7 +238,7 @@ $(function () {
   gameButton.levelUpDefence.click(function () {
     shop.levelUpDefence(player);
     shop.animateDefenceSpend()
-      .then(function() {
+      .then(function () {
         return shop.animateDefenceUpgrade()
       })
     shop.defenceLevelUpCost += 5;
@@ -446,7 +442,28 @@ $(function () {
   //Putting animations into a class separate from the core mechanics
   class CombatUI {
     constructor() {
+        this.firstCombat = true;
+    }
 
+    firstCombatPopup() {
+      if (!this.firstCombat) {
+        //Skip pop-up after first combat
+        return Promise.resolve();
+      }
+      this.firstCombat = false;
+      popups.infoBackground.show();
+      popups.infoCombat.show();
+
+      var promise = new Promise(function (resolve, reject) {
+        gameButton.combatInfoOk.off("click")
+        gameButton.combatInfoOk.on("click", function () {
+          popups.infoBackground.hide();
+          popups.infoCombat.hide();
+
+          resolve()
+        })
+      })
+      return promise;
     }
 
     showEnemyStatContainer() {
