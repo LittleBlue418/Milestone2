@@ -338,43 +338,34 @@
     </div>
 
     <!--Info Popups-->
-    <div id="info-screen">
-        <div class="info-welcome info-box">
-            <div class="info-text">
-                <p>Hello adventurer! <br>
-                    The scary dragon has stolen the rainbow! Can
-                    you help us please?</p>
-            </div>
-            <button class="info-ok button">ok</button>
-        </div>
-        <div class="info-gold info-box">
-            <div class="info-text">
-                <p>Hello adventurer!
+    <div id="info-screen" class="game-screen">
+        <div class="screen-flex-row speach-bubble-container">
+            <div class="speach-bubble">
+                <!--Welcome text-->
+                    <p id="info-welcome-text">Hello adventurer! <br>
+                        The scary dragon has stolen the rainbow! Can
+                        you help us please?</p>
+                <!--Gold text-->
+                <p id="info-gold-text">Hello adventurer!
                     <br>It looks like you don't have quite enough
                     gold for that... <br><br>You
                     can get gold by fighting monsters!</p>
-            </div>
-            <button class="info-ok button">ok</button>
-        </div>
-        <div class="info-level info-box">
-            <div class="info-text">
-                <p>Hello adventurer!
+                <!--Level text-->
+                <p id="info-level-text">Hello adventurer!
                     <br>It looks like you can't upgrade that
                     stat any more!</p>
-            </div>
-            <button class="info-ok button">ok</button>
-        </div>
-        <div class="info-combat info-box">
-            <div class="info-text">
-                <p>Hello adventurer! <br>
+                <!--Combat text-->
+                <p id="info-combat-text">Hello adventurer! <br>
                     Combat is dangerous, but it's easier
-                    if you spot the enemies' attack pattern! <br><br>
+                    if you spot the enemy attack pattern! <br><br>
                     Also, some enemies drop health potions!
                 </p>
+                <button class="info-ok button">ok</button>
             </div>
-            <button class="info-ok button">ok</button>
         </div>
-
+        <div class="screen-flex-row info-cat-container">
+            <div id="info-cat" class=""></div>
+        </div>
     </div>
 
 </body>

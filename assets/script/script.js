@@ -8,7 +8,61 @@
 
 $(function () {
 
+  /*
+=================================
+  Classes
+=================================
+*/
 
+class InfoScreen {
+  constructor() {
+    this.infoScreen = $("#info-screen")
+    this.infoCat = $("#info-cat")
+    this.allText = $(".speach-bubble p")
+    this.welcomeText = $("#info-welcome-text")
+    this.goldText = $("#info-gold-text")
+    this.levelText = $("#info-level-text")
+    this.combatText = $("#info-combat-text")
+  }
+
+  hide() {
+    this.infoScreen.hide();
+  }
+
+  showWelcome() {
+    this.allText.hide()
+    this.infoCat.removeClass()
+    this.infoCat.addClass("info-cat-sad-image")
+    this.welcomeText.show()
+    this.infoScreen.show()
+  }
+
+  showGold() {
+    this.allText.hide()
+    this.infoCat.removeClass()
+    this.infoCat.addClass("info-cat-sad-image")
+    this.goldText.show()
+    this.infoScreen.show()
+  }
+
+  showLevel() {
+    this.allText.hide()
+    this.infoCat.removeClass()
+    this.infoCat.addClass("info-cat-sad-image")
+    this.levelText.show()
+    this.infoScreen.show()
+  }
+
+  showCombat() {
+    this.allText.hide()
+    this.infoCat.removeClass()
+    this.infoCat.addClass("info-cat-combat-image")
+    this.combatText.show()
+    this.infoScreen.show()
+  }
+}
+
+const infoScreen = new InfoScreen();
 
   /*
   =================================
@@ -136,11 +190,7 @@ $(function () {
     gameScreen.menu.hide();
     gameScreen.popupBackground.hide();
 
-    popups.infoBackground.hide();
-    popups.infoWelcome.hide();
-    popups.infoGold.hide();
-    popups.infoLevel.hide();
-    popups.infoCombat.hide();
+    infoScreen.hide();
 
     popups.goldDrop.hide();
     popups.potionDrop.hide();
@@ -165,14 +215,11 @@ $(function () {
     hideAllScreens();
     gameScreen.home.show();
     gameScreen.stats.show();
-    popups.infoBackground.show();
-    popups.infoWelcome.show();
+    infoScreen.showWelcome();
   })
 
   gameButton.infoOk.click(function () {
-    $(this).parents(".info-box").hide();
-    popups.infoBackground.hide();
-    popups.infoWelcome.hide();
+    infoScreen.hide();
   })
 
   gameButton.menu.click(function () {
@@ -251,13 +298,13 @@ $(function () {
     levelUpAttack(player) {
       //Check player max level
       if (player.attack >= 90) {
-        this.showLeveledUpMaxPopUp();
+        infoScreen.showLevel();
         return;
       }
 
       //check player gold
       if (player.gold < this.attackLevelUpCost) {
-        this.showNotEnoughGoldPopUp();
+        infoScreen.showGold();
         return;
       }
 
@@ -278,13 +325,13 @@ $(function () {
     levelUpDefence(player) {
       //Check player max level
       if (player.defence >= 90) {
-        this.showLeveledUpMaxPopUp();
+        infoScreen.showLevel();
         return;
       }
 
       //check player gold
       if (player.gold < this.defenceLevelUpCost) {
-        this.showNotEnoughGoldPopUp();
+        infoScreen.showGold();
         return;
       }
 
@@ -305,16 +352,6 @@ $(function () {
     updateShopText() {
       statField.shopAttackCost.text(this.attackLevelUpCost);
       statField.shopDefenceCost.text(this.defenceLevelUpCost);
-    }
-
-    showLeveledUpMaxPopUp() {
-      popups.infoBackground.show();
-      popups.infoLevel.show();
-    }
-
-    showNotEnoughGoldPopUp() {
-      popups.infoBackground.show();
-      popups.infoGold.show();
     }
 
 
@@ -488,8 +525,7 @@ $(function () {
         return Promise.resolve();
       }
       this.firstCombat = false;
-      popups.infoBackground.show();
-      popups.infoCombat.show();
+      infoScreen.showCombat();
 
       var promise = new Promise(function (resolve, reject) {
         gameButton.combatInfoOk.off("click")
