@@ -228,20 +228,10 @@ $(function () {
 
   gameButton.levelUpAttack.click(function () {
     shop.levelUpAttack(player);
-    shop.animateAttackSpend()
-      .then(function () {
-        return shop.animateAttackUpgrade()
-      })
-    shop.attackLevelUpCost += 5;
   })
 
   gameButton.levelUpDefence.click(function () {
     shop.levelUpDefence(player);
-    shop.animateDefenceSpend()
-      .then(function () {
-        return shop.animateDefenceUpgrade()
-      })
-    shop.defenceLevelUpCost += 5;
   })
 
 
@@ -252,37 +242,65 @@ $(function () {
     }
 
     levelUpAttack(player) {
-      if (player.gold > this.attackLevelUpCost) {
-        if (player.attack < 90) {
-          player.attack += 5;
-          player.gold -= this.attackLevelUpCost;
-          combatUI.updatePlayerStats(player);
-        } else {
-          popups.infoBackground.show();
-          popups.infoLevel.show();
-        }
-      } else {
-        popups.infoBackground.show();
-        popups.infoGold.show();
+      //Check player max level
+      if (player.attack >= 90) {
+        this.showLeveledUpMaxPopUp();
+        return;
       }
-      console.log(this.attackLevelUpCost)
+
+      //check player gold
+      if (player.gold < this.attackLevelUpCost) {
+        this.showNotEnoughGoldPopUp();
+        return;
+      }
+
+      //If player can level up and can afford to level up
+      player.attack += 5;
+      player.gold -= this.attackLevelUpCost;
+      combatUI.updatePlayerStats(player);
+      shop.attackLevelUpCost += 5;
+      //update signs
+      //update the animation
+
+      this.animateAttackSpend()
+      .then(this.animateAttackUpgrade)
     }
 
     levelUpDefence(player) {
-      if (player.gold > this.attackLevelUpCost) {
-        if (player.defense < 90) {
-          player.defense += 5;
-          player.gold -= this.attackLevelUpCost;
-          combatUI.updatePlayerStats(player);
-        } else {
-          popups.infoBackground.show();
-          popups.infoLevel.show();
-        }
-      } else {
-        popups.infoBackground.show();
-        popups.infoGold.show();
+      //Check player max level
+      if (player.defence >= 90) {
+        this.showLeveledUpMaxPopUp();
+        return;
       }
+
+      //check player gold
+      if (player.gold < this.defenceLevelUpCost) {
+        this.showNotEnoughGoldPopUp();
+        return;
+      }
+
+      //If player can level up and can afford to level up
+      player.defence += 5;
+      player.gold -= this.defenceLevelUpCost;
+      combatUI.updatePlayerStats(player);
+      shop.defenceLevelUpCost += 5;
+      //update signs
+      //update the animation
+
+      this.animateDefenceSpend()
+      .then(this.animateDefenceUpgrade)
     }
+
+    showLeveledUpMaxPopUp() {
+      popups.infoBackground.show();
+      popups.infoLevel.show();
+    }
+
+    showNotEnoughGoldPopUp() {
+      popups.infoBackground.show();
+      popups.infoGold.show();
+    }
+
 
     updatePlayerImage(player) {
       if (player.attack > 29 && player.attack < 59) {
@@ -442,7 +460,7 @@ $(function () {
   //Putting animations into a class separate from the core mechanics
   class CombatUI {
     constructor() {
-        this.firstCombat = true;
+      this.firstCombat = true;
     }
 
     firstCombatPopup() {
