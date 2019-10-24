@@ -1,17 +1,3 @@
-/*
- =================================
-    Math Functions
- =================================
- */
-
-function randomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
-};
-
-function randomBool(probability) {
-  return Math.random() < probability;
-};
-
 
 
 /*
@@ -22,7 +8,61 @@ function randomBool(probability) {
 
 $(function () {
 
+  /*
+=================================
+  Classes
+=================================
+*/
 
+class InfoScreen {
+  constructor() {
+    this.infoScreen = $("#info-screen")
+    this.infoCat = $("#info-cat")
+    this.allText = $(".speach-bubble p")
+    this.welcomeText = $("#info-welcome-text")
+    this.goldText = $("#info-gold-text")
+    this.levelText = $("#info-level-text")
+    this.combatText = $("#info-combat-text")
+  }
+
+  hide() {
+    this.infoScreen.hide();
+  }
+
+  showWelcome() {
+    this.allText.hide()
+    this.infoCat.removeClass()
+    this.infoCat.addClass("info-cat-sad-image")
+    this.welcomeText.show()
+    this.infoScreen.show()
+  }
+
+  showGold() {
+    this.allText.hide()
+    this.infoCat.removeClass()
+    this.infoCat.addClass("info-cat-sad-image")
+    this.goldText.show()
+    this.infoScreen.show()
+  }
+
+  showLevel() {
+    this.allText.hide()
+    this.infoCat.removeClass()
+    this.infoCat.addClass("info-cat-sad-image")
+    this.levelText.show()
+    this.infoScreen.show()
+  }
+
+  showCombat() {
+    this.allText.hide()
+    this.infoCat.removeClass()
+    this.infoCat.addClass("info-cat-combat-image")
+    this.combatText.show()
+    this.infoScreen.show()
+  }
+}
+
+const infoScreen = new InfoScreen();
 
   /*
   =================================
@@ -30,139 +70,9 @@ $(function () {
   =================================
   */
 
-  const playerMaxHealth = 100;
   var roundCount;
   var player;
   var currentEnemy;
-
-
-  /*
- =================================
-     Classes
- =================================
- */
-
-  class EnemyBase {
-    constructor(health, attackPattern) {
-      this.health = health;
-      this.attackPattern = attackPattern;
-    };
-
-    takeDamage(damageTaken) {
-      this.health = Math.max(this.health - damageTaken, 0);
-    }
-
-    isEnemyAttacking(roundCount) {
-      return this.attackPattern[roundCount % this.attackPattern.length];
-    }
-
-    isDead() {
-      return (this.health < 1);
-    }
-  }
-
-  class Enemy1 extends EnemyBase {
-    constructor() {
-
-      var health = randomInteger(30, 40);
-      var attackPattern = [true, false, true];
-
-      super(health, attackPattern);
-
-      this.maxHealth = health;
-      this.attack = randomInteger(10, 15);
-      this.defense = randomInteger(10, 15);
-      this.gold = randomInteger(5, 10);
-
-
-      if (randomBool(0.5)) {
-        this.healthPotionStrength = 10;
-      } else {
-        this.healthPotionStrength = 0;
-      }
-    }
-  };
-
-
-  class Enemy2 extends EnemyBase {
-    constructor() {
-      var health = randomInteger(45, 50);
-      var attackPattern = [true, false, true, false];
-
-      super(health, attackPattern);
-
-      this.maxHealth = health;
-      this.attack = randomInteger(25, 30);
-      this.defense = randomInteger(35, 40);
-      this.gold = randomInteger(25, 30);
-
-
-      if (randomBool(0.333)) {
-        this.healthPotionStrength = 10;
-      } else {
-        this.healthPotionStrength = 0;
-      }
-    }
-  }
-
-  class Enemy3 extends EnemyBase {
-    constructor() {
-      var health = randomInteger(55, 60);
-      var attackPattern = [true, false, true, true, false];
-
-      super(health, attackPattern);
-
-      this.maxHealth = health;
-      this.attack = randomInteger(55, 50);
-      this.defense = randomInteger(40, 45);
-      this.gold = randomInteger(45, 50);
-
-
-      if (randomBool(0.25)) {
-        this.healthPotionStrength = 10;
-      } else {
-        this.healthPotionStrength = 0;
-      }
-    }
-  }
-
-  class Enemy4 extends EnemyBase {
-    constructor() {
-      var health = 100;
-      var attackPattern = [true, false, true, true, true, false];
-
-      super(health, attackPattern);
-
-      this.maxHealth = health;
-      this.attack = 80;
-      this.defense = 80;
-      this.gold = 0;
-      this.healthPotionStrength = 0;
-    }
-  }
-
-  class Player {
-    constructor() {
-      this.health = playerMaxHealth;
-      this.maxHealth = playerMaxHealth;
-      this.attack = 10;
-      this.defense = 10;
-      this.gold = 0;
-      this.combatPopUp = true;
-    };
-
-    isDead() {
-      return (this.health < 1);
-    }
-
-    takeDamage(damageTaken) {
-      this.health = Math.max(this.health - damageTaken, 0);
-    }
-
-    drinkPotion(healthPotionStrength) {
-      this.health = Math.min(this.health + healthPotionStrength, this.maxHealth);
-    }
-  }
 
 
   /*
@@ -178,6 +88,7 @@ $(function () {
     map: $("#map-screen"),
     combat: $("#combat-screen"),
     victory: $("#victory-screen"),
+    stats: $("#stat-screen"),
     menu: $("#menu-screen"),
     popupBackground: $("#pop-up-background"),
   }
@@ -188,6 +99,11 @@ $(function () {
     infoGold: $(".info-gold"),
     infoLevel: $(".info-level"),
     infoCombat: $(".info-combat"),
+
+    spentAttack: $("#gold-spent-text-attack"),
+    spentDefence: $("#gold-spent-text-defence"),
+    attackLevelUp: $("#attack-level-up-text"),
+    defenceLevelUp: $("#defence-level-up-text"),
 
     goldDrop: $("#goldDrop"),
     goldDropText: $("#gold-drop-text"),
@@ -203,6 +119,7 @@ $(function () {
   const gameButton = {
     startGame: $("#startGame"),
     infoOk: $(".info-ok"),
+    combatInfoOk: $(".info-combat .info-ok"),
     menu: $(".menu-button"),
     newGame: $("#new-game"),
     closeMenu: $("#close-menu"),
@@ -223,21 +140,36 @@ $(function () {
   }
 
   const statField = {
+    shopAttackCost: $("#upgrade-attack-cost"),
+    shopDefenceCost: $("#upgrade-defence-cost"),
+
     playerHealthText: $(".playerHealth"),
     playerMaxHealthText: $(".playerMaxHealth"),
     playerAttack: $(".playerAttack"),
     playerDefence: $(".playerDefense"),
     playerGold: $(".playerGold"),
-    roundCountText: $("#round-counter"),
+
+    enemyStatContainer: $(".enemy-stats"),
     enemyHealthText: $(".enemyHealth"),
     enemyMaxHealthText: $(".enemyMaxHealth"),
     enemyAttack: $(".enemyAttack"),
     enemyDefence: $(".enemyDefense"),
     enemyGold: $(".enemyGold"),
+
     heroineActionText: $(".heroine-action"),
     heroineDamageTaken: $(".heroine-damage-taken"),
+
     enemyActionText: $(".enemy-action"),
     enemyDamageTaken: $(".enemy-damage-taken"),
+
+    roundCountText: $("#round-counter"),
+  }
+
+  const figures = {
+    heroineSword: $("#heroine-sword"),
+    heroineShield: $("#heroine-shield"),
+    enemyFigure: $("#enemy"),
+    enemyLargeFigure: $("#enemy4"),
   }
 
 
@@ -254,14 +186,11 @@ $(function () {
     gameScreen.map.hide();
     gameScreen.combat.hide();
     gameScreen.victory.hide();
+    gameScreen.stats.hide();
     gameScreen.menu.hide();
     gameScreen.popupBackground.hide();
 
-    popups.infoBackground.hide();
-    popups.infoWelcome.hide();
-    popups.infoGold.hide();
-    popups.infoLevel.hide();
-    popups.infoCombat.hide();
+    infoScreen.hide();
 
     popups.goldDrop.hide();
     popups.potionDrop.hide();
@@ -285,14 +214,12 @@ $(function () {
     combatUI.updatePlayerStats(player);
     hideAllScreens();
     gameScreen.home.show();
-    popups.infoBackground.show();
-    popups.infoWelcome.show();
+    gameScreen.stats.show();
+    infoScreen.showWelcome();
   })
 
   gameButton.infoOk.click(function () {
-    $(this).parents(".info-box").hide();
-    popups.infoBackground.hide();
-    popups.infoWelcome.hide();
+    infoScreen.hide();
   })
 
   gameButton.menu.click(function () {
@@ -311,97 +238,255 @@ $(function () {
   gameButton.toShop.click(function () {
     hideAllScreens();
     gameScreen.shop.show();
+    gameScreen.stats.show();
+    shop.updateShopText();
   })
 
   gameButton.homeToMap.click(function () {
     hideAllScreens();
     gameScreen.map.show();
-
+    gameScreen.stats.show();
 
   })
 
   gameButton.shopToHome.click(function () {
     hideAllScreens();
     gameScreen.home.show();
+    gameScreen.stats.show();
   })
 
   gameButton.mapToHome.click(function () {
     hideAllScreens();
     gameScreen.home.show();
+    gameScreen.stats.show();
   })
 
   gameButton.startCombat.click(function () {
     hideAllScreens();
+    shop.updatePlayerImage(player);
     gameScreen.combat.show();
-    if (player.combatPopUp) {
-      popups.infoBackground.show();
-      popups.infoCombat.show();
-      player.combatPopUp = false;
-    }
-
-    roundCount = 0;
-    combatUI.roundCounterAnimation(roundCount);
-
+    gameScreen.stats.show();
+    combatUI.showEnemyStatContainer();
+    combatUI.firstCombatPopup()
+      .then(function () {
+        roundCount = 0;
+        combatUI.roundCounterAnimation(roundCount);
+      })
   })
 
 
   // ----- Shop Buttons
 
   gameButton.levelUpAttack.click(function () {
-    if (player.gold > 25) {
-      if (player.attack < 90) {
-        player.attack += 5;
-        player.gold -= 10;
-        combatUI.updatePlayerStats(player);
-      } else {
-        popups.infoBackground.show();
-        popups.infoLevel.show();
-      }
-    } else {
-      popups.infoBackground.show();
-      popups.infoGold.show();
-    }
+    shop.levelUpAttack(player);
   })
 
   gameButton.levelUpDefence.click(function () {
-    if (player.gold > 25) {
-      if (player.defense < 75) {
-        player.defense += 5;
-        player.gold -= 10;
-        combatUI.updatePlayerStats(player);
-      } else {
-        popups.infoBackground.show();
-        popups.infoLevel.show();
-      }
-    } else {
-      popups.infoBackground.show();
-      popups.infoGold.show();
-    }
-
-
+    shop.levelUpDefence(player);
   })
 
 
+  class Shop {
+    constructor() {
+      this.attackLevelUpCost = 25;
+      this.defenceLevelUpCost = 25;
+
+      //Binding the value of 'this'
+      this.updateShopText = this.updateShopText.bind(this);
+    }
+
+    levelUpAttack(player) {
+      //Check player max level
+      if (player.attack >= 90) {
+        infoScreen.showLevel();
+        return;
+      }
+
+      //check player gold
+      if (player.gold < this.attackLevelUpCost) {
+        infoScreen.showGold();
+        return;
+      }
+
+      //If player can level up and can afford to level up
+      player.attack += 5;
+      player.gold -= this.attackLevelUpCost;
+      combatUI.updatePlayerStats(player);
+      popups.spentAttack.text("- " + this.attackLevelUpCost);
+      shop.attackLevelUpCost += 5;
+      //update signs
+      //update the animation
+
+      this.animateAttackSpend()
+        .then(this.animateAttackUpgrade)
+        .then(this.updateShopText);
+    }
+
+    levelUpDefence(player) {
+      //Check player max level
+      if (player.defence >= 90) {
+        infoScreen.showLevel();
+        return;
+      }
+
+      //check player gold
+      if (player.gold < this.defenceLevelUpCost) {
+        infoScreen.showGold();
+        return;
+      }
+
+      //If player can level up and can afford to level up
+      player.defence += 5;
+      player.gold -= this.defenceLevelUpCost;
+      combatUI.updatePlayerStats(player);
+      popups.spentDefence.text("- " + this.defenceLevelUpCost);
+      shop.defenceLevelUpCost += 5;
+      //update signs
+      //update the animation
+
+      this.animateDefenceSpend()
+      .then(this.animateDefenceUpgrade)
+      .then(this.updateShopText);
+    }
+
+    updateShopText() {
+      statField.shopAttackCost.text(this.attackLevelUpCost);
+      statField.shopDefenceCost.text(this.defenceLevelUpCost);
+    }
+
+
+    updatePlayerImage(player) {
+      if (player.attack > 29 && player.attack < 59) {
+        figures.heroineSword.removeClass("sword-wood");
+        figures.heroineSword.addClass("sword-basic");
+      } else if (player.attack > 59 && player.attack < 90) {
+        figures.heroineSword.removeClass("sword-basic");
+        figures.heroineSword.addClass("sword-fancy");
+      } else if (player.attack == 90) {
+        figures.heroineSword.removeClass("sword-fancy");
+        figures.heroineSword.addClass("sword-magic");
+      }
+
+      if (player.defense > 29 && player.defense < 59) {
+        figures.heroineShield.removeClass("shield-wood");
+        figures.heroineShield.addClass("shield-basic");
+      } else if (player.defense > 59 && player.defense < 90) {
+        figures.heroineShield.removeClass("shield-basic");
+        figures.heroineShield.addClass("shield-fancy");
+      } else if (player.defense == 90) {
+        figures.heroineShield.removeClass("shield-fancy");
+        figures.heroineShield.addClass("shield-magic");
+      }
+    }
+
+    animateAttackSpend() {
+
+
+
+      var promise = new Promise(function (resolve, reject) {
+        popups.spentAttack
+          .animate({
+            'opacity': 1,
+            'top': '45%',
+          }, 700)
+          .animate({
+            'opacity': 0
+          }, function () {
+
+            // remove attributes
+            popups.spentAttack.removeAttr('style');
+            resolve()
+          })
+      })
+      return promise;
+    }
+
+    animateAttackUpgrade() {
+      var promise = new Promise(function (resolve, reject) {
+        popups.attackLevelUp
+          .animate({
+            'opacity': 1,
+            'top': '45%',
+          }, 700)
+          .animate({
+            'opacity': 0
+          }, function () {
+
+            // remove attributes
+            popups.attackLevelUp.removeAttr('style');
+            resolve()
+          })
+      })
+      return promise;
+    }
+
+    animateDefenceSpend() {
+      var promise = new Promise(function (resolve, reject) {
+        popups.spentDefence
+          .animate({
+            'opacity': 1,
+            'top': '45%',
+          }, 700)
+          .animate({
+            'opacity': 0
+          }, function () {
+
+            // remove attributes
+            popups.spentDefence.removeAttr('style');
+            resolve()
+          })
+      })
+      return promise;
+    }
+
+    animateDefenceUpgrade() {
+      var promise = new Promise(function (resolve, reject) {
+        popups.defenceLevelUp
+          .animate({
+            'opacity': 1,
+            'top': '45%',
+          }, 700)
+          .animate({
+            'opacity': 0
+          }, function () {
+
+            // remove attributes
+            popups.defenceLevelUp.removeAttr('style');
+            resolve()
+          })
+      })
+      return promise;
+    }
+
+
+
+  }
+
+  var shop = new Shop();
   // ----- Enemy Generating Buttons
 
   gameButton.enemy1Button.click(function () {
     currentEnemy = new Enemy1();
     combatUI.updateEnemyStats(currentEnemy);
+    combatUI.updateEnemyImage(currentEnemy);
   })
 
   gameButton.enemy2Button.click(function () {
     currentEnemy = new Enemy2();
     combatUI.updateEnemyStats(currentEnemy);
+    combatUI.updateEnemyImage(currentEnemy);
   })
 
   gameButton.enemy3Button.click(function () {
     currentEnemy = new Enemy3();
     combatUI.updateEnemyStats(currentEnemy);
+    combatUI.updateEnemyImage(currentEnemy);
   })
 
   gameButton.enemy4Button.click(function () {
     currentEnemy = new Enemy4();
     combatUI.updateEnemyStats(currentEnemy);
+    combatUI.updateEnemyImage(currentEnemy);
   })
 
 
@@ -421,7 +506,9 @@ $(function () {
 
   gameButton.fleeFight.click(function () {
     hideAllScreens();
+    combatUI.hideEnemyStatContainer();
     gameScreen.map.show();
+    gameScreen.stats.show();
   })
 
   // Combat function
@@ -429,7 +516,35 @@ $(function () {
   //Putting animations into a class separate from the core mechanics
   class CombatUI {
     constructor() {
+      this.firstCombat = true;
+    }
 
+    firstCombatPopup() {
+      if (!this.firstCombat) {
+        //Skip pop-up after first combat
+        return Promise.resolve();
+      }
+      this.firstCombat = false;
+      infoScreen.showCombat();
+
+      var promise = new Promise(function (resolve, reject) {
+        gameButton.combatInfoOk.off("click")
+        gameButton.combatInfoOk.on("click", function () {
+          popups.infoBackground.hide();
+          popups.infoCombat.hide();
+
+          resolve()
+        })
+      })
+      return promise;
+    }
+
+    showEnemyStatContainer() {
+      statField.enemyStatContainer.css("opacity", 1)
+    }
+
+    hideEnemyStatContainer() {
+      statField.enemyStatContainer.css("opacity", 0)
     }
 
     updateEnemyStats(currentEnemy) {
@@ -446,6 +561,21 @@ $(function () {
       statField.playerGold.text(player.gold);
     }
 
+    updateEnemyImage(currentEnemy) {
+      figures.enemyFigure.removeClass()
+      figures.enemyLargeFigure.removeClass()
+
+      if (currentEnemy.level == 1) {
+        figures.enemyFigure.addClass("figure level1")
+      } else if (currentEnemy.level == 2) {
+        figures.enemyFigure.addClass("figure level2")
+      } else if (currentEnemy.level == 3) {
+        figures.enemyFigure.addClass("figure level3")
+      } else if (currentEnemy.level == 4) {
+        figures.enemyFigure.addClass("figure")
+        figures.enemyLargeFigure.addClass("figureL level4")
+      }
+    }
 
     // Toggling buttons on the combat screen
     combatButtonsVisible(desiredVisible) {
@@ -521,6 +651,7 @@ $(function () {
     goldDropAnimation(gold) {
 
       //change the game screen
+      gameScreen.stats.hide();
       gameScreen.popupBackground.show();
       popups.goldDrop.show();
 
@@ -591,6 +722,7 @@ $(function () {
     }
 
     died() {
+      gameScreen.stats.hide();
       gameScreen.popupBackground.show();
       popups.died.show();
 
@@ -625,6 +757,7 @@ $(function () {
     endCombat() {
       gameScreen.combat.hide();
       gameScreen.map.show();
+      gameScreen.stats.show();
     }
 
   }
@@ -680,6 +813,7 @@ $(function () {
 
         //If you die
         if (player.isDead()) {
+          combatUI.hideEnemyStatContainer();
           combatUI.died();
 
           //If your enemy dies
@@ -701,6 +835,7 @@ $(function () {
             //re-setting screens
             .then(function () {
               combatUI.updatePlayerStats(player);
+              combatUI.hideEnemyStatContainer();
               combatUI.endCombat();
             })
 

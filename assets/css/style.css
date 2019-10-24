@@ -32,7 +32,7 @@
     height: 100%;
  }
 
-@media(min-width: 768px) {
+@media(min-width: 768px){
     .game-container {
         position: absolute;
         max-width: 768px;
@@ -59,8 +59,12 @@
      flex-grow: 1;
  }
 
+ /*
+ =================================
+    Animations & Buttons
+ =================================
+ */
 
-/* ---- Buttons */
 @keyframes wiggle {
     0% {
         transform: rotate(-2deg);
@@ -140,7 +144,9 @@
      background-size: contain;
      background-repeat: no-repeat;
      transform: scale(1);
-     transition: transform 20ms ease-in-out;
+     transition:
+        transform 20ms ease-in-out,
+        opacity 100ms ease-in-out;
      background-color: rgba(0, 0, 0, 0);
  }
 
@@ -154,8 +160,14 @@
 
  .action-inner:hover {
     box-shadow: 0 0 20px 8px rgba(255, 196, 0, 0.562), inset 0 0 20px 8px rgba(255, 196, 0, 0.562);
-    border-radius: 50%;
- }
+}
+
+ @media (hover:none), (hover:on-demand) {
+    .action-inner:hover {
+        box-shadow: none;
+        border-radius: none;
+     }
+}
 
 .menu .button {
     background-image: url(../buttons/settings.png);
@@ -175,10 +187,6 @@
 
 /* ----- Flex Rows */
 
- .stat-section {
-    justify-content: space-between;
- }
-
 .center-section {
     flex-grow: 2;
     justify-content: space-around;
@@ -189,13 +197,6 @@
      justify-content: space-around;
  }
 
- @media(min-width: 768px) {
-    .button-section {
-        padding-left: 2%;
-        padding-right: 2%;
-    }
-}
-
  .menu-section {
     flex-grow: 0;
     justify-content: flex-end;
@@ -203,14 +204,6 @@
 
 
 /* ----- Flex columns */
-
- .stats {
-    flex-grow: 0;
-    flex-basis: 900px;
-    flex-shrink: 1;
-    background-size: contain;
-    background-repeat: no-repeat;
- }
 
  .figure-container {
     flex-grow: 0;
@@ -225,18 +218,8 @@
     flex-grow: 0;
     flex-basis: 140px;
     flex-shrink: 1;
-    padding: 5px;
-    margin-bottom: 5px;
- }
-
- @media(min-width: 768px) {
-    .action {
-        flex-grow: 0;
-        flex-basis: 190px;
-        flex-shrink: 1;
-        padding: 1px;
-        margin-bottom: 5px;
-     }
+    padding: 2px;
+    margin-bottom: 0px;
  }
 
 .menu {
@@ -244,17 +227,18 @@
     flex-basis: 50px;
     flex-shrink: 1;
     padding: 5px;
-    margin-bottom: 5%;
-    margin-right: 5%;
+    margin-bottom: 2%;
+    margin-right: 2%;
     background-color: rgba(0,0,0,0.3);
     border-radius: 50%;
  }
 
  @media(min-width: 768px) {
+     .action {
+        flex-basis: 200px;
+     }
      .menu {
          flex-basis: 65px;
-         margin-bottom: 7%;
-        margin-right: 7%;
      }
  }
 
@@ -265,6 +249,8 @@
      height: 0;
      padding-top: 100%;
      position: relative;
+     border-radius: 50%;
+     transition: box-shadow 100ms ease-in-out;
  }
 
  .menu-inner {
@@ -273,108 +259,6 @@
      overflow: hidden;
      position: relative;
  }
-
- /* ----- Stats */
-
-.heroine-stats {
-    background-image: url(../art/stat-bars/stats-heroine-base.png);
-    background-position-x: left;
-}
-
-.enemy-stats {
-    background-image: url(../art/stat-bars/stats-enemy-base.png);
-    background-position-x: right;
-}
-
-.stat-container {
-    height: 100%;
-    width: 100%;
-}
-
-.inner-stat-container {
-    position: relative;
-    height: 20vw;
-    width: 80%;
-    top: 10%;
-}
-
-.stat-line {
-    height: 25%;
-    display: flex;
-    flex-direction: column;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.stat-text {
-    font-size: 5vw;
-}
-
-
-.heroine-stats .inner-stat-container {
-    left: 13%;
-}
-
-#enemy-stats-container .inner-stat-container {
-    left: 8%;
-}
-
-
-.enemy-stats .stat-line {
-    background-position: right;
-}
-
-.health-stat{
-    background-image: url(../art/stat-bars/stats-health.png);
-}
-
-.attack-stat{
-    background-image: url(../art/stat-bars/stats-attack.png);
-}
-
-.defence-stat{
-    background-image: url(../art/stat-bars/stats-defence.png);
-}
-
-.gold-stat{
-    background-image: url(../art/stat-bars/stats-gold.png);
-}
-
-.heroine-stats .stat-text {
-    padding-left: 20%;
-}
-
-.enemy-stats .stat-text {
-    text-align: right;
-    padding-right: 18%;
-}
-
-@media(min-width: 768px) {
-    .stat-container {
-        margin-top: 25px;
-    }
-    .inner-stat-container {
-        height: 78%;
-        top: 11%;
-        width: 100%;
-    }
-    .enemy-stats .inner-stat-container {
-        width: 88%;
-    }
-
-    .stat-line {
-        height: 17%;
-    }
-    .stat-text {
-        font-size: 28px;
-    }
-    .heroine-stats .stat-text {
-        padding-left: 10%;
-    }
-    .enemy-stats .stat-text {
-        padding-right: 10%;
-    }
-}
 
 /* ----- Figures */
 
@@ -388,56 +272,63 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+.figureL {
+    width: 100%;
+    height: 100%;
+    background-position-x: center;
+    background-size: cover;
+    position: absolute;
+}
 
  #heroine-base {
     background-image: url(../art/figures/heroine-body.png);
  }
 
- #heroine-sword {
+ .sword-wood {
     background-image: url(../art/figures/heroine-sword-wood.png);
  }
 
- #heroine-sword.iron {
+ .sword-basic {
     background-image: url(../art/figures/heroine-sword-basic.png);
  }
 
- #heroine-sword.fancy {
+ .sword-fancy {
     background-image: url(../art/figures/heroine-sword-fancy.png);
  }
 
- #heroine-sword.magic {
+ .sword-magic {
     background-image: url(../art/figures/heroine-sword-magic.png);
  }
 
- #heroine-shield {
+ .shield-wood {
     background-image: url(../art/figures/heroine-shield-wood.png);
  }
 
- #heroine-shield.iron {
+ .shield-basic {
     background-image: url(../art/figures/heroine-shield-basic.png);
  }
 
- #heroine-shield.fancy {
+ .shield-fancy {
     background-image: url(../art/figures/heroine-shield-fancy.png);
  }
 
- #heroine-shield.magic {
+ .shield-magic {
     background-image: url(../art/figures/heroine-shield-magic.png);
  }
 
- #enemy.level1 {
+ .level1 {
     background-image: url(../art/figures/enemy-1.png);
  }
 
- #enemy.level2 {
+ .level2 {
     background-image: url(../art/figures/enemy-2.png);
  }
 
- #enemy.level3 {
+ .level3 {
     background-image: url(../art/figures/enemy-3.png);
  }
 
- #enemy.level4 {
+ .level4 {
     background-image: url(../art/figures/enemy-4.png);
  }
 
@@ -555,7 +446,7 @@
 .text-pop {
     position: absolute;
     font-family: Impact, sans-serif;
-    font-size: 30px;
+    font-size: 6vw;
     opacity: 0;
 }
 
@@ -589,6 +480,9 @@
         height: 250px;
         left: 50%;
         top: 50%;
+    }
+    .text-pop {
+        font-size: 45px;
     }
  }
 
@@ -759,6 +653,8 @@
     background-image: url(../art/buttons/button-shop-leave.png);
 }
 
+/* ----- Shop animation styling */
+
 #shop-pop-up-background {
     position: absolute;
     width: 100%;
@@ -769,8 +665,7 @@
 #gold-spent-text-attack {
     left: 10%;
     top: 77%;
-    color: goldenrod;
-    font-size: 25px;
+    color: rgb(250, 180, 2);
 }
 
 #attack-level-up-text {
@@ -782,15 +677,23 @@
 #gold-spent-text-defence {
     left: 42%;
     top: 77%;
-    color: goldenrod;
-    font-size: 25px;
+    color: rgb(250, 180, 2);
 }
 
 #defence-level-up-text {
     left: 49%;
     top: 77%;
-    color: blue;
+    color: rgb(84, 84, 243);
 }
+
+@media (min-width: 768px) {
+
+     .damage-taken-text-container {
+        height: 310px;
+        font-size: 35px;
+        top: 50%;
+    }
+ }
 
 .shop-sign-background {
     position: absolute;
@@ -867,7 +770,7 @@
 
 #map-screen .action {
     flex-grow: 0;
-    flex-basis: 70px;
+    flex-basis: 80px;
     flex-shrink: 1;
     padding: 1px;
     margin-bottom: 5px;
@@ -877,26 +780,27 @@
 
 @media (min-width: 360px)  {
     #map-screen .action {
-        flex-basis: 80px;
+        flex-basis: 90px;
      }
 }
 
 @media (min-width: 360px) and (min-height: 812px) {
     #map-screen .action {
-        flex-basis: 100px;
-     }
+        flex-basis: 115px;
+    }
 }
 
 @media (min-width: 400px)  {
     #map-screen .action {
-        flex-basis: 100px;
-     }
+        flex-basis: 110px;
+    }
 }
 
 @media (min-width: 768px)  {
     #map-screen .action {
-        flex-basis: 130px;
+        flex-basis: 150px;
      }
+
 }
 
 
@@ -935,8 +839,128 @@
      background-image: url(../art/backgrounds/background-victory.png);
  }
 
+/*
+ =================================
+    Stat Section
+ =================================
+*/
+
+#stat-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+}
+
+.heroine-stats {
+    flex-grow: 0;
+    flex-basis: 900px;
+    flex-shrink: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../art/stat-bars/stats-heroine-base.png);
+    background-position-x: left;
+
+}
+
+.enemy-stats {
+    flex-grow: 0;
+    flex-basis: 900px;
+    flex-shrink: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../art/stat-bars/stats-enemy-base.png);
+    background-position-x: right;
+    opacity: 0;
+}
+
+.stat-container {
+    height: 90%;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.inner-stat-container {
+    position: relative;
+    height: 70%;
+    width: 100%;
+    top: 0%;
+}
+
+.stat-line {
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.enemy-stats .stat-line {
+    background-position-x: right;
+}
+
+.enemy-stats .stat-text {
+    font-size: 5vw;
+    text-align: right;
+    padding-right: 15%;
+}
+
+.heroine-stats .stat-text {
+    font-size: 5vw;
+    padding-left: 15%;
+}
+
+.health-stat{
+    background-image: url(../art/stat-bars/stats-health.png);
+}
+
+.attack-stat{
+    background-image: url(../art/stat-bars/stats-attack.png);
+}
+
+.defence-stat{
+    background-image: url(../art/stat-bars/stats-defence.png);
+}
+
+.gold-stat{
+    background-image: url(../art/stat-bars/stats-gold.png);
+}
 
 
+@media (min-width: 360px) and (min-height: 810px) {
+    .inner-stat-container {
+        height: 60%;
+    }
+}
+
+@media (min-width: 400px)  {
+    .inner-stat-container {
+        height: 68%;
+    }
+}
+
+@media (min-width: 768px)  {
+    .stat-container {
+        height: 70%;
+    }
+    .inner-stat-container {
+        height: 95%;
+    }
+    #stat-screen {
+        position: absolute;
+        max-width: 768px;
+        max-height: 1024px;
+        left: calc(50% - 384px);
+    }
+    .enemy-stats .stat-text {
+        font-size: 40px;
+    }
+    .heroine-stats .stat-text {
+        font-size: 40px;
+    }
+}
 
  /*
  =================================
@@ -1043,75 +1067,67 @@
 
 #info-screen {
     position: fixed;
-    width: 100%;
-    height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
+
 }
 
-.info-box {
+.speach-bubble-container {
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.info-cat-container {
+    flex-grow: 0;
+    justify-content: left;
+    align-items: flex-end;
+}
+
+.speach-bubble {
+    background-image: url(../art/pop-ups/pop-ups-info-speach-bubble.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position-x: center;
-    background-position-y: bottom;
-    position: absolute;
-    bottom: 0%;
-    width: 100vw;
-    height: 75%;
-
-}
-
-.info-welcome {
-    background-image: url(../art/pop-ups/pop-up-info-welcome.png);
-}
-
-.info-gold {
-    background-image: url(../art/pop-ups/pop-up-info-welcome.png);
-}
-
-.info-level {
-    background-image: url(../art/pop-ups/pop-up-info-welcome.png);
-}
-
-.info-combat {
-    background-image: url(../art/pop-ups/pop-up-info-combat.png);
-}
-
-.info-text {
-    position: absolute;
-    top: 13%;
-    width: 55%;
-    left: 30%;
+    background-position-y: top;
+    height: 80vw;
+    width: 80vw;
+    padding: 12%;
     font-size: 6vw;
+    position: relative;
 }
 
-.info-gold .info-text {
+#info-gold-text {
     font-size: 5vw;
 }
+#info-combat-text {
+    font-size: 4.5vw;
+}
 
-.info-combat .info-text {
-    top: 11%;
-    font-size: 5vw;
+#info-cat {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: left;
+    background-position-y: bottom;
+    height: 40vw;
+    width: 40vw;
+}
+.info-cat-sad-image {
+    background-image: url(../art/pop-ups/pop-ups-cat-sad.png);
+}
+.info-cat-combat-image {
+    background-image: url(../art/pop-ups/pop-ups-cat-combat.png);
 }
 
 .info-ok  {
     background-color: plum;
     outline: rebeccapurple 2px solid;
-    position: absolute;
+    top: auto;
     width: 20%;
-    height: 6%;
-    top: 44%;
-    left: 63%;
+    height: 10%;
+    bottom: 17%;
+    left: 60%;
     font-size: 5vw;
 }
 
-.info-gold .info-ok {
-    top: 46%;
-}
-.info-combat .info-ok {
-    top: 49%;
-    left: 61%;
-    width: 18%;
-}
 @media (min-width: 768px) {
     #info-screen {
         position: absolute;
@@ -1119,61 +1135,23 @@
         max-height: 1024px;
         left: calc(50% - 384px);
     }
-    .info-box {
-        height: 80%;
-        width: 80%;
-        bottom: 4%;
-        left: 4%;
+    .speach-bubble {
+        height: calc(0.8 * 768px);
+        width: calc(0.8 * 768px);
+        font-size: 45px;
     }
-    .info-text {
-        top: 15%;
-        font-size: 33px;
+    #info-gold-text {
+        font-size: 38px;
     }
-    .info-gold .info-text {
-        font-size: 30px;
+    #info-combat-text {
+        font-size: 34px;
     }
-    .info-combat .info-text {
-        font-size: 30px;
+    #info-cat {
+        height: calc(0.4 * 768px);
+        width: calc(0.4 * 768px);
     }
-    .info-ok {
-        font-size: 30px;
-    }
-}
-
-
-
-/*
-=================================
-    Frame
-=================================
-*/
-
-#frame-container {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-#frame {
-    width: 100%;
-    height: 100%;
-    background-position-x: center;
-    background-size: cover;
-    background-image: url("../backgrounds/template-game-frame.png");
-    pointer-events: none;
-    opacity: 0;
-}
-
-@media(min-width: 768px) {
-    #frame-container {
-        position: absolute;
-        max-width: 768px;
-        max-height: 1024px;
-        left: calc(50% - 384px);
+    .info-ok  {
+        font-size: 38px;
     }
 
-    #frame {
-    opacity: 1;
-    }
 }

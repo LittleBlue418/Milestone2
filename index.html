@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/script/gamelogic.js"></script>
     <script src="assets/script/script.js"></script>
 </head>
 
@@ -45,27 +46,7 @@
 
         <!--Home Screen-->
         <div id="home-screen" class="game-screen">
-            <div class="screen-flex-row stat-section">
-                <div class="stats heroine-stats">
-                    <div class="stat-container">
-                        <div class="inner-stat-container">
-                            <div class="stat-line health-stat">
-                                <span class="playerHealth stat-text"></span>
-                            </div>
-                            <div class="stat-line attack-stat">
-                                <span class="playerAttack stat-text"></span>
-                            </div>
-                            <div class="stat-line defence-stat">
-                                <span class="playerDefense stat-text"></span>
-                            </div>
-                            <div class="stat-line gold-stat">
-                                <span class="playerGold stat-text"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="stats"></div>
-            </div>
+            <div class="screen-flex-row"></div>
             <div class="screen-flex-row home-buffer-section"></div>
             <div class="screen-flex-row button-section">
                 <div class="action" id="home-to-shop">
@@ -90,27 +71,7 @@
 
         <!--Shop Screen-->
         <div id="shop-screen" class="game-screen">
-            <div class="screen-flex-row stat-section">
-                <div class="stats heroine-stats">
-                    <div class="stat-container">
-                        <div class="inner-stat-container">
-                            <div class="stat-line health-stat">
-                                <span class="playerHealth stat-text"></span>
-                            </div>
-                            <div class="stat-line attack-stat">
-                                <span class="playerAttack stat-text"></span>
-                            </div>
-                            <div class="stat-line defence-stat">
-                                <span class="playerDefense stat-text"></span>
-                            </div>
-                            <div class="stat-line gold-stat">
-                                <span class="playerGold stat-text"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="stats"></div>
-            </div>
+            <div class="screen-flex-row"></div>
             <div class="screen-flex-row shop-buffer-section"></div>
             <div class="screen-flex-row button-section">
                 <div class="action" id="upgrade-attack">
@@ -138,43 +99,23 @@
 
             </div>
             <div id="shop-pop-up-background">
-                <div id="gold-spent-text-attack" class="text-pop">- 25</div>
-                <div id="attack-level-up-text" class="text-pop">+ 5</div>
-                <div id="gold-spent-text-defence" class="text-pop">- 25</div>
-                <div id="defence-level-up-text" class="text-pop">+ 5</div>
+                <div id="gold-spent-text-attack" class="text-pop outlined"></div>
+                <div id="attack-level-up-text" class="text-pop outlined">+ 5</div>
+                <div id="gold-spent-text-defence" class="text-pop outlined"></div>
+                <div id="defence-level-up-text" class="text-pop outlined">+ 5</div>
             </div>
             <div class="shop-sign-background">
                 <div class="shop-sign">
                     <p>Prices: <br>
-                        <span id="upgrade-attack-cost">+Attack £25</span><br>
-                        <span id="upgrade-defence-cost">+Defence £25</span></p>
+                        +Attack: €<span id="upgrade-attack-cost"></span> <br>
+                        +Defence: €<span id="upgrade-defence-cost"></span></p>
                 </div>
             </div>
         </div>
 
         <!--Map Screen-->
         <div id="map-screen" class="game-screen">
-            <div class="screen-flex-row stat-section">
-                <div class="stats heroine-stats">
-                    <div class="stat-container">
-                        <div class="inner-stat-container">
-                            <div class="stat-line health-stat">
-                                <span class="playerHealth stat-text"></span>
-                            </div>
-                            <div class="stat-line attack-stat">
-                                <span class="playerAttack stat-text"></span>
-                            </div>
-                            <div class="stat-line defence-stat">
-                                <span class="playerDefense stat-text"></span>
-                            </div>
-                            <div class="stat-line gold-stat">
-                                <span class="playerGold stat-text"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="stats"></div>
-            </div>
+            <div id="map-buffer" class="screen-flex-row"></div>
             <div class="screen-flex-row button-section">
                 <div></div>
                 <div></div>
@@ -238,49 +179,13 @@
         <!--Combat Screen-->
         <div id="combat-screen" class="game-screen">
             <!--Core Screen-->
-            <div class="screen-flex-row stat-section">
-                <div class="stats heroine-stats">
-                    <div class="stat-container">
-                        <div class="inner-stat-container">
-                            <div class="stat-line health-stat">
-                                <span class="playerHealth stat-text"></span>
-                            </div>
-                            <div class="stat-line attack-stat">
-                                <span class="playerAttack stat-text"></span>
-                            </div>
-                            <div class="stat-line defence-stat">
-                                <span class="playerDefense stat-text"></span>
-                            </div>
-                            <div class="stat-line gold-stat">
-                                <span class="playerGold stat-text"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="stats enemy-stats">
-                    <div class="stat-container">
-                        <div class="inner-stat-container">
-                            <div class="stat-line health-stat">
-                                <span class="enemyHealth stat-text"></span>
-                            </div>
-                            <div class="stat-line attack-stat">
-                                <span class="enemyAttack stat-text"></span>
-                            </div>
-                            <div class="stat-line defence-stat">
-                                <span class="enemyDefense stat-text"></span>
-                            </div>
-                            <div class="stat-line gold-stat">
-                                <span class="enemyGold stat-text"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="enemy4" class="figureL level4"></div>
+            <div class="screen-flex-row"></div>
             <div class="screen-flex-row center-section">
                 <div class="figure-container" id="heroine-figure">
                     <div id="heroine-base" class="figure"></div>
-                    <div id="heroine-sword" class="figure magic"></div>
-                    <div id="heroine-shield" class="figure fancy"></div>
+                    <div id="heroine-sword" class="figure sword-wood"></div>
+                    <div id="heroine-shield" class="figure shield-wood"></div>
                 </div>
                 <div class="figure-container" id="enemy-figure">
                     <div id="enemy" class="figure level1"></div>
@@ -366,6 +271,51 @@
 
     </div>
 
+    <!--Stat Screen-->
+    <div id="stat-screen">
+        <div class="screen-flex-row">
+            <div class="heroine-stats">
+                <div class="stat-container">
+                    <div class="inner-stat-container">
+                        <div class="stat-line health-stat">
+                            <span class="playerHealth stat-text">100 / 100</span>
+                        </div>
+                        <div class="stat-line attack-stat">
+                            <span class="playerAttack stat-text">90</span>
+                        </div>
+                        <div class="stat-line defence-stat">
+                            <span class="playerDefense stat-text">90</span>
+                        </div>
+                        <div class="stat-line gold-stat">
+                            <span class="playerGold stat-text">90</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="enemy-stats">
+                <div class="stat-container">
+                    <div class="inner-stat-container">
+                        <div class="stat-line health-stat">
+                            <span class="enemyHealth stat-text">100 / 100</span>
+                        </div>
+                        <div class="stat-line attack-stat">
+                            <span class="enemyAttack stat-text">90</span>
+                        </div>
+                        <div class="stat-line defence-stat">
+                            <span class="enemyDefense stat-text">90</span>
+                        </div>
+                        <div class="stat-line gold-stat">
+                            <span class="enemyGold stat-text">90</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="screen-flex-row"></div>
+        <div class="screen-flex-row"></div>
+        <div class="screen-flex-row"></div>
+
+    </div>
 
     <!--Menu Screen-->
     <div id="menu-screen">
@@ -378,7 +328,8 @@
                             <a href="https://www.instagram.com/rudolf_y_art/" target="_blank">Artist Portfolio</a>
                         </button></li>
                     <li><button class="button">
-                            <a href="https://littleblue418.github.io/Milestone1/" target="_blank">Developer Portfolio</a>
+                            <a href="https://littleblue418.github.io/Milestone1/" target="_blank">Developer
+                                Portfolio</a>
                         </button></li>
                     <li><button id="close-menu" class="button">Close</button></li>
                 </ul>
@@ -387,50 +338,34 @@
     </div>
 
     <!--Info Popups-->
-    <div id="info-screen">
-        <div class="info-welcome info-box">
-            <div class="info-text">
-                <p>Hello adventurer! <br>
-                    The scary dragon has stolen the rainbow! Can
-                    you help us please?</p>
-            </div>
-            <button class="info-ok button">ok</button>
-        </div>
-        <div class="info-gold info-box">
-            <div class="info-text">
-                <p>Hello adventurer!
+    <div id="info-screen" class="game-screen">
+        <div class="screen-flex-row speach-bubble-container">
+            <div class="speach-bubble">
+                <!--Welcome text-->
+                    <p id="info-welcome-text">Hello adventurer! <br>
+                        The scary dragon has stolen the rainbow! Can
+                        you help us please?</p>
+                <!--Gold text-->
+                <p id="info-gold-text">Hello adventurer!
                     <br>It looks like you don't have quite enough
                     gold for that... <br><br>You
                     can get gold by fighting monsters!</p>
-            </div>
-            <button class="info-ok button">ok</button>
-        </div>
-        <div class="info-level info-box">
-            <div class="info-text">
-                <p>Hello adventurer!
-                <br>It looks like you can't upgrade that
-                stat any more!</p>
-            </div>
-            <button class="info-ok button">ok</button>
-        </div>
-        <div class="info-combat info-box">
-            <div class="info-text">
-                <p>Hello adventurer! <br>
+                <!--Level text-->
+                <p id="info-level-text">Hello adventurer!
+                    <br>It looks like you can't upgrade that
+                    stat any more!</p>
+                <!--Combat text-->
+                <p id="info-combat-text">Hello adventurer! <br>
                     Combat is dangerous, but it's easier
-                    if you spot the enemies' attack pattern! <br><br>
+                    if you spot the enemy attack pattern! <br><br>
                     Also, some enemies drop health potions!
                 </p>
+                <button class="info-ok button">ok</button>
             </div>
-            <button class="info-ok button">ok</button>
         </div>
-
-    </div>
-
-
-
-    <!--Game Frame-->
-    <div id="frame-container">
-        <div id="frame"></div>
+        <div class="screen-flex-row info-cat-container">
+            <div id="info-cat" class=""></div>
+        </div>
     </div>
 
 </body>
