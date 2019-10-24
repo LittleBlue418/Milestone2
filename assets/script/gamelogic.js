@@ -75,9 +75,9 @@ class Enemy1 extends EnemyBase {
 
     super(health, attackPattern);
 
-    this.attack = randomInteger(10, 15);
-    this.defense = randomInteger(10, 15);
-    this.gold = randomInteger(5, 10);
+    this.attack = randomInteger(8, 9);
+    this.defense = randomInteger(7, 9);
+    this.gold = randomInteger(9, 12);
     this.level = 1;
 
 
