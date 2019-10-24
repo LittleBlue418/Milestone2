@@ -143,6 +143,7 @@
      top: 0;
      background-size: contain;
      background-repeat: no-repeat;
+     background-position: center;
      transform: scale(1);
      transition:
         transform 20ms ease-in-out,
@@ -448,17 +449,16 @@
     font-family: Impact, sans-serif;
     font-size: 6vw;
     opacity: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #potion-drop-text {
-     left: 47%;
-     top: 45%;
      color: greenyellow;
 }
 
 #gold-drop-text {
-     left: 47%;
-     top: 45%;
      color: goldenrod;
 }
 
@@ -474,32 +474,42 @@
     transform: translate(-50%, -50%);
  }
 
+#winFight  {
+    height: 50vw;
+    width: 50vw;
+}
+
  @media (min-width: 768px) {
     .pop-up-button {
-        width: 250px;
-        height: 250px;
-        left: 50%;
-        top: 50%;
+        width: calc(768px * 0.4);
+        height: calc(768px * 0.4);
+
+    }
+    #winFight {
+        width: calc(768px * 0.5);
+        height: calc(768px * 0.5);
+
     }
     .text-pop {
-        font-size: 45px;
+        font-size: calc(768px * 0.06)
     }
  }
 
 #goldDrop .button {
-    background-image: url(../buttons/gold.png);
+    background-image: url(../art/pop-ups/pop-ups-gold-drop.png);
 }
 
 #potionDrop .button {
-    background-image: url(../buttons/potion.png);
+    background-image: url(../art/pop-ups/pop-ups-potion-drop.png);
 }
 
 #died .button {
-    background-image: url(../buttons/dead.png);
+    background-image: url(../art/pop-ups/pop-ups-player-died.png);
 }
 
+
 #winFight .button {
-    background-image: url(../buttons/trophy.png);
+    background-image: url(../art/pop-ups/pop-ups-win-game.png);
 }
 
 /* ----- Round counter */

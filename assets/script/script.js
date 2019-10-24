@@ -666,7 +666,7 @@ const infoScreen = new InfoScreen();
           popups.goldDropText
             .animate({
               'opacity': 1,
-              'top': '30%',
+              'top': '20%',
             }, 800)
             .animate({
               'opacity': 0
@@ -701,7 +701,7 @@ const infoScreen = new InfoScreen();
           popups.potionDropText
             .animate({
               'opacity': 1,
-              'top': '30%',
+              'top': '20%',
             }, 800)
             .animate({
               'opacity': 0
