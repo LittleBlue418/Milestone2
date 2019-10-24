@@ -107,7 +107,6 @@ $(function () {
     victory: $("#victory-screen"),
     stats: $("#stat-screen"),
     menu: $("#menu-screen"),
-    popupBackground: $("#pop-up-background"),
   }
 
   const popups = {
@@ -166,7 +165,7 @@ $(function () {
     gameScreen.victory.hide();
     gameScreen.stats.hide();
     gameScreen.menu.hide();
-    gameScreen.popupBackground.hide();
+
 
     infoScreen.hide();
 
@@ -661,8 +660,6 @@ $(function () {
     goldDropAnimation(gold) {
 
       //change the game screen
-      gameScreen.stats.hide();
-      gameScreen.popupBackground.show();
       this.goldDrop.show();
 
       //Sets the gold number for the animation
@@ -688,7 +685,6 @@ $(function () {
               //reset the animation
               this.goldDropText.removeAttr('style')
               this.goldDrop.hide();
-              gameScreen.popupBackground.hide();
               resolve()
             })
         })
@@ -698,7 +694,6 @@ $(function () {
 
     potionDropAnimation(healthPotionStrength) {
       //change the game screen
-      gameScreen.popupBackground.show();
       this.potionDrop.show();
 
       //Sets the health number for the animation
@@ -723,7 +718,6 @@ $(function () {
               //reset the animation
               this.potionDropText.removeAttr('style')
               this.potionDrop.hide();
-              gameScreen.popupBackground.hide();
               resolve()
             })
         })
@@ -759,12 +753,6 @@ $(function () {
         this.combatButtonsVisible(true);
       })
     };
-
-    endCombat() {
-      gameScreen.combat.hide();
-      gameScreen.map.show();
-      gameScreen.stats.show();
-    }
 
     youWin() {
       this.winFight.show();
@@ -832,7 +820,7 @@ $(function () {
         //If you die
         if (player.isDead()) {
           gameScreen.stats.hide();
-          gameScreen.popupBackground.show();
+
           combatUI.hideEnemyStatContainer();
           combatUI.died().then(() => {
             hideAllScreens();
@@ -844,7 +832,7 @@ $(function () {
           if (currentEnemy.level == 4) {
             gameScreen.stats.hide();
             combatUI.hideEnemyStatContainer();
-            gameScreen.popupBackground.show();
+
             combatUI.youWin().then(() => {
               hideAllScreens();
               gameScreen.victory.show();
@@ -868,7 +856,9 @@ $(function () {
               .then(function () {
                 combatUI.updatePlayerStats(player);
                 combatUI.hideEnemyStatContainer();
-                combatUI.endCombat();
+                hideAllScreens();
+                gameScreen.map.show();
+                gameScreen.stats.show();
               })
           }
 
