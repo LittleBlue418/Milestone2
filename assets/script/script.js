@@ -177,7 +177,6 @@ $(function () {
     popups.goldDrop.hide();
     popups.potionDrop.hide();
     popups.died.hide();
-    popups.winFight.hide();
   }
 
 
@@ -531,7 +530,14 @@ $(function () {
       //Loot drop animations
       this.goldDropText = $("#gold-drop-text")
       this.potionDropText = $("#potion-drop-text")
+
+      this.winFight = $("#winFight")
+
+      //Set up
+      this.winFight.hide();
     }
+
+
 
     firstCombatPopup() {
       if (!this.firstCombat) {
@@ -763,6 +769,18 @@ $(function () {
       gameScreen.stats.show();
     }
 
+    youWin() {
+      this.winFight.show();
+
+      var promise = new Promise((resolve, reject) => {
+        this.winFight.off("click")
+        this.winFight.on("click", () => {
+          this.winFight.hide();
+          resolve()
+        })
+      })
+      return promise;
+    }
   }
 
 
@@ -821,26 +839,36 @@ $(function () {
 
           //If your enemy dies
         } else if (currentEnemy.isDead()) {
-
-          //Gold Drop
-          player.gold += currentEnemy.gold;
-          combatUI.goldDropAnimation(currentEnemy.gold)
-            .then(function () {
-              combatUI.updatePlayerStats(player);
-
-              // If potion
-              if (currentEnemy.healthPotionStrength > 0) {
-                player.drinkPotion(currentEnemy.healthPotionStrength);
-                return combatUI.potionDropAnimation(currentEnemy.healthPotionStrength)
-              }
+          if (currentEnemy.level == 4) {
+            gameScreen.stats.hide();
+            combatUI.hideEnemyStatContainer();
+            gameScreen.popupBackground.show();
+            combatUI.youWin().then(() => {
+              hideAllScreens();
+              gameScreen.victory.show();
             })
+          } else {
 
-            //re-setting screens
-            .then(function () {
-              combatUI.updatePlayerStats(player);
-              combatUI.hideEnemyStatContainer();
-              combatUI.endCombat();
-            })
+            //Gold Drop
+            player.gold += currentEnemy.gold;
+            combatUI.goldDropAnimation(currentEnemy.gold)
+              .then(function () {
+                combatUI.updatePlayerStats(player);
+
+                // If potion
+                if (currentEnemy.healthPotionStrength > 0) {
+                  player.drinkPotion(currentEnemy.healthPotionStrength);
+                  return combatUI.potionDropAnimation(currentEnemy.healthPotionStrength)
+                }
+              })
+
+              //re-setting screens
+              .then(function () {
+                combatUI.updatePlayerStats(player);
+                combatUI.hideEnemyStatContainer();
+                combatUI.endCombat();
+              })
+          }
 
           //If both alive, continue combat
         } else {
