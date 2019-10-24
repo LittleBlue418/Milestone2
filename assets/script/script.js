@@ -265,6 +265,7 @@ $(function () {
       player.attack += 5;
       player.gold -= this.attackLevelUpCost;
       combatUI.updatePlayerStats(player);
+      popups.spentAttack.text("- " + this.attackLevelUpCost);
       shop.attackLevelUpCost += 5;
       //update signs
       //update the animation
@@ -291,6 +292,7 @@ $(function () {
       player.defence += 5;
       player.gold -= this.defenceLevelUpCost;
       combatUI.updatePlayerStats(player);
+      popups.spentDefence.text("- " + this.defenceLevelUpCost);
       shop.defenceLevelUpCost += 5;
       //update signs
       //update the animation
@@ -341,6 +343,9 @@ $(function () {
     }
 
     animateAttackSpend() {
+
+
+
       var promise = new Promise(function (resolve, reject) {
         popups.spentAttack
           .animate({
