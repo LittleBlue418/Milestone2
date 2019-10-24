@@ -436,12 +436,11 @@
 
 /*----- Pop-ups / Loot Drops */
 
-#pop-up-background {
+.pop-up-background {
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    pointer-events: none;
 }
 
 .text-pop {
@@ -474,7 +473,11 @@
     transform: translate(-50%, -50%);
  }
 
-#winFight  {
+ .pop-up-button:active {
+     transform: translate(-50%, -50%) scale(0.95);
+ }
+
+#winFight .button {
     width: 50vw;
     height: calc(50vw * 1.3958);
 }
@@ -485,7 +488,7 @@
         height: calc(768px * 0.4);
 
     }
-    #winFight {
+    #winFight .button {
         width: calc(768px * 0.5);
         height: calc(768px * 0.5 * 1.3958);
 
@@ -494,6 +497,8 @@
         font-size: calc(768px * 0.06)
     }
  }
+
+
 
 #goldDrop .button {
     background-image: url(../art/pop-ups/pop-ups-gold-drop.png);

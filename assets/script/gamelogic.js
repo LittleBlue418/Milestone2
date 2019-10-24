@@ -17,13 +17,13 @@ function randomBool(probability) {
   Player
 =================================
 */
-const playerMaxHealth = 100;
+const playerMaxHealth = 1000;
 
 class Player {
   constructor() {
     this.health = playerMaxHealth;
     this.maxHealth = playerMaxHealth;
-    this.attack = 10;
+    this.attack = 100;
     this.defence = 10;
     this.gold = 0;
   };
@@ -84,7 +84,7 @@ class Enemy1 extends EnemyBase {
     if (randomBool(0.5)) {
       this.healthPotionStrength = 10;
     } else {
-      this.healthPotionStrength = 0;
+      this.healthPotionStrength = 10;
     }
   }
 };

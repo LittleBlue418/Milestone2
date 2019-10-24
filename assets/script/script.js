@@ -156,6 +156,7 @@ $(function () {
   gameScreen.welcome.show();
 
 
+
   function hideAllScreens() {
     gameScreen.welcome.hide();
     gameScreen.home.hide();
