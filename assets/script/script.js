@@ -119,7 +119,6 @@ const infoScreen = new InfoScreen();
   const gameButton = {
     startGame: $("#startGame"),
     infoOk: $(".info-ok"),
-    combatInfoOk: $(".info-combat .info-ok"),
     menu: $(".menu-button"),
     newGame: $("#new-game"),
     closeMenu: $("#close-menu"),
@@ -528,11 +527,9 @@ const infoScreen = new InfoScreen();
       infoScreen.showCombat();
 
       var promise = new Promise(function (resolve, reject) {
-        gameButton.combatInfoOk.off("click")
-        gameButton.combatInfoOk.on("click", function () {
-          popups.infoBackground.hide();
-          popups.infoCombat.hide();
-
+        gameButton.infoOk.off("click")
+        gameButton.infoOk.on("click", function () {
+          infoScreen.hide()
           resolve()
         })
       })
