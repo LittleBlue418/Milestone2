@@ -86,6 +86,9 @@ $(function () {
   }
 
   const statField = {
+    shopAttackCost: $("#upgrade-attack-cost"),
+    shopDefenceCost: $("#upgrade-defence-cost"),
+
     playerHealthText: $(".playerHealth"),
     playerMaxHealthText: $(".playerMaxHealth"),
     playerAttack: $(".playerAttack"),
@@ -189,6 +192,7 @@ $(function () {
     hideAllScreens();
     gameScreen.shop.show();
     gameScreen.stats.show();
+    shop.updateShopText();
   })
 
   gameButton.homeToMap.click(function () {
@@ -263,7 +267,8 @@ $(function () {
       //update the animation
 
       this.animateAttackSpend()
-      .then(this.animateAttackUpgrade)
+        .then(this.animateAttackUpgrade)
+        .then(this.updateShopText);
     }
 
     levelUpDefence(player) {
@@ -289,6 +294,14 @@ $(function () {
 
       this.animateDefenceSpend()
       .then(this.animateDefenceUpgrade)
+      .then(this.updateShopText);
+    }
+
+    updateShopText() {
+
+      console.log(this)
+      statField.shopAttackCost.text(this.attackLevelUpCost);
+      statField.shopDefenceCost.text(this.defenceLevelUpCost);
     }
 
     showLeveledUpMaxPopUp() {

@@ -25,7 +25,7 @@ class Player {
     this.maxHealth = playerMaxHealth;
     this.attack = 10;
     this.defense = 10;
-    this.gold = 0;
+    this.gold = 200;
   };
 
   isDead() {
