@@ -145,14 +145,14 @@ const infoScreen = new InfoScreen();
     playerHealthText: $(".playerHealth"),
     playerMaxHealthText: $(".playerMaxHealth"),
     playerAttack: $(".playerAttack"),
-    playerDefence: $(".playerDefense"),
+    playerDefence: $(".playerdefence"),
     playerGold: $(".playerGold"),
 
     enemyStatContainer: $(".enemy-stats"),
     enemyHealthText: $(".enemyHealth"),
     enemyMaxHealthText: $(".enemyMaxHealth"),
     enemyAttack: $(".enemyAttack"),
-    enemyDefence: $(".enemyDefense"),
+    enemyDefence: $(".enemydefence"),
     enemyGold: $(".enemyGold"),
 
     heroineActionText: $(".heroine-action"),
@@ -366,13 +366,13 @@ const infoScreen = new InfoScreen();
         figures.heroineSword.addClass("sword-magic");
       }
 
-      if (player.defense > 29 && player.defense < 59) {
+      if (player.defence > 29 && player.defence < 59) {
         figures.heroineShield.removeClass("shield-wood");
         figures.heroineShield.addClass("shield-basic");
-      } else if (player.defense > 59 && player.defense < 90) {
+      } else if (player.defence > 59 && player.defence < 90) {
         figures.heroineShield.removeClass("shield-basic");
         figures.heroineShield.addClass("shield-fancy");
-      } else if (player.defense == 90) {
+      } else if (player.defence == 90) {
         figures.heroineShield.removeClass("shield-fancy");
         figures.heroineShield.addClass("shield-magic");
       }
@@ -547,14 +547,14 @@ const infoScreen = new InfoScreen();
     updateEnemyStats(currentEnemy) {
       statField.enemyHealthText.text(currentEnemy.health + " / " + currentEnemy.maxHealth);
       statField.enemyAttack.text(currentEnemy.attack);
-      statField.enemyDefence.text(currentEnemy.defense);
+      statField.enemyDefence.text(currentEnemy.defence);
       statField.enemyGold.text(currentEnemy.gold);
     }
 
     updatePlayerStats(player) {
       statField.playerHealthText.text(player.health + " / " + player.maxHealth);
       statField.playerAttack.text(player.attack);
-      statField.playerDefence.text(player.defense);
+      statField.playerDefence.text(player.defence);
       statField.playerGold.text(player.gold);
     }
 
@@ -782,11 +782,11 @@ const infoScreen = new InfoScreen();
         enemyDamageTaken = player.attack
         playerDamageTaken = currentEnemy.attack
       } else {
-        enemyDamageTaken = Math.max(player.attack - currentEnemy.defense, 0);
+        enemyDamageTaken = Math.max(player.attack - currentEnemy.defence, 0);
       }
     } else {
       if (isEnemyAttacking) {
-        playerDamageTaken = Math.max(currentEnemy.attack - player.defense, 0);
+        playerDamageTaken = Math.max(currentEnemy.attack - player.defence, 0);
       }
     }
 

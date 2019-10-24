@@ -24,7 +24,7 @@ class Player {
     this.health = playerMaxHealth;
     this.maxHealth = playerMaxHealth;
     this.attack = 10;
-    this.defense = 10;
+    this.defence = 10;
     this.gold = 0;
   };
 
@@ -76,7 +76,7 @@ class Enemy1 extends EnemyBase {
     super(health, attackPattern);
 
     this.attack = randomInteger(8, 9);
-    this.defense = randomInteger(7, 9);
+    this.defence = randomInteger(7, 9);
     this.gold = randomInteger(9, 12);
     this.level = 1;
 
@@ -97,7 +97,7 @@ class Enemy2 extends EnemyBase {
     super(health, attackPattern);
 
     this.attack = randomInteger(25, 30);
-    this.defense = randomInteger(35, 40);
+    this.defence = randomInteger(35, 40);
     this.gold = randomInteger(25, 30);
     this.level = 2;
 
@@ -118,7 +118,7 @@ class Enemy3 extends EnemyBase {
     super(health, attackPattern);
 
     this.attack = randomInteger(55, 50);
-    this.defense = randomInteger(40, 45);
+    this.defence = randomInteger(40, 45);
     this.gold = randomInteger(45, 50);
     this.level = 3;
 
@@ -139,7 +139,7 @@ class Enemy4 extends EnemyBase {
     super(health, attackPattern);
 
     this.attack = 100;
-    this.defense = 80;
+    this.defence = 80;
     this.gold = 0;
     this.level = 4;
     this.healthPotionStrength = 0;
