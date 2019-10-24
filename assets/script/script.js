@@ -243,6 +243,9 @@ $(function () {
     constructor() {
       this.attackLevelUpCost = 25;
       this.defenceLevelUpCost = 25;
+
+      //Binding the value of 'this'
+      this.updateShopText = this.updateShopText.bind(this);
     }
 
     levelUpAttack(player) {
@@ -298,8 +301,6 @@ $(function () {
     }
 
     updateShopText() {
-
-      console.log(this)
       statField.shopAttackCost.text(this.attackLevelUpCost);
       statField.shopDefenceCost.text(this.defenceLevelUpCost);
     }
