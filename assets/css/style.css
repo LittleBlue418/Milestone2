@@ -875,6 +875,9 @@
     pointer-events: none;
 }
 
+.game-stats {
+    max-height: 23%;
+}
 
 .heroine-stats {
     flex-grow: 0;
@@ -899,8 +902,8 @@
 }
 
 .stat-container {
-    width: 45vw;
-    height: calc(45vw * 0.55);
+    width: 40vw;
+    height: calc(40vw * 0.55);
     margin-top: 2%;
 }
 
@@ -912,6 +915,10 @@
 }
 .heroine-stats .stat-container {
     margin-left: 8%;
+}
+
+.enemy-stats .stat-container {
+    margin-left: 15%;
 }
 
 .stat-line {
@@ -955,8 +962,8 @@
 
 @media (min-width: 768px)  {
     .stat-container {
-        width: calc(768px * 0.45);
-        height: calc(768px * 0.45 * 0.55);
+        width: calc(768px * 0.4);
+        height: calc(768px * 0.4 * 0.5);
         margin-top: 2%;
     }
     #stat-screen {
@@ -966,10 +973,10 @@
         left: calc(50% - 384px);
     }
     .enemy-stats .stat-text {
-        font-size: 40px;
+        font-size: 30px;
     }
     .heroine-stats .stat-text {
-        font-size: 40px;
+        font-size: 30px;
     }
 }
 
