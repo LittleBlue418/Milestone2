@@ -84,7 +84,7 @@ class Enemy1 extends EnemyBase {
     if (randomBool(0.5)) {
       this.healthPotionStrength = 10;
     } else {
-      this.healthPotionStrength = 10;
+      this.healthPotionStrength = 0;
     }
   }
 };
