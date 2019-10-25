@@ -56,8 +56,8 @@ When starting this project I knew that as with any game (in fact any project) th
 * Pop up dialogue boxes to give information to players
 
 ##### MVP2 Scope
-* Seporating out the classes even more to be able to write more automatic tests
-* Using polyfill to allow for promises on Internet Explorer
+* Seporating out the classes even more to be able to write more automatic tests (see testing section)
+* Using polyfill to allow for promises on Internet Explorer (see known bugs section)
 * A fade to black between screen changes to give a softer transition
 * A visual clue on the shop sign when the player has maxed up health
 * Fade to black transitions between screen changes (when moving from the home screen to she shop for example)
@@ -151,22 +151,26 @@ Given the nature of this project, and the complexity of the JavaScript compared 
 ### Game Mechanics Testing 
 For the gameplay creation and testing i worked with a [friend](https://github.com/parmus) who has built [his own games](https://github.com/parmus/dicy). We started the gameplay testing with pen and paper and dice, working through the combat mechanics to find a system that would be fairly simple to impliment, but would allow elements of strategy. After testing a few options we decided on a system involving enemy patterns. Each enemy would have a pattern of attack / defend moves, and the player could learn the pattern by observing the battle. In this way the player could choose when to attack and defend to maximise damage done and minimise damage taken.  
 
-[image here]
+![Core combat mechanics](https://github.com/LittleBlue418/Milestone2/blob/master/assets/documentation/game-combat-mechanics.jpg "chart of core combat mechanics")
 
 Once the initial game was built I was able to start testing the mechanics as a player. I also worked with [another friend](https://www.linkedin.com/in/craig-fleming-633bb4125/) who has worked as a professional GM for [Steamforged Games](https://steamforged.com/). During this testing process we decided to remove the option to buy health potions, and instead build in the mechanics for potion drop from combat. Again in this way we force the player to think tactically about how they want to play, rather than simply attacking over and over untill they win, then paying to be revived. In this way it adds a puzzle like element to the gameplay.  
 
 ### Manual Testing 
 During the build process I have been **manualy testing**; ensuring that each button, link and icon that should perform an action would complete that action. I have tested on different screens and devices to ensure that everything looks and scales as it should. 
 
-Other people have tested the site for me, including my Mentor, friends and family, and my peers on the slack peer-code-review channel. You can red the **feedback**, as well as the steps that I have taken and implementations made as a result in [this document]
+Other people have tested the site for me, including my friends and family. You can red the **feedback**, as well as the steps that I have taken and implementations made as a result in [this document](https://github.com/LittleBlue418/Milestone2/blob/master/assets/documentation/Game%20testing%20-%20Craig.pdf)
 
 I used **Chrome developer tools** for testing my site. Using the device toolbar to continually check that my structure and content worked on the mobile and desktop screen as intended. I frequently tested the different classes and rules that were applying to different elements to bug test on things that weren't behaving as they should, but also to test out possible solutions before moving those solutions into my code. 
 
-### Accessability Testing 
-
-
 ### Automated testing
-During the refactoring stage of working with my JS code base i worked to build testable classes and functions. You can see my testing document [here]
+During the refactoring stage of working with my JS code base I worked to build testable classes and functions. Currently I have automated testing for the player and emeny classes, as next steps i would plan to split the shop class into a shop mechanics class and a shop UI class, and thus be able to write testing for the shop as well.  
+
+### Known bugs
+* The game is designed in portrait, and as such although it has been designed for a device and scales responsively it also currently tries to scale to a landscape screen. MVP2 would for me involve either re-thinking the currently responsive scaling settings, or investigating how to 'block' the user from seeing it in landscape mode.
+* The JavaScript code is currently written using promises and the arrow shorthand for functions. Neither of these features are supported on Internet Explorer. My rationel for using them was to write clean and testable code that also produced great user responsive animations. When I investigated I found that over 90% of all users would experience the game with no issues, and of those over 95% of mobile users would experience no issue. Considdering this avenue of thought though it's worth also pointing out that flexbox does not give 100% compatability with Internet Explorer either, supporting just over 98% of users. 
+
+Given the pay off, and the teachings of the course thus far, against the relatively small number of users affected I decided to use both the promises and arrow functions (as well as flexbox). Moving forwards with MVP2 I would use pollyfill code to ensure that my game is 100% backwards compatable.     
+[source: promises](https://caniuse.com/#feat=promises), [source: arrow function](https://caniuse.com/#feat=arrow-functions)
 
 ***
 ## Deployment
