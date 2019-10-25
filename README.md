@@ -184,6 +184,9 @@ I used **Chrome developer tools** for testing my site. Using the device toolbar 
 ### Automated testing
 During the refactoring stage of working with my JS code base I worked to build testable classes and functions. Currently I have automated testing for the player and emeny classes, as next steps i would plan to split the shop class into a shop mechanics class and a shop UI class, and thus be able to write testing for the shop as well.  
 
+### Interesting bug - resolved
+During testing it became clear that for users who were accessing my game through an iPhone or iPad of any model the button on the home acreen would not appear. After testing and researching I found that flex-basis was causing the issue, and seems to be a known bug on their operating system. As such i changed all instances of flex-basis: 0 to flex-basis: auto and no longer had the issue.  
+
 ### Known bugs
 * The game is designed in portrait, and as such although it has been designed for a device and scales responsively it also currently tries to scale to a landscape screen. My intention was to use a feature like [ScreenOrientation.lock()](https://developer.mozilla.org/en-US/docs/Web/API/Screen/lockOrientation#Browser_compatibility) however it has been deprecated and I  struggled to find a good replacement that did not also compromise the user experience in some way.  MVP2 would for me involve either re-thinking the currently responsive scaling settings, or investigating how to 'block' the user from seeing it in landscape mode without compromising their experience.
 
