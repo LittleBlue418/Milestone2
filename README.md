@@ -31,15 +31,17 @@ Working from the user stories I put together the problems that I wanted to solve
 Opportunity / Problem | Importance | Viability / Feasibility
 ----------------------|-------------|----------------------
 A - Display my JavaScript skills | 5 | 4 
-B - Provide a framework for the artist to display their skills | 3 | 3
-C - Build engaging game mechanics for the user / player  | 5 | 4
+B - Build engaging game mechanics for the user / player  | 3 | 3
+C - Provide a framework for the artist to display their skills | 5 | 4
 D - Signpost to my CV / Portfolio | 5 | 5
 E - Signpost to the artist's portfolio / other work | 5 | 5
 
-[image here]
+![Importance / Feasibility Graph](https://github.com/LittleBlue418/Milestone2/blob/master/assets/documentation/Importance-Feasability-MS2.jpg "graph of problems against viability and Importance")
 
 ### Scope 
-##### Initial Scope
+When starting this project I knew that as with any game (in fact any project) there would be a danger of scope creep. As such I worked with the artist to build out the scope into different levels, and assigned any extra ideas and feedback inspired mechanics to a 'nice to have' or even MVP2 scope. The idea here is that this game will not be 100% complete, it will be MVP1 complete. At a later date we can use this framework and existing core game to build extra features. Everything under 'core scope' and 'nice to have' has been implimented, things under MVP2 have not been implimented.  
+
+##### Core Scope
 * A landing screen that makes it clear that this is the start point for the game
 * A home screen that builds the world of the game for the player
 * A combat screen to diaplay the core mechanics of the game
@@ -51,13 +53,22 @@ E - Signpost to the artist's portfolio / other work | 5 | 5
 * More advanced images and animations for loot drops to give a more visual feedback reward to the player
 * More advanced animations around the combat to give visual feedback to the player
 * More advanced shop mechanics that would scale prices as the player leveld up
+* Pop up dialogue boxes to give information to players
+
+##### MVP2 Scope
+* Seporating out the classes even more to be able to write more automatic tests
+* Using polyfill to allow for promises on Internet Explorer
 * A fade to black between screen changes to give a softer transition
+* A visual clue on the shop sign when the player has maxed up health
+* Fade to black transitions between screen changes (when moving from the home screen to she shop for example)
+* Animations on the enemy and heroine figures
 * Log in functionality
 * Game audio (with an on/off toggle)
 
 #### Art Scope
-Due to the time constraints the artist and i set a seporate scope for the art. Although everything on this list will eventualy be included, the nice to have scope are items that we can add after the hand in date, as this is designed to be a living portfolio.
-##### Initial Scope
+Due to the time constraints the artist and I set a separate scope for the art. Although everything on this list will eventualy be included, the nice to have scope are items that we can add after the hand in date, as this is designed to be a living portfolio.
+
+##### Core Scope
 * Background for: home / map / combat / victory screens
 * Figures for Heroine: basic / sword varieties x4 / shield varieties x4
 * Figure for: Enemy x4
@@ -66,16 +77,16 @@ Due to the time constraints the artist and i set a seporate scope for the art. A
 * All buttons
 * Stat container / stat icons x4 
 * Shop sign
-* Player info pop up: welcome / gold / stat / combat
+* Player information pop up: welcome / gold / stat / combat
 * Menu popup
+* Game logo
 
-##### 'Nice to Have' Scope
-* Full screen background for the desktop view
+##### MVP2 Scope
+* A border or frame around the game on the Desktop view to create a more striking difference between the game and the splash screen
+* New graphics for the splash screen (currently using a placeholder)
 * Figures for the desktop background view - to be either side of the screen
 * Unique combat screen backgrouns for each enemy x3
 * Unique stat containers for each enemy x4
-* Game logo / icon as a start button / favicon
-* Frame for the game
 * Unique potion icons for the different enemies x3
 
 
@@ -92,11 +103,14 @@ Visual feedback for the player was another key element I included. Buttons have 
 After working through the scope and structure I collaborated closely with the artist to discuss and draw up wireframes that would fit for a scalable screen. We decided to design for a tablet/iPad sized screen as the largest 'grow' to avoid over scaling the art, having to have multiple art files, or having to have huge art files. In this way the game is optimized for a device, but still looks good on a desktop. 
 
 ##### Wireframes & Diagrams 
-You can view the wireframes [here]
+* You can view the initial sketch wireframes [here](https://github.com/LittleBlue418/Milestone2/blob/master/assets/documentation/wireframes-1-sketches.pdf)
+* You can view the template mockup wireframes [here](https://github.com/LittleBlue418/Milestone2/blob/master/assets/documentation/wireframes-2-mockups.pdf)
+* You can view the aditional 'nice to have' feature wireframes [here](https://github.com/LittleBlue418/Milestone2/blob/master/assets/documentation/wireframes-2.1-additional-mockups.pdf)
 
 ### Surface
 Much of the surface design was built in collaboration with the artist. We worked together to establish a look and feel for the world of the game, and to ensure that backgrounds, figures and assets fit within that world. Early in the conversation we decided to go with a traditional fantasy RPG look and feel, dungeons and dragons inspired, but with more of a 'cute' aesthetic.  
-You can view the origional sketches [here]
+* You can view the inspirations for the art [here](https://github.com/LittleBlue418/Milestone2/blob/master/assets/documentation/wireframes-3-art-inspiration.pdf)
+* You can view some creature designs that we decided not to use as they felt too 'cute' [here](https://github.com/LittleBlue418/Milestone2/blob/master/assets/documentation/wireframes-4-rejected-enemy-designs.pdf)
 
 ### Design Decisions
 During the UX design process I made specific design decisions that I want to explain: 
