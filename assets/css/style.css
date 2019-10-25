@@ -875,6 +875,7 @@
     pointer-events: none;
 }
 
+
 .heroine-stats {
     flex-grow: 0;
     flex-basis: 900px;
@@ -898,16 +899,21 @@
 }
 
 .stat-container {
-    height: 90%;
-    width: 100%;
+    outline: red solid 2px;
+    width: 45vw;
+    height: calc(45vw * 0.55);
     margin-top: 2%;
 }
 
 .inner-stat-container {
     position: relative;
-    height: 70%;
+    outline: blue solid 2px;
+    height: 100%;
     width: 100%;
     top: 0%;
+}
+.heroine-stats .stat-container {
+    margin-left: 8%;
 }
 
 .stat-line {
@@ -949,25 +955,12 @@
     background-image: url(../art/stat-bars/stats-gold.png);
 }
 
-
-@media (min-width: 360px) and (min-height: 810px) {
-    .inner-stat-container {
-        height: 60%;
-    }
-}
-
-@media (min-width: 400px)  {
-    .inner-stat-container {
-        height: 68%;
-    }
-}
-
 @media (min-width: 768px)  {
     .stat-container {
-        height: 70%;
-    }
-    .inner-stat-container {
-        height: 95%;
+        outline: red solid 2px;
+        width: calc(768px * 0.45);
+        height: calc(768px * 0.45 * 0.55);
+        margin-top: 2%;
     }
     #stat-screen {
         position: absolute;
