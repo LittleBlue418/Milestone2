@@ -17,13 +17,13 @@ function randomBool(probability) {
   Player
 =================================
 */
-const playerMaxHealth = 1000;
+const playerMaxHealth = 100;
 
 class Player {
   constructor() {
     this.health = playerMaxHealth;
     this.maxHealth = playerMaxHealth;
-    this.attack = 100;
+    this.attack = 10;
     this.defence = 10;
     this.gold = 0;
   };

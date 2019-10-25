@@ -8,7 +8,7 @@
      padding: 0px;
      margin: 0px;
      font-family: 'Calligraffitti', cursive;
-     background-image: url(../backgrounds/template-page-background.png);
+     background-image: url(../art/backgrounds/background-desktop-splash-screen.png);
      position: fixed;
      background-repeat: no-repeat;
      background-position-x: center;
@@ -560,35 +560,51 @@
 */
 
 #welcome-screen {
-     background-image: url("../backgrounds/template-welcome-screen.png");
+     background-image: url(../art/backgrounds/background-welcome-screen.png);
+     position: fixed;
  }
 
- /* ----- Flex Rows */
-
-.welcome-buffer-section {
-    flex-grow: 3;
-    flex-basis: 0;
+.logo-section {
+    justify-content: center;
+    align-items: center;
 }
 
-/* ----- Flex columns */
+.logo {
+    background-image: url(../art/general/logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: bottom;
+    height: 60vw;
+    width: 90vw;
+}
 
 .start {
-    flex-grow: 0;
-    flex-basis: 150px;
-    flex-shrink: 1;
+    height: 40vw;
+    width: 40vw;
     padding: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 15%;
 }
+
 @media(min-width: 768px) {
+    #welcome-screen {
+        position: absolute;
+        max-width: 768px;
+        max-height: 1024px;
+        left: calc(50% - 384px);
+    }
+    .logo {
+        height: calc(0.6 * 768px);
+        width: calc(0.9 * 768px);
+    }
     .start {
-        flex-basis: 200px;
+        height: calc(0.40 * 768px);
+        width: calc(0.40 * 768px);
     }
 }
 
-/* ----- Inner Divs & Buttons*/
-
 #start-game .button {
-    background-image: url(../buttons/scroll.png);
+    background-image: url(../art/buttons/button-start-game.png);
 }
 
 
@@ -822,11 +838,11 @@
 }
 
 #enemy-3-button .button {
-    background-image: url(../buttons/enemy.png);
+    background-image: url(../art/buttons/button-map-enemy-3.png);
 }
 
 #enemy-4-button .button {
-    background-image: url(../buttons/enemy.png);
+    background-image: url(../art/buttons/button-map-enemy-4.png);
 }
 
 #map-to-home .button {
