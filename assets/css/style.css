@@ -899,7 +899,6 @@
 }
 
 .stat-container {
-    outline: red solid 2px;
     width: 45vw;
     height: calc(45vw * 0.55);
     margin-top: 2%;
@@ -907,7 +906,6 @@
 
 .inner-stat-container {
     position: relative;
-    outline: blue solid 2px;
     height: 100%;
     width: 100%;
     top: 0%;
@@ -957,7 +955,6 @@
 
 @media (min-width: 768px)  {
     .stat-container {
-        outline: red solid 2px;
         width: calc(768px * 0.45);
         height: calc(768px * 0.45 * 0.55);
         margin-top: 2%;
