@@ -156,11 +156,30 @@ For the gameplay creation and testing i worked with a [friend](https://github.co
 Once the initial game was built I was able to start testing the mechanics as a player. I also worked with [another friend](https://www.linkedin.com/in/craig-fleming-633bb4125/) who has worked as a professional GM for [Steamforged Games](https://steamforged.com/). During this testing process we decided to remove the option to buy health potions, and instead build in the mechanics for potion drop from combat. Again in this way we force the player to think tactically about how they want to play, rather than simply attacking over and over untill they win, then paying to be revived. In this way it adds a puzzle like element to the gameplay.  
 
 ### Manual Testing 
-During the build process I have been **manualy testing**; ensuring that each button, link and icon that should perform an action would complete that action. I have tested on different screens and devices to ensure that everything looks and scales as it should. 
+During the build process I have been **manualy testing**; ensuring that each button, link and icon that should perform an action would complete that action. I have tested on different screens and devices to ensure that everything looks and scales as it should, mobile tablet and desktop. 
 
 Other people have tested the site for me, including my friends and family. You can red the **feedback**, as well as the steps that I have taken and implementations made as a result in [this document](https://github.com/LittleBlue418/Milestone2/blob/master/assets/documentation/Game%20testing%20-%20Craig.pdf)
 
 I used **Chrome developer tools** for testing my site. Using the device toolbar to continually check that my structure and content worked on the mobile and desktop screen as intended. I frequently tested the different classes and rules that were applying to different elements to bug test on things that weren't behaving as they should, but also to test out possible solutions before moving those solutions into my code. 
+
+### User Story Testing 
+- User opens game:
+  - User can click only on the start button
+  - Automatic popup - user can only click on the ok button to close it 
+- Game menu
+  - Once open user cannot click on anyting 'behind' it. 
+  - New game returns user to screen 1
+  - Artist portfolio and developer portfolio open new tabs with target blank to avoid moving the user to another window 
+  - Close menu button closes the menu and keeps uer in the same place as before.
+- In Shop:
+  - User tried to level up their stats with no money - they see a friendly popup instructing them that they cannot do that untill they have money
+- In Map:
+  - User may choose to go to any enemy they wish and enter combat, this is a feature that allows them to get an idea of the level they need to be before progressing. 
+- In Combat:
+  - User can leave combat with no consiquences and return to the map screen
+  - User can attack or defend. Once one of the buttons is clicked all butts or options for uder input and disabled untill the animations for the damage and the round are complete. 
+- Uppon winning battle / winning game / dying: 
+  - User can click only on the icon that pops up. Is then taken to the corresponding next screen. 
 
 ### Automated testing
 During the refactoring stage of working with my JS code base I worked to build testable classes and functions. Currently I have automated testing for the player and emeny classes, as next steps i would plan to split the shop class into a shop mechanics class and a shop UI class, and thus be able to write testing for the shop as well.  
