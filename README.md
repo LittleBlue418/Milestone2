@@ -232,13 +232,17 @@ You can read more at this [Github help page](https://help.github.com/en/articles
 The text for this site was written by me.
 
 ### Art
-The art for this site was produced by [Sofia Persson](https://www.linkedin.com/in/sofia-persson-52a9aa146/) [Portfolio](https://www.instagram.com/rudolf_y_art/)
+The art for this site is all origional content that was produced by [Sofia Persson](https://www.linkedin.com/in/sofia-persson-52a9aa146/) [Portfolio](https://www.instagram.com/rudolf_y_art/) for this game. 
+The splash screen is a temporary background created by me. 
 
 ### Websites
 * [Visual Studio Code](https://code.visualstudio.com/) - IDE and bug testing
 * [Github](https://github.com/LittleBlue418) - Code repository, website hosting & deployment
-* [Trello](https://trello.com/en) - Tracking tasks & bugs 
-* [WebAIM](https://webaim.org/resources/contrastchecker/) - Checking and adjusting colours to meet accesability requirements
+* [Trello](https://trello.com/en) - Tracking tasks & bugs
 
 ### Acknowledgements 
 * I was inspire to build this project after seeing the work of [another student](https://github.com/JackSnowdon) who also built a [combat game](https://jacksnowdon.github.io/die-hard/?fbclid=IwAR2-6FrK2tpa4ZimVbj1NarXhO4MachKbblSMYZDOE4pxg9H3N2ks2PF3z4)
+* The art for this game was partly inspired by [Child of Light](https://store.steampowered.com/app/256290/Child_of_Light/)
+* Thank you to my mentor for the feedback and suggestions, it was your nudge that sent me down the rabbit hole of classes and helped me to build some automated testing. 
+* Thank you to [Craig Fleming](https://www.linkedin.com/in/craig-fleming-633bb4125/) for your expertese in constructing and testing games. 
+* Thank you to my partner, friends and family for supporting me while I realised the true scope of this project! 
