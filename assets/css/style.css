@@ -152,6 +152,10 @@
      font-size: 0;
  }
 
+ a.button {
+    display: inline-block;
+ }
+
  .button:active {
      transform: scale(0.95);
  }
