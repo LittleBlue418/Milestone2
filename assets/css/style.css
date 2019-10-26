@@ -8,13 +8,18 @@
      padding: 0px;
      margin: 0px;
      font-family: 'Calligraffitti', cursive;
-     background-image: url(../art/backgrounds/background-desktop-splash-screen.png);
      position: fixed;
      background-repeat: no-repeat;
      background-position-x: center;
      background-color: black;
      width: 100%;
      height: 100%;
+ }
+
+ @media(min-width: 768px){
+    html body {
+        background-image: url(../art/backgrounds/background-desktop-splash-screen.png);
+    }
  }
 
 
@@ -188,7 +193,7 @@
  */
 
 #combat-screen {
-     background-image: url(../art/backgrounds/background-combat-screen.png);
+     background-image: url(../art/backgrounds/background-conbat-screen.jpg);
  }
 
 /* ----- Flex Rows */
@@ -565,7 +570,7 @@
 */
 
 #welcome-screen {
-     background-image: url(../art/backgrounds/background-welcome-screen.png);
+     background-image: url(../art/backgrounds/background-welcome-screen.jpg);
      position: fixed;
  }
 
@@ -621,7 +626,7 @@
 */
 
 #home-screen {
-     background-image: url(../art/backgrounds/background-home-screen.png);
+     background-image: url(../art/backgrounds/background-home-screen.jpg);
  }
 
  /* ----- Flex Rows */
@@ -654,7 +659,7 @@
 }
 
 #home-to-map .button {
-    background-image: url(../art/buttons/button-home-adventure.png);
+    background-image: url(../art/buttons/button-home-map.png);
 }
 
 
@@ -665,7 +670,7 @@
 */
 
 #shop-screen {
-     background-image: url(../art/backgrounds/background-shop-screen.png);
+     background-image: url(../art/backgrounds/background-shop-screen.jpg);
  }
 
  /* ----- Flex Rows */
@@ -781,7 +786,7 @@
 */
 
 #map-screen {
-     background-image: url(../art/backgrounds/background-map-screen.png);
+     background-image: url(../art/backgrounds/background-map-screen.jpg);
  }
 
 
@@ -862,7 +867,7 @@
 */
 
 #victory-screen {
-     background-image: url(../art/backgrounds/background-victory.png);
+     background-image: url(../art/backgrounds/background-victory-screen.jpg);
  }
 
 /*
