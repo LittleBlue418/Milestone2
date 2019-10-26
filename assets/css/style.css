@@ -876,6 +876,19 @@
  =================================
 */
 
+.stats-buffer {
+    flex-grow: 0;
+    flex-basis: auto;
+    flex-shrink: 0;
+    height: calc(40vw * 0.746);
+}
+
+@media (min-width: 768px)  {
+    .stats-buffer {
+        height: calc(768px * 0.40 * 0.746);
+    }
+}
+
 #stat-screen {
     position: fixed;
     width: 100%;
@@ -886,72 +899,61 @@
 }
 
 .game-stats {
-    max-height: 23%;
+    justify-content: space-between;
 }
 
 .heroine-stats {
     flex-grow: 0;
-    flex-basis: 900px;
-    flex-shrink: 1;
+    flex-basis: auto;
+    flex-shrink: 0;
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url(../art/stat-bars/stats-heroine-base.png);
     background-position-x: left;
 
+    width: 45vw;
+    height: calc(45vw * 0.746);
+    padding-bottom: calc(45vw * 0.21);
+    padding-top: calc(45vw * 0.05);
+    padding-left: calc(45vw * 0.05);
+    padding-right: calc(45vw * 0);
 }
 
 .enemy-stats {
     flex-grow: 0;
-    flex-basis: 900px;
-    flex-shrink: 1;
+    flex-basis: auto;
+    flex-shrink: 0;
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url(../art/stat-bars/stats-enemy-base.png);
     background-position-x: right;
     opacity: 0;
+
+    width: 45vw;
+    height: calc(45vw * 0.746);
+    padding-bottom: calc(45vw * 0.21);
+    padding-top: calc(45vw * 0.05);
+    padding-left: calc(45vw * 0);
+    padding-right: calc(45vw * 0.05);
 }
 
 .stat-container {
-    width: 40vw;
-    height: calc(40vw * 0.55);
-    margin-top: 2%;
-}
-
-.inner-stat-container {
-    position: relative;
-    height: 100%;
     width: 100%;
-    top: 0%;
-}
-.heroine-stats .stat-container {
-    margin-left: 8%;
-}
-
-.enemy-stats .stat-container {
-    margin-left: 15%;
+    height: 100%;
 }
 
 .stat-line {
     height: 25%;
-    display: flex;
-    flex-direction: column;
     background-repeat: no-repeat;
     background-size: contain;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-size: 5vw;
 }
 
 .enemy-stats .stat-line {
     background-position-x: right;
-}
-
-.enemy-stats .stat-text {
-    font-size: 5vw;
     text-align: right;
-    padding-right: 15%;
-}
-
-.heroine-stats .stat-text {
-    font-size: 5vw;
-    padding-left: 15%;
 }
 
 .health-stat{
@@ -971,22 +973,35 @@
 }
 
 @media (min-width: 768px)  {
-    .stat-container {
-        width: calc(768px * 0.4);
-        height: calc(768px * 0.4 * 0.5);
-        margin-top: 2%;
+    .heroine-stats {
+        width: calc(768px * 0.45);
+        height: calc(768px * 0.45 * 0.746);
+        padding-bottom: calc(768px * 0.45 * 0.21);
+        padding-top: calc(768px * 0.45 * 0.05);
+        padding-left: calc(768px * 0.45 * 0.05);
+        padding-right: calc(768px * 0.45 * 0);
+
     }
+
+    .enemy-stats {
+        width: calc(768px * 0.45);
+        height: calc(768px * 0.45 * 0.746);
+        padding-bottom: calc(768px * 0.45 * 0.21);
+        padding-top: calc(768px * 0.45 * 0.05);
+        padding-left: calc(768px * 0.45 * 0.05);
+        padding-right: calc(768px * 0.45 * 0);
+
+    }
+
+    .stat-line {
+        font-size: calc(768px * 0.05);
+    }
+
     #stat-screen {
         position: absolute;
         max-width: 768px;
         max-height: 1024px;
         left: calc(50% - 384px);
-    }
-    .enemy-stats .stat-text {
-        font-size: 30px;
-    }
-    .heroine-stats .stat-text {
-        font-size: 30px;
     }
 }
 

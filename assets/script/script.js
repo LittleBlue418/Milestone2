@@ -471,19 +471,17 @@ $(() => {
       this.firstCombat = true
 
       //Player Stats
-      this.playerHealthText = $(".playerHealth")
-      this.playerMaxHealthText = $(".playerMaxHealth")
-      this.playerAttack = $(".playerAttack")
-      this.playerDefence = $(".playerdefence")
-      this.playerGold = $(".playerGold")
+      this.playerHealthText = $("#playerHealth")
+      this.playerAttack = $("#playerAttack")
+      this.playerDefence = $("#playerdefence")
+      this.playerGold = $("#playerGold")
 
       //Enemy Stats
       this.enemyStatContainer = $(".enemy-stats")
-      this.enemyHealthText = $(".enemyHealth")
-      this.enemyMaxHealthText = $(".enemyMaxHealth")
-      this.enemyAttack = $(".enemyAttack")
-      this.enemyDefence = $(".enemydefence")
-      this.enemyGold = $(".enemyGold")
+      this.enemyHealthText = $("#enemyHealth")
+      this.enemyAttack = $("#enemyAttack")
+      this.enemyDefence = $("#enemydefence")
+      this.enemyGold = $("#enemyGold")
 
       //Figures
       this.enemyFigure = $("#enemy")
