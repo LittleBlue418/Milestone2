@@ -6,7 +6,7 @@
 =================================
 */
 
-$(function () {
+$(() => {
 
   /*
 =================================
@@ -183,7 +183,7 @@ $(function () {
   // ----- Nagivation buttons
 
 
-  gameButton.startGame.click(function () {
+  gameButton.startGame.click(() => {
     player = new Player();
     shop = new Shop();
     combatUI.updatePlayerStats(player);
@@ -193,53 +193,53 @@ $(function () {
     infoScreen.showWelcome();
   })
 
-  gameButton.menu.click(function () {
+  gameButton.menu.click(() => {
     gameScreen.menu.toggle();
   });
 
-  gameButton.newGame.click(function () {
+  gameButton.newGame.click(() => {
     hideAllScreens();
     gameScreen.welcome.show();
   })
 
-  gameButton.closeMenu.click(function () {
+  gameButton.closeMenu.click(() => {
     gameScreen.menu.hide();
   })
 
-  gameButton.toShop.click(function () {
+  gameButton.toShop.click(() => {
     hideAllScreens();
     gameScreen.shop.show();
     gameScreen.stats.show();
     shop.updateShopText();
   })
 
-  gameButton.homeToMap.click(function () {
+  gameButton.homeToMap.click(() => {
     hideAllScreens();
     gameScreen.map.show();
     gameScreen.stats.show();
 
   })
 
-  gameButton.shopToHome.click(function () {
+  gameButton.shopToHome.click(() => {
     hideAllScreens();
     gameScreen.home.show();
     gameScreen.stats.show();
   })
 
-  gameButton.mapToHome.click(function () {
+  gameButton.mapToHome.click(() => {
     hideAllScreens();
     gameScreen.home.show();
     gameScreen.stats.show();
   })
 
-  gameButton.startCombat.click(function () {
+  gameButton.startCombat.click(() => {
     hideAllScreens();
     shop.updatePlayerImage(player);
     gameScreen.combat.show();
     gameScreen.stats.show();
     combatUI.showEnemyStatContainer();
     combatUI.firstCombatPopup()
-      .then(function () {
+      .then(() => {
         roundCount = 0;
         combatUI.roundCounterAnimation(roundCount);
       })
@@ -248,11 +248,11 @@ $(function () {
 
   // ----- Shop Buttons
 
-  gameButton.levelUpAttack.click(function () {
+  gameButton.levelUpAttack.click(() => {
     shop.levelUpAttack(player);
   })
 
-  gameButton.levelUpDefence.click(function () {
+  gameButton.levelUpDefence.click(() => {
     shop.levelUpDefence(player);
   })
 
@@ -351,82 +351,69 @@ $(function () {
     }
 
     animateAttackSpend() {
+      return popups.spentAttack
+        .animate({
+          'opacity': 1,
+          'top': '45%',
+        }, 700)
+        .animate({
+          'opacity': 0
+        }, () => {
 
-
-
-      var promise = new Promise(function (resolve, reject) {
-        popups.spentAttack
-          .animate({
-            'opacity': 1,
-            'top': '45%',
-          }, 700)
-          .animate({
-            'opacity': 0
-          }, function () {
-
-            // remove attributes
-            popups.spentAttack.removeAttr('style');
-            resolve()
-          })
-      })
-      return promise;
+          // remove attributes
+          popups.spentAttack.removeAttr('style');
+        })
+        .promise()
     }
 
     animateAttackUpgrade() {
-      var promise = new Promise(function (resolve, reject) {
-        popups.attackLevelUp
-          .animate({
-            'opacity': 1,
-            'top': '45%',
-          }, 700)
-          .animate({
-            'opacity': 0
-          }, function () {
+      return popups.attackLevelUp
+        .animate({
+          'opacity': 1,
+          'top': '45%',
+        }, 700)
+        .animate({
+          'opacity': 0
+        }, () => {
 
-            // remove attributes
-            popups.attackLevelUp.removeAttr('style');
-            resolve()
-          })
-      })
-      return promise;
+          // remove attributes
+          popups.attackLevelUp.removeAttr('style');
+
+        })
+        .promise()
     }
 
     animateDefenceSpend() {
-      var promise = new Promise(function (resolve, reject) {
-        popups.spentDefence
-          .animate({
-            'opacity': 1,
-            'top': '45%',
-          }, 700)
-          .animate({
-            'opacity': 0
-          }, function () {
+      return popups.spentDefence
+        .animate({
+          'opacity': 1,
+          'top': '45%',
+        }, 700)
+        .animate({
+          'opacity': 0
+        }, () => {
 
-            // remove attributes
-            popups.spentDefence.removeAttr('style');
-            resolve()
-          })
-      })
-      return promise;
+          // remove attributes
+          popups.spentDefence.removeAttr('style');
+
+        })
+        .promise()
     }
 
     animateDefenceUpgrade() {
-      var promise = new Promise(function (resolve, reject) {
-        popups.defenceLevelUp
-          .animate({
-            'opacity': 1,
-            'top': '45%',
-          }, 700)
-          .animate({
-            'opacity': 0
-          }, function () {
+      return popups.defenceLevelUp
+        .animate({
+          'opacity': 1,
+          'top': '45%',
+        }, 700)
+        .animate({
+          'opacity': 0
+        }, () => {
 
-            // remove attributes
-            popups.defenceLevelUp.removeAttr('style');
-            resolve()
-          })
-      })
-      return promise;
+          // remove attributes
+          popups.defenceLevelUp.removeAttr('style');
+        })
+        .promise()
     }
 
 
@@ -436,25 +423,25 @@ $(function () {
 
   // ----- Enemy Generating Buttons
 
-  gameButton.enemy1Button.click(function () {
+  gameButton.enemy1Button.click(() => {
     currentEnemy = new Enemy1();
     combatUI.updateEnemyStats(currentEnemy);
     combatUI.updateEnemyImage(currentEnemy);
   })
 
-  gameButton.enemy2Button.click(function () {
+  gameButton.enemy2Button.click(() => {
     currentEnemy = new Enemy2();
     combatUI.updateEnemyStats(currentEnemy);
     combatUI.updateEnemyImage(currentEnemy);
   })
 
-  gameButton.enemy3Button.click(function () {
+  gameButton.enemy3Button.click(() => {
     currentEnemy = new Enemy3();
     combatUI.updateEnemyStats(currentEnemy);
     combatUI.updateEnemyImage(currentEnemy);
   })
 
-  gameButton.enemy4Button.click(function () {
+  gameButton.enemy4Button.click(() => {
     currentEnemy = new Enemy4();
     combatUI.updateEnemyStats(currentEnemy);
     combatUI.updateEnemyImage(currentEnemy);
@@ -467,15 +454,15 @@ $(function () {
 
   // Combat buttons
 
-  gameButton.attackButton.click(function () {
+  gameButton.attackButton.click(() => {
     resolveCombat(true)
   })
 
-  gameButton.defendButton.click(function () {
+  gameButton.defendButton.click(() => {
     resolveCombat(false)
   })
 
-  gameButton.fleeFight.click(function () {
+  gameButton.fleeFight.click(() => {
     hideAllScreens();
     combatUI.hideEnemyStatContainer();
     gameScreen.map.show();
@@ -809,11 +796,11 @@ $(function () {
     combatUI.animateActions(isPlayerAttacking, isEnemyAttacking)
 
       //Animate damage taken text
-      .then(function () {
+      .then(() => {
         return combatUI.animateDamage(playerDamageTaken, enemyDamageTaken)
       })
 
-      .then(function () {
+      .then(() => {
 
         // Update enemy / player stats after the animation
         combatUI.updateEnemyStats(currentEnemy);
@@ -844,7 +831,7 @@ $(function () {
             //Gold Drop
             player.gold += currentEnemy.gold;
             combatUI.goldDropAnimation(currentEnemy.gold)
-              .then(function () {
+              .then(() => {
                 combatUI.updatePlayerStats(player);
 
                 // If potion
@@ -855,7 +842,7 @@ $(function () {
               })
 
               //re-setting screens
-              .then(function () {
+              .then(() => {
                 combatUI.updatePlayerStats(player);
                 combatUI.hideEnemyStatContainer();
                 hideAllScreens();
