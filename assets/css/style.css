@@ -149,6 +149,7 @@
         transform 20ms ease-in-out,
         opacity 100ms ease-in-out;
      background-color: rgba(0, 0, 0, 0);
+     font-size: 0;
  }
 
  .button:active {
