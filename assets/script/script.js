@@ -90,6 +90,7 @@ $(function () {
   var roundCount;
   var player;
   var currentEnemy;
+  var shop;
 
 
   /*
@@ -184,6 +185,7 @@ $(function () {
 
   gameButton.startGame.click(function () {
     player = new Player();
+    shop = new Shop();
     combatUI.updatePlayerStats(player);
     hideAllScreens();
     gameScreen.home.show();
@@ -431,7 +433,7 @@ $(function () {
 
   }
 
-  var shop = new Shop();
+
   // ----- Enemy Generating Buttons
 
   gameButton.enemy1Button.click(function () {
