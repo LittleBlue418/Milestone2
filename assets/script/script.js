@@ -110,13 +110,6 @@ $(() => {
     menu: $("#menu-screen"),
   }
 
-  const popups = {
-    spentAttack: $("#gold-spent-text-attack"),
-    spentDefence: $("#gold-spent-text-defence"),
-    attackLevelUp: $("#attack-level-up-text"),
-    defenceLevelUp: $("#defence-level-up-text"),
-  }
-
   const gameButton = {
     startGame: $("#startGame"),
     menu: $(".menu-button"),
@@ -137,20 +130,6 @@ $(() => {
     attackButton: $(".attack-button"),
     defendButton: $(".defend-button"),
   }
-
-  const statField = {
-    shopAttackCost: $("#upgrade-attack-cost"),
-    shopDefenceCost: $("#upgrade-defence-cost"),
-
-  }
-
-  const figures = {
-    heroineSword: $("#heroine-sword"),
-    heroineShield: $("#heroine-shield"),
-  }
-
-
-
 
   hideAllScreens();
   gameScreen.welcome.show();
@@ -259,6 +238,21 @@ $(() => {
 
   class Shop {
     constructor() {
+      //Popups
+      this.spentAttack = $("#gold-spent-text-attack")
+      this.spentDefence = $("#gold-spent-text-defence")
+      this.attackLevelUp = $("#attack-level-up-text")
+      this.defenceLevelUp = $("#defence-level-up-text")
+
+      //Stat fields
+      this.shopAttackCost = $("#upgrade-attack-cost")
+      this.shopDefenceCost = $("#upgrade-defence-cost")
+
+      //Heroine sword and shield
+      this.heroineSword = $("#heroine-sword")
+      this.heroineShield = $("#heroine-shield")
+
+      //cost tracking variables
       this.attackLevelUpCost = 25;
       this.defenceLevelUpCost = 25;
 
@@ -283,7 +277,7 @@ $(() => {
       player.attack += 5;
       player.gold -= this.attackLevelUpCost;
       combatUI.updatePlayerStats(player);
-      popups.spentAttack.text("- " + this.attackLevelUpCost);
+      this.spentAttack.text("- " + this.attackLevelUpCost);
       shop.attackLevelUpCost += 5;
       //update signs
       //update the animation
@@ -310,7 +304,7 @@ $(() => {
       player.defence += 5;
       player.gold -= this.defenceLevelUpCost;
       combatUI.updatePlayerStats(player);
-      popups.spentDefence.text("- " + this.defenceLevelUpCost);
+      this.spentDefence.text("- " + this.defenceLevelUpCost);
       shop.defenceLevelUpCost += 5;
       //update signs
       //update the animation
@@ -321,37 +315,37 @@ $(() => {
     }
 
     updateShopText() {
-      statField.shopAttackCost.text(this.attackLevelUpCost);
-      statField.shopDefenceCost.text(this.defenceLevelUpCost);
+      this.shopAttackCost.text(this.attackLevelUpCost);
+      this.shopDefenceCost.text(this.defenceLevelUpCost);
     }
 
 
     updatePlayerImage(player) {
       if (player.attack > 29 && player.attack < 59) {
-        figures.heroineSword.removeClass("sword-wood");
-        figures.heroineSword.addClass("sword-basic");
+        this.heroineSword.removeClass("sword-wood");
+        this.heroineSword.addClass("sword-basic");
       } else if (player.attack > 59 && player.attack < 90) {
-        figures.heroineSword.removeClass("sword-basic");
-        figures.heroineSword.addClass("sword-fancy");
+        this.heroineSword.removeClass("sword-basic");
+        this.heroineSword.addClass("sword-fancy");
       } else if (player.attack == 90) {
-        figures.heroineSword.removeClass("sword-fancy");
-        figures.heroineSword.addClass("sword-magic");
+        this.heroineSword.removeClass("sword-fancy");
+        this.heroineSword.addClass("sword-magic");
       }
 
       if (player.defence > 29 && player.defence < 59) {
-        figures.heroineShield.removeClass("shield-wood");
-        figures.heroineShield.addClass("shield-basic");
+        this.heroineShield.removeClass("shield-wood");
+        this.heroineShield.addClass("shield-basic");
       } else if (player.defence > 59 && player.defence < 90) {
-        figures.heroineShield.removeClass("shield-basic");
-        figures.heroineShield.addClass("shield-fancy");
+        this.heroineShield.removeClass("shield-basic");
+        this.heroineShield.addClass("shield-fancy");
       } else if (player.defence == 90) {
-        figures.heroineShield.removeClass("shield-fancy");
-        figures.heroineShield.addClass("shield-magic");
+        this.heroineShield.removeClass("shield-fancy");
+        this.heroineShield.addClass("shield-magic");
       }
     }
 
     animateAttackSpend() {
-      return popups.spentAttack
+      return this.spentAttack
         .animate({
           'opacity': 1,
           'top': '45%',
@@ -361,13 +355,13 @@ $(() => {
         }, () => {
 
           // remove attributes
-          popups.spentAttack.removeAttr('style');
+          this.spentAttack.removeAttr('style');
         })
         .promise()
     }
 
     animateAttackUpgrade() {
-      return popups.attackLevelUp
+      return this.attackLevelUp
         .animate({
           'opacity': 1,
           'top': '45%',
@@ -377,14 +371,14 @@ $(() => {
         }, () => {
 
           // remove attributes
-          popups.attackLevelUp.removeAttr('style');
+          this.attackLevelUp.removeAttr('style');
 
         })
         .promise()
     }
 
     animateDefenceSpend() {
-      return popups.spentDefence
+      return this.spentDefence
         .animate({
           'opacity': 1,
           'top': '45%',
@@ -394,14 +388,14 @@ $(() => {
         }, () => {
 
           // remove attributes
-          popups.spentDefence.removeAttr('style');
+          this.spentDefence.removeAttr('style');
 
         })
         .promise()
     }
 
     animateDefenceUpgrade() {
-      return popups.defenceLevelUp
+      return this.defenceLevelUp
         .animate({
           'opacity': 1,
           'top': '45%',
@@ -411,7 +405,7 @@ $(() => {
         }, () => {
 
           // remove attributes
-          popups.defenceLevelUp.removeAttr('style');
+          this.defenceLevelUp.removeAttr('style');
         })
         .promise()
     }
