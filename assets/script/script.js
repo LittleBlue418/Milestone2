@@ -525,12 +525,12 @@ $(function () {
 
       this.goldDrop = $("#goldDrop")
       this.potionDrop = $("#potionDrop")
-      this.died = $("#died")
+      this.deathScreen = $("#died")
       this.winFight = $("#winFight")
 
       //Set up
       this.winFight.hide();
-      this.died.hide();
+      this.deathScreen.hide();
       this.goldDrop.hide();
       this.potionDrop.hide();
 
@@ -726,12 +726,12 @@ $(function () {
     }
 
     died() {
-      this.died.show();
+      this.deathScreen.show();
 
       var promise = new Promise((resolve, reject) => {
-        this.died.off("click")
-        this.died.on("click", () => {
-          this.died.hide();
+        this.deathScreen.off("click")
+        this.deathScreen.on("click", () => {
+          this.deathScreen.hide();
           resolve()
         })
       })
