@@ -724,7 +724,7 @@ $(() => {
 
       this.roundCountText.animate({
         'opacity': 0.7,
-        'fontSize': 40,
+        'fontSize': 50,
       }, 900).animate({
         'opacity': 0,
       }, 200, () => {
