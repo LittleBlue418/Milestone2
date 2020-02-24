@@ -1,4 +1,4 @@
-﻿# Milestone Project 2
+﻿# Rescue The Rainbow
  
 This game was designed to fullfill three key goals. To be a portfolio peice for me to show to potential employers, to be a place for the artist I am working with to display their art as a portfolio peice, and to be an engaging game to play for the user. 
  
@@ -11,7 +11,7 @@ The goal with creating an engaging game for the user to play was to create a gam
 *** 
 ### Website
  
-You can view the website [here]( https://littleblue418.github.io/Milestone2/)
+You can view the website [here]( https://littleblue418.github.io/Rescue-The-Rainbow/.)
 
 ***
 ## UX 
